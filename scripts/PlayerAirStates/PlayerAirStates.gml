@@ -67,6 +67,7 @@ function player_is_jumping(phase)
 		case PHASE.ENTER:
 		{
 			rolling = true;
+			audio_play_sfx(sfxJump);
 			
 			// Leap
 			var sine = dsin(local_direction);

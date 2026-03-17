@@ -14,8 +14,8 @@
   "exportDir":"",
   "name":"bgmMadGear",
   "parent":{
-    "name":"Audio",
-    "path":"folders/Global/Audio.yy",
+    "name":"BGM",
+    "path":"folders/Global/Audio/BGM.yy",
   },
   "preload":false,
   "resourceType":"GMSound",

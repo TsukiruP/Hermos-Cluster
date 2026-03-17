@@ -130,6 +130,7 @@ function player_is_running(phase)
 				// Roll
 				if (abs(x_speed) >= roll_threshold and input_check(INPUT.DOWN))
 				{
+					audio_play_sfx(sfxRoll);
 					return player_perform(player_is_rolling);
 				}
 			}
@@ -167,6 +168,7 @@ function player_is_running(phase)
 				timeline_speed = 1;
 				image_angle = gravity_direction;
 				image_xscale = -input_sign;
+				audio_play_sfx(sfxBrake);
 			}
 			
 			// Animate
@@ -392,6 +394,7 @@ function player_is_spindashing(phase)
 			rolling = true;
 			spindash_charge = 0;
 			player_animate("spindash");
+			audio_play_sfx(sfxSpinRev);
 			break;
 		}
 		case PHASE.STEP:
@@ -418,6 +421,8 @@ function player_is_spindashing(phase)
 			{
 				x_speed = image_xscale * (8 + spindash_charge div 2);
 				objCamera.alarm[0] = 16;
+				audio_stop_sound(sfxSpinRev);
+				audio_play_sfx(sfxSpinDash);
 				return player_perform(player_is_rolling);
 			}
 			
@@ -425,6 +430,8 @@ function player_is_spindashing(phase)
 			if (input_check_pressed(INPUT.ACTION))
 			{
 				spindash_charge = min(spindash_charge + 2, 8);
+				var rev_sfx = audio_play_sfx(sfxSpinRev);
+				audio_sound_pitch(rev_sfx, 1 + spindash_charge * 0.0625);
 			}
 			else spindash_charge *= 0.96875;
 			break;

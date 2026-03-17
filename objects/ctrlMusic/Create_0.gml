@@ -2,7 +2,7 @@
 image_speed = 0;
 
 playlist = ds_priority_create();
-looped_music = [];
+looped_music = [bgmMadGear];
 music = -1;
 jingle = -1;
 
