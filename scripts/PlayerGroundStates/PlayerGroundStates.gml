@@ -97,6 +97,7 @@ function player_is_running(phase)
 			if (input_check_pressed(INPUT.ACTION)) return player_perform(player_is_jumping);
 			
 			// Handle ground motion
+			var can_brake = animation == "brake";
 			var input_sign = input_check(INPUT.RIGHT) - input_check(INPUT.LEFT);
 			if (input_sign != 0)
 			{
@@ -105,12 +106,14 @@ function player_is_running(phase)
 					// Decelerate
 					if (x_speed != 0 and sign(x_speed) != input_sign)
 					{
+						can_brake = true;
 						x_speed += deceleration * input_sign;
 						if (sign(x_speed) == input_sign) x_speed = deceleration * input_sign; // Reverse direction
 					}
 					else
 					{
 						// Accelerate
+						can_brake = false;
 						image_xscale = input_sign;
 						if (abs(x_speed) < speed_cap)
 						{
@@ -157,12 +160,35 @@ function player_is_running(phase)
 			// Stand
 			if (x_speed == 0 and input_sign == 0) return player_perform(player_is_standing);
 			
+			// Brake
+			if (can_brake and mask_direction == gravity_direction and abs(x_speed) >= 4 and animation != "brake")
+			{
+				player_animate("brake");
+				timeline_speed = 1;
+				image_angle = gravity_direction;
+				image_xscale = -input_sign;
+			}
+			
 			// Animate
-			var spd = abs(x_speed);
-			var new_anim = spd < 6 ? "walk" : "run";
-			if (animation != new_anim) player_animate(new_anim);
-			timeline_speed = 1 / max(8 - spd div 1, 1);
-			image_angle = direction;
+			if (can_brake and animation == "brake" and mask_direction == gravity_direction and timeline_position < timeline_max_moment(timeline_index))
+			{
+				if (timeline_position mod 4 == 0)
+				{
+					// Kick up dust
+					var offset = y_radius - 6;
+					var px = x + dsin(direction) * offset;
+					var py = y + dcos(direction) * offset;
+					particle_spawn("brake_dust", px, py);
+				}
+			}
+			else
+			{
+				var speed_int = abs(x_speed) div 1;
+				var new_anim = speed_int < 6 ? "walk" : "run";
+				if (animation != new_anim) player_animate(new_anim);
+				timeline_speed = 1 / max(8 - speed_int, 1);
+				image_angle = direction;
+			}
 			break;
 		}
 		case PHASE.EXIT:

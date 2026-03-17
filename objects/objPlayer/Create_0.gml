@@ -66,5 +66,6 @@ animations =
 	look: animSonicLook,
 	crouch: animSonicCrouch,
 	spindash: animSonicSpindash,
-	teeter: animSonicTeeter
+	teeter: animSonicTeeter,
+	brake: animSonicBrake
 };
