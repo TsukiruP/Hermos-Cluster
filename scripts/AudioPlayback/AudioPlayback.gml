@@ -1,10 +1,11 @@
 /// @description Plays the given sound effect, first stopping any existing instances of it.
 /// @param {Asset.GMSound} ind Sound effect to play.
+/// @param {Bool} [loop] Sets the sound to loop or not (optional, defaults to false)
 /// @returns {Id.Sound}
-function audio_play_sfx(ind)
+function audio_play_sfx(ind, _loop = false)
 {
 	audio_stop_sound(ind);
-	return audio_play_sound(ind, 1, false, global.volume_sound);
+	return audio_play_sound(ind, 1, _loop, global.volume_sound);
 }
 
 /// @description Plays the given music track as a jingle. Background music is muted until the jingle has finished playing.

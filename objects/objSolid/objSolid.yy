@@ -10,8 +10,8 @@
     "path":"folders/Stage/Parents.yy",
   },
   "parentObjectId":{
-    "name":"objZoneObject",
-    "path":"objects/objZoneObject/objZoneObject.yy",
+    "name":"objInteractable",
+    "path":"objects/objInteractable/objInteractable.yy",
   },
   "persistent":false,
   "physicsAngularDamping":0.1,

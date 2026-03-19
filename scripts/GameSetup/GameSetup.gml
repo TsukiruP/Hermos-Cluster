@@ -1,0 +1,178 @@
+// Constants
+#macro GAME_FLAG_KEEP_CHARACTERS 1
+#macro GAME_FLAG_KEEP_SCORE 2
+#macro GAME_FLAG_HIDE_PAUSE 4 
+#macro GAME_FLAG_HIDE_HUD 8
+
+#macro PAUSE_FLAG_MENU 1
+#macro PAUSE_FLAG_TEXT 2
+#macro PAUSE_FLAG_TRANSITION 4
+
+#macro CAMERA_ID view_camera[0]
+#macro CAMERA_PADDING 64
+#macro CAMERA_WIDTH 426
+#macro CAMERA_HEIGHT 240
+
+#macro MUTE_FLAG_MUSIC 1
+#macro MUTE_FLAG_JINGLE 2
+#macro MUTE_FLAG_DROWN 4
+
+#macro PRIORITY_SOUND 0 
+#macro PRIORITY_MUSIC 1
+#macro PRIORITY_JINGLE 2
+#macro PRIORITY_DROWN 3
+
+#macro COLL_FLAG_TOP 0x10000
+#macro COLL_FLAG_BOTTOM 0x20000
+#macro COLL_FLAG_LEFT 0x40000
+#macro COLL_FLAG_RIGHT 0x80000
+
+#macro LIVES_ENABLED db_read(CONFIG_DATABASE, CONFIG_DEFAULT_LIVES, "lives") and ctrlGame.game_mode != GAME_MODE.TIME_ATTACK
+
+#macro TEN_MILLISECONDS 1000
+
+#macro PLAYER_HEIGHT 14
+#macro ITEM_WIDTH sprite_get_width(sprHUDItemIcon) + 2
+#macro COLLISION_TOLERANCE 1
+
+#macro SCORE_CAP 999999999
+#macro RING_CAP 999
+#macro LIVES_CAP 999
+#macro RING_LIFE_BASE_THRESHOLD 99
+
+enum GAME_MODE
+{
+    SINGLE,
+    MARATHON,
+    TIME_ATTACK
+}
+
+enum TRANSITION
+{
+    FADE,
+    TITLE_CARD,
+    TRY_AGAIN,
+    GAME_OVER
+}
+
+enum FADE_STATE
+{
+    IN,
+    WAIT,
+    OUT
+}
+
+enum TITLE_CARD_STATE
+{
+    FADE,
+    FADE_WAIT,
+    ENTER,
+    ENTER_WAIT,
+    GOTO,
+    RESET,
+    EXIT
+}
+
+enum TRY_AGAIN_STATE
+{
+    ENTER,
+    WAIT,
+    RESET,
+    CLOSE,
+    GOTO,
+    OPEN,
+    EXIT
+}
+
+enum GAME_OVER_STATE
+{
+    ENTER,
+    WAIT,
+    JINGLE,
+    FADE,
+    GOTO,
+    EXIT
+}
+
+enum CAMERA_STATE
+{
+    NULL = -1,
+    FOLLOW,
+    RETURN,
+    KNUCKLES
+}
+
+enum ITEM
+{
+    LIFE,
+    RING_BONUS,
+    SUPER_RING_BONUS,
+    RANDOM_RING_BONUS,
+    BASIC,
+    MAGNETIC,
+    AQUA,
+    FLAME,
+    THUNDER,
+    INVINCIBILITY,
+    SPEED_UP,
+    SLOW_DOWN,
+    CONFUSION,
+    EGGMAN
+}
+
+// Stage
+global.characters = [];
+global.score_count = 0;
+global.ring_count = 0;
+global.life_count = 3;
+global.ring_life_threshold = RING_LIFE_BASE_THRESHOLD;
+
+// Fonts
+global.font_title_card = font_add_sprite(sprFontTitleCard, ord(" "), true, -5);
+
+global.font_hud_cluster = font_add_sprite_ext(sprFontHUDCluster, "0123456789", false, 1);
+
+global.font_hud_adventure = font_add_sprite_ext(sprFontHUDAdventure, "0123456789:.", false, -1);
+
+global.font_hud_adventure_2 = font_add_sprite_ext(sprFontHUDAdventure2, "0123456789:.", false, -1);
+global.font_hud_adventure_2_lives = font_add_sprite_ext(sprFontHUDAdventure2Lives, "0123456789", false, 0);
+
+global.font_hud_advance_2 = font_add_sprite(sprFontHUDAdvance2, ord("!"), false, 0);
+
+global.font_hud_advance_3 = font_add_sprite(sprFontHUDAdvance3, ord("!"), false, 0);
+
+global.font_hud_episode_ii = font_add_sprite_ext(sprFontHUDEpisodeII, "0123456789x", false, 1);
+global.font_hud_episode_ii_score = font_add_sprite(sprFontHUDEpisodeIIScore, ord("0"), false, 1);
+global.font_hud_episode_ii_time = font_add_sprite_ext(sprFontHUDEpisodeIITime, "0123456789'\"", false, 1);
+
+// Loop points
+//audio_loop_points(sfxPropellerFlight, 0, 33075 / 44100);
+//audio_loop_points(sfxPropellerFlightTired, 0, 12711 / 44100);
+//audio_loop_points(bgmExtraDungeon1A, 814140 / 44100, 6676039 / 44100);
+//audio_loop_points(bgmSunshineCoastline, 00450784 / 48000, 08694455 / 48000);
+
+// Misc.
+show_debug_overlay(true);
+surface_depth_disable(true);
+gc_target_frame_time(-100);
+InputPartySetParams(INPUT_VERB.CONFIRM, 1, INPUT_MAX_PLAYERS, true, INPUT_VERB.CANCEL, undefined);
+randomize();
+
+// Audio
+audio_channel_num(12);
+volume_sound = 1;
+volume_music = 1;
+
+// Particles
+sprite_particles = {};
+with (sprite_particles)
+{
+	system = part_system_create();
+	
+	brake_dust = part_type_create();
+	part_type_life(brake_dust, 16, 16);
+	part_type_sprite(brake_dust, sprBrakeDust, true, true, false);
+}
+
+// Start the game!
+call_later(1, time_source_units_frames, room_goto_next);

@@ -28,8 +28,8 @@
   },
   "spriteNoExport":false,
   "textureGroupId":{
-    "name":"Default",
-    "path":"texturegroups/Default",
+    "name":"SunsetHill",
+    "path":"texturegroups/SunsetHill",
   },
   "tileAnimationFrames":[],
   "tileAnimationSpeed":15.0,

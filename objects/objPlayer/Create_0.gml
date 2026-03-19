@@ -1,32 +1,51 @@
 /// @description Initialize
 image_speed = 0;
+player_index = -1;
+character_index = CHARACTER.NONE;
 
 // State machine
 state = player_is_ready;
+state_previous = state;
 state_changed = false;
 
-rolling = false;
+cliff_sign = 0;
 
-spindash_charge = 0;
+spin_dash_charge = 0;
+spin_dash_dust = new attachment();
+
+aerial_flags = 0;
+
+jump_cap = true;
+jump_alternate = 0;
+
+trick_index = TRICK.FRONT;
+trick_speed = array_create(TRICK.BACK + 1);
+for (var i = 0; i < array_length(trick_speed); i++)
+{
+    trick_speed[i] = array_create(2);
+}
+
+flight_ride = noone;
+glide_ride = noone;
 
 // Timers
 rotation_lock_time = 0;
 control_lock_time = 0;
+swap_time = 0;
+state_time = 0;
 
-camera_look_delay = 120;
-camera_look_time = camera_look_delay;
+recovery_time = 0;
+invincibility_time = 0;
+superspeed_time = 0;
+confusion_time = 0;
+
+cpu_state_time = 0;
+cpu_respawn_time = CPU_RESPAWN_DURATION;
+cpu_gamepad_time = 0;
 
 // Movement and collision
 x_speed = 0;
 y_speed = 0;
-
-slide_threshold = 2.5;
-slide_duration = 30;
-
-air_drag_threshold = 0.125;
-air_drag = 0.96875;
-
-roll_threshold = 0.5;
 
 x_radius = 8;
 x_wall_radius = 10;
@@ -34,8 +53,13 @@ x_wall_radius = 10;
 y_radius = 15;
 y_tile_reach = 16;
 
+hitboxes[0] = new hitbox(c_maroon);
+hitboxes[1] = new hitbox(c_green);
+
 landed = false;
 on_ground = true;
+
+solid_id = noone;
 ground_id = noone;
 
 direction = 0;
@@ -43,14 +67,82 @@ gravity_direction = 0;
 local_direction = 0;
 mask_direction = 0;
 
-hard_colliders = [layer_tilemap_get_id("CollisionMain")];
-semisolid_tilemap = layer_tilemap_get_id("CollisionSemisolid");
-tilemap_count = array_length(hard_colliders);
+collision_layer = 0;
 
-cliff_sign = 0;
+// Copy the stage's tilemaps
+tilemaps = variable_clone(ctrlStage.tilemaps, 0);
+tilemap_count = array_length(tilemaps);
+
+// Validate semisolid tilemap; if it exists, the tilemap count is even
+semisolid_tilemap = -1;
+if (tilemap_count & 1 == 0)
+{
+    semisolid_tilemap = array_last(tilemaps);
+    tilemap_count--;
+}
+
+// Delist the "TilesLayer1" layer tilemap, if it exists
+if (tilemap_count == 3)
+{
+    array_delete(tilemaps, 2, 1);
+    tilemap_count--;
+}
+
+// Boost Mode
+boost_mode = false;
+boost_index = 0;
+boost_speed = 0;
+boost_thresholds = [8.0, 7.96875, 6.5625, 5.625, 4.21875];
+
+// Status
+shield = new attachment();
+miasma = new attachment();
+
+// Input
+input_enabled = true;
+input_axis_x = 0;
+input_axis_y = 0;
+
+/// @description Creates a new button.
+/// @param {Enum.INPUT_VERB} verb Verb to check.
+button = function(_verb) constructor
+{
+    verb = _verb;
+    check = false;
+    pressed = false;
+    released = false;
+};
+
+input_button =
+{
+    jump : new button(INPUT_VERB.JUMP),
+    aux : new button(INPUT_VERB.AUX),
+    swap : new button(INPUT_VERB.SWAP),
+    extra : new button(INPUT_VERB.EXTRA),
+    tag : new button(INPUT_VERB.TAG),
+    alt : new button(INPUT_VERB.ALT),
+    start : new button(INPUT_VERB.START),
+    select : new button(INPUT_VERB.SELECT)
+};
+
+// CPU
+cpu_state = CPU_STATE.FOLLOW;
+cpu_axis_x = array_create(CPU_RECORD_COUNT);
+cpu_axis_y = array_create(CPU_RECORD_COUNT);
+cpu_input_jump = array_create(CPU_RECORD_COUNT);
+cpu_input_jump_pressed = array_create(CPU_RECORD_COUNT);
+
+// Animation
+anim_core = new animation_core();
+
+// TODO: Animation history
+// TODO: Afterimage
+// TODO: Speed Break
 
 // Methods
 var n = 0;
 repeat (16) event_user(n++);
 
 // Misc.
+player_refresh_physics();
+player_refresh_status();

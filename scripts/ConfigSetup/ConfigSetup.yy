@@ -1,0 +1,13 @@
+{
+  "$GMScript":"v1",
+  "%Name":"ConfigSetup",
+  "isCompatibility":false,
+  "isDnD":false,
+  "name":"ConfigSetup",
+  "parent":{
+    "name":"Setup",
+    "path":"folders/Global/Setup.yy",
+  },
+  "resourceType":"GMScript",
+  "resourceVersion":"2.0",
+}

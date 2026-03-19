@@ -37,7 +37,7 @@
   "origin":0,
   "parent":{
     "name":"Episode II",
-    "path":"folders/Fonts/Episode II.yy",
+    "path":"folders/Display/Sprites/HUD/Episode II.yy",
   },
   "preMultiplyAlpha":false,
   "resourceType":"GMSprite",
