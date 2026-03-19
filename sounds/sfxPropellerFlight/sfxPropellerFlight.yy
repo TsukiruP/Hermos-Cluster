@@ -1,0 +1,26 @@
+{
+  "$GMSound":"v2",
+  "%Name":"sfxPropellerFlight",
+  "audioGroupId":{
+    "name":"audiogroup_default",
+    "path":"audiogroups/audiogroup_default",
+  },
+  "bitDepth":1,
+  "channelFormat":0,
+  "compression":0,
+  "compressionQuality":4,
+  "conversionMode":0,
+  "duration":11.5,
+  "exportDir":"",
+  "name":"sfxPropellerFlight",
+  "parent":{
+    "name":"Miles",
+    "path":"folders/Player/SFX/Miles.yy",
+  },
+  "preload":false,
+  "resourceType":"GMSound",
+  "resourceVersion":"2.0",
+  "sampleRate":44100,
+  "soundFile":"sfxPropellerFlight.wav",
+  "volume":1.0,
+}

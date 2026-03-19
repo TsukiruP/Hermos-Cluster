@@ -1,0 +1,43 @@
+{
+  "$GMTileSet":"v1",
+  "%Name":"tsSunsetHill",
+  "autoTileSets":[],
+  "macroPageTiles":{
+    "SerialiseHeight":61,
+    "SerialiseWidth":21,
+    "TileCompressedData":[
+      -63,0,6,392,0,393,0,350,351,-36,0,13,422,0,423,0,228,229,0,4,234,235,0,390,391,-8,0,11,454,0,455,0,0,
+      242,0,33,34,307,308,-17,0,6,33,34,34,329,399,400,-8,0,3,322,0,323,-4,0,1,33,-4,34,3,432,2,3,-6,0,3,354,
+      0,355,-25,0,3,519,520,521,-11,0,1,367,-8,0,2,553,554,-10,0,5,399,400,0,366,398,-17,0,1,432,-1006,0,
+    ],
+    "TileDataFormat":1,
+  },
+  "name":"tsSunsetHill",
+  "out_columns":27,
+  "out_tilehborder":2,
+  "out_tilevborder":2,
+  "parent":{
+    "name":"Sunset Hill",
+    "path":"folders/Tilesets/Sunset Hill.yy",
+  },
+  "resourceType":"GMTileSet",
+  "resourceVersion":"2.0",
+  "spriteId":{
+    "name":"sprSunsetHillTileset",
+    "path":"sprites/sprSunsetHillTileset/sprSunsetHillTileset.yy",
+  },
+  "spriteNoExport":false,
+  "textureGroupId":{
+    "name":"Default",
+    "path":"texturegroups/Default",
+  },
+  "tileAnimationFrames":[],
+  "tileAnimationSpeed":15.0,
+  "tileHeight":96,
+  "tilehsep":0,
+  "tilevsep":0,
+  "tileWidth":96,
+  "tilexoff":0,
+  "tileyoff":0,
+  "tile_count":714,
+}

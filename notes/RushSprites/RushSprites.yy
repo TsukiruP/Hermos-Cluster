@@ -1,0 +1,11 @@
+{
+  "$GMNotes":"v1",
+  "%Name":"RushSprites",
+  "name":"RushSprites",
+  "parent":{
+    "name":"Sources",
+    "path":"folders/Notes/Sources.yy",
+  },
+  "resourceType":"GMNotes",
+  "resourceVersion":"2.0",
+}

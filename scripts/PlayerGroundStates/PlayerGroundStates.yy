@@ -5,8 +5,8 @@
   "isDnD":false,
   "name":"PlayerGroundStates",
   "parent":{
-    "name":"Player",
-    "path":"folders/Player.yy",
+    "name":"States",
+    "path":"folders/Player/States.yy",
   },
   "resourceType":"GMScript",
   "resourceVersion":"2.0",

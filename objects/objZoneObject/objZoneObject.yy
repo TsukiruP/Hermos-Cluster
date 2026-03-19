@@ -9,7 +9,7 @@
   "overriddenProperties":[],
   "parent":{
     "name":"Parents",
-    "path":"folders/Zone Objects/Parents.yy",
+    "path":"folders/Stage/Parents.yy",
   },
   "parentObjectId":null,
   "persistent":false,

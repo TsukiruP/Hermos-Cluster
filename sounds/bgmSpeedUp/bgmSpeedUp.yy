@@ -1,0 +1,26 @@
+{
+  "$GMSound":"v2",
+  "%Name":"bgmSpeedUp",
+  "audioGroupId":{
+    "name":"audiogroup_default",
+    "path":"audiogroups/audiogroup_default",
+  },
+  "bitDepth":1,
+  "channelFormat":0,
+  "compression":3,
+  "compressionQuality":4,
+  "conversionMode":0,
+  "duration":15.559546,
+  "exportDir":"",
+  "name":"bgmSpeedUp",
+  "parent":{
+    "name":"BGM",
+    "path":"folders/Global/Audio/BGM.yy",
+  },
+  "preload":false,
+  "resourceType":"GMSound",
+  "resourceVersion":"2.0",
+  "sampleRate":44100,
+  "soundFile":"bgmSpeedUp.ogg",
+  "volume":1.0,
+}

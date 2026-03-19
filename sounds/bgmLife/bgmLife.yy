@@ -1,0 +1,26 @@
+{
+  "$GMSound":"v2",
+  "%Name":"bgmLife",
+  "audioGroupId":{
+    "name":"audiogroup_default",
+    "path":"audiogroups/audiogroup_default",
+  },
+  "bitDepth":1,
+  "channelFormat":0,
+  "compression":3,
+  "compressionQuality":4,
+  "conversionMode":0,
+  "duration":3.4887981,
+  "exportDir":"",
+  "name":"bgmLife",
+  "parent":{
+    "name":"BGM",
+    "path":"folders/Global/Audio/BGM.yy",
+  },
+  "preload":false,
+  "resourceType":"GMSound",
+  "resourceVersion":"2.0",
+  "sampleRate":44100,
+  "soundFile":"bgmLife.ogg",
+  "volume":1.0,
+}

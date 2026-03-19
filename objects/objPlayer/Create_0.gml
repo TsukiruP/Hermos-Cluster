@@ -54,18 +54,3 @@ var n = 0;
 repeat (16) event_user(n++);
 
 // Misc.
-instance_create_layer(x, y, layer, objCamera, { gravity_direction });
-
-// Animations
-animations =
-{
-	idle: animSonicIdle,
-	walk: animSonicWalk,
-	run: animSonicRun,
-	roll: animSonicRoll,
-	look: animSonicLook,
-	crouch: animSonicCrouch,
-	spindash: animSonicSpindash,
-	teeter: animSonicTeeter,
-	brake: animSonicBrake
-};
