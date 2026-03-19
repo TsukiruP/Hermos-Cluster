@@ -43,8 +43,8 @@
   ],
   "name":"rmTest",
   "parent":{
-    "name":"Hermos",
-    "path":"Hermos.yyp",
+    "name":"Scenes",
+    "path":"folders/Scenes.yy",
   },
   "parentRoom":null,
   "physicsSettings":{
