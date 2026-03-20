@@ -1,12 +1,12 @@
 {
   "$GMScript":"v1",
-  "%Name":"SaveSetup",
+  "%Name":"PlayerMacros",
   "isCompatibility":false,
   "isDnD":false,
-  "name":"SaveSetup",
+  "name":"PlayerMacros",
   "parent":{
-    "name":"Setup",
-    "path":"folders/Global/Setup.yy",
+    "name":"Player",
+    "path":"folders/Player.yy",
   },
   "resourceType":"GMScript",
   "resourceVersion":"2.0",

@@ -1,5 +1,4 @@
 /// @description Actions
-
 /// @description Checks if the player can perform a ground skill.
 /// @returns {Bool}
 player_check_ground_skill = function()

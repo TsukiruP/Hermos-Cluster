@@ -1,9 +1,9 @@
 {
   "$GMScript":"v1",
-  "%Name":"MathFunctions",
+  "%Name":"Camera",
   "isCompatibility":false,
   "isDnD":false,
-  "name":"MathFunctions",
+  "name":"Camera",
   "parent":{
     "name":"Functions",
     "path":"folders/Global/Functions.yy",

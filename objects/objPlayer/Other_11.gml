@@ -1,5 +1,4 @@
 /// @description Collision
-
 /// @description Checks if the given collider's mask intersects the player's virtual mask.
 /// @param {Asset.GMObject|Id.Instance|Id.TileMapElement|Array} ind Object, instance, or tilemap to check, or an array containing any of these.
 /// @returns {Bool}

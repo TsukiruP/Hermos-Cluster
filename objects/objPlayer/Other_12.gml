@@ -1,5 +1,4 @@
 /// @description Setters
-
 /// @description Moves the player's wall sensor out of collision with any walls.
 /// @returns {Real|Undefined} Sign of the wall from the player, or undefined on failure to reposition.
 player_escape_wall = function()
@@ -295,8 +294,8 @@ player_set_radii = function(_xrad, _yrad)
 player_refresh_physics = function()
 {
     // Speed values
-    speed_limit = 6;
-    speed_cap = 15;
+    speed_cap = 6;
+    speed_limit = 15;
     base_acceleration = 8 / 256;
     deceleration = 96 / 256;
     
@@ -315,13 +314,13 @@ player_refresh_physics = function()
     // Superspeed modification
     if (superspeed_time > 0)
     {
-        speed_limit *= 2;
+        speed_cap *= 2;
         base_acceleration *= 2;
         roll_friction *= 2;
     }
     else if (superspeed_time < 0)
     {
-        speed_limit /= 2;
+        speed_cap /= 2;
         base_acceleration /= 2;
         roll_friction /= 2;
     }
@@ -341,8 +340,8 @@ player_resist_slope = function(_force = 3 / 32)
     var slope_factor = dsin(local_direction) * _force;
     x_speed -= slope_factor;
     
-    // Apply speed cap
-    if (abs(x_speed) > speed_cap) x_speed = speed_cap * sign(x_speed);
+    // Apply speed limit
+    if (abs(x_speed) > speed_limit) x_speed = speed_limit * sign(x_speed);
 };
 
 /// @description Sets the player's Boost Mode, applying any modifiers afterward.
@@ -365,7 +364,7 @@ player_refresh_boost_mode = function()
     }
     else if (boost_mode_config)
     {
-        if (on_ground and abs(x_speed) >= speed_limit and not (superspeed_time < 0))
+        if (on_ground and abs(x_speed) >= speed_cap and not (superspeed_time < 0))
         {
             if (boost_speed >= boost_thresholds[boost_index])
             {
@@ -385,16 +384,16 @@ player_refresh_boost_mode = function()
     {
         if (boost_mode or superspeed_time > 0)
         {
-            speed_limit = 12;
-            speed_cap = 15;
+            speed_cap = 12;
+            speed_limit = 15;
         }
         else
         {
-            speed_limit = 6;
-            speed_cap = 9;
+            speed_cap = 6;
+            speed_limit = 9;
         }
         
-        // TODO: Halve speed_limit when underwater.
+        // TODO: Halve speed_cap when underwater.
         
         acceleration = base_acceleration + (2 / 256) * min(global.ring_count / 50, 30);
         if (global.ring_count > 10) acceleration += 4 / 256;

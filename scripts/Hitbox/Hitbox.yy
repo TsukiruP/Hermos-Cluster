@@ -1,12 +1,12 @@
 {
   "$GMScript":"v1",
-  "%Name":"GameSetup",
+  "%Name":"Hitbox",
   "isCompatibility":false,
   "isDnD":false,
-  "name":"GameSetup",
+  "name":"Hitbox",
   "parent":{
-    "name":"Setup",
-    "path":"folders/Global/Setup.yy",
+    "name":"Functions",
+    "path":"folders/Global/Functions.yy",
   },
   "resourceType":"GMScript",
   "resourceVersion":"2.0",

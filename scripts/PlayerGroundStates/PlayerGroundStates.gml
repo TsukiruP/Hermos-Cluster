@@ -144,9 +144,9 @@ function player_is_running(_phase)
                         // Accelerate
                         can_brake = false;
                         image_xscale = input_axis_x;
-                        if (abs(x_speed) < speed_limit)
+                        if (abs(x_speed) < speed_cap)
                         {
-                            x_speed = min(abs(x_speed) + acceleration, speed_limit) * input_axis_x; 
+                            x_speed = min(abs(x_speed) + acceleration, speed_cap) * input_axis_x; 
                         }
                         else
                         {
@@ -161,8 +161,8 @@ function player_is_running(_phase)
                 x_speed -= min(abs(x_speed), acceleration) * sign(x_speed);
             }
             
-            // Apply speed cap
-            if (abs(x_speed) > speed_cap) x_speed = speed_cap * sign(x_speed);
+            // Apply speed limit
+            if (abs(x_speed) > speed_limit) x_speed = speed_limit * sign(x_speed);
             
             // Move
             player_move_on_ground();
@@ -246,7 +246,7 @@ function player_is_looking(_phase)
         case PHASE.ENTER:
         {
             // Animate
-            animation_set("look");
+            animation_start("look");
             break;
         }
         case PHASE.STEP:
@@ -306,7 +306,7 @@ function player_is_crouching(_phase)
         case PHASE.ENTER:
         {
             // Animate
-            animation_set("crouch");
+            animation_start("crouch");
             break;
         }
         case PHASE.STEP:
@@ -375,7 +375,7 @@ function player_is_rolling(_phase)
         case PHASE.ENTER:
         {
             // Animate
-            animation_set("roll");
+            animation_start("roll");
             break;
         }
         case PHASE.STEP:
@@ -450,7 +450,7 @@ function player_is_spin_dashing(_phase)
             spin_dash_charge = 0;
             
             // Animate
-            animation_set("spin_dash");
+            animation_start("spin_dash");
             
             // Sound
             audio_play_sfx(sfxSpinRev);

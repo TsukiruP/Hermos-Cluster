@@ -78,11 +78,11 @@ function animation_set(_anim)
 /// @description Updates the animation core.
 function animation_update()
 {
-    // Abort if undefined
-    if (anim_core.anim == undefined) exit;
-    
     with (anim_core)
     {
+        // Abort if anim is undefined
+        if (anim == undefined) exit;
+        
         if (delay > 0)
         {
             delay -= speed;

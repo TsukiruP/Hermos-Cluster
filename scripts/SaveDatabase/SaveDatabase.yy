@@ -1,12 +1,12 @@
 {
   "$GMScript":"v1",
-  "%Name":"PlayerSetup",
+  "%Name":"SaveDatabase",
   "isCompatibility":false,
   "isDnD":false,
-  "name":"PlayerSetup",
+  "name":"SaveDatabase",
   "parent":{
-    "name":"Player",
-    "path":"folders/Player.yy",
+    "name":"Databases",
+    "path":"folders/Global/Databases.yy",
   },
   "resourceType":"GMScript",
   "resourceVersion":"2.0",

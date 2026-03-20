@@ -1,12 +1,12 @@
 {
   "$GMScript":"v1",
-  "%Name":"AnimationFunctions",
+  "%Name":"GameStartup",
   "isCompatibility":false,
   "isDnD":false,
-  "name":"AnimationFunctions",
+  "name":"GameStartup",
   "parent":{
-    "name":"Functions",
-    "path":"folders/Global/Functions.yy",
+    "name":"Global",
+    "path":"folders/Global.yy",
   },
   "resourceType":"GMScript",
   "resourceVersion":"2.0",

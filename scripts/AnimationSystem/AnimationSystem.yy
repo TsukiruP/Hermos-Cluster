@@ -1,12 +1,12 @@
 {
   "$GMScript":"v1",
-  "%Name":"AnimationSetup",
+  "%Name":"AnimationSystem",
   "isCompatibility":false,
   "isDnD":false,
-  "name":"AnimationSetup",
+  "name":"AnimationSystem",
   "parent":{
-    "name":"Setup",
-    "path":"folders/Global/Setup.yy",
+    "name":"Animation",
+    "path":"folders/Global/Animation.yy",
   },
   "resourceType":"GMScript",
   "resourceVersion":"2.0",

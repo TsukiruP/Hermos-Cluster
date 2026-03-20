@@ -1,9 +1,9 @@
 {
   "$GMScript":"v1",
-  "%Name":"HitboxFunctions",
+  "%Name":"Utilities",
   "isCompatibility":false,
   "isDnD":false,
-  "name":"HitboxFunctions",
+  "name":"Utilities",
   "parent":{
     "name":"Functions",
     "path":"folders/Global/Functions.yy",

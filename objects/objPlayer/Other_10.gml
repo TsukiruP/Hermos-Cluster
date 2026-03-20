@@ -1,5 +1,4 @@
 /// @description Movement
-
 /// @description Updates the player's position on the ground and checks for collisions.
 player_move_on_ground = function()
 {

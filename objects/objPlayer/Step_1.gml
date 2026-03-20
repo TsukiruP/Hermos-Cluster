@@ -1,4 +1,4 @@
-/// @description Count
+/// @description Update
 if (not (ctrlGame.game_paused & PAUSE_FLAG_MENU))
 {
     animation_update();
