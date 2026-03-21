@@ -116,8 +116,8 @@ player_get_collisions = function ()
 	ds_list_clear(instances);
 	
 	var total = sine == 0 ?
-		collision_rectangle_list(x_int - x_wall_radius, y_int - y_radius, x_int + x_wall_radius, y_int + y_radius + 1, objZoneObject, true, false, instances, false) :
-		collision_rectangle_list(x_int - y_radius, y_int - x_wall_radius, x_int + y_radius + 1, y_int + x_wall_radius, objZoneObject, true, false, instances, false);
+		collision_rectangle_list(x_int - x_wall_radius, y_int - y_radius - 1, x_int + x_wall_radius, y_int + y_radius + 1, objZoneObject, true, false, instances, false) :
+		collision_rectangle_list(x_int - y_radius - 1, y_int - x_wall_radius, x_int + y_radius + 1, y_int + x_wall_radius, objZoneObject, true, false, instances, false);
 	
 	// Execute reactions
 	for (var n = 0; n < total; ++n)
