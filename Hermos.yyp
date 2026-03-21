@@ -46,6 +46,7 @@
     {"id":{"name":"objCamera","path":"objects/objCamera/objCamera.yy",},},
     {"id":{"name":"objHUD","path":"objects/objHUD/objHUD.yy",},},
     {"id":{"name":"objPlayer","path":"objects/objPlayer/objPlayer.yy",},},
+    {"id":{"name":"objRing","path":"objects/objRing/objRing.yy",},},
     {"id":{"name":"objSolid","path":"objects/objSolid/objSolid.yy",},},
     {"id":{"name":"objZoneObject","path":"objects/objZoneObject/objZoneObject.yy",},},
     {"id":{"name":"rmStartup","path":"rooms/rmStartup/rmStartup.yy",},},
