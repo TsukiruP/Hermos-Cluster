@@ -1,6 +1,6 @@
 {
   "$GMSound":"v2",
-  "%Name":"sfxBrake",
+  "%Name":"sfxRing",
   "audioGroupId":{
     "name":"audiogroup_default",
     "path":"audiogroups/audiogroup_default",
@@ -10,17 +10,17 @@
   "compression":0,
   "compressionQuality":4,
   "conversionMode":0,
-  "duration":0.4672109,
+  "duration":0.6174603,
   "exportDir":"",
-  "name":"sfxBrake",
+  "name":"sfxRing",
   "parent":{
-    "name":"Sounds",
-    "path":"folders/Zone/Player/Sounds.yy",
+    "name":"Ring",
+    "path":"folders/Zone/Objects/Ring.yy",
   },
   "preload":false,
   "resourceType":"GMSound",
   "resourceVersion":"2.0",
   "sampleRate":44100,
-  "soundFile":"sfxBrake.wav",
+  "soundFile":"sfxRing.wav",
   "volume":1.0,
 }

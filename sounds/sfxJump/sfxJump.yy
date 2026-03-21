@@ -14,8 +14,8 @@
   "exportDir":"",
   "name":"sfxJump",
   "parent":{
-    "name":"SFX",
-    "path":"folders/Zone/Player/SFX.yy",
+    "name":"Sounds",
+    "path":"folders/Zone/Player/Sounds.yy",
   },
   "preload":false,
   "resourceType":"GMSound",
