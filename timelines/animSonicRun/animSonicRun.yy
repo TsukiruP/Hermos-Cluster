@@ -10,7 +10,7 @@
   "name":"animSonicRun",
   "parent":{
     "name":"Sonic",
-    "path":"folders/Player/Animations/Sonic.yy",
+    "path":"folders/Zone/Player/Animations/Sonic.yy",
   },
   "resourceType":"GMTimeline",
   "resourceVersion":"2.0",

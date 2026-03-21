@@ -15,7 +15,7 @@
   "name":"sfxSpinRev",
   "parent":{
     "name":"SFX",
-    "path":"folders/Player/SFX.yy",
+    "path":"folders/Zone/Player/SFX.yy",
   },
   "preload":false,
   "resourceType":"GMSound",

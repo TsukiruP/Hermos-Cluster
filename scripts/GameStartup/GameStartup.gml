@@ -25,6 +25,16 @@ audio_channel_num(12);
 volume_sound = 1;
 volume_music = 1;
 
+// Player values
+score = 0;
+lives = 3;
+rings = 0;
+rings_for_life = 99;
+
+// Fonts
+font_hud = font_add_sprite(sprFontHUD, ord("0"), false, 1);
+font_lives = font_add_sprite(sprFontLives, ord("0"), false, 0);
+
 // Particles
 sprite_particles = {};
 with (sprite_particles)

@@ -6,7 +6,7 @@
   "name":"PlayerGroundStates",
   "parent":{
     "name":"Player",
-    "path":"folders/Player.yy",
+    "path":"folders/Zone/Player.yy",
   },
   "resourceType":"GMScript",
   "resourceVersion":"2.0",

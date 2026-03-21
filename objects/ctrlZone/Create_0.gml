@@ -18,3 +18,6 @@ switch (room)
 		break;
 	}
 }
+
+// Create UI elements
+instance_create_layer(0, 0, "Master", objHUD, { image_speed: 0 });
