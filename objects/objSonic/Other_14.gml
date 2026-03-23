@@ -1,4 +1,5 @@
 /// @description Animations
+event_inherited();
 player_render = function()
 {
     switch (anim_core.name)
