@@ -24,5 +24,5 @@ if (input_enabled and (player_index == 0 or cpu_gamepad_time > 0))
 
 // State
 state(PHASE.STEP);
-player_render();
 if (state_changed) state_changed = false;
+player_render();
