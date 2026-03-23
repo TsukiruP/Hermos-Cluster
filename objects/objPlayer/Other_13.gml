@@ -25,3 +25,20 @@ player_gain_lives = function (num)
 	lives = min(lives + num, 99);
 	audio_play_jingle(bgmLife);
 };
+
+/// @method player_damage
+/// @description Evaluates the player's condition after taking a hit.
+/// @param {Id.Instance} ind Instance to recoil from.
+player_damage = function (ind)
+{
+	// Abort if invulnerable
+	if (recovery_time > 0 or state == player_is_hurt) exit;
+	
+	// Recoil
+	player_perform(player_is_hurt);
+	rolling = false;
+	
+	x_speed = 2 * sign(x - ind.x);
+	if (x_speed == 0) x_speed = 2;
+	y_speed = -4;
+};

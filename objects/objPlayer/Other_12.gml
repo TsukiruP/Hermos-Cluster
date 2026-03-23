@@ -266,6 +266,7 @@ player_refresh_physics = function ()
 	// Aerial values
 	gravity_cap = 16;
 	gravity_force = 0.21875;
+	recoil_gravity = 0.1875;
 	jump_height = 6.5;
 	jump_release = 4;
 };
