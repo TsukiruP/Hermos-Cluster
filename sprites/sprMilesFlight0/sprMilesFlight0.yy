@@ -41,7 +41,7 @@
   "origin":9,
   "parent":{
     "name":"Flight",
-    "path":"folders/Player/Sprites/Miles/Flight.yy",
+    "path":"folders/Stage/Player/Characters/Miles/Sprites/Flight.yy",
   },
   "preMultiplyAlpha":false,
   "resourceType":"GMSprite",

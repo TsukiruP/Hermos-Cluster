@@ -7,7 +7,7 @@
   "overriddenProperties":[],
   "parent":{
     "name":"Display",
-    "path":"folders/Display.yy",
+    "path":"folders/Stage/Display.yy",
   },
   "parentObjectId":null,
   "persistent":false,

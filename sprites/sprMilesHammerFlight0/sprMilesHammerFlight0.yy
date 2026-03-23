@@ -33,7 +33,7 @@
   "origin":9,
   "parent":{
     "name":"Hammer Flight",
-    "path":"folders/Player/Sprites/Miles/Hammer Flight.yy",
+    "path":"folders/Stage/Player/Characters/Miles/Sprites/Hammer Flight.yy",
   },
   "preMultiplyAlpha":false,
   "resourceType":"GMSprite",

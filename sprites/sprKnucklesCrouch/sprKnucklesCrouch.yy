@@ -28,8 +28,8 @@
   "nineSlice":null,
   "origin":9,
   "parent":{
-    "name":"Knuckles",
-    "path":"folders/Player/Sprites/Knuckles.yy",
+    "name":"Sprites",
+    "path":"folders/Stage/Player/Characters/Knuckles/Sprites.yy",
   },
   "preMultiplyAlpha":false,
   "resourceType":"GMSprite",

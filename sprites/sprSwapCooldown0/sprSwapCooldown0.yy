@@ -33,7 +33,7 @@
   "origin":1,
   "parent":{
     "name":"Swap Cooldown",
-    "path":"folders/Display/Sprites/Swap Cooldown.yy",
+    "path":"folders/Stage/Display/Sprites/Swap Cooldown.yy",
   },
   "preMultiplyAlpha":false,
   "resourceType":"GMSprite",

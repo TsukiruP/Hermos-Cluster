@@ -6,7 +6,7 @@
   "name":"PlayerAirStates",
   "parent":{
     "name":"States",
-    "path":"folders/Player/States.yy",
+    "path":"folders/Stage/Player/States.yy",
   },
   "resourceType":"GMScript",
   "resourceVersion":"2.0",

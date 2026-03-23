@@ -27,7 +27,7 @@
   "origin":0,
   "parent":{
     "name":"Episode II",
-    "path":"folders/Display/Sprites/HUD/Episode II.yy",
+    "path":"folders/Stage/Display/Sprites/HUD/Episode II.yy",
   },
   "preMultiplyAlpha":false,
   "resourceType":"GMSprite",

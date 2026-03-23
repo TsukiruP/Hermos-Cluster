@@ -30,7 +30,7 @@
   "origin":9,
   "parent":{
     "name":"Trick Down",
-    "path":"folders/Player/Sprites/Cream/Trick Down.yy",
+    "path":"folders/Stage/Player/Characters/Cream/Sprites/Trick Down.yy",
   },
   "preMultiplyAlpha":false,
   "resourceType":"GMSprite",

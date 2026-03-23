@@ -29,7 +29,7 @@
   "origin":9,
   "parent":{
     "name":"Head Slide",
-    "path":"folders/Player/Sprites/Amy/Head Slide.yy",
+    "path":"folders/Stage/Player/Characters/Amy/Sprites/Head Slide.yy",
   },
   "preMultiplyAlpha":false,
   "resourceType":"GMSprite",

@@ -6,8 +6,8 @@
   "name":"objCream",
   "overriddenProperties":[],
   "parent":{
-    "name":"Characters",
-    "path":"folders/Player/Characters.yy",
+    "name":"Cream",
+    "path":"folders/Stage/Player/Characters/Cream.yy",
   },
   "parentObjectId":{
     "name":"objPlayer",

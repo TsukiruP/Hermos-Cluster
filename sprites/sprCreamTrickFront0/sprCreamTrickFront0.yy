@@ -29,7 +29,7 @@
   "origin":9,
   "parent":{
     "name":"Trick Front",
-    "path":"folders/Player/Sprites/Cream/Trick Front.yy",
+    "path":"folders/Stage/Player/Characters/Cream/Sprites/Trick Front.yy",
   },
   "preMultiplyAlpha":false,
   "resourceType":"GMSprite",

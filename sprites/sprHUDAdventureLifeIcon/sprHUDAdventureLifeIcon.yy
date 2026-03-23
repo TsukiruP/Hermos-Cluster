@@ -30,7 +30,7 @@
   "origin":0,
   "parent":{
     "name":"Adventure",
-    "path":"folders/Display/Sprites/HUD/Adventure.yy",
+    "path":"folders/Stage/Display/Sprites/HUD/Adventure.yy",
   },
   "preMultiplyAlpha":false,
   "resourceType":"GMSprite",

@@ -6,8 +6,8 @@
   "name":"objMiles",
   "overriddenProperties":[],
   "parent":{
-    "name":"Characters",
-    "path":"folders/Player/Characters.yy",
+    "name":"Miles",
+    "path":"folders/Stage/Player/Characters/Miles.yy",
   },
   "parentObjectId":{
     "name":"objPlayer",

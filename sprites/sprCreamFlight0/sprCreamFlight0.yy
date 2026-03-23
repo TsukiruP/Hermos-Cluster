@@ -41,7 +41,7 @@
   "origin":9,
   "parent":{
     "name":"Flight",
-    "path":"folders/Player/Sprites/Cream/Flight.yy",
+    "path":"folders/Stage/Player/Characters/Cream/Sprites/Flight.yy",
   },
   "preMultiplyAlpha":false,
   "resourceType":"GMSprite",

@@ -33,7 +33,7 @@
   "origin":9,
   "parent":{
     "name":"Spin Dash",
-    "path":"folders/Player/Sprites/Miles/Spin Dash.yy",
+    "path":"folders/Stage/Player/Characters/Miles/Sprites/Spin Dash.yy",
   },
   "preMultiplyAlpha":false,
   "resourceType":"GMSprite",

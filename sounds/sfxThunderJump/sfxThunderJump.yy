@@ -15,7 +15,7 @@
   "name":"sfxThunderJump",
   "parent":{
     "name":"Shield Actions",
-    "path":"folders/Player/SFX/Shield Actions.yy",
+    "path":"folders/Stage/Player/SFX/Shield Actions.yy",
   },
   "preload":false,
   "resourceType":"GMSound",

@@ -15,7 +15,7 @@
   "name":"sfxRoll",
   "parent":{
     "name":"SFX",
-    "path":"folders/Player/SFX.yy",
+    "path":"folders/Stage/Player/SFX.yy",
   },
   "preload":false,
   "resourceType":"GMSound",

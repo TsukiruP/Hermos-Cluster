@@ -6,8 +6,8 @@
   "name":"objKnuckles",
   "overriddenProperties":[],
   "parent":{
-    "name":"Characters",
-    "path":"folders/Player/Characters.yy",
+    "name":"Knuckles",
+    "path":"folders/Stage/Player/Characters/Knuckles.yy",
   },
   "parentObjectId":{
     "name":"objPlayer",

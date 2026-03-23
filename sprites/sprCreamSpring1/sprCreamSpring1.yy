@@ -31,7 +31,7 @@
   "origin":9,
   "parent":{
     "name":"Spring",
-    "path":"folders/Player/Sprites/Cream/Spring.yy",
+    "path":"folders/Stage/Player/Characters/Cream/Sprites/Spring.yy",
   },
   "preMultiplyAlpha":false,
   "resourceType":"GMSprite",

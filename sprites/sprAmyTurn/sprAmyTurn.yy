@@ -27,7 +27,7 @@
   "origin":9,
   "parent":{
     "name":"Turn",
-    "path":"folders/Player/Sprites/Amy/Turn.yy",
+    "path":"folders/Stage/Player/Characters/Amy/Sprites/Turn.yy",
   },
   "preMultiplyAlpha":false,
   "resourceType":"GMSprite",

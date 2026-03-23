@@ -27,7 +27,7 @@
   "origin":9,
   "parent":{
     "name":"Turn",
-    "path":"folders/Player/Sprites/Sonic/Turn.yy",
+    "path":"folders/Stage/Player/Characters/Sonic/Sprites/Turn.yy",
   },
   "preMultiplyAlpha":false,
   "resourceType":"GMSprite",

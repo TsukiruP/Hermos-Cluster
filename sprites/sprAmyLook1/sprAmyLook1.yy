@@ -28,7 +28,7 @@
   "origin":9,
   "parent":{
     "name":"Look",
-    "path":"folders/Player/Sprites/Amy/Look.yy",
+    "path":"folders/Stage/Player/Characters/Amy/Sprites/Look.yy",
   },
   "preMultiplyAlpha":false,
   "resourceType":"GMSprite",

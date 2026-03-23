@@ -35,8 +35,8 @@
   "nineSlice":null,
   "origin":9,
   "parent":{
-    "name":"Sonic",
-    "path":"folders/Player/Sprites/Sonic.yy",
+    "name":"Sprites",
+    "path":"folders/Stage/Player/Characters/Sonic/Sprites.yy",
   },
   "preMultiplyAlpha":false,
   "resourceType":"GMSprite",

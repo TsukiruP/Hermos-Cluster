@@ -15,7 +15,7 @@
   "name":"sfxDestroyBalloon",
   "parent":{
     "name":"SFX",
-    "path":"folders/Stage/SFX.yy",
+    "path":"folders/Stage/Interactables/Items/SFX.yy",
   },
   "preload":false,
   "resourceType":"GMSound",

@@ -28,7 +28,7 @@
   "origin":9,
   "parent":{
     "name":"Spring",
-    "path":"folders/Player/Sprites/Sonic/Spring.yy",
+    "path":"folders/Stage/Player/Characters/Sonic/Sprites/Spring.yy",
   },
   "preMultiplyAlpha":false,
   "resourceType":"GMSprite",

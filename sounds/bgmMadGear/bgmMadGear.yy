@@ -15,7 +15,7 @@
   "name":"bgmMadGear",
   "parent":{
     "name":"BGM",
-    "path":"folders/Stage/BGM.yy",
+    "path":"folders/Scenes/BGM.yy",
   },
   "preload":false,
   "resourceType":"GMSound",

@@ -42,8 +42,8 @@
   "nineSlice":null,
   "origin":9,
   "parent":{
-    "name":"Miles",
-    "path":"folders/Player/Sprites/Miles.yy",
+    "name":"Sprites",
+    "path":"folders/Stage/Player/Characters/Miles/Sprites.yy",
   },
   "preMultiplyAlpha":false,
   "resourceType":"GMSprite",

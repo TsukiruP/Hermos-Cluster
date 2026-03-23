@@ -28,7 +28,7 @@
   "origin":9,
   "parent":{
     "name":"Trick Front",
-    "path":"folders/Player/Sprites/Sonic/Trick Front.yy",
+    "path":"folders/Stage/Player/Characters/Sonic/Sprites/Trick Front.yy",
   },
   "preMultiplyAlpha":false,
   "resourceType":"GMSprite",

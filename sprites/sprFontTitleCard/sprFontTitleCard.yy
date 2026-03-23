@@ -115,8 +115,8 @@
   "nineSlice":null,
   "origin":0,
   "parent":{
-    "name":"Global",
-    "path":"folders/Global.yy",
+    "name":"Sprites",
+    "path":"folders/Global/Transition/Sprites.yy",
   },
   "preMultiplyAlpha":false,
   "resourceType":"GMSprite",

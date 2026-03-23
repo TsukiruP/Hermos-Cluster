@@ -33,7 +33,7 @@
   "origin":0,
   "parent":{
     "name":"Trick Up",
-    "path":"folders/Player/Sprites/Knuckles/Trick Up.yy",
+    "path":"folders/Stage/Player/Characters/Knuckles/Sprites/Trick Up.yy",
   },
   "preMultiplyAlpha":false,
   "resourceType":"GMSprite",

@@ -46,8 +46,8 @@
   },
   "origin":9,
   "parent":{
-    "name":"Amy",
-    "path":"folders/Player/Sprites/Amy.yy",
+    "name":"Sprites",
+    "path":"folders/Stage/Player/Characters/Amy/Sprites.yy",
   },
   "preMultiplyAlpha":false,
   "resourceType":"GMSprite",

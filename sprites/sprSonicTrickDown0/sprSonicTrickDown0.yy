@@ -33,7 +33,7 @@
   "origin":9,
   "parent":{
     "name":"Trick Down",
-    "path":"folders/Player/Sprites/Sonic/Trick Down.yy",
+    "path":"folders/Stage/Player/Characters/Sonic/Sprites/Trick Down.yy",
   },
   "preMultiplyAlpha":false,
   "resourceType":"GMSprite",

@@ -5,8 +5,8 @@
   "isDnD":false,
   "name":"Camera",
   "parent":{
-    "name":"Functions",
-    "path":"folders/Global/Functions.yy",
+    "name":"Camera",
+    "path":"folders/Stage/Player/Camera.yy",
   },
   "resourceType":"GMScript",
   "resourceVersion":"2.0",

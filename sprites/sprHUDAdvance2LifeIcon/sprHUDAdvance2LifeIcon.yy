@@ -30,7 +30,7 @@
   "origin":0,
   "parent":{
     "name":"Advance 2",
-    "path":"folders/Display/Sprites/HUD/Advance 2.yy",
+    "path":"folders/Stage/Display/Sprites/HUD/Advance 2.yy",
   },
   "preMultiplyAlpha":false,
   "resourceType":"GMSprite",

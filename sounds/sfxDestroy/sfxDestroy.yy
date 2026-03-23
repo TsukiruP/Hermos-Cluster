@@ -14,8 +14,8 @@
   "exportDir":"",
   "name":"sfxDestroy",
   "parent":{
-    "name":"SFX",
-    "path":"folders/Stage/SFX.yy",
+    "name":"Interactables",
+    "path":"folders/Stage/Interactables.yy",
   },
   "preload":false,
   "resourceType":"GMSound",

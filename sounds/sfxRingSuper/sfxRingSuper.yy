@@ -15,7 +15,7 @@
   "name":"sfxRingSuper",
   "parent":{
     "name":"SFX",
-    "path":"folders/Stage/SFX.yy",
+    "path":"folders/Stage/Interactables/Rings/SFX.yy",
   },
   "preload":false,
   "resourceType":"GMSound",

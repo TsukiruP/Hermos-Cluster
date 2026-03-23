@@ -45,7 +45,7 @@
   "origin":0,
   "parent":{
     "name":"Sunset Hill",
-    "path":"folders/Tilesets/Sunset Hill.yy",
+    "path":"folders/Stage/Tilesets/Sunset Hill.yy",
   },
   "preMultiplyAlpha":false,
   "resourceType":"GMSprite",

@@ -33,7 +33,7 @@
   "origin":9,
   "parent":{
     "name":"Jump",
-    "path":"folders/Player/Sprites/Cream/Jump.yy",
+    "path":"folders/Stage/Player/Characters/Cream/Sprites/Jump.yy",
   },
   "preMultiplyAlpha":false,
   "resourceType":"GMSprite",

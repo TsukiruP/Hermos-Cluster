@@ -6,7 +6,7 @@
   "name":"PlayerMacros",
   "parent":{
     "name":"Player",
-    "path":"folders/Player.yy",
+    "path":"folders/Stage/Player.yy",
   },
   "resourceType":"GMScript",
   "resourceVersion":"2.0",

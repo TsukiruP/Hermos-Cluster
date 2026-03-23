@@ -34,7 +34,7 @@
   "origin":4,
   "parent":{
     "name":"Aqua",
-    "path":"folders/Player/Sprites/Miles/Turn/Shields/Aqua.yy",
+    "path":"folders/Stage/Player/Characters/Miles/Sprites/Turn/Shields/Aqua.yy",
   },
   "preMultiplyAlpha":false,
   "resourceType":"GMSprite",

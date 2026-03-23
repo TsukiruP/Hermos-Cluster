@@ -29,7 +29,7 @@
   "origin":9,
   "parent":{
     "name":"Turn",
-    "path":"folders/Player/Sprites/Knuckles/Turn.yy",
+    "path":"folders/Stage/Player/Characters/Knuckles/Sprites/Turn.yy",
   },
   "preMultiplyAlpha":false,
   "resourceType":"GMSprite",

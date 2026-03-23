@@ -30,7 +30,7 @@
   "origin":9,
   "parent":{
     "name":"Trick Front",
-    "path":"folders/Player/Sprites/Knuckles/Trick Front.yy",
+    "path":"folders/Stage/Player/Characters/Knuckles/Sprites/Trick Front.yy",
   },
   "preMultiplyAlpha":false,
   "resourceType":"GMSprite",

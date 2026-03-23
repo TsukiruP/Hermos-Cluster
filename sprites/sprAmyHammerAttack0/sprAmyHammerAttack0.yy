@@ -40,7 +40,7 @@
   "origin":9,
   "parent":{
     "name":"Hammer",
-    "path":"folders/Player/Sprites/Amy/Hammer.yy",
+    "path":"folders/Stage/Player/Characters/Amy/Sprites/Hammer.yy",
   },
   "preMultiplyAlpha":false,
   "resourceType":"GMSprite",

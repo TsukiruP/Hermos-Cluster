@@ -6,8 +6,8 @@
   "name":"objAmy",
   "overriddenProperties":[],
   "parent":{
-    "name":"Characters",
-    "path":"folders/Player/Characters.yy",
+    "name":"Amy",
+    "path":"folders/Stage/Player/Characters/Amy.yy",
   },
   "parentObjectId":{
     "name":"objPlayer",

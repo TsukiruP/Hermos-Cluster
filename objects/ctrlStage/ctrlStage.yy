@@ -11,8 +11,8 @@
   "name":"ctrlStage",
   "overriddenProperties":[],
   "parent":{
-    "name":"Global",
-    "path":"folders/Global.yy",
+    "name":"Stage",
+    "path":"folders/Stage.yy",
   },
   "parentObjectId":null,
   "persistent":false,

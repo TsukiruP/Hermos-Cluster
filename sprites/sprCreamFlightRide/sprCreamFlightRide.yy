@@ -32,8 +32,8 @@
   "nineSlice":null,
   "origin":9,
   "parent":{
-    "name":"Cream",
-    "path":"folders/Player/Sprites/Cream.yy",
+    "name":"Sprites",
+    "path":"folders/Stage/Player/Characters/Cream/Sprites.yy",
   },
   "preMultiplyAlpha":false,
   "resourceType":"GMSprite",

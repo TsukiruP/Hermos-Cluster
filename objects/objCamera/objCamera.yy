@@ -10,8 +10,8 @@
   "name":"objCamera",
   "overriddenProperties":[],
   "parent":{
-    "name":"Player",
-    "path":"folders/Player.yy",
+    "name":"Camera",
+    "path":"folders/Stage/Player/Camera.yy",
   },
   "parentObjectId":null,
   "persistent":false,

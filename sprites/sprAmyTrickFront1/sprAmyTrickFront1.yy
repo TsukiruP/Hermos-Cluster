@@ -33,7 +33,7 @@
   "origin":9,
   "parent":{
     "name":"Trick Front",
-    "path":"folders/Player/Sprites/Amy/Trick Front.yy",
+    "path":"folders/Stage/Player/Characters/Amy/Sprites/Trick Front.yy",
   },
   "preMultiplyAlpha":false,
   "resourceType":"GMSprite",

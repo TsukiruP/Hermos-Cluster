@@ -31,7 +31,7 @@
   "origin":9,
   "parent":{
     "name":"Trick Up",
-    "path":"folders/Player/Sprites/Amy/Trick Up.yy",
+    "path":"folders/Stage/Player/Characters/Amy/Sprites/Trick Up.yy",
   },
   "preMultiplyAlpha":false,
   "resourceType":"GMSprite",

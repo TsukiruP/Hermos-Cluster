@@ -14,8 +14,8 @@
   "exportDir":"",
   "name":"sfxSpring",
   "parent":{
-    "name":"SFX",
-    "path":"folders/Stage/SFX.yy",
+    "name":"Springs",
+    "path":"folders/Stage/Interactables/Springs.yy",
   },
   "preload":false,
   "resourceType":"GMSound",

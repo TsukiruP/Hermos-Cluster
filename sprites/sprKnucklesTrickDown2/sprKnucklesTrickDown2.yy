@@ -32,7 +32,7 @@
   "origin":9,
   "parent":{
     "name":"Trick Down",
-    "path":"folders/Player/Sprites/Knuckles/Trick Down.yy",
+    "path":"folders/Stage/Player/Characters/Knuckles/Sprites/Trick Down.yy",
   },
   "preMultiplyAlpha":false,
   "resourceType":"GMSprite",

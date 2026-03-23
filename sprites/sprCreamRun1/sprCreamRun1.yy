@@ -41,7 +41,7 @@
   "origin":9,
   "parent":{
     "name":"Run",
-    "path":"folders/Player/Sprites/Cream/Run.yy",
+    "path":"folders/Stage/Player/Characters/Cream/Sprites/Run.yy",
   },
   "preMultiplyAlpha":false,
   "resourceType":"GMSprite",

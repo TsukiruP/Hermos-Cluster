@@ -33,7 +33,7 @@
   "origin":9,
   "parent":{
     "name":"Run",
-    "path":"folders/Player/Sprites/Knuckles/Run.yy",
+    "path":"folders/Stage/Player/Characters/Knuckles/Sprites/Run.yy",
   },
   "preMultiplyAlpha":false,
   "resourceType":"GMSprite",

@@ -28,7 +28,7 @@
   "origin":9,
   "parent":{
     "name":"Spring",
-    "path":"folders/Player/Sprites/Miles/Spring.yy",
+    "path":"folders/Stage/Player/Characters/Miles/Sprites/Spring.yy",
   },
   "preMultiplyAlpha":false,
   "resourceType":"GMSprite",

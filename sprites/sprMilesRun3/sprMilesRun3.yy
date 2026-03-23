@@ -41,7 +41,7 @@
   "origin":9,
   "parent":{
     "name":"Run",
-    "path":"folders/Player/Sprites/Miles/Run.yy",
+    "path":"folders/Stage/Player/Characters/Miles/Sprites/Run.yy",
   },
   "preMultiplyAlpha":false,
   "resourceType":"GMSprite",

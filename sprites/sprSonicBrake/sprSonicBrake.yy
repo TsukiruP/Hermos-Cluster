@@ -28,7 +28,7 @@
   "origin":9,
   "parent":{
     "name":"Brake",
-    "path":"folders/Player/Sprites/Sonic/Brake.yy",
+    "path":"folders/Stage/Player/Characters/Sonic/Sprites/Brake.yy",
   },
   "preMultiplyAlpha":false,
   "resourceType":"GMSprite",

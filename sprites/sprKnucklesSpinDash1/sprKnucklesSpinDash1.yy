@@ -29,7 +29,7 @@
   "origin":9,
   "parent":{
     "name":"Spin Dash",
-    "path":"folders/Player/Sprites/Knuckles/Spin Dash.yy",
+    "path":"folders/Stage/Player/Characters/Knuckles/Sprites/Spin Dash.yy",
   },
   "preMultiplyAlpha":false,
   "resourceType":"GMSprite",

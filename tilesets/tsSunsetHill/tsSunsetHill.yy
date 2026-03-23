@@ -18,7 +18,7 @@
   "out_tilevborder":2,
   "parent":{
     "name":"Sunset Hill",
-    "path":"folders/Tilesets/Sunset Hill.yy",
+    "path":"folders/Stage/Tilesets/Sunset Hill.yy",
   },
   "resourceType":"GMTileSet",
   "resourceVersion":"2.0",

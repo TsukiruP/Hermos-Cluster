@@ -39,7 +39,7 @@
   "origin":9,
   "parent":{
     "name":"Spring",
-    "path":"folders/Player/Sprites/Knuckles/Spring.yy",
+    "path":"folders/Stage/Player/Characters/Knuckles/Sprites/Spring.yy",
   },
   "preMultiplyAlpha":false,
   "resourceType":"GMSprite",

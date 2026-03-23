@@ -30,7 +30,7 @@
   "origin":9,
   "parent":{
     "name":"Trick Back",
-    "path":"folders/Player/Sprites/Cream/Trick Back.yy",
+    "path":"folders/Stage/Player/Characters/Cream/Sprites/Trick Back.yy",
   },
   "preMultiplyAlpha":false,
   "resourceType":"GMSprite",

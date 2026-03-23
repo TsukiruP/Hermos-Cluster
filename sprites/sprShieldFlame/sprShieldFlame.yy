@@ -43,7 +43,7 @@
   "origin":4,
   "parent":{
     "name":"Flame",
-    "path":"folders/Player/Sprites/Miles/Turn/Shields/Flame.yy",
+    "path":"folders/Stage/Player/Characters/Miles/Sprites/Turn/Shields/Flame.yy",
   },
   "preMultiplyAlpha":false,
   "resourceType":"GMSprite",

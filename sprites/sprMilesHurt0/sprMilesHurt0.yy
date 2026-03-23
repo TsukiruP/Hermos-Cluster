@@ -30,7 +30,7 @@
   "origin":9,
   "parent":{
     "name":"Hurt",
-    "path":"folders/Player/Sprites/Miles/Hurt.yy",
+    "path":"folders/Stage/Player/Characters/Miles/Sprites/Hurt.yy",
   },
   "preMultiplyAlpha":false,
   "resourceType":"GMSprite",

@@ -31,7 +31,7 @@
   "origin":9,
   "parent":{
     "name":"Jump",
-    "path":"folders/Player/Sprites/Miles/Jump.yy",
+    "path":"folders/Stage/Player/Characters/Miles/Sprites/Jump.yy",
   },
   "preMultiplyAlpha":false,
   "resourceType":"GMSprite",

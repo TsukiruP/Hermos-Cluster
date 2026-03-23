@@ -26,7 +26,7 @@
   "origin":0,
   "parent":{
     "name":"Tilesets",
-    "path":"folders/Tilesets.yy",
+    "path":"folders/Stage/Tilesets.yy",
   },
   "preMultiplyAlpha":false,
   "resourceType":"GMSprite",

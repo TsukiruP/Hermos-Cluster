@@ -7,7 +7,7 @@
   "overriddenProperties":[],
   "parent":{
     "name":"Parents",
-    "path":"folders/Stage/Parents.yy",
+    "path":"folders/Stage/Interactables/Parents.yy",
   },
   "parentObjectId":{
     "name":"objInteractable",

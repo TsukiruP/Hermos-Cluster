@@ -31,7 +31,7 @@
   "origin":9,
   "parent":{
     "name":"Trick Down",
-    "path":"folders/Player/Sprites/Amy/Trick Down.yy",
+    "path":"folders/Stage/Player/Characters/Amy/Sprites/Trick Down.yy",
   },
   "preMultiplyAlpha":false,
   "resourceType":"GMSprite",

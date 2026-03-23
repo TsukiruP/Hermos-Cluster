@@ -14,8 +14,8 @@
   "exportDir":"",
   "name":"sfxItemAqua",
   "parent":{
-    "name":"Items",
-    "path":"folders/Stage/SFX/Items.yy",
+    "name":"SFX",
+    "path":"folders/Stage/Interactables/Items/SFX.yy",
   },
   "preload":false,
   "resourceType":"GMSound",

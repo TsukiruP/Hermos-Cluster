@@ -33,7 +33,7 @@
   "origin":9,
   "parent":{
     "name":"Spin Dash Dust",
-    "path":"folders/Player/Sprites/Effects/Spin Dash Dust.yy",
+    "path":"folders/Stage/Player/Sprites/Effects/Spin Dash Dust.yy",
   },
   "preMultiplyAlpha":false,
   "resourceType":"GMSprite",

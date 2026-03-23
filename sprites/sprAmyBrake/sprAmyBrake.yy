@@ -28,7 +28,7 @@
   "origin":9,
   "parent":{
     "name":"Brake",
-    "path":"folders/Player/Sprites/Amy/Brake.yy",
+    "path":"folders/Stage/Player/Characters/Amy/Sprites/Brake.yy",
   },
   "preMultiplyAlpha":false,
   "resourceType":"GMSprite",

@@ -30,7 +30,7 @@
   "origin":9,
   "parent":{
     "name":"Hurt",
-    "path":"folders/Player/Sprites/Cream/Hurt.yy",
+    "path":"folders/Stage/Player/Characters/Cream/Sprites/Hurt.yy",
   },
   "preMultiplyAlpha":false,
   "resourceType":"GMSprite",
