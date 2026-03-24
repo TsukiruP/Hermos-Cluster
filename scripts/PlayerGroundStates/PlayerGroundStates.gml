@@ -492,7 +492,7 @@ function player_is_spin_dashing(_phase)
                 spin_dash_charge = min(spin_dash_charge + 2, 8);
                 
                 // Animate
-                animation_start("spin_dash");
+                animation_start("spin_dash", 1);
                 
                 // Sound
                 var rev_sfx = audio_play_sfx(sfxSpinRev);

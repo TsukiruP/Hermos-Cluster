@@ -31,7 +31,7 @@
   "origin":9,
   "parent":{
     "name":"Invincibility",
-    "path":"folders/Stage/Player/Characters/Miles/Sprites/Turn/Shields/Invincibility.yy",
+    "path":"folders/Stage/Player/Sprites/Shields/Invincibility.yy",
   },
   "preMultiplyAlpha":false,
   "resourceType":"GMSprite",

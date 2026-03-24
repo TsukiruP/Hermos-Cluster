@@ -5,9 +5,6 @@ var y_int = y div 1;
 // Player
 draw_self_floored();
 
-// Hitboxes
-draw_hitboxes();
-draw_text(x, y, $"{x_speed}");
 // Virtual mask
 var sine = dsin(mask_direction);
 if (sine == 0)
@@ -22,3 +19,6 @@ else
 }
 
 draw_line_color(x_int, y_int, x_int + sine * y_radius, y_int + dcos(mask_direction) * y_radius, c_white, c_white);
+
+// Hitboxes
+draw_hitboxes();

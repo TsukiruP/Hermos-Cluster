@@ -1,5 +1,5 @@
 /// @description Behave
-//if (instance_exists(objTransition)) exit;
+if (instance_exists(objTransition)) exit;
 
 if (not InputPartyGetJoin())
 {
