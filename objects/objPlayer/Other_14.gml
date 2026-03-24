@@ -35,7 +35,7 @@ player_animate_run = function(_anim)
     }
     
     anim_core.variant = variant;
-    player_animate(_anim);
+    player_animate(_anim, direction);
     if (on_ground) anim_core.speed = clamp((abs(x_speed) / 3) + (abs(x_speed) / 4), 0.5, 8);
 };
 

@@ -1,0 +1,22 @@
+/// @description Visible
+visible = (ctrlGame.game_flags & GAME_FLAG_HIDE_HUD ? false : true);
+
+if (visible and status_bar_config != CONFIG_STATUS_BAR.OFF)
+{
+    for (var i = 0; i < status_bar_count; i++)
+    {
+        status_bar[i].update();
+    }
+}
+
+if (item_feed_config)
+{
+    var popup_xstart = -sprite_get_width(sprHUDItemIcon);
+    for (var i = 0; i < array_length(item_feed); i++)
+    {
+        var popup_element = item_feed[i];
+        var popup_time = popup_element.time;
+        var popup_xend = CAMERA_WIDTH / 2 + 9 * (array_length(item_feed) - 1) - i * ITEM_WIDTH;
+        popup_element.x = interpolate(popup_xstart, popup_xend, popup_time / popup_duration, EASE_SMOOTHSTEP);
+    }
+}
