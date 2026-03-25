@@ -96,12 +96,16 @@ function player_is_running(phase)
 			// Jump
 			if (input_check_pressed(INPUT.ACTION)) return player_perform(player_is_jumping);
 			
+			// Apply slope friction
+			player_resist_slope(0.125);
+			
 			// Handle ground motion
 			var can_brake = animation == "brake";
 			var input_sign = input_check(INPUT.RIGHT) - input_check(INPUT.LEFT);
-			if (input_sign != 0)
+			
+			if (control_lock_time == 0)
 			{
-				if (control_lock_time == 0)
+				if (input_sign != 0)
 				{
 					// Decelerate
 					if (x_speed != 0 and sign(x_speed) != input_sign)
@@ -121,17 +125,10 @@ function player_is_running(phase)
 						}
 					}
 				}
-			}
-			else
-			{
-				// Friction (same value as acceleration)
-				x_speed -= min(abs(x_speed), acceleration) * sign(x_speed);
-				
-				// Roll
-				if (abs(x_speed) >= roll_threshold and input_check(INPUT.DOWN))
+				else
 				{
-					audio_play_sfx(sfxRoll);
-					return player_perform(player_is_rolling);
+					// Friction (same value as acceleration)
+					x_speed -= min(abs(x_speed), acceleration) * sign(x_speed);
 				}
 			}
 			
@@ -155,8 +152,12 @@ function player_is_running(phase)
 				}
 			}
 			
-			// Apply slope friction
-			player_resist_slope(0.125);
+			// Roll
+			if (input_sign == 0 and abs(x_speed) >= roll_threshold and input_check(INPUT.DOWN))
+			{
+				audio_play_sfx(sfxRoll);
+				return player_perform(player_is_rolling);
+			}
 			
 			// Stand
 			if (x_speed == 0 and input_sign == 0) return player_perform(player_is_standing);
@@ -328,6 +329,10 @@ function player_is_rolling(phase)
 			// Jump
 			if (input_check_pressed(INPUT.ACTION)) return player_perform(player_is_jumping);
 			
+			// Apply slope friction
+			var slope_friction = sign(x_speed) == sign(dsin(local_direction)) ? 0.078125 : 0.3125; // Uphill / downhill
+			player_resist_slope(slope_friction);
+			
 			// Decelerate
 			if (control_lock_time == 0)
 			{
@@ -365,10 +370,6 @@ function player_is_rolling(phase)
 					control_lock_time = slide_duration;
 				}
 			}
-			
-			// Apply slope friction
-			var slope_friction = sign(x_speed) == sign(dsin(local_direction)) ? 0.078125 : 0.3125; // Uphill / downhill
-			player_resist_slope(slope_friction);
 			
 			// Unroll
 			if (abs(x_speed) < roll_threshold) return player_perform(player_is_running);

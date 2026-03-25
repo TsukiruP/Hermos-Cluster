@@ -287,12 +287,11 @@ player_refresh_physics();
 /// @param {Real} force Friction value to use.
 player_resist_slope = function (force)
 {
-	// Abort if moving along a ceiling
+	// Abort if moving along a shallow floor or ceiling
+	if (local_direction < 22.5 or local_direction > 337.5) exit;
 	if (local_direction >= 135 and local_direction <= 225) exit;
 	
-	// Apply (Sonic 3 method)
-	var slope_factor = dsin(local_direction) * force;
-	if (abs(slope_factor) >= 0.05078125) x_speed -= slope_factor;
+	x_speed -= dsin(local_direction) * force;
 };
 
 /// @method player_animate
