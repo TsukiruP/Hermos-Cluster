@@ -115,15 +115,18 @@ function player_is_running(_phase)
             // Jump
             if (player_try_jump()) exit;
             
+            // Apply slope friction
+            player_resist_slope();
+            
             // Handle ground motion
             var can_brake = false;
             var can_turn = false;
             
-            if (input_axis_x != 0)
+            if (control_lock_time == 0)
             {
-                if (control_lock_time == 0)
-                {
-                    // Decelerate
+            	if (input_axis_x != 0)
+            	{
+            		// Decelerate
                     if (x_speed != 0 and sign(x_speed) != input_axis_x)
                     {
                         can_brake = true;
@@ -153,12 +156,12 @@ function player_is_running(_phase)
                             boost_speed += acceleration;
                         }
                     }
-                }
-            }
-            else
-            {
-                // Friction
-                x_speed -= min(abs(x_speed), acceleration) * sign(x_speed);
+            	}
+            	else
+            	{
+            		// Friction
+            		x_speed -= min(abs(x_speed), acceleration) * sign(x_speed);
+            	}
             }
             
             // Apply speed limit
@@ -183,9 +186,6 @@ function player_is_running(_phase)
                     control_lock_time = SLIDE_DURATION;
                 }
             }
-            
-            // Apply slope friction
-            player_resist_slope();
             
             // Roll
             if (input_axis_y == 1 and x_speed >= ROLL_THRESHOLD and input_axis_x == 0)
@@ -383,6 +383,12 @@ function player_is_rolling(_phase)
             // Jump
             if (player_try_jump()) exit;
             
+            // Apply slope friction
+            var friction_downhill = 60 / 256;
+            var friction_uphill = friction_downhill / 4;
+            var slope_friction = (sign(x_speed) == sign(dsin(local_direction)) ? friction_uphill : friction_downhill);
+            player_resist_slope(slope_friction);
+            
             // Decelerate
             if (control_lock_time == 0)
             {
@@ -422,12 +428,6 @@ function player_is_rolling(_phase)
                     control_lock_time = SLIDE_DURATION;
                 }
             }
-            
-            // Apply slope friction
-            var friction_downhill = 60 / 256;
-            var friction_uphill = friction_downhill / 4;
-            var slope_friction = (sign(x_speed) == sign(dsin(local_direction)) ? friction_uphill : friction_downhill);
-            player_resist_slope(slope_friction);
             
             // Unroll
             if (abs(x_speed) < ROLL_THRESHOLD) player_perform(player_is_running);

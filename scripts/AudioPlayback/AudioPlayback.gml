@@ -1,4 +1,4 @@
-/// @description Plays the given sound effect, first stopping any existing instances of it.
+/// @description Plays a single instance of the given sound effect.
 /// @param {Asset.GMSound} ind Sound effect to play.
 /// @param {Bool} [loop] Sets the sound to loop or not (optional, defaults to false)
 /// @returns {Id.Sound}

@@ -69,19 +69,20 @@ mask_direction = 0;
 
 collision_layer = 0;
 
-// Copy the stage's tilemaps
 tilemaps = variable_clone(ctrlStage.tilemaps, 0);
 tilemap_count = array_length(tilemaps);
 
-// Validate semisolid tilemap; if it exists, the tilemap count is even
-semisolid_tilemap = -1;
+// Validate semisolid tilemap
 if (tilemap_count & 1 == 0)
 {
     semisolid_tilemap = array_last(tilemaps);
     tilemap_count--;
 }
+{
+	semisolid_tilemap = -1;
+}
 
-// Delist the "TilesLayer1" layer tilemap, if it exists
+// Delist the "TilesLayer1" layer tilemap
 if (tilemap_count == 3)
 {
     array_delete(tilemaps, 2, 1);

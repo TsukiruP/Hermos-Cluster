@@ -51,11 +51,11 @@ player_escape_wall = function()
     return undefined;
 };
 
-/// @description Aligns the player to the ground and updates their angle values should they land, otherwise they are detached.
-/// @param {Bool} land Whether to stick to the ground.
-player_ground = function(_land)
+/// @description Aligns the player to the ground and updates their angle values, if applicable; detaches them otherwise.
+/// @param {Bool} attach Whether to stick to the ground.
+player_ground = function(_attach)
 {
-    if (not _land)
+    if (not _attach)
     {
         on_ground = false;
         mask_direction = gravity_direction;
@@ -251,8 +251,8 @@ player_keep_in_bounds = function()
 	return true;
 }
 
-/// @description Sets the given function as the player's current state.
-/// @param {Function} state State function to set.
+/// @description Switches the player's state to the given function.
+/// @param {Function} state State function to switch to.
 /// @param {Bool} [enter] Whether to perform the enter phase (optional, defaults to true).
 player_perform = function(_state, _enter = true)
 {
