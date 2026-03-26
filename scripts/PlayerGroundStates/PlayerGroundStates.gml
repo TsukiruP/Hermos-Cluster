@@ -108,7 +108,7 @@ function player_is_running(phase)
 				if (input_sign != 0)
 				{
 					// Decelerate
-					if (x_speed != 0 and sign(x_speed) != input_sign)
+					if (sign(x_speed) == -input_sign)
 					{
 						can_brake = true;
 						x_speed += deceleration * input_sign;
