@@ -243,6 +243,7 @@
     {"id":{"name":"objKnuckles","path":"objects/objKnuckles/objKnuckles.yy",},},
     {"id":{"name":"objLayerSet","path":"objects/objLayerSet/objLayerSet.yy",},},
     {"id":{"name":"objMiles","path":"objects/objMiles/objMiles.yy",},},
+    {"id":{"name":"objParticle","path":"objects/objParticle/objParticle.yy",},},
     {"id":{"name":"objPlayer","path":"objects/objPlayer/objPlayer.yy",},},
     {"id":{"name":"objPlayerSpawn","path":"objects/objPlayerSpawn/objPlayerSpawn.yy",},},
     {"id":{"name":"objSolid","path":"objects/objSolid/objSolid.yy",},},
