@@ -1,0 +1,13 @@
+{
+  "$GMScript":"v1",
+  "%Name":"SpringAnimations",
+  "isCompatibility":false,
+  "isDnD":false,
+  "name":"SpringAnimations",
+  "parent":{
+    "name":"Springs",
+    "path":"folders/Stage/Interactables/Springs.yy",
+  },
+  "resourceType":"GMScript",
+  "resourceVersion":"2.0",
+}
