@@ -104,6 +104,7 @@ switch (hud_config)
         // Rings
         var pla_speed = ctrlStage.stage_players[0].x_speed;
         if (not ctrlGame.game_paused) image_index += (pla_speed / 8) + 0.25;
+        
         image_index = image_index mod 256;
         draw_sprite(sprHUDAdvance2, 0, hud_x, hud_y);
         draw_sprite(sprHUDAdvance2Ring, image_index, hud_x + 6, hud_y + 5);

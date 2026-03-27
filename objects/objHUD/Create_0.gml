@@ -81,7 +81,7 @@ if (status_bar_config != CONFIG_STATUS_BAR.OFF)
 if (item_feed_config)
 {
     /// @description Creates a new item popup.
-    popup = function(_icon) constructor
+    item_popup = function(_icon) constructor
     {
         x = CAMERA_WIDTH / 2;
         icon = _icon;
@@ -91,5 +91,5 @@ if (item_feed_config)
     item_feed = [];
     item_feed_duration = 90;
     item_feed_time = 0;
-    popup_duration = 10;
+    item_popup_duration = 10;
 }

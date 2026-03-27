@@ -18,19 +18,16 @@ if (item_feed_config)
     var popup_last = array_last(item_feed);
     if (popup_last != undefined)
     {
-        if (popup_last.time == popup_duration and item_feed_time > 0)
+        if (popup_last.time == item_popup_duration and item_feed_time > 0)
         {
             item_feed_time--;
-            if (item_feed_time == 0)
-            {
-                array_resize(item_feed, 0);
-            }
+            if (item_feed_time == 0) array_resize(item_feed, 0);
         }
     }
     
     for (var i = 0; i < array_length(item_feed); i++)
     {
         var popup_element = item_feed[i];
-        if (popup_element.time < popup_duration) popup_element.time++;
+        if (popup_element.time < item_popup_duration) popup_element.time++;
     }
 }
