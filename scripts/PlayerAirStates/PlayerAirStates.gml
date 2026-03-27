@@ -123,3 +123,37 @@ function player_is_jumping(_phase)
         }
     }
 }
+
+function player_is_hurt(_phase)
+{
+    switch (_phase)
+    {
+        case PHASE.ENTER:
+        {
+            // Set flags
+            boost_mode = false;
+            
+            // Detach from ground
+            player_ground(false);
+            break;
+        }
+        case PHASE.STEP:
+        {
+            // Move
+            player_move_in_air();
+            if (state_changed) exit;
+            
+            // Land
+            if (on_ground) return player_perform(x_speed != 0 ? player_is_running : player_is_standing);
+            
+            // Fall
+            if (y_speed < gravity_cap) y_speed = min(y_speed + gravity_force, gravity_cap);
+            break;
+        }
+        case PHASE.EXIT:
+        {
+            recovery_time = RECOVERY_DURATION;
+            break;
+        }
+    }
+}

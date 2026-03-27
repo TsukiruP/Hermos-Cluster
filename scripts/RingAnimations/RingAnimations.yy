@@ -1,0 +1,13 @@
+{
+  "$GMScript":"v1",
+  "%Name":"RingAnimations",
+  "isCompatibility":false,
+  "isDnD":false,
+  "name":"RingAnimations",
+  "parent":{
+    "name":"Rings",
+    "path":"folders/Stage/Interactables/Rings.yy",
+  },
+  "resourceType":"GMScript",
+  "resourceVersion":"2.0",
+}
