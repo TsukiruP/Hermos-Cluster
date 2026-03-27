@@ -39,8 +39,8 @@
   "nineSlice":null,
   "origin":7,
   "parent":{
-    "name":"Jump Panel",
-    "path":"folders/Stage/Interactables/Jump Panel.yy",
+    "name":"Sprites",
+    "path":"folders/Stage/Interactables/Jump Panel/Sprites.yy",
   },
   "preMultiplyAlpha":false,
   "resourceType":"GMSprite",

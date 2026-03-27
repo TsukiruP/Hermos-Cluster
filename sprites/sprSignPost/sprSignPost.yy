@@ -32,8 +32,8 @@
   "nineSlice":null,
   "origin":4,
   "parent":{
-    "name":"Goals",
-    "path":"folders/Stage/Interactables/Goals.yy",
+    "name":"Sprites",
+    "path":"folders/Stage/Interactables/Goals/Sprites.yy",
   },
   "preMultiplyAlpha":false,
   "resourceType":"GMSprite",
