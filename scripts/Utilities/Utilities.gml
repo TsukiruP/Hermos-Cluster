@@ -39,3 +39,12 @@ function particle_create(_x, _y, _ani, _rot = 0, _life = -1, _xspd = 0, _yspd = 
     
     return particle;
 }
+
+/// @description Pads the given value with zeros to occupy the specified dimensions. Ported from GM8.2.
+/// @param {Real} val Value to pad.
+/// @param {Real} digits Number of spaces to occupy.
+/// @returns {String}
+function string_pad(_val, _digits)
+{
+    return string_repeat("-", _val < 0) + string_replace_all(string_format(abs(_val), _digits, 0), " ", "0");
+}
