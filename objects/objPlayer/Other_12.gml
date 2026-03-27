@@ -454,8 +454,8 @@ player_refresh_cpu = function()
     collision_layer = leader.collision_layer;
     tilemaps[1] = ctrlStage.tilemaps[collision_layer + 1];
     cpu_state = CPU_STATE.FOLLOW;
-    player_ground(undefined);
-    animation_play(PLAYER_ANIMATION.FALL);
+    player_ground(false);
+    animation_start("fall");
     player_perform(player_is_falling, false);
     player_refresh_physics();
     player_refresh_boost_mode();

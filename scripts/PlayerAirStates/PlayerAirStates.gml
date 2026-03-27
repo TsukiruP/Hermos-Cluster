@@ -12,7 +12,7 @@ function player_is_falling(_phase)
             }
             
             // Detach from ground
-            player_ground(undefined);
+            player_ground(false);
             
             // Animate
             animation_start("fall", 0, ["roll"]);
@@ -53,7 +53,6 @@ function player_is_falling(_phase)
         }
         case PHASE.EXIT:
         {
-            // Reset flags
             aerial_flags &= ~AERIAL_FLAG_PLATFORM;
             break;
         }
@@ -76,7 +75,7 @@ function player_is_jumping(_phase)
             x_speed = cosine * x_speed - sine * jump_height;
             
             // Detach from ground
-            player_ground(undefined);
+            player_ground(false);
             
             // Animate
             animation_start("jump", 0);

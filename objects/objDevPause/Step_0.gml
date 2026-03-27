@@ -55,7 +55,6 @@ else
             case 1:
             {
                 audio_stop_all();
-                audio_clear_music();
                 menu_close(false);
                 room_goto(rmDevMenu);
                 break;

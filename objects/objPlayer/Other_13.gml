@@ -35,7 +35,7 @@ player_try_jump = function()
                     x_speed = cosine * x_speed - sine * hammer_jump_height;
                     
                     // Detact from ground
-                    player_ground(undefined);
+                    player_ground(false);
                     
                     // Perform
                     player_perform(player_is_jumping, false);
