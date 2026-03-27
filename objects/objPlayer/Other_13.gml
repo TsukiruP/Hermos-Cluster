@@ -270,7 +270,7 @@ player_try_jump = function()
             {
                 var sine = dcos(i);
                 var cosine = dsin(i);
-                particle_create(x, y, global.ani_shield_thunder_spark_v0, gravity_direction, 20, sine * 2, -cosine * 2, 0, 0);
+                particle_create(x, y, global.anim_shield_thunder_spark, gravity_direction, 20, sine * 2, -cosine * 2, 0, 0);
             }
             
             // Sound

@@ -12,15 +12,30 @@ function instance_in_view(_ind = id, _padding = CAMERA_PADDING)
 	with (_ind) return point_in_rectangle(x, y, left - _padding, top - _padding, right + _padding, bottom + _padding);
 }
 
-/// @description Creates the given sprite particle a given number of times at the given position.
-/// @param {String} name Name of the particle.
+/// @description Creates a new particle with the given animation.
 /// @param {Real} x x-coordinate of the particle.
 /// @param {Real} y y-coordinate of the particle.
-/// @param {Real} [num] Number of particles to create (optional, default is 1).
-function particle_spawn(name, ox, oy, num = 1)
+/// @param {Struct.animation} ani animation of the particle.
+/// @param {Real} [rot] Rotation of the particle (optional, defaults to 0).
+/// @param {Real} [life] Lifespan of the particle (optional, defaults to -1).
+/// @param {Real} [xspd] x-speed of the particle (optional, defaults to 0).
+/// @param {Real} [yspd] y-speed of the particle (optional, defaults to 0).
+/// @param {Real} [xaccel] x-acceleration of the particle (optional, defaults to 0).
+/// @param {Real} [yaccel] y-acceleration of the particle (optional, defaults to 0).
+/// @returns {Id.Instance}
+function particle_create(_x, _y, _ani, _rot = 0, _life = -1, _xspd = 0, _yspd = 0, _xaccel = 0, _yaccel = 0)
 {
-	with (global.sprite_particles)
-	{
-		part_particles_create(system, ox, oy, self[$ name], num);
-	}
+    var particle = instance_create_depth(_x, _y, ctrlStage.particles_depth, objParticle);
+    with (particle)
+    {
+        animation_set(_ani);
+        image_angle = angle_wrap(_rot);
+        lifespan = _life;
+        x_speed = _xspd;
+        y_speed = _yspd;
+        x_acceleration = _xaccel;
+        y_acceleration = _yaccel;
+    }
+    
+    return particle;
 }
