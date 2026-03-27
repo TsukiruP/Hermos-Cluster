@@ -14,9 +14,9 @@ function animation(_sprite, _duration, _loop = 0, _order = []) constructor
 /// @description Creates a new animation core.
 function animation_core() constructor
 {
-    force = false;
     name = "";
     variant = 0;
+    force = false;
     anim = undefined;
     delay = 0;
     speed = 1;
