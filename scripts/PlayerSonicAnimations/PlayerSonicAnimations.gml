@@ -1,4 +1,5 @@
 global.anim_sonic_idle_v0 = new animation(sprSonicIdle, [6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 12, 6, 6, 6, 12, 8, 6, 6, 6, 6]);
+global.anim_sonic_idle = [global.anim_sonic_idle_v0];
 
 global.anim_sonic_teeter_front_v0 = new animation(sprSonicTeeterFront, 3, 1);
 global.anim_sonic_teeter_back_v0 = new animation(sprSonicTeeterBack, [3, 4, 4, 4, 4, 4, 4, 4, 4], 1);
@@ -28,6 +29,7 @@ global.anim_sonic_crouch_v1 = new animation(sprSonicCrouch, 1, -1, [1, 0]);
 global.anim_sonic_crouch = [global.anim_sonic_crouch_v0, global.anim_sonic_crouch_v1];
 
 global.anim_sonic_roll_v0 = new animation(sprSonicRoll, 2);
+global.anim_sonic_roll = [global.anim_sonic_roll_v0];
 
 global.anim_sonic_spin_dash_v0 = new animation(sprSonicSpinDash0, 2);
 global.anim_sonic_spin_dash_v1 = new animation(sprSonicSpinDash1, 2, -1);
@@ -47,6 +49,7 @@ global.anim_sonic_hurt_v1 = new animation(sprSonicHurt1, 5, -1);
 global.anim_sonic_hurt = [global.anim_sonic_hurt_v0, global.anim_sonic_hurt_v1];
 
 global.anim_sonic_dead_v0 = new animation(sprSonicDead, [3, 3, 12, 2, 3, 3], 4);
+global.anim_sonic_dead = [global.anim_sonic_dead_v0];
 
 global.anim_sonic_spring_v0 = new animation(sprSonicSpring0, 3, 1);
 global.anim_sonic_spring_v1 = new animation(sprSonicSpring1, [2, 2, 2, 3, 3, 3], -1);
@@ -54,6 +57,7 @@ global.anim_sonic_spring_v2 = new animation(sprSonicSpring2, 3);
 global.anim_sonic_spring = [global.anim_sonic_spring_v0, global.anim_sonic_spring_v1, global.anim_sonic_spring_v2];
 
 global.anim_sonic_spring_twirl_v0 = new animation(sprSonicSpringTwirl, [4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 3, 3, 3], 11);
+global.anim_sonic_spring_twirl = [global.anim_sonic_spring_twirl_v0];
 
 global.anim_sonic_trick_up_v0 = new animation(sprSonicTrickUp0, [3, 6, 2], -1);
 global.anim_sonic_trick_up_v1 = new animation(sprSonicTrickUp1, [1, 1, 3, 3, 3], 2);
@@ -73,6 +77,7 @@ global.anim_sonic_trick_back_v1 = new animation(sprSonicTrickBack, [5, 4, 3, 2, 
 global.anim_sonic_trick_back = [global.anim_sonic_trick_back_v0, global.anim_sonic_trick_back_v1];
 
 global.anim_sonic_flight_ride_v0 = new animation(sprSonicFlightRide, 5);
+global.anim_sonic_flight_ride = [global.anim_sonic_flight_ride_v0];
 
 global.anim_sonic_air_dash_v0 = new animation(sprSonicAirDash, 2, -1, [0, 1, 2, 3]);
 global.anim_sonic_air_dash_v1 = new animation(sprSonicAirDash, 2, 0, [4, 5, 6]);

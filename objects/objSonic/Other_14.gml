@@ -6,7 +6,7 @@ player_render = function()
     {
         case "idle":
         {
-            player_animate(global.anim_sonic_idle_v0);
+            player_animate(global.anim_sonic_idle);
             player_set_radii(6, 14);
             if (image_index == 0)
             {
@@ -104,7 +104,7 @@ player_render = function()
         }
         case "roll":
         {
-            player_animate(global.anim_sonic_roll_v0);
+            player_animate(global.anim_sonic_roll);
             player_set_radii(6, 9);
             if (image_index == 0)
             {
@@ -203,7 +203,7 @@ player_render = function()
         }
         case "dead":
         {
-            player_animate(global.anim_sonic_dead_v0);
+            player_animate(global.anim_sonic_dead);
             player_set_radii(6, 14);
             if (image_index == 0)
             {
@@ -225,7 +225,7 @@ player_render = function()
         }
         case "spring_twirl":
         {
-            player_animate(global.anim_sonic_spring_twirl_v0);
+            player_animate(global.anim_sonic_spring_twirl);
             player_set_radii(6, 14);
             if (image_index == 0)
             {
@@ -316,7 +316,7 @@ player_render = function()
         }
         case "trick_back":
         {
-            player_animate(global.anim_sonic_flight_ride_v0);
+            player_animate(global.anim_sonic_flight_ride);
             player_set_radii(6, 14);
             if (image_index == 0)
             {

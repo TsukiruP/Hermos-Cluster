@@ -1,0 +1,13 @@
+{
+  "$GMScript":"v1",
+  "%Name":"PlayerEffectAnimations",
+  "isCompatibility":false,
+  "isDnD":false,
+  "name":"PlayerEffectAnimations",
+  "parent":{
+    "name":"Animations",
+    "path":"folders/Stage/Player/Animations.yy",
+  },
+  "resourceType":"GMScript",
+  "resourceVersion":"2.0",
+}
