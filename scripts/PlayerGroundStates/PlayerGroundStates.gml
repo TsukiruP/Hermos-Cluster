@@ -26,7 +26,7 @@ function player_is_standing(phase)
 		case PHASE.ENTER:
 		{
 			// Check if on a cliff
-			var height = y_radius + y_tile_reach;
+			var height = y_radius + y_snap_distance;
 			if (not player_raycast(hard_colliders, 0, height))
 			{
 				cliff_sign = player_raycast(hard_colliders, -x_radius, height) -

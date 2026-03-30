@@ -77,7 +77,7 @@ player_ground = function (attach)
 		else break;
 	}
 	
-	repeat (y_tile_reach - 1)
+	repeat (y_snap_distance - 1)
 	{
 		if (not player_boxcast(hard_colliders, y_radius + 1))
 		{

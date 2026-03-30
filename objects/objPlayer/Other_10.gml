@@ -17,7 +17,7 @@ player_move_on_ground = function ()
 	var total_steps = 1 + abs(x_speed) div 13;
 	var step = x_speed / total_steps;
 	
-	var floor_reach = y_radius + min(2 + abs(x_speed) div 1, y_tile_reach);
+	var floor_reach = y_radius + min(2 + abs(x_speed) div 1, y_snap_distance);
 	
 	repeat (total_steps)
 	{

@@ -34,7 +34,7 @@ x_radius = 8;
 x_wall_radius = 10;
 
 y_radius = 15;
-y_tile_reach = 16;
+y_snap_distance = 14;
 
 landed = false;
 on_ground = true;
