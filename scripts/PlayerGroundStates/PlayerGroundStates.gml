@@ -132,6 +132,13 @@ function player_is_running(phase)
 				}
 			}
 			
+			// Roll
+			if (input_sign == 0 and abs(x_speed) >= roll_threshold and input_check(INPUT.DOWN))
+			{
+				audio_play_sfx(sfxRoll);
+				return player_perform(player_is_rolling);
+			}
+			
 			// Move
 			player_move_on_ground();
 			if (state_changed) exit;
@@ -150,13 +157,6 @@ function player_is_running(phase)
 				{
 					control_lock_time = slide_duration;
 				}
-			}
-			
-			// Roll
-			if (input_sign == 0 and abs(x_speed) >= roll_threshold and input_check(INPUT.DOWN))
-			{
-				audio_play_sfx(sfxRoll);
-				return player_perform(player_is_rolling);
 			}
 			
 			// Stand
