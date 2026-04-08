@@ -72,15 +72,16 @@ function player_is_jumping(phase)
 			// Leap
 			var sine = dsin(local_direction);
 			var cosine = dcos(local_direction);
-			y_speed = -sine * x_speed - cosine * jump_height;
-			x_speed = cosine * x_speed - sine * jump_height;
+			var g_speed = x_speed;
+			x_speed = cosine * g_speed - sine * jump_height;
+			y_speed = -sine * g_speed - cosine * jump_height;
 			
 			// Detach from ground
 			player_ground(false);
 			
 			// Animate
 			player_animate("roll");
-			timeline_speed = 1 / max(5 - abs(x_speed) div 1, 1);
+			timeline_speed = 1 / max(5 - abs(g_speed) div 1, 1);
 			image_angle = gravity_direction;
 			break;
 		}
