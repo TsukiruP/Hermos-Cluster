@@ -51,7 +51,7 @@ x_radius = 8;
 x_wall_radius = 10;
 
 y_radius = 15;
-y_tile_reach = 16;
+y_snap_distance = 14;
 
 hitboxes[0] = new hitbox(c_maroon);
 hitboxes[1] = new hitbox(c_green);

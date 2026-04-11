@@ -135,20 +135,17 @@ player_calc_tile_normal = function(_x, _y)
         sensor_y[mask_direction == 270] += 15;
     }
     
-    // Cache tilemap id to prevent unnecessary iteration through colliders
-    var ind = collision_point(_x + sine, _y + cosine, tilemaps, true, false);
-    
     // Extend / regress angle sensors
     for (var n = 0; n < 2; n++)
     {
-        repeat (y_tile_reach)
+        repeat (16)
         {
-            if (collision_point(sensor_x[n], sensor_y[n], ind, true, false) == noone)
+            if (collision_point(sensor_x[n], sensor_y[n], tilemaps, true, false) == noone)
             {
                 sensor_x[n] += sine;
                 sensor_y[n] += cosine;
             }
-            else if (collision_point(sensor_x[n] - sine, sensor_y[n] - cosine, ind, true, false) != noone)
+            else if (collision_point(sensor_x[n] - sine, sensor_y[n] - cosine, tilemaps, true, false) != noone)
             {
                 sensor_x[n] -= sine;
                 sensor_y[n] -= cosine;

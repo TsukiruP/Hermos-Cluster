@@ -79,7 +79,7 @@ player_ground = function(_attach)
         }
     }
     
-    repeat (y_tile_reach - 1)
+    repeat (y_snap_distance - 1)
     {
         if (not player_boxcast(tilemaps, y_radius + 1))
         {
