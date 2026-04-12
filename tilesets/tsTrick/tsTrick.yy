@@ -1,25 +1,25 @@
 {
   "$GMTileSet":"v1",
-  "%Name":"tsCollision",
+  "%Name":"tsTrick",
   "autoTileSets":[],
   "macroPageTiles":{
     "SerialiseHeight":0,
     "SerialiseWidth":0,
     "TileSerialiseData":[],
   },
-  "name":"tsCollision",
+  "name":"tsTrick",
   "out_columns":53,
   "out_tilehborder":2,
   "out_tilevborder":2,
   "parent":{
-    "name":"Test",
-    "path":"folders/Stage/Tile Sets/Test.yy",
+    "name":"Trick Test",
+    "path":"folders/Stage/Tile Sets/Trick Test.yy",
   },
   "resourceType":"GMTileSet",
   "resourceVersion":"2.0",
   "spriteId":{
-    "name":"sprCollisionTileset",
-    "path":"sprites/sprCollisionTileset/sprCollisionTileset.yy",
+    "name":"sprTrickCollisionTileset",
+    "path":"sprites/sprTrickCollisionTileset/sprTrickCollisionTileset.yy",
   },
   "spriteNoExport":false,
   "textureGroupId":{
