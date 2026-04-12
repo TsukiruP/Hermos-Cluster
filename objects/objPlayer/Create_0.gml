@@ -78,6 +78,7 @@ if (tilemap_count & 1 == 0)
     semisolid_tilemap = array_last(tilemaps);
     tilemap_count--;
 }
+else
 {
 	semisolid_tilemap = -1;
 }
