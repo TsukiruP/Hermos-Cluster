@@ -34,7 +34,7 @@ function animation_start(_name, _variant = -1, _alternatives = [])
     {
         // Abort if...
         if (name == _name and _variant == -1) exit;
-        if (array_contains(_alternatives, _name)) exit;
+        if (array_contains(_alternatives, name)) exit;
         
         force = (name == _name);
         name = _name;
