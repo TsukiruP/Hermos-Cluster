@@ -83,8 +83,8 @@
   ],
   "name":"rmTest",
   "parent":{
-    "name":"Stages",
-    "path":"folders/Scenes/Stages.yy",
+    "name":"Test",
+    "path":"folders/Scenes/Stages/Test.yy",
   },
   "parentRoom":null,
   "physicsSettings":{

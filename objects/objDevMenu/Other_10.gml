@@ -11,7 +11,7 @@ with (new dev_option("Config", mnu_home))
 
 with (new dev_option("Goto Test", mnu_home))
 {
-    confirm = function() { transition_create(rmTest); };
+    confirm = function() { transition_create(rmNewTest); };
 }
 
 menu_index = mnu_home;

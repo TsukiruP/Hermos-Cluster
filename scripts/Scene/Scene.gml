@@ -27,10 +27,6 @@ function room_get_scene(_room = room)
         {
             return global.stg_test;
         }
-        case rmTestNew:
-        {
-            return global.stg_test_new;
-        }
         default:
         {
             return global.scn_default;

@@ -27,19 +27,6 @@ tilemaps =
 if (tilemaps[3] == -1) array_pop(tilemaps);
 if (tilemaps[1] == -1) array_delete(tilemaps, 1, 2); 
 
-// Set collision masks
-switch (room)
-{
-    case rmTestNew:
-    {
-        for (var i = 0; i < array_length(tilemaps); i++)
-        {
-            layer_tilemap_set_colmask(tilemaps[i], sprSunsetHillCollision);
-        }
-        break;
-    }
-}
-
 // Create UI elements
 instance_create_layer(0, 0, "Display", objHUD);
 
