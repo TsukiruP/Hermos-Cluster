@@ -19,11 +19,7 @@ jump_cap = true;
 jump_alternate = 0;
 
 trick_index = TRICK.FRONT;
-trick_speed = array_create(TRICK.BACK + 1);
-for (var i = 0; i < array_length(trick_speed); i++)
-{
-    trick_speed[i] = array_create(2);
-}
+trick_speed = [[0, 0], [0, 0], [0, 0], [0, 0]];
 
 flight_ride = noone;
 glide_ride = noone;

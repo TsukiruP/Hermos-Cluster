@@ -15,10 +15,4 @@ flight_buddy = noone;
 flight_soundid = noone;
 
 // Misc.
-trick_speed =
-[
-    [0, -6],
-    [0, 0.5],
-    [4, -2.5],
-    [-3.5, -3]
-];
+trick_speed = [[0, -6], [0, 0.5], [4, -2.5], [-3.5, -3]];
