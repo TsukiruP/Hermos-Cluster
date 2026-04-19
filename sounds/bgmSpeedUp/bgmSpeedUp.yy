@@ -14,8 +14,8 @@
   "exportDir":"",
   "name":"bgmSpeedUp",
   "parent":{
-    "name":"BGM",
-    "path":"folders/Global/Audio/BGM.yy",
+    "name":"Jingles",
+    "path":"folders/Global/Audio/BGM/Jingles.yy",
   },
   "preload":false,
   "resourceType":"GMSound",

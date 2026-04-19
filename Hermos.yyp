@@ -14,6 +14,7 @@
     {"$GMFolder":"","%Name":"Global","folderPath":"folders/Global.yy","name":"Global","resourceType":"GMFolder","resourceVersion":"2.0",},
     {"$GMFolder":"","%Name":"Audio","folderPath":"folders/Global/Audio.yy","name":"Audio","resourceType":"GMFolder","resourceVersion":"2.0",},
     {"$GMFolder":"","%Name":"BGM","folderPath":"folders/Global/Audio/BGM.yy","name":"BGM","resourceType":"GMFolder","resourceVersion":"2.0",},
+    {"$GMFolder":"","%Name":"Jingles","folderPath":"folders/Global/Audio/BGM/Jingles.yy","name":"Jingles","resourceType":"GMFolder","resourceVersion":"2.0",},
     {"$GMFolder":"","%Name":"Databases","folderPath":"folders/Global/Databases.yy","name":"Databases","resourceType":"GMFolder","resourceVersion":"2.0",},
     {"$GMFolder":"","%Name":"Functions","folderPath":"folders/Global/Functions.yy","name":"Functions","resourceType":"GMFolder","resourceVersion":"2.0",},
     {"$GMFolder":"","%Name":"Transition","folderPath":"folders/Global/Transition.yy","name":"Transition","resourceType":"GMFolder","resourceVersion":"2.0",},
