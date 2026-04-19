@@ -267,7 +267,7 @@ player_perform = function(_state, _enter = true)
     }
 };
 
-/// @description Sets the given radii as the player's virtual mask.
+/// @description Resizes the player's virtual mask to the given dimensions.
 /// @param {Real} xrad Horizontal radius to use.
 /// @param {Real} yrad Vertical radius to use.
 player_resize = function(_xrad, _yrad)

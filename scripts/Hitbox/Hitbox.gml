@@ -12,7 +12,7 @@ function hitbox(_color, _left = 0, _top = 0, _right = 0, _bottom = 0) constructo
 	right = _right;
 	bottom = _bottom;
     
-    /// @description Sets the rectangle with the given dimensions.
+    /// @description Resizes the hitbox to the given dimensions.
     /// @param {Real} left Left radius of the rectangle (optional, default is 0).
     /// @param {Real} top Top radius of the rectangle (optional, default is 0).
     /// @param {Real} right Right radius of the rectangle (optional, default is 0).
