@@ -1,6 +1,6 @@
 /// @description Initialize
 event_inherited();
-hitboxes[0].set_size(-8, -8, 8, 8);
+hitboxes[0].resize(-8, -8, 8, 8);
 reaction = function(_pla)
 {
     if (collision_player(0, _pla) and _pla.state != player_is_hurt and _pla.recovery_time < 90)

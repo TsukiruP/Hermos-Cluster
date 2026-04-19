@@ -270,7 +270,7 @@ player_perform = function(_state, _enter = true)
 /// @description Sets the given radii as the player's virtual mask.
 /// @param {Real} xrad Horizontal radius to use.
 /// @param {Real} yrad Vertical radius to use.
-player_set_radii = function(_xrad, _yrad)
+player_resize = function(_xrad, _yrad)
 {
     // Abort if radii already match
     if (x_radius == _xrad and y_radius == _yrad) exit;

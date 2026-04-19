@@ -1,6 +1,6 @@
 /// @description Initialize
 event_inherited();
-hitboxes[0].set_size(0, 0, sprite_width, sprite_height);
+hitboxes[0].resize(0, 0, sprite_width, sprite_height);
 rection = function(_pla)
 {
     // Abort if layers already match
