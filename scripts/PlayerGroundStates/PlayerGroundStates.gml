@@ -37,7 +37,7 @@ function player_is_standing(_phase)
             }
             
             // Animate
-            animation_start(cliff_sign != 0 ? "teeter" : "idle");
+            animation_start(cliff_sign != 0 ? "teeter" : "idle", 0, ["turn"]);
             break;
         }
         case PHASE.STEP:
@@ -127,7 +127,7 @@ function player_is_running(_phase)
             	if (input_axis_x != 0)
             	{
             		// Decelerate
-                    if (x_speed != 0 and sign(x_speed) != input_axis_x)
+                    if (sign(x_speed) == -input_axis_x)
                     {
                         can_brake = true;
                         x_speed += deceleration * input_axis_x;
