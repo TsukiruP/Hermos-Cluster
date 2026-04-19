@@ -3,7 +3,10 @@ var x_int = x div 1;
 var y_int = y div 1;
 
 // Player
+image_alpha = (recovery_time > 0 ? (recovery_time mod 4 < 2) : 1);
+player_draw_before();
 draw_self_floored();
+player_draw_after();
 
 // Virtual mask
 var sine = dsin(mask_direction);
