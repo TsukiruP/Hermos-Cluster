@@ -316,6 +316,17 @@ player_render = function()
         }
         case "trick_back":
         {
+            player_animate(global.anim_sonic_trick_back);
+            player_set_radii(6, 14);
+            if (image_index == 0)
+            {
+                hitboxes[0].set_size(-6, -16, 6, 14);
+                hitboxes[1].set_size();
+            }
+            break;
+        }
+        case "flight_ride":
+        {
             player_animate(global.anim_sonic_flight_ride);
             player_set_radii(6, 14);
             if (image_index == 0)
