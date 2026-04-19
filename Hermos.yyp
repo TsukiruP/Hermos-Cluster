@@ -525,6 +525,7 @@
     {"id":{"name":"PlayerEffectAnimations","path":"scripts/PlayerEffectAnimations/PlayerEffectAnimations.yy",},},
     {"id":{"name":"PlayerGroundStates","path":"scripts/PlayerGroundStates/PlayerGroundStates.yy",},},
     {"id":{"name":"PlayerMacros","path":"scripts/PlayerMacros/PlayerMacros.yy",},},
+    {"id":{"name":"PlayerMilesAnimations","path":"scripts/PlayerMilesAnimations/PlayerMilesAnimations.yy",},},
     {"id":{"name":"PlayerReactionStates","path":"scripts/PlayerReactionStates/PlayerReactionStates.yy",},},
     {"id":{"name":"PlayerShieldAnimations","path":"scripts/PlayerShieldAnimations/PlayerShieldAnimations.yy",},},
     {"id":{"name":"PlayerSonicAnimations","path":"scripts/PlayerSonicAnimations/PlayerSonicAnimations.yy",},},
