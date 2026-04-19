@@ -1,0 +1,13 @@
+{
+  "$GMScript":"v1",
+  "%Name":"PlayerAmyAnimations",
+  "isCompatibility":false,
+  "isDnD":false,
+  "name":"PlayerAmyAnimations",
+  "parent":{
+    "name":"Amy",
+    "path":"folders/Stage/Player/Characters/Amy.yy",
+  },
+  "resourceType":"GMScript",
+  "resourceVersion":"2.0",
+}
