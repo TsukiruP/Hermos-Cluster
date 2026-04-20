@@ -407,4 +407,5 @@ player_render = function()
             }
             break;
         }
+    }
 }
