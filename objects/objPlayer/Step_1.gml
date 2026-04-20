@@ -2,12 +2,12 @@
 if (not (ctrlGame.game_paused & PAUSE_FLAG_MENU))
 {
     animation_update();
-    /*with (spin_dash_dust) animation_update();
-    with (shield) animation_update();
-    with (miasma) animation_update();
-    with (speed_break) animation_update();
+    with (spin_dash_dust) animation_update();
+    //with (shield) animation_update();
+    //with (miasma) animation_update();
+    //with (speed_break) animation_update();
     
-    for (var i = 0; i < AFTERIMAGE_COUNT; i++)
+    /*for (var i = 0; i < AFTERIMAGE_COUNT; i++)
     {
         with (afterimage_trail[i])
         {

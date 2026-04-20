@@ -40,8 +40,8 @@
   "nineSlice":null,
   "origin":9,
   "parent":{
-    "name":"Run",
-    "path":"folders/Stage/Player/Characters/Amy/Sprites/Run.yy",
+    "name":"Run Alt",
+    "path":"folders/Stage/Player/Characters/Amy/Sprites/Run Alt.yy",
   },
   "preMultiplyAlpha":false,
   "resourceType":"GMSprite",

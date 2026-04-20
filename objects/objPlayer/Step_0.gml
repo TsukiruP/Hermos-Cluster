@@ -22,7 +22,43 @@ if (input_enabled and (player_index == 0 or cpu_gamepad_time > 0))
     if (cpu_gamepad_time > 0) cpu_gamepad_time--;
 }
 
+// CPU
+
 // State
 state(PHASE.STEP);
 if (state_changed) state_changed = false;
 player_render();
+
+//Swap
+
+// Spin Dash Dust
+with (spin_dash_dust)
+{
+    var action = other.state;
+    if (action == player_is_spin_dashing)
+    {
+        var x_int = other.x div 1;
+        var y_int = other.y div 1;
+        var sine = dsin(other.gravity_direction);
+        var cosine = dcos(other.gravity_direction);
+        
+        x = x_int + sine * other.y_radius;
+        y = y_int + cosine * other.y_radius;
+        image_xscale = other.image_xscale;
+        image_angle = other.mask_direction;
+        anim_core.variant = (floor(other.spin_dash_charge) > 2);
+        animation_set(global.anim_spin_dash_dust);
+    }
+    else if (anim_core.anim != undefined)
+    {
+        animation_set(undefined);
+    }
+}
+
+// Shield
+
+// Miasma
+
+// Speed Break
+
+// Afterimages

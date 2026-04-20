@@ -188,7 +188,7 @@ function player_is_running(_phase)
             }
             
             // Roll
-            if (input_axis_y == 1 and x_speed >= ROLL_THRESHOLD and input_axis_x == 0)
+            if (input_axis_y == 1 and abs(x_speed) >= ROLL_THRESHOLD and input_axis_x == 0)
             {
                 if (object_index != objAmy or (object_index == objAmy and db_read(SAVE_DATABASE, AMY_DEFAULT_SPIN, "amy", "spin")))
                 {

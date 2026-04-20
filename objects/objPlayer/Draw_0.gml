@@ -8,6 +8,9 @@ player_draw_before();
 draw_self_floored();
 player_draw_after();
 
+// Spin Dash Dust
+with (spin_dash_dust) draw_self_floored();
+
 // Virtual mask
 var sine = dsin(mask_direction);
 if (sine == 0)
