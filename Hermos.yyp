@@ -115,6 +115,7 @@
     {"$GMFolder":"","%Name":"Hurt","folderPath":"folders/Stage/Player/Characters/Amy/Sprites/Hurt.yy","name":"Hurt","resourceType":"GMFolder","resourceVersion":"2.0",},
     {"$GMFolder":"","%Name":"Jump","folderPath":"folders/Stage/Player/Characters/Amy/Sprites/Jump.yy","name":"Jump","resourceType":"GMFolder","resourceVersion":"2.0",},
     {"$GMFolder":"","%Name":"Look","folderPath":"folders/Stage/Player/Characters/Amy/Sprites/Look.yy","name":"Look","resourceType":"GMFolder","resourceVersion":"2.0",},
+    {"$GMFolder":"","%Name":"Run Alt","folderPath":"folders/Stage/Player/Characters/Amy/Sprites/Run Alt.yy","name":"Run Alt","resourceType":"GMFolder","resourceVersion":"2.0",},
     {"$GMFolder":"","%Name":"Run","folderPath":"folders/Stage/Player/Characters/Amy/Sprites/Run.yy","name":"Run","resourceType":"GMFolder","resourceVersion":"2.0",},
     {"$GMFolder":"","%Name":"Spring","folderPath":"folders/Stage/Player/Characters/Amy/Sprites/Spring.yy","name":"Spring","resourceType":"GMFolder","resourceVersion":"2.0",},
     {"$GMFolder":"","%Name":"Teeter","folderPath":"folders/Stage/Player/Characters/Amy/Sprites/Teeter.yy","name":"Teeter","resourceType":"GMFolder","resourceVersion":"2.0",},
