@@ -157,3 +157,59 @@ function player_is_hurt(_phase)
         }
     }
 }
+
+function player_is_dead(_phase)
+{
+    switch (_phase)
+    {
+        case PHASE.ENTER:
+        {
+            // Set flags
+            state_time = 64;
+            boost_mode = false;
+            
+            // Detach from ground
+            player_ground(false);
+            
+            // Animate
+            animation_start("dead");
+            
+            // Disable pause
+            if (player_index == 0)
+            {
+                with (ctrlStage) pause_allow = false;
+            }
+            break;
+        }
+        case PHASE.STEP:
+        {
+            if (player_index == 0 and --state_time == 0)
+            {
+                if (LIVES_ENABLED and --global.life_count <= 0)
+                {
+                    transition_create(room, TRANSITION.GAME_OVER);
+                }
+                else
+                {
+                    transition_create(room, TRANSITION.TRY_AGAIN);
+                    with (ctrlGame) game_flags |= GAME_FLAG_KEEP_CHARACTERS;
+                }
+            }
+            
+            // Move
+            var sine = dsin(gravity_direction);
+            var cosine = dcos(gravity_direction);
+            x += sine * y_speed;
+            y += cosine * y_speed;
+            
+            // Fall
+            if (y_speed < gravity_cap) y_speed = min(y_speed + gravity_force, gravity_cap);
+            break;
+        }
+        case PHASE.EXIT:
+        {
+            recovery_time = RECOVERY_DURATION;
+            break;
+        }
+    }
+}

@@ -464,7 +464,7 @@ player_refresh_cpu = function()
 /// @description Respawns the CPU.
 player_respawn_cpu = function()
 {
-    var can_respawn = false //(ctrlStage.stage_players[0].state != player_is_dead);
+    var can_respawn = (ctrlStage.stage_players[0].state != player_is_dead);
     if (can_respawn)
     {
         recovery_time = RECOVERY_DURATION;

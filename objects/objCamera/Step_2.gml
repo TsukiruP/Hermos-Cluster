@@ -23,7 +23,7 @@ switch (state)
         on_ground = focus.on_ground;
         
         // Follow
-        //if (action != player_is_dead)
+        if (action != player_is_dead)
         {
             x = focus.x div 1;
             y = focus.y div 1;
