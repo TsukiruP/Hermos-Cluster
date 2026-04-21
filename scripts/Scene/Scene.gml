@@ -27,6 +27,10 @@ function room_get_scene(_room = room)
         {
             return global.stg_test;
         }
+        case rmNewTest:
+        {
+            return global.stg_new_test;
+        }
         default:
         {
             return global.scn_default;
@@ -54,8 +58,8 @@ function transition_create(_room, _override = undefined)
     
     with (ctrlMusic)
     {
-        //var room_music = room_scene.music;
-        //if (room_music == undefined or not audio_is_playing(room_music)) audio_clear_music();
+        var room_music = room_scene.music;
+        if (room_music == undefined or not audio_is_playing(room_music)) audio_clear_bgm();
     }
     
     return transition;

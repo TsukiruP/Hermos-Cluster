@@ -238,7 +238,7 @@ switch (index)
                 transition_time = 60;
                 audio_stop_sound(bgmInvincibility);
                 audio_stop_sound(bgmSpeedUp);
-                audio_clear_music();
+                audio_clear_bgm();
                 break;
             }
             case GAME_OVER_STATE.WAIT:
@@ -247,7 +247,7 @@ switch (index)
                 {
                     state = GAME_OVER_STATE.JINGLE;
                     transition_time = audio_sound_length(bgmGameOver) * 60 div 1;
-                    audio_play_single(bgmGameOver);
+                    audio_play_sound(bgmGameOver, PRIORITY_MUSIC, false, global.volume_music);
                     audio_stop_sound(bgmLife);
                 }
                 break;

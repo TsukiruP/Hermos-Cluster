@@ -58,7 +58,7 @@ player_drop_rings = function()
     }
     
     global.ring_count = 0;
-    audio_play_single(sfxDropRings);
+    audio_play_sfx(sfxDropRings);
 };
 
 /// @description Increases the player's life count by the given amount.
@@ -101,31 +101,31 @@ player_obtain_item = function(_item)
         case ITEM.BASIC:
         {
             shield.index = SHIELD.BASIC;
-            audio_play_single(sfxItemBasic);
+            audio_play_sfx(sfxItemBasic);
             break;
         }
         case ITEM.MAGNETIC:
         {
             shield.index = SHIELD.MAGNETIC;
-            audio_play_single(sfxItemBasic);
+            audio_play_sfx(sfxItemBasic);
             break;
         }
         case ITEM.AQUA:
         {
             shield.index = SHIELD.AQUA;
-            audio_play_single(sfxItemAqua);
+            audio_play_sfx(sfxItemAqua);
             break;
         }
         case ITEM.FLAME:
         {
             shield.index = SHIELD.FLAME;
-            audio_play_single(sfxItemFlame);
+            audio_play_sfx(sfxItemFlame);
             break;
         }
         case ITEM.THUNDER:
         {
             shield.index = SHIELD.THUNDER;
-            audio_play_single(sfxItemThunder);
+            audio_play_sfx(sfxItemThunder);
             break;
         }
         case ITEM.INVINCIBILITY:
@@ -154,7 +154,7 @@ player_obtain_item = function(_item)
                 superspeed_time = -DEBUFF_DURAION;
                 player_refresh_physics();
                 audio_stop_sound(bgmSpeedUp);
-                audio_play_single(sfxItemDebuff);
+                audio_play_sfx(sfxItemDebuff);
             }
             break;
         }
@@ -163,7 +163,7 @@ player_obtain_item = function(_item)
             if (invincibility_time == 0)
             {
                 confusion_time = DEBUFF_DURAION;
-                audio_play_single(sfxItemDebuff);
+                audio_play_sfx(sfxItemDebuff);
             }
             break;
         }
