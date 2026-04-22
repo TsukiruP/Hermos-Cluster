@@ -100,7 +100,7 @@ player_ground = function (attach)
 /// @description Sets the player's angle values.
 player_detect_angle = function ()
 {
-	// Check for points of collision with the ground
+	// Check for contact with the ground
 	var edge = 0;
 	if (player_raycast(hard_colliders, -x_radius, y_radius + 1)) edge |= 1;
 	if (player_raycast(hard_colliders, x_radius, y_radius + 1)) edge |= 2;
@@ -111,7 +111,7 @@ player_detect_angle = function ()
 	// Set new angle values
 	if (edge & (edge - 1) == 0) // Check for only one point (power of 2 calculation)
 	{
-		// Calculate offset point, and reposition it if applicable
+		// Calculate contact point
 		var sine = dsin(mask_direction);
 		var cosine = dcos(mask_direction);
 		var ox = x div 1 + sine * y_radius;
@@ -135,40 +135,20 @@ player_detect_angle = function ()
 
 /// @method player_rotate_mask
 /// @description Updates the direction of the player's virtual mask on slopes.
-/// @see {@link https://github.com/Tpot-SSL/Sonic-MAX/blob/12e88bed0e41c5ed26fd0404b061ee9d461ebec9/Sonic%20MAX%20Engine.gmx/scripts/scrPlayerSpeedMovement.gml#L59}
 player_rotate_mask = function ()
 {
-	static prev_dir = 0;
-	
-	var diff = angle_difference(direction, mask_direction);
-	if (abs(diff) > 45)
-	{
-		var prev_mask_dir = mask_direction;
-		mask_direction = angle_wrap(mask_direction + 90 * sign(diff));
-		
-		// 2 seems to be the minimum required offset for this to work
-		if (not (landed or player_raycast(hard_colliders, sign(diff) * 2, y_radius + y_snap_distance)))
-		{
-			direction = prev_dir;
-			local_direction = angle_wrap(direction - gravity_direction);
-			mask_direction = prev_mask_dir;
-		}
-	}
-	
-	prev_dir = direction;
-	
-	/*if (rotation_lock_time > 0 and not landed)
+	if (rotation_lock_time > 0 and not landed)
 	{
 		--rotation_lock_time;
 		exit;
 	}
 	
-	var new_mask_dir = round(direction / 90) mod 4 * 90;
-	if (mask_direction != new_mask_dir)
+	var diff = angle_difference(direction, mask_direction);
+	if (abs(diff) > 45)
 	{
-		mask_direction = new_mask_dir;
+		mask_direction = angle_wrap(mask_direction + 90 * sign(diff));
 		rotation_lock_time = (not landed) * max(16 - abs(x_speed * 2) div 1, 0);
-	}*/
+	}
 };
 
 /// @method player_keep_in_bounds

@@ -140,10 +140,10 @@ player_get_collisions = function ()
 /// @returns {Real}
 player_calc_tile_normal = function (ox, oy)
 {
-	// Set up angle sensors
 	var sine = dsin(mask_direction);
 	var cosine = dcos(mask_direction);
 	
+	// Set up angle sensors, one at each end of a tile
 	if (sine == 0)
 	{
 		var sensor_y = array_create(2, oy);
