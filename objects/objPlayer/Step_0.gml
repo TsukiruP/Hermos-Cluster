@@ -62,3 +62,24 @@ with (spin_dash_dust)
 // Speed Break
 
 // Afterimages
+player_enqueue_animation_history();
+afterimage_trail.visible = true;
+if (afterimage_trail.visible)
+{
+    for (var i = 0; i < AFTERIMAGE_COUNT; i++)
+    {
+        var delay = i * 2 + 2;
+        var history_index = modwrap(anim_history.index - delay, 0, ANIMATION_RECORD_COUNT);
+        var history_element = anim_history.records[history_index];
+        with (afterimage_trail.afterimages[i])
+        {
+            x = history_element.x;
+            y = history_element.y;
+            image_xscale = history_element.image_xscale;
+            image_yscale = history_element.image_yscale;
+            image_angle = history_element.image_angle;
+            animation_set(history_element.anim);
+            anim_core.speed = history_element.speed;
+        }
+    }
+}

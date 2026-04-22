@@ -191,8 +191,8 @@ player_speed_break = function()
     {
         var x_scale = other.image_xscale;
         var rot = other.direction;
-        time = 0;
         visible = true;
+        time = 0;
         animation_set(global.anim_speed_break);
         for (var i = 0; i < SPEED_BREAK_COUNT; i++)
         {

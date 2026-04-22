@@ -2,6 +2,25 @@
 var x_int = x div 1;
 var y_int = y div 1;
 
+// Afterimages
+with (afterimage_trail)
+{
+    if (visible)
+    {
+        array_foreach(afterimages, function(_element, _index)
+        {
+            with (_element)
+            {
+                if (time == _index and sprite_exists(sprite_index))
+                {
+                    var alpha = 0.625 - _index * 0.125;
+                    draw_sprite_ext(sprite_index, image_index, x, y, image_xscale, image_yscale, image_angle, c_white, alpha);
+                }
+            }
+        });
+    }
+}
+
 // Player
 image_alpha = (recovery_time > 0 ? (recovery_time mod 4 < 2) : 1);
 player_draw_before();

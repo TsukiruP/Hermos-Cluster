@@ -88,3 +88,20 @@ player_animate_spring = function(_anim)
     
     player_animate(_anim);
 };
+
+/// @description Records the player's current position and animation within the animation history.
+player_enqueue_animation_history = function()
+{
+    with (anim_history.records[anim_history.index])
+    {
+        x = other.x div 1;
+        y = other.y div 1;
+        image_xscale = other.image_xscale;
+        image_yscale = other.image_yscale;
+        image_angle = other.image_angle;
+        anim = other.anim_core.anim;
+        speed = other.anim_core.speed;
+    }
+    
+    anim_history.index = ++anim_history.index mod ANIMATION_RECORD_COUNT;
+};

@@ -130,12 +130,65 @@ cpu_axis_y = array_create(CPU_RECORD_COUNT);
 cpu_input_jump = array_create(CPU_RECORD_COUNT);
 cpu_input_jump_pressed = array_create(CPU_RECORD_COUNT);
 
-// Animation
+// Animation core
 anim_core = new animation_core();
 
-// TODO: Animation history
-// TODO: Afterimage
-// TODO: Speed Break
+// Animation history
+/// @description Creates a new animation record.
+animation_record = function() constructor
+{
+    x = 0;
+    y = 0;
+    image_xscale = 1;
+    image_yscale = 1;
+    image_angle = 0;
+    anim = undefined;
+    speed = 1;
+};
+
+anim_history =
+{
+    index : 0,
+    records : array_create_ext(ANIMATION_RECORD_COUNT, function() { return new animation_record(); })
+};
+
+// Afterimage
+/// @description Creates a new afterimage.
+afterimage = function() constructor
+{
+    sprite_index = -1;
+    image_index = 0;
+    image_xscale = 1;
+    image_yscale = 1;
+    image_angle = 0;
+    image_blend = c_white;
+    image_alpha = 1;
+    anim_core = new animation_core();
+    time = 0;
+};
+
+afterimage_trail =
+{
+    visible : false,
+    afterimages : array_create_ext(AFTERIMAGE_COUNT, function() { return new afterimage(); })
+};
+
+// Speed Break
+speed_break =
+{
+    x : 0,
+    y : 0,
+    visible : false,
+    sprite_index : -1,
+    image_index : 0,
+    image_angle : 0,
+    anim_core : new animation_core(),
+    time : 0,
+    positions : array_create_ext(SPEED_BREAK_COUNT, function() { return array_create(2); }),
+    accelerations : array_create_ext(SPEED_BREAK_COUNT, function() { return array_create(2); }),
+    x_drag : 128,
+    y_drag : 0,
+};
 
 // Methods
 var n = 0;

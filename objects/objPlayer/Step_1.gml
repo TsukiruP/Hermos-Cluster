@@ -6,15 +6,14 @@ if (not (ctrlGame.game_paused & PAUSE_FLAG_MENU))
     //with (shield) animation_update();
     //with (miasma) animation_update();
     //with (speed_break) animation_update();
-    
-    /*for (var i = 0; i < AFTERIMAGE_COUNT; i++)
+    with (afterimage_trail) array_foreach(afterimages, function(_element, _index)
     {
-        with (afterimage_trail[i])
+        with (_element)
         {
             animation_update();
             time = ++time mod AFTERIMAGE_COUNT;
         }
-    }*/
+    });
 }
 
 // Abort if game is paused at all
