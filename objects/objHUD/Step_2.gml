@@ -17,6 +17,6 @@ if (item_feed_config)
         var popup_element = item_feed[i];
         var popup_time = popup_element.time;
         var popup_xend = CAMERA_WIDTH / 2 + 9 * (array_length(item_feed) - 1) - i * ITEM_WIDTH;
-        popup_element.x = interpolate(popup_xstart, popup_xend, popup_time / popup_duration, EASE_SMOOTHSTEP);
+        popup_element.x = interpolate(popup_xstart, popup_xend, popup_time / item_popup_duration, EASE_SMOOTHSTEP);
     }
 }
