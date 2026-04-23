@@ -38,7 +38,6 @@ player_drop_rings = function()
         {
             gravity_direction = other.gravity_direction;
             image_angle = gravity_direction;
-            
             lost = true;
             x_speed = lengthdir_x(spd, dir);
             y_speed = lengthdir_y(spd, dir);
@@ -136,6 +135,7 @@ player_obtain_item = function(_item)
                 superspeed_time = 0;
                 player_refresh_physics();
             }
+            
             if (confusion_time > 0) confusion_time = 0;
             audio_play_jingle(bgmInvincibility);
             break;
@@ -180,40 +180,6 @@ player_obtain_item = function(_item)
         {
             array_push(item_feed, new item_popup(_item));
             item_feed_time = item_feed_duration;
-        }
-    }
-};
-
-/// @description Creates a Speed Break effect.
-player_speed_break = function()
-{
-    with (speed_break)
-    {
-        var x_scale = other.image_xscale;
-        var rot = other.direction;
-        visible = true;
-        time = 0;
-        animation_set(global.anim_speed_break);
-        for (var i = 0; i < SPEED_BREAK_COUNT; i++)
-        {
-            var old_rot, accel;
-            positions[i][1] = irandom(4) + 16;
-            if (x_scale == -1)
-            {
-                old_rot = rot + 270;
-                positions[i][0] = dcos(rot + 180) * positions[i][1];
-                positions[i][1] = -dsin(rot + 180) * positions[i][1];
-            }
-            else
-            {
-                old_rot = rot + 90;
-                positions[i][0] = dcos(rot) * positions[i][1];
-                positions[i][1] = -dsin(rot) * positions[i][1];
-            }
-            
-            accel = irandom(4) + 2;
-            accelerations[i][0] = dcos(old_rot) * accel;
-            accelerations[i][1] = -dsin(old_rot) * accel;
         }
     }
 };
