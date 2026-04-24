@@ -533,6 +533,7 @@
     {"id":{"name":"PlayerReactionStates","path":"scripts/PlayerReactionStates/PlayerReactionStates.yy",},},
     {"id":{"name":"PlayerShieldAnimations","path":"scripts/PlayerShieldAnimations/PlayerShieldAnimations.yy",},},
     {"id":{"name":"PlayerSonicAnimations","path":"scripts/PlayerSonicAnimations/PlayerSonicAnimations.yy",},},
+    {"id":{"name":"PlayerTrickActionStates","path":"scripts/PlayerTrickActionStates/PlayerTrickActionStates.yy",},},
     {"id":{"name":"RingAnimations","path":"scripts/RingAnimations/RingAnimations.yy",},},
     {"id":{"name":"SaveDatabase","path":"scripts/SaveDatabase/SaveDatabase.yy",},},
     {"id":{"name":"Scene","path":"scripts/Scene/Scene.yy",},},

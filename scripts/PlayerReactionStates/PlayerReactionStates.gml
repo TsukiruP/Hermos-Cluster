@@ -15,6 +15,7 @@ function player_is_sprung(_phase)
         {
             // Trick Action
             if (state_time > 0) state_time--;
+            if (player_try_trick_action(state_time)) exit;
             
             // Accelerate
             if (input_axis_x != 0)

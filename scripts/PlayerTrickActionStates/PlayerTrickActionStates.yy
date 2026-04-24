@@ -1,0 +1,13 @@
+{
+  "$GMScript":"v1",
+  "%Name":"PlayerTrickActionStates",
+  "isCompatibility":false,
+  "isDnD":false,
+  "name":"PlayerTrickActionStates",
+  "parent":{
+    "name":"States",
+    "path":"folders/Stage/Player/States.yy",
+  },
+  "resourceType":"GMScript",
+  "resourceVersion":"2.0",
+}

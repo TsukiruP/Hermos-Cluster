@@ -90,32 +90,38 @@ player_try_jump = function()
 /// @desctiption Checks if the player performs a Trick Action.
 /// @param [time] Time to check (optional, defaults to 0).
 /// @returns {Bool}
-/*player_try_trick_action = function(_time = 0)
+player_try_trick_action = function(_time = 0)
 {
     if (input_button.tag.pressed)
     {
         var trick_actions_config = db_read(CONFIG_DATABASE, CONFIG_DEFAULT_TRICK_ACTIONS, "trick_actions");
         if (trick_actions_config and _time == 0)
         {
-            trick_index = TRICK.BACK;
             if (input_axis_y == -1)
             {
                 trick_index = TRICK.UP;
+                animation_start("trick_up");
             }
             else if (input_axis_y == 1)
             {
                 trick_index = TRICK.DOWN;
+                animation_start("trick_down");
                 if (object_index == objSonic or object_index == objAmy) boost_mode = false;
             }
             else if (input_axis_x == image_xscale)
             {
                 trick_index = TRICK.FRONT;
+                animation_start("trick_front");
+            }
+            else
+            {
+                trick_index = TRICK.BACK;
+                animation_start("trick_back");
             }
             
             player_gain_score(100);
             player_perform(player_is_trick_preparing);
-            if (not ((object_index == objSonic or object_index == objKnuckles or object_index == objAmy) and
-                trick_index == TRICK.DOWN))
+            if (not ((object_index == objSonic or object_index == objKnuckles or object_index == objAmy) and trick_index == TRICK.DOWN))
             {
                 audio_play_sfx(sfxTrickAction);
             }
@@ -125,7 +131,7 @@ player_try_jump = function()
     }
     
     return false;
-};*/
+};
 
 /// @description Check is the player calls for a Flight Assist.
 /// @returns {Bool}
