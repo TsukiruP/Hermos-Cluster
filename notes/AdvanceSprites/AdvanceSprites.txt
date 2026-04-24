@@ -104,11 +104,11 @@
 | Glide Ride | 94-0, 94-1 |
 | Glide Ride Turn | 95-0, 95-1, 95-2, 95-3 |
 | Hammer Sprung | 101-0, 101-1 |
-| Hammer Attack | 42-0 |
-| Chao Attack | 98-0, 99-0, 100-0 |
 | Skid Attack | 37-0, 37-1, 37-2 |
 | Insta-Shield | 43-0, 43-1 |
 | Air Dash | (SA2) 19-0 |
+| Hammer Attack | 42-0 |
+| Chao Attack | 98-0, 99-0, 100-0 |
 
 # Miles
 
@@ -143,20 +143,20 @@
 | Glide Ride | 420-0, 420-1 |
 | Glide Ride Turn | 421-0, 421-1, 421-2, 421-3 |
 | Hammer Sprung | 427-0, 421-1 |
-| Hammer Attack | 368-0 |
-| Chao Attack | 424-0, 425-0, 426-0 |
 | Flight | 351-0 |
 | Flight Turn | (SA2) 203-0 |
 | Flight Tired | 352-0 |
 | Flight Cancel | (SA1) 158-0 |
-| Flight Hammer | 358-0 |
-| Flight Hammer Attack | 358-1 |
 | Swim | 393-0 |
 | Swim Turn | 394-0 |
 | Swim Tired | 395-0 |
 | Tail Swipe | 363-0 |
 | Tornado Attack | 364-0, 364-1, 364-2, 364-3 |
 | Insta-Shield | 369-0 |
+| Hammer Attack | 368-0 |
+| Hammer Flight | 358-0 |
+| Hammer Flight Attack | 358-1 |
+| Chao Attack | 424-0, 425-0, 426-0 |
 
 # Knuckles
 
@@ -190,13 +190,13 @@
 | Leap Jump | 580-0, 580-1, 580-2, 580-3 |
 | Flight Ride | 581-0 |
 | Hammer Sprung | 590-0, 590-1 |
-| Hammer Attack | 531-0 |
-| Chao Attack | 587-0, 588-0, 589-0 |
 | Glide | 514-0 |
 | Glide Turn | 515-0, 515-1, 515-2, 515-3 |
 | Wall Cling | 571-0 |
 | Climb | 572-0, 572-1, 572-2 |
 | Dash Climb | 543-0 |
+| Hammer Attack | 531-0 |
+| Chao Attack | 587-0, 588-0, 589-0 |
 
 # Amy
 
@@ -236,7 +236,6 @@
 | Glide Ride | 746-0, 746-1 |
 | Glide Ride Turn | 747-0, 747-1, 747-2, 747-3 |
 | Hammer Attack | 689-0, (SA1) 353-0 |
-| Chao Attack | 750-0, 751-0, 752-0 |
 | Big Hammer Attack | 690-0 |
 | Air Hammer Attack | 695-0 |
 | Air Hammer Jump | 696-0 |
@@ -244,6 +243,7 @@
 | Hammer Jump | 726-0, (SA1) 373-0 |
 | Leap | 704-0, (SA1) 374-0 |
 | Head Slide | 725-0, 725-1, 725-2, (SA2) 380-0, 380-1, 380-2, 380-3, (SA1) 375-0, 375-1 |
+| Chao Attack | 750-0, 751-0, 752-0 |
 
 # Cream
 
@@ -280,11 +280,11 @@
 | Glide Ride | 257-0, 257-1 |
 | Glide Ride Turn | 258-0, 258-1, 258-2, 258-3 |
 | Hammer Sprung | 264-0, 264-1 |
-| Hammer Attack | 205-0 |
 | Chao Attack | 200-0, 200-1 |
 | Flight | 188-0 |
 | Flight Turn | 188-1 |
 | Flight Tired | 189-0 |
 | Flight Cancel | 190-0 |
+| Hammer Attack | 205-0 |
 
 * Cream's eyelids were recolored in SA3, so use SA3 sprites.
