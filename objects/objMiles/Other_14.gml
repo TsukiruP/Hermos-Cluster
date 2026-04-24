@@ -288,6 +288,7 @@ player_render = function()
         }
         case "trick_front":
         {
+            if (anim_core.variant == 1 and y_speed > 0) anim_core.variant = 2;
             player_animate(global.anim_miles_trick_front);
             player_resize(6, 14);
             if (image_index == 0)
@@ -299,6 +300,7 @@ player_render = function()
         }
         case "trick_back":
         {
+            if (anim_core.variant == 1 and y_speed > 0) anim_core.variant = 2;
             player_animate(global.anim_miles_trick_back);
             player_resize(6, 14);
             switch (anim_core.variant)
