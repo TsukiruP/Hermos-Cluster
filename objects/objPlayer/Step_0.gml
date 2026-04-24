@@ -286,7 +286,7 @@ with (speed_break)
 player_enqueue_animation_history();
 with (afterimage_trail)
 {
-    visible = boost_mode;
+    visible = other.boost_mode;
     if (visible)
     {
         var history = other.anim_history;
