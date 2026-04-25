@@ -698,9 +698,10 @@ amy_create_hammer_trail = function(_pattern)
         
         visible = true;
         gravity_direction = other.gravity_direction;
+        anim_name = other.anim_core.name;
+        anim_variant = other.anim_core.variant;
         
         time = 0;
-        state = other.state;
         pattern = _pattern;
         offset_index = 0;
     }

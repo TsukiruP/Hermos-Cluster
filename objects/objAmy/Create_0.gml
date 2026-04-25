@@ -8,9 +8,10 @@ hammer_trail =
 {
     visible : false,
     gravity_direction : 0,
+    anim_name : "",
+    anim_variant : 0,
     hearts : array_create_ext(HEART_COUNT, function() { return new attachment(); }),
     time : 0,
-    state : undefined,
     pattern : 0,
     offset_index : 0,
     offsets :

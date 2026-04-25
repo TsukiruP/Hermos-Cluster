@@ -5,7 +5,7 @@ if (ctrlGame.game_paused) exit;
 // Hammer trail
 with (hammer_trail)
 {
-    if (state != other.state)
+    if (anim_name != other.anim_core.name or anim_variant != other.anim_core.variant)
     {
         if (visible)
         {
