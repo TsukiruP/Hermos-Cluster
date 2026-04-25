@@ -7,7 +7,6 @@ trick_speed = [[0, -6], [0, 1], [6, 0], [-3.5, -2]];
 hammer_trail =
 {
     visible : false,
-    gravity_direction : 0,
     anim_name : "",
     anim_variant : 0,
     hearts : array_create_ext(HEART_COUNT, function() { return new attachment(); }),
@@ -57,7 +56,7 @@ hammer_trail =
             [30, -19, 6]
         ]
     ],
-    refresh : function(_pla)
+    create_heart : function(_pla)
     {
         var i = 0;
         while (hearts[i].visible)
@@ -80,7 +79,7 @@ hammer_trail =
                 x = x_int + cosine * x_offset + sine * y_offset;
                 y = y_int - sine * x_offset + cosine * y_offset;
                 visible = true;
-                image_angle = other.gravity_direction;
+                image_angle = _pla.gravity_direction;
                 animation_set(global.anim_amy_heart);
             }
         }
@@ -91,23 +90,31 @@ hammer_trail =
 trick_trail =
 {
     visible : false,
-    gravity_direction : 0,
     hearts : array_create_ext(HEART_COUNT, function() { return new attachment(); }),
     time : 0,
     active : 0,
     destroy : 0,
-    offset : function(_pla, _index)
+    create_heart : function(_pla, _index)
     {
         with (hearts[_index])
         {
-            x = _pla.x;
-            y = _pla.y;
+            x = _pla.x div 1;
+            y = _pla.y div 1;
+            image_angle = _pla.gravity_direction;
+            
             anim_core.force = true;
             animation_set(global.anim_amy_heart);
             
-            if (_index == 1) y += 8;
-            else if (_index == 3) y -= 8;
-            // TODO: This should consider gravity_direction
+            if (_index == 1)
+            {
+                x += dsin(image_angle) * 8;
+                y += dcos(image_angle) * 8;
+            }
+            else if (_index == 3)
+            {
+                x -= dsin(image_angle) * 8;
+                y -= dcos(image_angle) * 8;
+            }
         }
         
         active |= (1 << _index);

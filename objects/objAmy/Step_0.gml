@@ -41,9 +41,7 @@ with (hammer_trail)
             var old_time = time++;
             if (old_time > duration)
             {
-                gravity_direction = other.gravity_direction;
-                refresh(other);
-                
+                create_heart(other);
                 offset_index = ++offset_index mod 8;
                 if (offset_index == 0) time = 0;
             }
@@ -71,8 +69,8 @@ with (trick_trail)
                 {
                     if (animation_is_finished())
                     {
-                        animation_set(undefined);
                         other.active &= ~(1  << i);
+                        animation_set(undefined);
                     }
                 }
             }
@@ -84,19 +82,19 @@ with (trick_trail)
         {
             if (time == 0)
             {
-                offset(other, 0);
+                create_heart(other, 0);
             }
             else if (time == 3)
             {
-                offset(other, 1);
+                create_heart(other, 1);
             }
             else if (time == 7)
             {
-                offset(other, 2);
+                create_heart(other, 2);
             }
             else if (time == 11)
             {
-                offset(other, 3);
+                create_heart(other, 3);
             }
         }
         
