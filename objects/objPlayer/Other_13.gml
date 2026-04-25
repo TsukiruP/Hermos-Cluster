@@ -121,7 +121,7 @@ player_try_trick_action = function(_time = 0)
             
             player_gain_score(100);
             player_perform(player_is_trick_preparing);
-            if (not ((object_index == objSonic or object_index == objKnuckles or object_index == objAmy) and trick_index == TRICK.DOWN))
+            if (not (trick_index == TRICK.DOWN and (object_index == objSonic or object_index == objKnuckles or object_index == objAmy)))
             {
                 audio_play_sfx(sfxTrickAction);
             }

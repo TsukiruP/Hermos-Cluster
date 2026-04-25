@@ -33,7 +33,7 @@ function player_is_trick_preparing(_phase)
             // Trick
             if (animation_is_finished())
             {
-                if (((object_index == objSonic or object_index == objKnuckles or object_index == objAmy)) and trick_index == TRICK.DOWN)
+                if (trick_index == TRICK.DOWN and (object_index == objSonic or object_index == objKnuckles or object_index == objAmy))
                 {
                     switch (object_index)
                     {
@@ -80,11 +80,11 @@ function player_is_tricking(_phase)
         case PHASE.ENTER:
         {
             // Set time
-            if ((object_index == objSonic or object_index == objAmy) and trick_index == TRICK.FRONT)
+            if (trick_index == TRICK.FRONT and (object_index == objSonic or object_index == objAmy))
             {
                 state_time = 45;
             }
-            else if (object_index == objKnuckles and (trick_index == TRICK.FRONT or trick_index == TRICK.BACK))
+            else if ((trick_index == TRICK.FRONT or trick_index == TRICK.BACK) and object_index == objKnuckles)
             {
                 state_time = 10;
             }
@@ -101,10 +101,10 @@ function player_is_tricking(_phase)
         case PHASE.STEP:
         {
             if (state_time > 0) state_time--;
-            if ((object_index == objSonic or object_index == objAmy) and trick_index == TRICK.FRONT and state_time == 0) animation_start("fall");
+            if (trick_index == TRICK.FRONT and (object_index == objSonic or object_index == objAmy) and state_time == 0) animation_start("fall");
             
-            var trick_spiral = (object_index == objKnuckles and trick_index == TRICK.UP);
-            var trick_glide = (object_index == objKnuckles and (trick_index == TRICK.FRONT or trick_index == TRICK.BACK) and state_time > 0);
+            var trick_spiral = (trick_index == TRICK.UP and object_index == objKnuckles);
+            var trick_glide = ((trick_index == TRICK.FRONT or trick_index == TRICK.BACK) and object_index == objKnuckles and state_time > 0);
             
             // Accelerate
             if (not trick_spiral or y_speed > 0)
@@ -132,7 +132,7 @@ function player_is_tricking(_phase)
             // Land
             if (on_ground)
             {
-                if (object_index == objKnuckles and trick_index == TRICK.FRONT) return player_perform(player_is_trick_somersaulting);
+                if (trick_index == TRICK.FRONT and object_index == objKnuckles) return player_perform(player_is_trick_somersaulting);
                 return player_perform(x_speed != 0 ? player_is_running : player_is_standing);
             }
             
@@ -147,7 +147,7 @@ function player_is_tricking(_phase)
                 if (y_speed < gravity_cap)
                 {
                     var trick_force = gravity_force;
-                    var trick_float = ((object_index == objMiles or object_index == objCream) and (trick_index == TRICK.FRONT or trick_index == TRICK.BACK) and y_speed < 0);
+                    var trick_float = ((trick_index == TRICK.FRONT or trick_index == TRICK.BACK) and (object_index == objMiles or object_index == objCream) and y_speed < 0);
                     if (trick_float) trick_force /= 2;
                     y_speed = min(y_speed + trick_force, gravity_cap);
                 }
