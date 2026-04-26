@@ -3,15 +3,17 @@
 /// @method player_intersect
 /// @description Checks if the given collider's mask intersects the player's virtual mask.
 /// @param {Asset.GMObject|Id.Instance|Id.TileMapElement|Array} ind Object, instance, or tilemap to check, or an array containing any of these.
+/// @param {Real} [xrad] Distance to extend the player's mask horizontally both ways (optional, default is the player's x-radius).
+/// @param {Real} [yrad] Distance to extend the player's mask vertically both ways (optional, default is the player's y-radius).
 /// @returns {Bool}
-player_intersect = function (ind)
+player_intersect = function (ind, xrad = x_radius, yrad = y_radius)
 {
 	var x_int = x div 1;
 	var y_int = y div 1;
 	
 	return mask_direction mod 180 == 0 ?
-		collision_rectangle(x_int - x_radius, y_int - y_radius, x_int + x_radius, y_int + y_radius, ind, true, false) != noone :
-		collision_rectangle(x_int - y_radius, y_int - x_radius, x_int + y_radius, y_int + x_radius, ind, true, false) != noone;
+		collision_rectangle(x_int - xrad, y_int - yrad, x_int + xrad, y_int + yrad, ind, true, false) != noone :
+		collision_rectangle(x_int - yrad, y_int - xrad, x_int + yrad, y_int + xrad, ind, true, false) != noone;
 };
 
 /// @method player_boxcast

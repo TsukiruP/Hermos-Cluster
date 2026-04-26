@@ -137,17 +137,10 @@ player_detect_angle = function ()
 /// @description Updates the direction of the player's virtual mask on slopes.
 player_rotate_mask = function ()
 {
-	if (rotation_lock_time > 0 and not landed)
-	{
-		--rotation_lock_time;
-		exit;
-	}
-	
 	var diff = angle_difference(direction, mask_direction);
-	if (abs(diff) > 45)
+	if (abs(diff) > 45 and player_intersect(hard_colliders, y_radius + 1, x_radius))
 	{
 		mask_direction = angle_wrap(mask_direction + 90 * sign(diff));
-		rotation_lock_time = (not landed) * max(16 - abs(x_speed * 2) div 1, 0);
 	}
 };
 
