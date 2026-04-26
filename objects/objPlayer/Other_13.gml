@@ -290,7 +290,7 @@ player_try_trick_action = function(_time = 0)
 
 /// @description Check if the player performs a ground skill.
 /// @returns {Bool}
-/*player_try_ground_skill = function()
+player_try_ground_skill = function()
 {
     // Abort if not player controlled
     if (player_index != 0 and cpu_gamepad_time == 0) return false;
@@ -310,7 +310,7 @@ player_try_trick_action = function(_time = 0)
                     var hammer_skill_save = db_read(SAVE_DATABASE, AMY_DEFAULT_HAMMER_SKILL, "amy", "hammer_skill");
                     if (hammer_skill_save == AMY_HAMMER_SKILL.BIG_HAMMER_ATTACK)
                     {
-                        animation_play(AMY_ANIMATION.BIG_HAMMER_ATTACK);
+                        animation_start("big_hammer_attack");
                     }
                     else
                     {
@@ -325,7 +325,7 @@ player_try_trick_action = function(_time = 0)
     }
     
     return false;
-};*/
+};
 
 /// @description Checks if the player performs an air skill.
 /// @returns {Bool}

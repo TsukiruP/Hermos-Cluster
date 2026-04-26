@@ -110,6 +110,9 @@ function player_is_standing(_phase)
                     if (input_axis_y == 1) return player_perform(player_is_crouching);
                 }
             }
+            
+            // Skill
+            player_try_ground_skill();
             break;
         }
         case PHASE.EXIT:
@@ -247,6 +250,9 @@ function player_is_running(_phase)
             {
                 animation_start("run");
             }
+            
+            // Skill
+            player_try_ground_skill();
             break;
         }
         case PHASE.EXIT:
@@ -306,6 +312,9 @@ function player_is_looking(_phase)
             {
                 return player_perform(player_is_standing);
             }
+            
+            // Skill
+            player_try_ground_skill();
             break;
         }
         case PHASE.EXIT:
@@ -375,6 +384,9 @@ function player_is_crouching(_phase)
             {
                 return player_perform(player_is_standing);
             }
+            
+            // Skill
+            player_try_ground_skill();
             break;
         }
         case PHASE.EXIT:
@@ -536,7 +548,7 @@ function player_is_hammer_attacking(_phase)
             hammer_double = false;
             
             // Animate
-            animation_start("hammer");
+            animation_start("hammer_attack");
             break;
         }
         case PHASE.STEP:
@@ -565,7 +577,7 @@ function player_is_hammer_attacking(_phase)
             if (input_button.aux.pressed and object_index == objAmy)
             {
                 var hammer_skill_save = db_read(SAVE_DATABASE, AMY_DEFAULT_HAMMER_SKILL, "amy", "hammer_skill");
-                if (hammer_skill_save == AMY_HAMMER_SKILL.DOUBLE_HAMMER_ATTACK and animation_data.variant == 0 and hammer_double == false)
+                if (hammer_skill_save == AMY_HAMMER_SKILL.DOUBLE_HAMMER_ATTACK and anim_core.variant == 0 and hammer_double == false)
                 {
                     hammer_double = true;
                 }
@@ -585,7 +597,7 @@ function player_is_hammer_attacking(_phase)
                         x_speed = image_xscale * 3;
                         
                         // Animate
-                        animation_data.variant++;
+                        anim_core.variant++;
                         amy_create_hammer_trail(HEART_PATTERN.DOUBLE_HAMMER_ATTACK);
                         exit;
                     }
