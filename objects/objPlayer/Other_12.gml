@@ -138,7 +138,7 @@ player_detect_angle = function ()
 player_rotate_mask = function ()
 {
 	var diff = angle_difference(direction, mask_direction);
-	if (abs(diff) > 45 and player_intersect(hard_colliders, y_radius + 1, x_radius))
+	if (abs(diff) > 45 and player_intersect(hard_colliders, y_radius, x_radius))
 	{
 		mask_direction = angle_wrap(mask_direction + 90 * sign(diff));
 	}

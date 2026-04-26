@@ -11,9 +11,10 @@ player_intersect = function (ind, xrad = x_radius, yrad = y_radius)
 	var x_int = x div 1;
 	var y_int = y div 1;
 	
+	// Extend right/bottom sides slightly for tilemaps (see: https://github.com/YoYoGames/GameMaker-Bugs/issues/14294)
 	return mask_direction mod 180 == 0 ?
-		collision_rectangle(x_int - xrad, y_int - yrad, x_int + xrad, y_int + yrad, ind, true, false) != noone :
-		collision_rectangle(x_int - yrad, y_int - xrad, x_int + yrad, y_int + xrad, ind, true, false) != noone;
+		collision_rectangle(x_int - xrad, y_int - yrad, x_int + xrad + SUBPIXEL, y_int + yrad + SUBPIXEL, ind, true, false) != noone :
+		collision_rectangle(x_int - yrad, y_int - xrad, x_int + yrad + SUBPIXEL, y_int + xrad + SUBPIXEL, ind, true, false) != noone;
 };
 
 /// @method player_boxcast
@@ -33,11 +34,11 @@ player_boxcast = function (ind, ylen)
 	var x2 = x_int + cosine * x_radius + sine * ylen;
 	var y2 = y_int - sine * x_radius + cosine * ylen;
 	
-	// Account for outer edge overlap bug (see: https://github.com/YoYoGames/GameMaker-Bugs/issues/14176)
+	// Extend right/bottom sides slightly for tilemaps
 	var left = min(x1, x2);
 	var top = min(y1, y2);
-	var right = max(x1, x2) + 0.00101;
-	var bottom = max(y1, y2) + 0.00101;
+	var right = max(x1, x2) + SUBPIXEL;
+	var bottom = max(y1, y2) + SUBPIXEL;
 	
 	return collision_rectangle(left, top, right, bottom, ind, true, false) != noone;
 };
@@ -101,16 +102,18 @@ player_get_collisions = function ()
 	var x2 = x_int + cosine * x_wall_radius;
 	var y2 = y_int - sine * x_wall_radius;
 	
-	// Account for outer edge overlap bug
-	var left = min(x1, x2);
-	var top = min(y1, y2);
-	var right = max(x1, x2) + 0.00101;
-	var bottom = max(y1, y2) + 0.00101;
-	
 	// Register semisolid tilemap
-	if (semisolid_tilemap != -1 and collision_rectangle(left, top, right, bottom, semisolid_tilemap, true, false) == noone)
+	if (semisolid_tilemap != -1)
 	{
-		array_push(hard_colliders, semisolid_tilemap);
+		var left = min(x1, x2);
+		var top = min(y1, y2);
+		var right = max(x1, x2) + SUBPIXEL;
+		var bottom = max(y1, y2) + SUBPIXEL;
+		
+		if (collision_rectangle(left, top, right, bottom, semisolid_tilemap, true, false) == noone)
+		{
+			array_push(hard_colliders, semisolid_tilemap);
+		}
 	}
 	
 	// Detect instances intersecting the player's virtual mask
@@ -129,7 +132,7 @@ player_get_collisions = function ()
 		
 		// Register solid instances (exclude semisolids)
 		if (not (instance_exists(ind) and object_is_ancestor(ind.object_index, objSolid))) continue;
-		if (ind.semisolid and collision_rectangle(left, top, right, bottom, ind, true, false) != noone) continue;
+		if (ind.semisolid and collision_rectangle(x1, y1, x2, y2, ind, true, false) != noone) continue;
 		
 		array_push(hard_colliders, ind);
 	}
