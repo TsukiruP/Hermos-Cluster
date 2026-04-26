@@ -167,23 +167,6 @@ player_keep_in_bounds = function()
     var top = 0;
     var right = room_width;
     var bottom = room_height;
-    
-    // Check if already inside (early out)
-    var vertical = gravity_direction mod 180 == 0;
-	if (vertical)
-	{
-		var x1 = x - x_radius;
-		var y1 = y - y_radius;
-		var x2 = x + x_radius;
-		var y2 = y + y_radius;
-	}
-	else
-	{
-		var x1 = x - y_radius;
-		var y1 = y - x_radius;
-		var x2 = x + y_radius;
-		var y2 = y + x_radius;
-	}
 	
 	with (objCamera)
 	{
@@ -193,46 +176,46 @@ player_keep_in_bounds = function()
 		bottom = bound_bottom;
 	}
 	
-	if (rectangle_in_rectangle(x1, y1, x2, y2, left, top, right, bottom) == 1)
-	{
-		var limit = median(left + x_radius, x, right - x_radius);
-		if (x != limit)
-		{
-			x = limit;
-			x_speed = 0;
-		}
-		
-		if (y - y_radius > bottom and gravity_direction == 0)
-		{
-			y = bottom + y_radius;
-			return false;
-		}
-		else if (y + y_radius < top and gravity_direction == 180)
-		{
-			y = top - y_radius;
-			return false;
-		}
-	}
-	else
-	{
-		var limit = median(top + x_radius, y, bottom - x_radius);
-		if (y != limit)
-		{
-			y = limit;
-			x_speed = 0;
-		}
-		
-		if (x - y_radius > right and gravity_direction == 90)
-		{
-			x = right + y_radius;
-			return false;
-		}
-		else if (x + y_radius < left and gravity_direction == 270)
-		{
-			x = left - y_radius;
-			return false;
-		}
-	}
+	if (gravity_direction mod 180 == 0)
+    {
+        var limit = median(left + x_radius, x, right - x_radius);
+        if (x != limit)
+        {
+            x = limit;
+            x_speed = 0;
+        }
+        
+        if (y - y_radius > bottom and gravity_direction == 0)
+        {
+            y = bottom + y_radius;
+            return false;
+        }
+        else if (y + y_radius < top and gravity_direction == 180)
+        {
+            y = top - y_radius;
+            return false;
+        }
+    }
+    else
+    {
+        var limit = median(top + x_radius, y, bottom - x_radius);
+        if (y != limit)
+        {
+            y = limit;
+            x_speed = 0;
+        }
+        
+        if (x - y_radius > right and gravity_direction == 90)
+        {
+            x = right + y_radius;
+            return false;
+        }
+        else if (x + y_radius < left and gravity_direction == 270)
+        {
+            x = left - y_radius;
+            return false;
+        }
+    }
 	
 	return true;
 }
