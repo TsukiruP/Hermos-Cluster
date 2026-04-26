@@ -134,9 +134,6 @@ function player_is_running(_phase)
             // Jump
             if (player_try_jump()) exit;
             
-            // Apply slope friction
-            player_resist_slope();
-            
             // Handle ground motion
             var can_brake = false;
             var can_turn = false;
@@ -183,6 +180,9 @@ function player_is_running(_phase)
             	}
             }
             
+            // Apply slope friction
+            player_resist_slope();
+            
             // Apply speed limit
             if (abs(x_speed) > speed_limit) x_speed = speed_limit * sign(x_speed);
             
@@ -194,16 +194,14 @@ function player_is_running(_phase)
             if (not on_ground) return player_perform(player_is_falling);
             
             // Slide down steep slopes
-            if (abs(x_speed) < SLIDE_THRESHOLD)
+            if (abs(x_speed) < SLIDE_THRESHOLD and local_direction >= 45 and local_direction <= 315)
             {
                 if (local_direction >= 90 and local_direction <= 270)
                 {
                     return player_perform(player_is_falling);
                 }
-                else if (local_direction >= 45 and local_direction <= 315)
-                {
-                    control_lock_time = SLIDE_DURATION;
-                }
+                
+                control_lock_time = SLIDE_DURATION;
             }
             
             // Roll
@@ -402,12 +400,6 @@ function player_is_rolling(_phase)
             // Jump
             if (player_try_jump()) exit;
             
-            // Apply slope friction
-            var friction_downhill = 60 / 256;
-            var friction_uphill = friction_downhill / 4;
-            var slope_friction = (sign(x_speed) == sign(dsin(local_direction)) ? friction_uphill : friction_downhill);
-            player_resist_slope(slope_friction);
-            
             // Decelerate
             if (control_lock_time == 0)
             {
@@ -428,6 +420,12 @@ function player_is_rolling(_phase)
             // Friction
             x_speed -= min(abs(x_speed), roll_friction) * sign(x_speed);
             
+            // Apply slope friction
+            var friction_downhill = 60 / 256;
+            var friction_uphill = friction_downhill / 4;
+            var slope_friction = (sign(x_speed) == sign(dsin(local_direction)) ? friction_uphill : friction_downhill);
+            player_resist_slope(slope_friction);
+            
             // Move
             player_move_on_ground();
             if (state_changed) exit;
@@ -436,16 +434,14 @@ function player_is_rolling(_phase)
             if (not on_ground) return player_perform(player_is_falling);
             
             // Slide down steep slopes
-            if (abs(x_speed) < SLIDE_THRESHOLD)
+            if (abs(x_speed) < SLIDE_THRESHOLD and local_direction >= 45 and local_direction <= 315)
             {
                 if (local_direction >= 90 and local_direction <= 270)
                 {
                     return player_perform(player_is_falling);
                 }
-                else if (local_direction >= 45 and local_direction <= 315)
-                {
-                    control_lock_time = SLIDE_DURATION;
-                }
+                
+                control_lock_time = SLIDE_DURATION;
             }
             
             // Unroll

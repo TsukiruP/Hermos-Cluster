@@ -118,10 +118,10 @@ player_get_collisions = function()
 /// @returns {Real}
 player_calc_tile_normal = function(_x, _y)
 {
-    // Set up angle sensors
     var sine = dsin(mask_direction);
     var cosine = dcos(mask_direction);
     
+    // Set up angle sensors, one at each end of a tile
     if (sine == 0)
     {
         var sensor_y = array_create(2, _y);
@@ -157,5 +157,5 @@ player_calc_tile_normal = function(_x, _y)
         }
     }
     
-    return point_direction(sensor_x[0], sensor_y[0], sensor_x[1], sensor_y[1]) div 1;
+    return round(point_direction(sensor_x[0], sensor_y[0], sensor_x[1], sensor_y[1]));
 };

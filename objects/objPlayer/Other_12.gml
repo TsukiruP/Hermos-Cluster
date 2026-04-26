@@ -104,7 +104,7 @@ player_ground = function(_attach)
 /// @description Sets the player's angle values.
 player_detect_angle = function()
 {
-    // Check for points of collision with the ground
+    // Check for contact with the ground
     var edge = 0;
     if (player_raycast(tilemaps, -x_radius, y_radius + 1)) edge |= 1;
     if (player_raycast(tilemaps, x_radius, y_radius + 1)) edge |= 2;
@@ -115,7 +115,7 @@ player_detect_angle = function()
     // Set new angle values
     if (edge & (edge - 1) == 0) // Check for only one point (power of 2 calculation)
     {
-        // Calculate offset point, and reposition it if applicable
+        // Calculate contact point
         var sine = dsin(mask_direction);
         var cosine = dcos(mask_direction);
         var ox = x div 1 + sine * y_radius;
@@ -151,12 +151,12 @@ player_rotate_mask = function()
         exit;
     }
     
-    var new_mask_direction = round(direction / 90) mod 4 * 90;
-    if (mask_direction != new_mask_direction)
-    {
-        mask_direction = new_mask_direction;
-        rotation_lock_time = (not landed) * max(16 - abs(x_speed * 2) div 1, 0);
-    }
+    var diff = angle_difference(direction, mask_direction);
+	if (abs(diff) > 45)
+	{
+		mask_direction = angle_wrap(mask_direction + 90 * sign(diff));
+		rotation_lock_time = (not landed) * max(16 - abs(x_speed * 2) div 1, 0);
+	}
 };
 
 /// @description Confines the player inside the camera boundary.
@@ -195,29 +195,19 @@ player_keep_in_bounds = function()
 	
 	if (rectangle_in_rectangle(x1, y1, x2, y2, left, top, right, bottom) == 1)
 	{
-		return true;
-	}
-	
-	// Reposition
-	if (vertical)
-	{
-		if (x1 < left)
+		var limit = median(left + x_radius, x, right - x_radius);
+		if (x != limit)
 		{
-			x = left + x_radius;
-			x_speed = 0;
-		}
-		else if (x2 > right)
-		{
-			x = right - x_radius;
+			x = limit;
 			x_speed = 0;
 		}
 		
-		if (y1 > bottom and gravity_direction == 0)
+		if (y - y_radius > bottom and gravity_direction == 0)
 		{
 			y = bottom + y_radius;
 			return false;
 		}
-		else if (y2 < top and gravity_direction == 180)
+		else if (y + y_radius < top and gravity_direction == 180)
 		{
 			y = top - y_radius;
 			return false;
@@ -225,23 +215,19 @@ player_keep_in_bounds = function()
 	}
 	else
 	{
-		if (y1 < top)
+		var limit = median(top + x_radius, y, bottom - x_radius);
+		if (y != limit)
 		{
-			y = top + x_radius;
-			x_speed = 0;
-		}
-		else if (y2 > bottom)
-		{
-			y = bottom - x_radius;
+			y = limit;
 			x_speed = 0;
 		}
 		
-		if (x1 > right and gravity_direction == 90)
+		if (x - y_radius > right and gravity_direction == 90)
 		{
 			x = right + y_radius;
 			return false;
 		}
-		else if (x2 < left and gravity_direction == 270)
+		else if (x + y_radius < left and gravity_direction == 270)
 		{
 			x = left - y_radius;
 			return false;
