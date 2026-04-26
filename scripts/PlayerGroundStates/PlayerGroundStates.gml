@@ -1,3 +1,22 @@
+function player_is_template(_phase)
+{
+    switch (_phase)
+    {
+        case PHASE.ENTER:
+        {
+            break;
+        }
+        case PHASE.STEP:
+        {
+            break;
+        }
+        case PHASE.EXIT:
+        {
+            break;
+        }
+    }
+}
+
 function player_is_ready(_phase)
 {
     switch (_phase)
@@ -517,10 +536,67 @@ function player_is_hammer_attacking(_phase)
     {
         case PHASE.ENTER:
         {
+            // Set flag
+            hammer_double = false;
+            
+            // Animate
+            animation_start("hammer");
             break;
         }
         case PHASE.STEP:
         {
+            // Friction
+            x_speed -= min(abs(x_speed), 0.375) * sign(x_speed);
+            
+            // Move
+            player_move_on_ground();
+            if (state_changed) exit;
+            
+            // Fall
+            if (not on_ground or (local_direction >= 90 and local_direction <= 270))
+            {
+                return player_perform(player_is_falling);
+            }
+            
+            // Slide down steep slopes
+            if (local_direction >= 45 and local_direction <= 315)
+            {
+                control_lock_time = SLIDE_DURATION;
+                return player_perform(player_is_running);
+            }
+            
+            // Double Hammer Attack
+            if (input_button.aux.pressed and object_index == objAmy)
+            {
+                var hammer_skill_save = db_read(SAVE_DATABASE, AMY_DEFAULT_HAMMER_SKILL, "amy", "hammer_skill");
+                if (hammer_skill_save == AMY_HAMMER_SKILL.DOUBLE_HAMMER_ATTACK and animation_data.variant == 0 and hammer_double == false)
+                {
+                    hammer_double = true;
+                }
+            }
+            
+            // End / extend
+            if (animation_is_finished()) 
+            {
+                if (object_index == objAmy)
+                {
+                    if (hammer_double)
+                    {
+                        // Set flag
+                        hammer_double = false;
+                        
+                        // Advance
+                        x_speed = image_xscale * 3;
+                        
+                        // Animate
+                        animation_data.variant++;
+                        amy_create_hammer_trail(HEART_PATTERN.DOUBLE_HAMMER_ATTACK);
+                        exit;
+                    }
+                }
+                
+                return player_perform(x_speed != 0 ? player_is_running : player_is_standing);
+            }
             break;
         }
         case PHASE.EXIT:

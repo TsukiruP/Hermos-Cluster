@@ -1,22 +1,3 @@
-function player_is_(_phase)
-{
-    switch (_phase)
-    {
-        case PHASE.ENTER:
-        {
-            break;
-        }
-        case PHASE.STEP:
-        {
-            break;
-        }
-        case PHASE.EXIT:
-        {
-            break;
-        }
-    }
-}
-
 function player_is_trick_preparing(_phase)
 {
     switch (_phase)

@@ -311,6 +311,8 @@ player_refresh_physics = function()
     trick_bound_force = 56 / 256;
     trick_bound_height = 6;
     
+    aqua_bound_height = 7.5 * 0.75;
+    
     // Superspeed modification
     if (superspeed_time > 0)
     {
