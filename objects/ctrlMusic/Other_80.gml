@@ -20,6 +20,8 @@ if (playback_id == life and not playback_stopped)
         mute = 0;
         fade_music(music, global.volume_music);
     }
+    
+    life = noone;
 }
 
 // Drown
@@ -38,6 +40,8 @@ if (playback_id == drown)
             fade_music(music, global.volume_music);
         }
     }
+    
+    drown = noone;
 }
 
 // Jingles
