@@ -1,0 +1,13 @@
+{
+  "$GMScript":"v1",
+  "%Name":"PlayerCreamStates",
+  "isCompatibility":false,
+  "isDnD":false,
+  "name":"PlayerCreamStates",
+  "parent":{
+    "name":"Cream",
+    "path":"folders/Stage/Player/Characters/Cream.yy",
+  },
+  "resourceType":"GMScript",
+  "resourceVersion":"2.0",
+}

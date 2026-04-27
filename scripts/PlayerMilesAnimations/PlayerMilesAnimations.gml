@@ -86,12 +86,12 @@ global.anim_miles_flight_v0 = new animation(sprMilesFlight0, 2);
 global.anim_miles_flight_v1 = new animation(sprMilesFlight1, 1, -1);
 global.anim_miles_flight = [global.anim_miles_flight_v0, global.anim_miles_flight_v1];
 
+global.anim_miles_flight_hammer_v0 = new animation(sprMilesHammerFlight0, 2);
+global.anim_miles_flight_hammer_v1 = new animation(sprMilesHammerFlight1, [1, 1, 1, 2, 3, 1, 1, 2, 2, 2, 2, 2, 2, 2, 2], -1);
+global.anim_miles_flight_hammer = [global.anim_miles_flight_hammer_v0, global.anim_miles_flight_hammer_v1];
+
 global.anim_miles_flight_tired_v0 = new animation(sprMilesFlightTired, [6, 4, 6, 6, 6, 6, 6, 6, 6, 6], 2);
 global.anim_miles_flight_tired = [global.anim_miles_flight_tired_v0];
 
 global.anim_miles_flight_cancel_v0 = new animation(sprMilesFlightCancel, 3, 2);
 global.anim_miles_flight_cancel = [global.anim_miles_flight_cancel_v0];
-
-global.anim_miles_hammer_flight_v0 = new animation(sprMilesHammerFlight0, 2);
-global.anim_miles_hammer_flight_v1 = new animation(sprMilesHammerFlight1, [1, 1, 1, 2, 3, 1, 1, 2, 2, 2, 2, 2, 2, 2, 2], -1);
-global.anim_miles_hammer_flight = [global.anim_miles_hammer_flight_v0, global.anim_miles_hammer_flight_v1];

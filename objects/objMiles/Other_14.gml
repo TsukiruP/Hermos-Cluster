@@ -360,41 +360,10 @@ player_render = function()
             }
             break;
         }
-        case "flight_tired":
-        {
-            player_animate(global.anim_miles_flight_tired);
-            player_resize(6, 14);
-            if (image_index == 0)
-            {
-                hitboxes[0].resize(-6, -10, 6, 10);
-                hitboxes[1].resize();
-            }
-            break;
-        }
-        case "flight_cancel":
-        {
-            player_animate(global.anim_miles_flight_cancel);
-            player_resize(6, 14);
-            if (image_index == 0)
-            {
-                hitboxes[0].resize(-6, -10, 6, 10);
-                hitboxes[1].resize();
-            }
-            else if (image_index == 1)
-            {
-                hitboxes[0].resize(-2, -10, 10, 10);
-                hitboxes[1].resize();
-            }
-            break;
-        }
-        case "hammer":
-        {
-            break;
-        }
-        case "hammer_flight":
+        case "flight_hammer":
         {
             if (anim_core.variant == 1 and animation_is_finished()) anim_core.variant = 0;
-            player_animate(global.anim_miles_hammer_flight);
+            player_animate(global.anim_miles_flight_hammer);
             player_resize(6, 14);
             switch (anim_core.variant)
             {
@@ -427,6 +396,37 @@ player_render = function()
                     break;
                 }
             }
+            break;
+        }
+        case "flight_tired":
+        {
+            player_animate(global.anim_miles_flight_tired);
+            player_resize(6, 14);
+            if (image_index == 0)
+            {
+                hitboxes[0].resize(-6, -10, 6, 10);
+                hitboxes[1].resize();
+            }
+            break;
+        }
+        case "flight_cancel":
+        {
+            player_animate(global.anim_miles_flight_cancel);
+            player_resize(6, 14);
+            if (image_index == 0)
+            {
+                hitboxes[0].resize(-6, -10, 6, 10);
+                hitboxes[1].resize();
+            }
+            else if (image_index == 1)
+            {
+                hitboxes[0].resize(-2, -10, 10, 10);
+                hitboxes[1].resize();
+            }
+            break;
+        }
+        case "hammer":
+        {
             break;
         }
     }

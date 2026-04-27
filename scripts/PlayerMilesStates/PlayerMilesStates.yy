@@ -1,0 +1,13 @@
+{
+  "$GMScript":"v1",
+  "%Name":"PlayerMilesStates",
+  "isCompatibility":false,
+  "isDnD":false,
+  "name":"PlayerMilesStates",
+  "parent":{
+    "name":"Miles",
+    "path":"folders/Stage/Player/Characters/Miles.yy",
+  },
+  "resourceType":"GMScript",
+  "resourceVersion":"2.0",
+}

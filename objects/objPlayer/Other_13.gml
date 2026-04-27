@@ -177,26 +177,28 @@ player_try_flight_assist = function()
                                 player_perform(player_is_propeller_flying);
                             }
                             
-                            /*var can_skill = false;
-                            // TODO: Sonic 3 AIR checks if Sonic can Flame Dash or Knuckles' is slower than 1 x_speed.
+                            var can_skill = false;
+                            
                             switch (object_index)
                             {
                                 case objSonic:
                                 {
-                                    // TODO: Check Sonic's skills.
-                                    //var skill_save = db_read(SAVE_DATABASE, MILES_GROUND_SKILL.NONE, "sonic", "jump_skill");
-                                    can_skill = true;
+                                    can_skill = (shield.index == SHIELD.FLAME or shield.index == SHIELD.AQUA);
                                     break;
                                 }
-                                case objCream:
+                                case objKnuckles:
                                 {
-                                    can_skill = true;
+                                    can_skill = (abs(x_speed) < 1);
+                                    break;
+                                }
+                                case objAmy:
+                                {
+                                    can_skill = (shield.index == SHIELD.FLAME or shield.index == SHIELD.AQUA);
                                     break;
                                 }
                             }
                             
-                            return not can_skill;*/
-                            return false;
+                            return not can_skill;
                         }
                     }
                 }
@@ -370,7 +372,7 @@ player_try_air_skill = function()
             }
             break;
         }
-        /*case objMiles:
+        case objMiles:
         {
             if (state == player_is_jumping or state == player_is_propeller_flying or aerial_mastery_config)
             {
@@ -397,7 +399,7 @@ player_try_air_skill = function()
                 }
             }
             break;
-        }*/
+        }
         case objKnuckles:
         {
             if (state == player_is_jumping or aerial_mastery_config)
@@ -460,7 +462,7 @@ player_try_air_skill = function()
             }
             break;
         }
-        /*case objCream:
+        case objCream:
         {
             if (state == player_is_jumping or state == player_is_fan_flying or aerial_mastery_config)
             {
@@ -482,14 +484,14 @@ player_try_air_skill = function()
                 }
             }
             break;
-        }*/
+        }
     }
     
     return false;
 };
 
 /// @description Resets air skills when grounded.
-/*player_refresh_air_skills = function()
+player_refresh_air_skills = function()
 {
     switch (object_index)
     {
@@ -500,7 +502,7 @@ player_try_air_skill = function()
             break;
         }
     }
-};*/
+};
 
 /// @description Evaluates the player's condition after taking a hit.
 /// @param {Id.Instance} inst Instance to check. Set to id to force a death, or noone to just hurt the player.

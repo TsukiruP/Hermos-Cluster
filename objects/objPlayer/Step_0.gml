@@ -23,13 +23,299 @@ if (input_enabled and (player_index == 0 or cpu_gamepad_time > 0))
 }
 
 // CPU
-
+if (player_index != 0 and cpu_gamepad_time == 0)
+{
+    var leader = ctrlStage.stage_players[0];
+    if (instance_exists(leader))
+    {
+        if (state != player_is_dead)
+        {
+            var dx = (leader.x - x) div 1;
+            var dy = (leader.y - y) div 1;
+            
+            var sine = dsin(gravity_direction);
+            var cosine = dcos(gravity_direction);
+            
+            switch (cpu_state)
+            {
+                case CPU_STATE.CROUCH:
+                {
+                    player_refresh_inputs();
+                    if (cpu_state_time == 0)
+                    {
+                        cpu_state = CPU_STATE.FOLLOW;
+                        cpu_state_time = 0;
+                    }
+                    else
+                    {
+                        if (abs(x_speed) < 0.25 and control_lock_time == 0 and on_ground)
+                        {
+                            x_speed = 0;
+                            input_axis_y = 1;
+                            image_xscale = esign(sine == 0 ? cosine * dx : -sine * dy, leader.image_xscale);
+                            if (state == player_is_crouching)
+                            {
+                                cpu_state = CPU_STATE.SPIN_DASH;
+                                cpu_state_time = 64;
+                            }
+                        }
+                        
+                        cpu_state_time--;
+                    }
+                    break;
+                }
+                case CPU_STATE.SPIN_DASH:
+                {
+                    player_refresh_inputs();
+                    if (cpu_state_time == 0)
+                    {
+                        cpu_state = CPU_STATE.FOLLOW;
+                        cpu_state_time = 0;
+                    }
+                    else
+                    {
+                        input_axis_y = 1;
+                        input_button.jump.pressed = (cpu_state_time mod 16 == 0);
+                        cpu_state_time--;
+                    }
+                    break;
+                }
+                case CPU_STATE.FLIGHT_ASSIST:
+                {
+                    if (state == player_is_propeller_flying)
+                    {
+                        player_refresh_inputs();
+                        if (flight_carry)
+                        {
+                            input_axis_x = InputOpposing(INPUT_VERB.LEFT, INPUT_VERB.RIGHT);
+                            input_axis_y = InputOpposing(INPUT_VERB.UP, INPUT_VERB.DOWN);
+                            input_button.jump.check = InputCheck(INPUT_VERB.JUMP);
+                            input_button.jump.pressed = InputPressed(INPUT_VERB.JUMP);
+                        }
+                        else
+                        {
+                            var x_dist = (sine == 0 ? cosine * dx : -sine * dy);
+                            var y_dist = (sine == 0 ? cosine * dy : sine * dx);
+                            if (x_dist > 256 or y_dist > 256 or flight_time > PROPELLER_FLIGHT_DURATION - 30)
+                            {
+                                cpu_state = CPU_STATE.FOLLOW;
+                                break;
+                            }
+                            else
+                            {
+                                x_dist -= x_speed * 16;
+                                x_dist += leader.x_speed * 16;
+                                if (x_dist <= -12)
+                                {
+                                    input_axis_x = -1;
+                                }
+                                else if (x_dist >= 12)
+                                {
+                                    input_axis_x = 1;
+                                }
+                                
+                                y_dist -= y_speed * 16;
+                                if (leader.input_axis_y == 1)
+                                {
+                                    y_dist += 64;
+                                }
+                                else
+                                {
+                                    var height_difference = max(64 - abs(leader.y_speed * 16), 0);
+                                    y_dist -= height_difference;
+                                }
+                                
+                                if (y_dist <= 0) input_button.jump.pressed = true;;
+                            }
+                        }
+                        break;
+                    }
+                    else if (cpu_state_time > 0)
+                    {
+                        input_button.jump.check = true;
+                        if (--cpu_state_time == 0 and state == player_is_jumping)
+                        {
+                            y_speed = max(y_speed, -2);
+                            flight_hammer = false;
+                            player_perform(player_is_propeller_flying);
+                        }
+                        break;
+                    }
+                    
+                    cpu_state = CPU_STATE.FOLLOW;
+                    break;
+                }
+                default:
+                {
+                    player_refresh_inputs();
+                    
+                    // Panic
+                    if (abs(x_speed) < 0.5 and control_lock_time > 0)
+                    {
+                        cpu_state = CPU_STATE.CROUCH;
+                        cpu_state_time = 128;
+                        break;
+                    }
+                    
+                    var x_offset = 32 * (abs(leader.x_speed) < 4);
+                    input_axis_x = leader.cpu_axis_x[0];
+                    input_axis_y = leader.cpu_axis_y[0];
+                    input_button.jump.check = leader.cpu_input_jump[0];
+                    input_button.jump.pressed = leader.cpu_input_jump_pressed[0];
+                    
+                    // Move
+                    var x_dist = (sine == 0 ? cosine * dx : -sine * dy);
+                    if (x_dist + 16 + x_offset < 0)
+                    {
+                        input_axis_x = -1;
+                        // TODO: The checks for xscale should also check if the player is pushing
+                        if (image_xscale == -1 and x_speed != 0)
+                        {
+                            if (sine == 0) x -= sign(cosine);
+                            else y -= -sine;
+                        }
+                    }
+                    else if (x_dist - 16 - x_offset > 0)
+                    {
+                        input_axis_x = 1;
+                        // TODO: The checks for xscale should also check if the player is pushing
+                        if (image_xscale == 1 and x_speed != 0)
+                        {
+                            if (sine == 0) x += sign(cosine);
+                            else y += -sine;
+                        }
+                    }
+                    
+                    // Jump
+                    var y_dist = (sine == 0 ? cosine * dy : sine * dx);
+                    var jump_auto = 0;
+                    // TODO: Check for pushing first
+                    if (y_dist + 32 > 0)
+                    {
+                        jump_auto = 2;
+                        cpu_state_time = 64;
+                    }
+                    else
+                    {
+                        if (cpu_state_time > 0) cpu_state_time--;
+                        jump_auto = (cpu_state_time > 0 ? 1 : 0);
+                    }
+                    
+                    if (leader.state != player_is_dead)
+                    {
+                        switch (jump_auto)
+                        {
+                            case 0:
+                            {
+                                if (on_ground)
+                                {
+                                    if (not input_button.jump.check) input_button.jump.pressed = true;
+                                    input_button.jump.check = true;
+                                }
+                                
+                                jump_cap = false;
+                                break;
+                            }
+                            case 1:
+                            {
+                                input_button.jump.check = true;
+                                break;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+        
+        // Respawn
+        if (not instance_in_view())
+        {
+            if (--cpu_respawn_time == 0) player_respawn_cpu();
+        }
+        else if (cpu_respawn_time != CPU_RESPAWN_DURATION)
+        {
+            cpu_respawn_time = CPU_RESPAWN_DURATION;
+        }
+        
+        // Swap to player
+        if (InputCheckMany(-1, player_index)) cpu_gamepad_time = CPU_GAMEPAD_DURATION;
+    }
+}
 // State
 state(PHASE.STEP);
 if (state_changed) state_changed = false;
 player_render();
 
 //Swap
+if (input_button.swap.pressed and player_index == 0 and array_length(ctrlStage.stage_players) > 1)
+{
+    if (state != player_is_hurt and state != player_is_dead)
+    {
+		var swap_config = db_read(CONFIG_DATABASE, CONFIG_DEFAULT_SWAP, "swap");
+		var partner = (input_button.alt.check ? array_last(ctrlStage.stage_players) : ctrlStage.stage_players[1]);
+		if (swap_config and partner.cpu_gamepad_time == 0)
+		{
+			if (instance_in_view(partner))
+			{
+				var can_leader_swap = (swap_time == 0 and sign(superspeed_time) != -1 and confusion_time == 0);
+                var can_partner_swap = false;
+                with (partner) can_partner_swap = (state != player_is_hurt and state != player_is_dead);
+                if (can_leader_swap and can_partner_swap)
+                {
+                    with (partner)
+                    {
+                        swap_time = SWAP_DURATION;
+                        shield.index = other.shield.index;
+                        invincibility_time = other.invincibility_time;
+                        superspeed_time = other.superspeed_time;
+                        player_refresh_inputs();
+                    }
+                    
+                    if (input_button.alt.check)
+                    {
+                        array_insert(global.characters, 0, array_pop(global.characters));
+                        with (ctrlStage) array_insert(stage_players, 0, array_pop(stage_players));
+                    }
+                    else
+                    {
+                        array_push(global.characters, array_shift(global.characters));
+                        with (ctrlStage) array_push(stage_players, array_shift(stage_players));
+                    }
+                    
+                    cpu_state = CPU_STATE.FOLLOW;
+                    player_refresh_status();
+                    player_refresh_inputs();
+                    player_refresh_cpu_records();
+                    audio_play_sfx(sfxSwap);
+                    //instance_create_depth(x, y, ctrlStage.display_depth, objSwapCooldown);
+                    InputVerbConsume(INPUT_VERB.SWAP);
+                    with (objCamera) focus = ctrlStage.stage_players[0];
+                    with (objPlayer)
+                    {
+                        player_index = array_get_index(ctrlStage.stage_players, id);
+                        depth = ctrlStage.player_depth + player_index;
+                    }
+                    
+                    // Flight Assist
+                    if (state == player_is_propeller_flying and not flight_hammer and flight_time < PROPELLER_FLIGHT_DURATION - 30)
+                    {
+                        cpu_state = CPU_STATE.FLIGHT_ASSIST;
+                    }
+                }
+                else
+                {
+                    audio_play_sfx(sfxSwapFail);
+                }
+			}
+			else
+			{
+				var can_respawn = false;
+                with (partner) can_respawn = (state != player_is_hurt and state != player_is_dead);
+                if (can_respawn) partner.player_respawn_cpu();
+			}
+		}
+	}
+}
 
 // Spin Dash Dust
 with (spin_dash_dust)

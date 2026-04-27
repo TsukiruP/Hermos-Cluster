@@ -1,4 +1,4 @@
-function player_is_template(_phase)
+function player_is_ground_template(_phase)
 {
     switch (_phase)
     {
@@ -8,6 +8,9 @@ function player_is_template(_phase)
         }
         case PHASE.STEP:
         {
+            // Move
+            player_move_on_ground();
+            if (state_changed) exit;
             break;
         }
         case PHASE.EXIT:
