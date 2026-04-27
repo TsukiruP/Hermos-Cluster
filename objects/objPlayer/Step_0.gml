@@ -287,8 +287,15 @@ if (input_button.swap.pressed and player_index == 0 and array_length(ctrlStage.s
                     player_refresh_inputs();
                     player_refresh_cpu_records();
                     audio_play_sfx(sfxSwap);
-                    //instance_create_depth(x, y, ctrlStage.display_depth, objSwapCooldown);
+                    
+                    // Swap Cooldown
+                    instance_destroy(objSwapCooldown);
+                    instance_create_depth(x, y, ctrlStage.display_depth, objSwapCooldown);
+                    
+                    // Consume verb due to event order
                     InputVerbConsume(INPUT_VERB.SWAP);
+                    
+                    // Swap players
                     with (objCamera) focus = ctrlStage.stage_players[0];
                     with (objPlayer)
                     {

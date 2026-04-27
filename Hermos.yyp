@@ -260,6 +260,7 @@
     {"id":{"name":"objSpringDiagonalAlt","path":"objects/objSpringDiagonalAlt/objSpringDiagonalAlt.yy",},},
     {"id":{"name":"objSpringHorizontal","path":"objects/objSpringHorizontal/objSpringHorizontal.yy",},},
     {"id":{"name":"objSpringVertical","path":"objects/objSpringVertical/objSpringVertical.yy",},},
+    {"id":{"name":"objSwapCooldown","path":"objects/objSwapCooldown/objSwapCooldown.yy",},},
     {"id":{"name":"objTransition","path":"objects/objTransition/objTransition.yy",},},
     {"id":{"name":"rmDevMenu","path":"rooms/rmDevMenu/rmDevMenu.yy",},},
     {"id":{"name":"rmNewTest","path":"rooms/rmNewTest/rmNewTest.yy",},},
