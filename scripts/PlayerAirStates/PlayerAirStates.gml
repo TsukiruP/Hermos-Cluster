@@ -44,6 +44,9 @@ function player_is_falling(_phase)
             // Land
             if (on_ground) return player_perform(x_speed != 0 ? player_is_running : player_is_standing);
             
+            // Skill
+            player_try_air_skill();
+            
             // Apply air resistance
             if (y_speed < 0 and y_speed > -4) x_speed -= x_speed / 32;
             
@@ -105,6 +108,9 @@ function player_is_jumping(_phase)
             
             // Land
             if (on_ground) return player_perform(x_speed != 0 ? player_is_running : player_is_standing);
+            
+            // Skill
+            player_try_air_skill();
             
             // Apply release height
             var input_jump = (jump_alternate == 2 ? input_button.aux.check : input_button.jump.check);

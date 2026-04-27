@@ -566,7 +566,7 @@ player_render = function()
                 hitboxes[0].resize(-10, -8, 10, 12);
                 hitboxes[1].resize(-14, -12, 14, 16);
             }
-            else if (image_index == 1)
+            else if (image_index == 11)
             {
                 hitboxes[0].resize(-6, -14, 6, 12);
                 hitboxes[1].resize();

@@ -544,7 +544,7 @@ function player_is_hammer_attacking(_phase)
     {
         case PHASE.ENTER:
         {
-            // Set flag
+            // Set flags
             hammer_double = false;
             
             // Animate
@@ -590,7 +590,7 @@ function player_is_hammer_attacking(_phase)
                 {
                     if (hammer_double)
                     {
-                        // Set flag
+                        // Set flags
                         hammer_double = false;
                         
                         // Advance

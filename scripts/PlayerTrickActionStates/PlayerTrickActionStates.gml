@@ -118,6 +118,7 @@ function player_is_tricking(_phase)
             }
             
             // Skill
+            player_try_air_skill();
             
             if (not trick_glide)
             {
@@ -160,7 +161,11 @@ function player_is_trick_bounding(_phase)
             if (state_changed) exit;
             
             // Rebound
-            if (on_ground) return player_perform(player_is_trick_rebounding);
+            if (on_ground)
+            {
+                if (object_index == objAmy) aerial_flags |= AERIAL_FLAG_HAMMER;
+                return player_perform(player_is_trick_rebounding);
+            }
             
             // Apply air resistance
             if (y_speed < 0 and y_speed > -4) x_speed -= x_speed / 32;

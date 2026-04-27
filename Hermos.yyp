@@ -524,6 +524,7 @@
     {"id":{"name":"Math","path":"scripts/Math/Math.yy",},},
     {"id":{"name":"PlayerAirStates","path":"scripts/PlayerAirStates/PlayerAirStates.yy",},},
     {"id":{"name":"PlayerAmyAnimations","path":"scripts/PlayerAmyAnimations/PlayerAmyAnimations.yy",},},
+    {"id":{"name":"PlayerAmyStates","path":"scripts/PlayerAmyStates/PlayerAmyStates.yy",},},
     {"id":{"name":"PlayerCreamAnimations","path":"scripts/PlayerCreamAnimations/PlayerCreamAnimations.yy",},},
     {"id":{"name":"PlayerEffectAnimations","path":"scripts/PlayerEffectAnimations/PlayerEffectAnimations.yy",},},
     {"id":{"name":"PlayerGroundStates","path":"scripts/PlayerGroundStates/PlayerGroundStates.yy",},},

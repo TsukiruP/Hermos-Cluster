@@ -10,73 +10,66 @@ player_check_ground_skill = function()
 /// @returns {Bool}
 player_try_jump = function()
 {
-    /*if (object_index == objAmy)
+    // Hammer Jump
+    if ((input_button.aux.pressed and ((input_axis_y == 1 and input_axis_x == 0) or input_button.alt.check)) and object_index == objAmy and player_check_ground_skill())
     {
-        if (player_check_ground_skill())
+        var hammer_jump_save = db_read(SAVE_DATABASE, AMY_DEFAULT_HAMMER_JUMP, "amy", "hammer_jump");
+        if (hammer_jump_save)
         {
-            // Hammer Jump
-            if (input_button.aux.pressed and ((input_axis_y == 1 and input_axis_x == 0) or input_button.alt.check))
-            {
-                var hammer_jump_save = db_read(SAVE_DATABASE, AMY_DEFAULT_HAMMER_JUMP, "amy", "hammer_jump");
-                if (hammer_jump_save)
-                {
-                    var hammer_jump_height = 6;
-                    
-                    // TODO: Hammer Jump is 3.375 underwater.
-                    
-                    // Set flags
-                    jump_cap = false;
-                    aerial_flags |= AERIAL_FLAG_HAMMER;
-                    
-                    // Leap
-                    var sine = dsin(local_direction);
-                    var cosine = dcos(local_direction);
-                    y_speed = -sine * x_speed - cosine * hammer_jump_height;
-                    x_speed = cosine * x_speed - sine * hammer_jump_height;
-                    
-                    // Detact from ground
-                    player_ground(false);
-                    
-                    // Perform
-                    player_perform(player_is_jumping, false);
-                    
-                    // Animate
-                    animation_play(AMY_ANIMATION.HAMMER_JUMP);
-                    
-                    // Sound
-                    audio_play_sfx(sfxJump);
-                    return true;
-                }
-            }
+            var hammer_jump_height = 6;
+            
+            // TODO: Hammer Jump is 3.375 underwater.
+            
+            // Set flags
+            aerial_flags |= AERIAL_FLAG_HAMMER;
+            jump_cap = false;
             
             // Leap
-            if (input_button.jump.pressed and input_axis_y == 1 and input_axis_x == 0)
-            {
-                var spin_save = db_read(SAVE_DATABASE, AMY_DEFAULT_SPIN, "amy", "spin");
-                var spin_alt_save = db_read(SAVE_DATABASE, AMY_DEFAULT_SPIN_ALT, "amy", "spin_alt");
-                if (spin_save == false and spin_alt_save == AMY_SPIN_ALT.LEAP)
-                {
-                    player_perform(player_is_leaping);
-                    return true;
-                }
-            }
+            var sine = dsin(local_direction);
+            var cosine = dcos(local_direction);
+            y_speed = -sine * x_speed - cosine * hammer_jump_height;
+            x_speed = cosine * x_speed - sine * hammer_jump_height;
+            
+            // Detact from ground
+            player_ground(false);
+            
+            // Perform
+            player_perform(player_is_jumping, false);
+            
+            // Animate
+            animation_start("hammer_jump");
+            
+            // Sound
+            audio_play_sfx(sfxJump);
+            return true;
         }
-    }*/
+    }
     
+    // Jump
     if (input_button.jump.pressed)
     {
-        // Don't jump when crouching
-        if (state != player_is_crouching)
+        // Leap
+        if (input_axis_y == 1 and input_axis_x == 0 and object_index == objAmy and player_check_ground_skill())
+        {
+            var spin_save = db_read(SAVE_DATABASE, AMY_DEFAULT_SPIN, "amy", "spin");
+            var spin_alt_save = db_read(SAVE_DATABASE, AMY_DEFAULT_SPIN_ALT, "amy", "spin_alt");
+            if (spin_save == false and spin_alt_save == AMY_SPIN_ALT.LEAP)
+            {
+                player_perform(player_is_leaping);
+                return true;
+            }
+        }
+        else if (state != player_is_crouching)
         {
             // Perform
             player_perform(player_is_jumping);
             
             // Animate
-            /*if (object_index == objAmy)
+            if (object_index == objAmy)
             {
                 var spin_save = db_read(SAVE_DATABASE, AMY_DEFAULT_SPIN, "amy", "spin");
-                animation_play(spin_save ? PLAYER_ANIMATION.JUMP : PLAYER_ANIMATION.SPRING);
-            }*/
+                animation_start(spin_save ? "jump" : "spring");
+            }
             
             // Sound
             audio_play_sfx(sfxJump);
@@ -135,7 +128,7 @@ player_try_trick_action = function(_time = 0)
 
 /// @description Check is the player calls for a Flight Assist.
 /// @returns {Bool}
-/*player_try_flight_assist = function()
+player_try_flight_assist = function()
 {
     if (state == player_is_jumping)
     {
@@ -185,7 +178,7 @@ player_try_trick_action = function(_time = 0)
                             }
                             
                             /*var can_skill = false;
-                            
+                            // TODO: Sonic 3 AIR checks if Sonic can Flame Dash or Knuckles' is slower than 1 x_speed.
                             switch (object_index)
                             {
                                 case objSonic:
@@ -202,7 +195,7 @@ player_try_trick_action = function(_time = 0)
                                 }
                             }
                             
-                            return not can_skill;
+                            return not can_skill;*/
                             return false;
                         }
                     }
@@ -212,11 +205,11 @@ player_try_trick_action = function(_time = 0)
     }
     
     return true;
-};*/
+};
 
 /// @description Checks if the player performs a Shield Action.
 /// @returns {Bool}
-/*player_try_shield_action = function()
+player_try_shield_action = function()
 {
     aerial_flags |= AERIAL_FLAG_SHIELD_ACTION;
     switch (shield.index)
@@ -232,7 +225,7 @@ player_try_trick_action = function(_time = 0)
             // Animate
             with (shield)
             {
-                if (anim_core.name == SHIELD.AQUA) anim_core.variant = 1;
+                if (anim_core.name == "aqua") anim_core.variant = 1;
             }
             
             return true;
@@ -248,10 +241,10 @@ player_try_trick_action = function(_time = 0)
             
             // Animate
             camera_set_x_lag_time(16);
-            animation_play(PLAYER_ANIMATION.JUMP, 1);
+            animation_start("jump", 1);
             with (shield)
             {
-                if (anim_core.name == SHIELD.FLAME)
+                if (anim_core.name == "flame")
                 {
                     image_xscale = other.image_xscale;
                     anim_core.variant = 1;
@@ -271,7 +264,7 @@ player_try_trick_action = function(_time = 0)
             player_perform(player_is_jumping, false);
             
             // Animate
-            animation_play(PLAYER_ANIMATION.JUMP, 1);
+            animation_start("jump", 1);
             for (var i = 45; i <= 315; i += 90)
             {
                 var sine = dcos(i);
@@ -286,7 +279,7 @@ player_try_trick_action = function(_time = 0)
     }
     
     return false;
-};*/
+};
 
 /// @description Check if the player performs a ground skill.
 /// @returns {Bool}
@@ -329,7 +322,7 @@ player_try_ground_skill = function()
 
 /// @description Checks if the player performs an air skill.
 /// @returns {Bool}
-/*player_try_air_skill = function()
+player_try_air_skill = function()
 {
     // Abort if not player controlled
     if (player_index != 0 and cpu_gamepad_time == 0) return false;
@@ -354,7 +347,7 @@ player_try_ground_skill = function()
                 {
                     if (not (aerial_flags & AERIAL_FLAG_AIR_DASH))
                     {
-                        var uncurl = (not (anim_core.name == PLAYER_ANIMATION.ROLL or anim_core.name == PLAYER_ANIMATION.JUMP));
+                        var uncurl = (not (anim_core.name == "roll" or anim_core.name == "jump"));
                         
                         // Set flags
                         aerial_flags |= AERIAL_FLAG_AIR_DASH;
@@ -367,7 +360,7 @@ player_try_ground_skill = function()
                         player_perform(player_is_falling, false);
                         
                         // Animate
-                        animation_play(SONIC_ANIMATION.AIR_DASH, uncurl);
+                        animation_start("air_dash", uncurl);
                         
                         // Sound
                         audio_play_sfx(sfxAirDash);
@@ -377,7 +370,7 @@ player_try_ground_skill = function()
             }
             break;
         }
-        case objMiles:
+        /*case objMiles:
         {
             if (state == player_is_jumping or state == player_is_propeller_flying or aerial_mastery_config)
             {
@@ -404,7 +397,7 @@ player_try_ground_skill = function()
                 }
             }
             break;
-        }
+        }*/
         case objKnuckles:
         {
             if (state == player_is_jumping or aerial_mastery_config)
@@ -457,7 +450,7 @@ player_try_ground_skill = function()
                     player_perform(player_is_falling, false);
                     
                     // Animate
-                    animation_play(AMY_ANIMATION.AIR_HAMMER_ATTACK);
+                    animation_start("air_hammer_attack");
                     amy_create_hammer_trail(HEART_PATTERN.AIR_HAMMER_ATTACK);
                     
                     // Sound
@@ -467,7 +460,7 @@ player_try_ground_skill = function()
             }
             break;
         }
-        case objCream:
+        /*case objCream:
         {
             if (state == player_is_jumping or state == player_is_fan_flying or aerial_mastery_config)
             {
@@ -489,11 +482,11 @@ player_try_ground_skill = function()
                 }
             }
             break;
-        }
+        }*/
     }
     
     return false;
-};*/
+};
 
 /// @description Resets air skills when grounded.
 /*player_refresh_air_skills = function()

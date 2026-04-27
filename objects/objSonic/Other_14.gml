@@ -338,6 +338,7 @@ player_render = function()
         }
         case "air_dash":
         {
+            if (anim_core.variant == 0 and animation_is_finished()) anim_core.variant = 1;
             player_animate(global.anim_sonic_air_dash);
             player_resize(6, 14);
             if (image_index == 0)
