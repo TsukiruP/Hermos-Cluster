@@ -93,7 +93,7 @@ boost_speed = 0;
 boost_thresholds = [8.0, 7.96875, 6.5625, 5.625, 4.21875];
 
 // Input
-input_enabled = true;
+input_enabled = false;
 input_axis_x = 0;
 input_axis_y = 0;
 
