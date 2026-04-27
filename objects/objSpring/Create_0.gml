@@ -29,9 +29,9 @@ reaction = function(_pla)
             {
                 if (diff == 90 or diff == 270)
                 {
-                    y_speed = -dsin(diff) * other.force;
+                    aerial_flags = 0;
+                    y_speed = -dsin(diff) * other.force * (collision_hammer ? 1.5 : 1);
                     player_perform(player_is_sprung);
-                    if (collision_hammer) y_speed *= 1.5;
                 }
                 else if (diff == 0 or diff == 180)
                 {
@@ -46,15 +46,15 @@ reaction = function(_pla)
                     }
                     
                     image_xscale = dcos(diff);
-                    x_speed = image_xscale * other.force;
+                    x_speed = image_xscale * other.force * (collision_hammer ? 1.5 : 1);
                 }
                 else
                 {
-                    image_xscale = dcos(diff);
-                    x_speed = image_xscale * other.force;
-                    y_speed = -dsin(diff) * other.force;
+                    image_xscale = sign(dcos(diff));
+                    aerial_flags = 0;
+                    x_speed = image_xscale * other.force * (collision_hammer ? 1.5 : 1);
+                    y_speed = -dsin(diff) * other.force * (collision_hammer ? 1.5 : 1);
                     player_perform(player_is_sprung);
-                    if (collision_hammer) y_speed *= 1.5;
                 }
                 
                 if (state == player_is_sprung) state_time = max(2, TRICK_LOCK_DURATION - (other.force / 1.5) div 1);
