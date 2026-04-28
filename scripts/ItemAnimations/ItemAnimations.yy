@@ -1,0 +1,13 @@
+{
+  "$GMScript":"v1",
+  "%Name":"ItemAnimations",
+  "isCompatibility":false,
+  "isDnD":false,
+  "name":"ItemAnimations",
+  "parent":{
+    "name":"Items",
+    "path":"folders/Stage/Interactables/Items.yy",
+  },
+  "resourceType":"GMScript",
+  "resourceVersion":"2.0",
+}
