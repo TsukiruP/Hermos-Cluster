@@ -1,0 +1,134 @@
+/// @description Initialize
+event_inherited();
+gravity_direction = angle_wrap(image_angle);
+hitboxes[0].resize(-16, -24, 15, 0);
+hitboxes[1] = new hitbox(c_green, -15, -24, 14, 0);
+hidden_fix = false;
+reaction = function(_pla)
+{
+    // Abort if the spike is hidden
+    if (not sprite_exists(sprite_index) or image_index != 0) exit;
+    
+    var hurtbox_flags = collision_player(0, _pla);
+    var attackbox_flags = collision_player(0, _pla);
+    
+    if (hurtbox_flags)
+    {
+        var hurtbox_direction = collision_direction(hurtbox_flags);
+        var hurtbox_difference = angle_wrap(hurtbox_direction - _pla.gravity_direction);
+        var gravity_difference = angle_wrap(gravity_direction - _pla.gravity_direction);
+        var x_dist = hex_to_dec((hurtbox_flags & 0x0FF00) >> 8);
+        var y_dist = hex_to_dec(hurtbox_flags & 0x000FF);
+        
+        switch (hurtbox_difference)
+        {
+            case 90:
+            {
+                if (gravity_difference == 180 and hidden_fix)
+                {
+                    if (gravity_direction mod 180 == 0) _pla.y = y + dcos(gravity_direction) * (hitboxes[0].top - _pla.y_radius);
+                    else _pla.x = x + dsin(gravity_direction) * (hitboxes[0].top - _pla.y_radius);
+                    _pla.player_damage(id);
+                }
+                else if ((gravity_difference == 90 or gravity_difference == 270) and attackbox_flags and hidden_fix)
+                {
+                    if (gravity_direction mod 180 == 0) _pla.y = y + dcos(gravity_direction) * (hitboxes[0].top - _pla.x_radius);
+                    else _pla.x = x + dsin(gravity_direction) * (hitboxes[0].top - _pla.x_radius);
+                    _pla.player_damage(id);
+                }
+                else
+                {
+                    _pla.x += x_dist;
+                    _pla.y += y_dist;
+                    if (_pla.y_speed >= 0)
+                    {
+                        _pla.solid_id = id;
+                        if (gravity_difference == hurtbox_difference - 90) _pla.player_damage(id);
+                    }
+                }
+                break;
+            }
+            case 270:
+            {
+                if (gravity_difference == 0 and hidden_fix)
+                {
+                    if (gravity_direction mod 180 == 0) _pla.y = y + dcos(gravity_direction) * (hitboxes[0].top - _pla.y_radius);
+                    else _pla.x = x + dsin(gravity_direction) * (hitboxes[0].top - _pla.y_radius);
+                    _pla.solid_id = id;
+                    _pla.player_damage(id);
+                }
+                else if ((gravity_difference == 90 or gravity_difference == 270) and attackbox_flags and hidden_fix)
+                {
+                    if (gravity_direction mod 180 == 0) _pla.y = y + dcos(gravity_direction) * (hitboxes[0].top - _pla.x_radius);
+                    else _pla.x = x + dsin(gravity_direction) * (hitboxes[0].top - _pla.x_radius);
+                    _pla.player_damage(id);
+                }
+                else
+                {
+                    _pla.x += x_dist;
+                    _pla.y += y_dist;
+                    if (_pla.y_speed <= 0)
+                    {
+                        _pla.x_speed = 0;
+                        if (gravity_difference == hurtbox_difference - 90) _pla.player_damage(id);
+                    }
+                }
+                break;
+            }
+            case 180:
+            {
+                if (gravity_difference == 270 and hidden_fix)
+                {
+                    if (gravity_direction mod 180 == 0) _pla.y = y + dcos(gravity_direction) * (hitboxes[0].top - _pla.x_radius);
+                    else _pla.x = x + dsin(gravity_direction) * (hitboxes[0].top - _pla.x_radius);
+                    _pla.player_damage(id);
+                }
+                else if ((gravity_difference == 0 or gravity_difference == 180) and attackbox_flags and hidden_fix)
+                {
+                    if (gravity_direction mod 180 == 0) _pla.y = y + dcos(gravity_direction) * (hitboxes[0].top - _pla.y_radius);
+                    else _pla.x = x + dsin(gravity_direction) * (hitboxes[0].top - _pla.y_radius);
+                    if (gravity_difference == 0) _pla.solid_id = id;
+                    _pla.player_damage(id);
+                }
+                else
+                {
+                    _pla.x += x_dist;
+                    _pla.y += y_dist;
+                    if (_pla.x_speed >= 0)
+                    {
+                        _pla.x_speed = 0;
+                        if (gravity_difference == hurtbox_difference - 90) _pla.player_damage(id);
+                    }
+                }
+                break;
+            }
+            case 0:
+            {
+                if (gravity_difference == 90 and hidden_fix)
+                {
+                    if (gravity_direction mod 180 == 0) _pla.y = y + dcos(gravity_direction) * (hitboxes[0].top - _pla.x_radius);
+                    else _pla.x = x + dsin(gravity_direction) * (hitboxes[0].top - _pla.x_radius);
+                    _pla.player_damage(id);
+                }
+                else if ((gravity_difference == 0 or gravity_difference == 180) and attackbox_flags and hidden_fix)
+                {
+                    if (gravity_direction mod 180 == 0) _pla.y = y + dcos(gravity_direction) * (hitboxes[0].top - _pla.y_radius);
+                    else _pla.x = x + dsin(gravity_direction) * (hitboxes[0].top - _pla.y_radius);
+                    if (gravity_difference == 0) _pla.solid_id = id;
+                    _pla.player_damage(id);
+                }
+                else
+                {
+                    _pla.x += x_dist;
+                    _pla.y += y_dist;
+                    if (_pla.x_speed <= 0)
+                    {
+                        _pla.x_speed = 0;
+                        if (gravity_difference == hurtbox_difference - 90) _pla.player_damage(id);
+                    }
+                }
+                break;
+            }
+        }
+    }
+};

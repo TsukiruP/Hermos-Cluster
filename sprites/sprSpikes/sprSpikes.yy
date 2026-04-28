@@ -28,7 +28,7 @@
   "origin":7,
   "parent":{
     "name":"Sprites",
-    "path":"folders/Stage/Interactables/Hazards/Sprites.yy",
+    "path":"folders/Stage/Interactables/Hazards/Spikes/Sprites.yy",
   },
   "preMultiplyAlpha":false,
   "resourceType":"GMSprite",
