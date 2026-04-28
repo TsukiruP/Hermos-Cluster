@@ -133,13 +133,8 @@ player_move_in_air = function()
         // Land
         if (landed)
         {
-            // Disable angle detection on objects / set new horizontal speed
-            if (instance_exists(ground_id))
-            {
-                direction = gravity_direction;
-                local_direction = 0;
-            }
-            else if (local_direction >= 23 and local_direction <= 337 and abs(x_speed) <= abs(y_speed))
+            // Set new horizontal speed
+            if (not instance_exists(ground_id) and local_direction >= 23 and local_direction <= 337 and abs(x_speed) <= abs(y_speed))
             {
                 x_speed = local_direction < 180 ? -y_speed : y_speed;
                 if (mask_direction == gravity_direction) x_speed *= 0.5;
