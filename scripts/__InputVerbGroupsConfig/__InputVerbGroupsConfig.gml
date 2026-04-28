@@ -8,9 +8,6 @@ function __InputVerbGroupsConfig()
     
     enum INPUT_VERB_GROUP
     {
-        //EXAMPLE_A,
-        //EXAMPLE_B,
-        
         //Add your own verb groups here!
         STAGE,
         SYSTEM
@@ -22,8 +19,6 @@ function __InputVerbGroupsConfig()
     // N.B. Any verb not in at least one verb group will be considered as being in every verb group for
     //      the purposes of finding binding collisions.
     
-    //InputVerbGroupDefine(INPUT_VERB_GROUP.EXAMPLE_A, [INPUT_VERB.UP, INPUT_VERB.DOWN, INPUT_VERB.LEFT, INPUT_VERB.RIGHT, INPUT_VERB.ACCEPT, INPUT_VERB.CANCEL]);
-    //InputVerbGroupDefine(INPUT_VERB_GROUP.EXAMPLE_B, [INPUT_VERB.ACTION, INPUT_VERB.SPECIAL]);
     InputVerbGroupDefine(INPUT_VERB_GROUP.STAGE, [INPUT_VERB.JUMP, INPUT_VERB.AUX, INPUT_VERB.SWAP, INPUT_VERB.EXTRA, INPUT_VERB.TAG, INPUT_VERB.ALT]);
     InputVerbGroupDefine(INPUT_VERB_GROUP.SYSTEM, [INPUT_VERB.CONFIRM, INPUT_VERB.CANCEL, INPUT_VERB.HIDE]);
 }

@@ -9,11 +9,19 @@
 // library, set this macro to `false`.
 #macro INPUT_SAFETY_CHECKS  true
 
-// Whether to only allow one PlayStation user to play the game when running on PlayStation 5. This
-// macro corresponds to the `InitialUserAlwaysLoggedIn` mode set in your `param.json`. Please note
-// that this macro (and the associated `param.json` mode) should only be used for single player
-// games.
-#macro INPUT_PS5_SINGLE_USER  false
+// Whether to only allow one PlayStation user to play the game when running on PlayStation 5. When
+// enabled, only player 0 may have a device assigned to them. This macro corresponds to the
+// `InitialUserAlwaysLoggedIn` mode set in your `param.json`. Please note that this macro (and the
+// associated `param.json` mode) should only be used for single player games.
+#macro INPUT_PS5_SINGLE_USER  true
+
+// Whether the game has been set up for the Xbox "simplified user model". This will disconnect all
+// gamepads associated with users other than the activating user. Additionally, only player 0 may
+// have a device assigned to them. Hotswapping will still work but only gamepads associated with
+// the activating user will be accepted. You should only set this macro to `true` if the relevant
+// setting in Game Options has been enabled. Please note that this macro (and the associated Xbox
+// setting) should only be used for single player games.
+#macro INPUT_XBOX_SIMPLIFIED_USER_MODEL  true
 
 ////////////////
 //            //
@@ -140,3 +148,8 @@
 // want to evaluate a tick of a fixed timestep or lockstep loop then call `InputManualUpdate()`
 // once and then you may call library functions within your custom update loop as normal.
 #macro INPUT_UPDATE_AFTER_COLLECT  true
+
+// Whether to enforce that only the first player can be assigned the `INPUT_KBM` device.
+// This is set to `false` by default. If this macro is set to `true` then only the first player
+// can be assigned the `INPUT_KBM` device via `InputPlayerSetDevice()` or the Party plug-in.
+#macro INPUT_KBM_FIRST_PLAYER_ONLY  false
