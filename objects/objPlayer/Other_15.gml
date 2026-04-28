@@ -34,7 +34,7 @@ player_drop_rings = function()
     
     for (var n = min(global.ring_count, 32); n > 0; --n)
     {
-        with (instance_create_layer(x, y, ctrlStage.stage_depth, objRing))
+        with (instance_create_depth(x, y, ctrlStage.stage_depth, objRing))
         {
             gravity_direction = other.gravity_direction;
             image_angle = gravity_direction;

@@ -506,23 +506,23 @@ player_refresh_air_skills = function()
 
 /// @description Evaluates the player's condition after taking a hit.
 /// @param {Id.Instance} inst Instance to check. Set to id to force a death, or noone to just hurt the player.
-/*player_damage = function(inst)
+player_damage = function(_inst)
 {
     // Abort if the player is already dead or hurt
-    if (state == player_is_dead or ((state == player_is_hurt or recovery_time > 0 or invincibility_time > 0) and inst != id)) exit;
+    if (state == player_is_dead or ((state == player_is_hurt or recovery_time > 0 or invincibility_time > 0) and _inst != id)) exit;
     
-    if (inst == id or (player_index == 0 and shield.index == SHIELD.NONE and global.ring_count == 0))
+    if (_inst == id or (player_index == 0 and shield.index == SHIELD.NONE and global.ring_count == 0))
     {
         y_speed = -4.875; // TODO: Underwater, this is -2.625
-        audio_play_sfx(inst != noone and inst.object_index == objSpikes ? sfxHurtSpikes : sfxHurt);
+        audio_play_sfx(_inst != noone and _inst.object_index == objSpikes ? sfxHurtSpikes : sfxHurt);
         return player_perform(player_is_dead);
     }
     else
     {
         var hurt_speed = -1.5;
         var ring_loss = false;
-        animation_play(PLAYER_ANIMATION.HURT);
-        if (inst == noone or abs(x_speed) <= 2.5)
+        animation_start("hurt");
+        if (_inst == noone or abs(x_speed) <= 2.5)
         {
             if (abs(x_speed) > 0.625) x_speed = sign(x_speed) * hurt_speed;
             else x_speed = image_xscale * hurt_speed;
@@ -549,7 +549,7 @@ player_refresh_air_skills = function()
             }
         }
         
-        if (not ring_loss) audio_play_sfx(inst != noone and inst.object_index == objSpikes ? sfxHurtSpikes : sfxHurt);
+        if (not ring_loss) audio_play_sfx(_inst != noone and _inst.object_index == objSpikes ? sfxHurtSpikes : sfxHurt);
         return player_perform(player_is_hurt);
     }
-};*/
+};
