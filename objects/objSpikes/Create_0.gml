@@ -42,7 +42,7 @@ reaction = function(_pla)
                     _pla.y += y_dist;
                     if (_pla.y_speed >= 0)
                     {
-                        _pla.solid_id = id;
+                        _pla.ground_id = id;
                         if (gravity_difference == hurtbox_difference - 90) _pla.player_damage(id);
                     }
                 }
@@ -54,7 +54,7 @@ reaction = function(_pla)
                 {
                     if (gravity_direction mod 180 == 0) _pla.y = y + dcos(gravity_direction) * (hitboxes[0].top - _pla.y_radius);
                     else _pla.x = x + dsin(gravity_direction) * (hitboxes[0].top - _pla.y_radius);
-                    _pla.solid_id = id;
+                    _pla.ground_id = id;
                     _pla.player_damage(id);
                 }
                 else if ((gravity_difference == 90 or gravity_difference == 270) and attackbox_flags and hidden_fix)
@@ -87,7 +87,7 @@ reaction = function(_pla)
                 {
                     if (gravity_direction mod 180 == 0) _pla.y = y + dcos(gravity_direction) * (hitboxes[0].top - _pla.y_radius);
                     else _pla.x = x + dsin(gravity_direction) * (hitboxes[0].top - _pla.y_radius);
-                    if (gravity_difference == 0) _pla.solid_id = id;
+                    if (gravity_difference == 0) _pla.ground_id = id;
                     _pla.player_damage(id);
                 }
                 else
@@ -114,7 +114,7 @@ reaction = function(_pla)
                 {
                     if (gravity_direction mod 180 == 0) _pla.y = y + dcos(gravity_direction) * (hitboxes[0].top - _pla.y_radius);
                     else _pla.x = x + dsin(gravity_direction) * (hitboxes[0].top - _pla.y_radius);
-                    if (gravity_difference == 0) _pla.solid_id = id;
+                    if (gravity_difference == 0) _pla.ground_id = id;
                     _pla.player_damage(id);
                 }
                 else
