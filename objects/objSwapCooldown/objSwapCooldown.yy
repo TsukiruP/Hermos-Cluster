@@ -32,7 +32,10 @@
   "resourceType":"GMObject",
   "resourceVersion":"2.0",
   "solid":false,
-  "spriteId":null,
+  "spriteId":{
+    "name":"sprSwapCooldown0",
+    "path":"sprites/sprSwapCooldown0/sprSwapCooldown0.yy",
+  },
   "spriteMaskId":null,
   "visible":true,
 }
