@@ -218,9 +218,6 @@ player_try_shield_action = function()
     {
         case SHIELD.AQUA:
         {
-            // Set flags
-            jump_alternate = input_button.aux.pressed;
-            
             // Perform
             player_perform(player_is_aqua_bounding);
             

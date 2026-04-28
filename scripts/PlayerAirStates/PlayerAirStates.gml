@@ -277,6 +277,9 @@ function player_is_aqua_bounding(_phase)
     {
         case PHASE.ENTER:
         {
+            // Set flags
+            jump_alternate = input_button.aux.pressed;
+            
             // Bound
             x_speed /= 2;
             y_speed = 8 * 0.75;
