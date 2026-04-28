@@ -3,7 +3,7 @@
 player_move_on_ground = function()
 {
     // Ride moving platforms
-    with (solid_id)
+    with (ground_id)
     {
         var dx = x - xprevious;
         var dy = y - yprevious;
@@ -37,7 +37,7 @@ player_move_on_ground = function()
         }
         
         // Detect floor
-        if (instance_exists(solid_id))
+        if (instance_exists(ground_id))
         {
             on_ground = true;
             direction = gravity_direction;
@@ -90,7 +90,7 @@ player_move_in_air = function()
         // Detect floors / ceilings
         if (y_speed >= 0)
         {
-            if (instance_exists(solid_id))
+            if (instance_exists(ground_id))
             {
                 landed = true;
                 on_ground = true;
@@ -133,18 +133,16 @@ player_move_in_air = function()
         // Land
         if (landed)
         {
-            // Stay flat on solid objects
-            if (ground_id != noone)
+            // Disable angle detection on objects / set new horizontal speed
+            if (instance_exists(ground_id))
             {
                 direction = gravity_direction;
                 local_direction = 0;
             }
-            
-            // Calculate new horizontal speed
-            if (abs(x_speed) <= abs(y_speed) and local_direction >= 22.5 and local_direction <= 337.5)
+            else if (local_direction >= 23 and local_direction <= 337 and abs(x_speed) <= abs(y_speed))
             {
-                x_speed = -y_speed * sign(dsin(local_direction));
-                if (local_direction < 45 or local_direction > 315) x_speed *= 0.5;
+                x_speed = local_direction < 180 ? -y_speed : y_speed;
+                if (mask_direction == gravity_direction) x_speed *= 0.5;
             }
             
             // Stop falling, and abort

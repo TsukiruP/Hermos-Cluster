@@ -25,7 +25,6 @@ flight_ride = noone;
 glide_ride = noone;
 
 // Timers
-rotation_lock_time = 0;
 control_lock_time = 0;
 swap_time = 0;
 state_time = 0;
@@ -54,8 +53,6 @@ hitboxes[1] = new hitbox(c_green);
 
 landed = false;
 on_ground = true;
-
-solid_id = noone;
 ground_id = noone;
 
 direction = 0;

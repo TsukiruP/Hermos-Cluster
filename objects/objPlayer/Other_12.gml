@@ -92,13 +92,7 @@ player_ground = function(_attach)
         }
     }
     
-    // Update current ground and angle values
-    ground_id = instance_place(x div 1 + sine, y div 1 + cosine, tilemaps);
-    if (not instance_exists(ground_id))
-    {
-        ground_id = noone;
-        player_detect_angle();
-    }
+    player_detect_angle();
 };
 
 /// @description Sets the player's angle values.
@@ -145,17 +139,10 @@ player_detect_angle = function()
 /// @description Updates the direction of the player's virtual mask on slopes.
 player_rotate_mask = function()
 {
-    if (rotation_lock_time > 0 and not landed)
-    {
-        rotation_lock_time--;
-        exit;
-    }
-    
-    var diff = angle_difference(direction, mask_direction);
-	if (abs(diff) > 45)
+	var diff = angle_difference(direction, mask_direction);
+	if (abs(diff) > 45 and (landed or player_intersect(tilemaps, y_radius, x_radius)))
 	{
 		mask_direction = angle_wrap(mask_direction + 90 * sign(diff));
-		rotation_lock_time = (not landed) * max(16 - abs(x_speed * 2) div 1, 0);
 	}
 };
 

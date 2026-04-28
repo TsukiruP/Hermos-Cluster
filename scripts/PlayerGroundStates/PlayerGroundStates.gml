@@ -78,7 +78,7 @@ function player_is_standing(_phase)
             }
             
             // Slide down steep slopes
-            if (local_direction >= 45 and local_direction <= 315)
+            if (mask_direction != gravity_direction)
             {
                 control_lock_time = SLIDE_DURATION;
                 return player_perform(player_is_running);
@@ -200,7 +200,7 @@ function player_is_running(_phase)
             if (not on_ground) return player_perform(player_is_falling);
             
             // Slide down steep slopes
-            if (abs(x_speed) < SLIDE_THRESHOLD and local_direction >= 45 and local_direction <= 315)
+            if (abs(x_speed) < SLIDE_THRESHOLD and mask_direction != gravity_direction)
             {
                 if (local_direction >= 90 and local_direction <= 270)
                 {
@@ -291,7 +291,7 @@ function player_is_looking(_phase)
             }
             
             // Slide down steep slopes
-            if (local_direction >= 45 and local_direction <= 315)
+            if (mask_direction != gravity_direction)
             {
                 control_lock_time = SLIDE_DURATION;
                 return player_perform(player_is_running);
@@ -354,7 +354,7 @@ function player_is_crouching(_phase)
             }
             
             // Slide down steep slopes
-            if (local_direction >= 45 and local_direction <= 315)
+            if (mask_direction != gravity_direction)
             {
                 control_lock_time = SLIDE_DURATION;
                 return player_perform(player_is_running);
@@ -449,7 +449,7 @@ function player_is_rolling(_phase)
             if (not on_ground) return player_perform(player_is_falling);
             
             // Slide down steep slopes
-            if (abs(x_speed) < SLIDE_THRESHOLD and local_direction >= 45 and local_direction <= 315)
+            if (abs(x_speed) < SLIDE_THRESHOLD and mask_direction != gravity_direction)
             {
                 if (local_direction >= 90 and local_direction <= 270)
                 {
@@ -499,7 +499,7 @@ function player_is_spin_dashing(_phase)
             }
             
             // Slide down steep slopes
-            if (local_direction >= 45 and local_direction <= 315)
+            if (mask_direction != gravity_direction)
             {
                 control_lock_time = SLIDE_DURATION;
                 return player_perform(player_is_running);
@@ -570,7 +570,7 @@ function player_is_hammer_attacking(_phase)
             }
             
             // Slide down steep slopes
-            if (local_direction >= 45 and local_direction <= 315)
+            if (mask_direction != gravity_direction)
             {
                 control_lock_time = SLIDE_DURATION;
                 return player_perform(player_is_running);

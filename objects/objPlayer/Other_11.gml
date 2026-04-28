@@ -1,15 +1,17 @@
 /// @description Collision
 /// @description Checks if the given collider's mask intersects the player's virtual mask.
 /// @param {Asset.GMObject|Id.Instance|Id.TileMapElement|Array} ind Object, instance, or tilemap to check, or an array containing any of these.
+/// @param {Real} [xrad] Distance to extend the player's mask horizontally both ways (optional, default is the player's x-radius).
+/// @param {Real} [yrad] Distance to extend the player's mask vertically both ways (optional, default is the player's y-radius).
 /// @returns {Bool}
-player_intersect = function(_ind)
+player_intersect = function(_ind, _xrad = x_radius, _yrad = y_radius)
 {
     var x_int = x div 1;
     var y_int = y div 1;
     
     return mask_direction mod 180 == 0 ?
-        collision_rectangle(x_int - x_radius, y_int - y_radius, x_int + x_radius, y_int + y_radius, _ind, true, false) != noone :
-        collision_rectangle(x_int - y_radius, y_int - x_radius, x_int + y_radius, y_int + x_radius, _ind, true, false) != noone;
+        collision_rectangle(x_int - _xrad, y_int - _yrad, x_int + _xrad + SUBPIXEL, y_int + _yrad + SUBPIXEL, _ind, true, false) != noone :
+        collision_rectangle(x_int - _yrad, y_int - _xrad, x_int + _yrad + SUBPIXEL, y_int + _xrad + SUBPIXEL, _ind, true, false) != noone;
 };
 
 /// @description Checks if the given collider's mask intersects a vertical portion of the player's virtual mask.
@@ -28,11 +30,11 @@ player_boxcast = function(_ind, _ylen)
     var x2 = x_int + cosine * x_radius + sine * _ylen;
     var y2 = y_int - sine * x_radius + cosine * _ylen;
     
-    // Account for outer edge overlap bug (see: https://github.com/YoYoGames/GameMaker-Bugs/issues/14176)
+    // Extend right/bottom sides slightly for tilemaps
     var left = min(x1, x2);
     var top = min(y1, y2);
-    var right = max(x1, x2) + COLLISION_TOLERANCE;
-    var bottom = max(y1, y2) + COLLISION_TOLERANCE;
+    var right = max(x1, x2) + SUBPIXEL;
+    var bottom = max(y1, y2) + SUBPIXEL;
     
     return collision_rectangle(left, top, right, bottom, _ind, true, false) != noone;
 };
@@ -80,7 +82,7 @@ player_raycast = function(_ind, _xoff, _ylen)
 player_get_collisions = function()
 {
     // Reset solid
-    solid_id = noone;
+    ground_id = noone;
     
     // Reset tilemaps
     array_resize(tilemaps, tilemap_count);
@@ -96,16 +98,15 @@ player_get_collisions = function()
     var x2 = x_int + cosine * x_wall_radius;
     var y2 = y_int - sine * x_wall_radius;
     
-    // Account for outer edge overlap bug
-    var left = min(x1, x2);
-    var top = min(y1, y2);
-    var right = max(x1, x2) + COLLISION_TOLERANCE;
-    var bottom = max(y1, y2) + COLLISION_TOLERANCE;
-    
     // Register semisolid tilemap
-    if (semisolid_tilemap != -1 and collision_rectangle(left, top, right, bottom, semisolid_tilemap, true, false) == noone)
+    if (semisolid_tilemap != -1)
     {
-        array_push(tilemaps, semisolid_tilemap);
+    	var left = min(x1, x2);
+    	var top = min(y1, y2);
+    	var right = max(x1, x2) + SUBPIXEL;
+    	var bottom = max(y1, y2) + SUBPIXEL;
+    	
+    	if (collision_rectangle(left, top, right, bottom, semisolid_tilemap, true, false) == noone) array_push(tilemaps, semisolid_tilemap);
     }
     
     // Execute reactions
