@@ -1,2 +1,5 @@
 #macro FAN_FLIGHT_DURATION 240
 #macro FAN_FLIGHT_THRESHOLD -0.75
+
+// Skill set
+#macro CREAM_DEFAULT_SHIELD_ACTIONS false

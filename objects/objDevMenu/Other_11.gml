@@ -68,6 +68,45 @@ with (new dev_option_bool("Shield Actions", mnu_sonic))
 
 #endregion
 
+#region Miles
+
+with (new dev_option_int("Ground Skill", mnu_miles))
+{
+    keys = ["miles", "ground_skill"];
+    minimum = MILES_GROUND_SKILL.NONE;
+    maximum = MILES_GROUND_SKILL.HAMMER_ATTACK;
+    specifiers = ["None", "Tails Swipe", "Tornado Attack", "Hammer Attack"];
+    get = function() { return db_read(SAVE_DATABASE, MILES_DEFAULT_GROUND_SKILL, keys[0], keys[1]); };
+    set = function (_val) { db_write(SAVE_DATABASE, _val, keys[0], keys[1]); };
+}
+
+with (new dev_option_bool("Insta-Shield", mnu_miles))
+{
+    keys = ["miles", "insta_shield"];
+    get = function() { return db_read(SAVE_DATABASE, MILES_DEFAULT_INSTA_SHIELD, keys[0], keys[1]); };
+    set = function (_val) { db_write(SAVE_DATABASE, _val, keys[0], keys[1]); };
+}
+
+with (new dev_option_bool("Shield Actions", mnu_miles))
+{
+    keys = ["miles", "shield_actions"];
+    get = function() { return db_read(SAVE_DATABASE, MILES_DEFAULT_SHIELD_ACTIONS, keys[0], keys[1]); };
+    set = function (_val) { db_write(SAVE_DATABASE, _val, keys[0], keys[1]); };
+}
+
+#endregion
+
+#region Knuckles
+
+with (new dev_option_bool("Shield Actions", mnu_knuckles))
+{
+    keys = ["knuckles", "shield_actions"];
+    get = function() { return db_read(SAVE_DATABASE, KNUCKLES_DEFAULT_SHIELD_ACTIONS, keys[0], keys[1]); };
+    set = function (_val) { db_write(SAVE_DATABASE, _val, keys[0], keys[1]); };
+}
+
+#endregion
+
 #region Amy
 
 with (new dev_option_int("Hammer Skill", mnu_amy))
@@ -109,6 +148,24 @@ with (new dev_option_int("Spin Dash Alt", mnu_amy))
     specifiers = ["Leap", "Amy Dash"];
     get = function() { return db_read(SAVE_DATABASE, AMY_DEFAULT_SPIN_ALT, keys[0], keys[1]); };
     set = function(_val) { db_write(SAVE_DATABASE, _val, keys[0], keys[1]); };
+}
+
+with (new dev_option_bool("Shield Actions", mnu_amy))
+{
+    keys = ["amy", "shield_actions"];
+    get = function() { return db_read(SAVE_DATABASE, AMY_DEFAULT_SHIELD_ACTIONS, keys[0], keys[1]); };
+    set = function (_val) { db_write(SAVE_DATABASE, _val, keys[0], keys[1]); };
+}
+
+#endregion
+
+#region Cream
+
+with (new dev_option_bool("Shield Actions", mnu_cream))
+{
+    keys = ["cream", "shield_actions"];
+    get = function() { return db_read(SAVE_DATABASE, CREAM_DEFAULT_SHIELD_ACTIONS, keys[0], keys[1]); };
+    set = function (_val) { db_write(SAVE_DATABASE, _val, keys[0], keys[1]); };
 }
 
 #endregion

@@ -26,8 +26,11 @@ db_write(SAVE_DATABASE, SONIC_DEFAULT_SHIELD_ACTIONS, "sonic", "shield_actions")
 
 // Miles
 db_write(SAVE_DATABASE, MILES_DEFAULT_GROUND_SKILL, "miles", "ground_skill");
+db_write(SAVE_DATABASE, MILES_DEFAULT_INSTA_SHIELD, "miles", "insta_shield");
+db_write(SAVE_DATABASE, MILES_DEFAULT_SHIELD_ACTIONS, "miles", "shield_actions");
 
 // Knuckles
+db_write(SAVE_DATABASE, KNUCKLES_DEFAULT_SHIELD_ACTIONS, "knuckles", "shield_actions");
 
 // Amy
 db_write(SAVE_DATABASE, AMY_DEFAULT_HAMMER_SKILL, "amy", "hammer_skill");
@@ -35,5 +38,7 @@ db_write(SAVE_DATABASE, AMY_DEFAULT_HAMMER_WHIRL, "amy", "hammer_whirl");
 db_write(SAVE_DATABASE, AMY_DEFAULT_HAMMER_JUMP, "amy", "hammer_jump");
 db_write(SAVE_DATABASE, AMY_DEFAULT_SPIN, "amy", "spin");
 db_write(SAVE_DATABASE, AMY_DEFAULT_SPIN_ALT, "amy", "spin_alt");
+db_write(SAVE_DATABASE, AMY_DEFAULT_SHIELD_ACTIONS, "amy", "shield_actions");
 
 // Cream
+db_write(SAVE_DATABASE, MILES_DEFAULT_SHIELD_ACTIONS, "miles", "shield_actions");
