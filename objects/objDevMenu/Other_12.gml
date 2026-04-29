@@ -14,7 +14,8 @@ with (new dev_option("Controls", mnu_config))
     confirm = function() { with (objDevMenu) dev_menu_goto(mnu_controls); };
 }
 
-// Visuals
+#region Visuals
+
 with (new dev_option_int("HUD", mnu_visuals))
 {
     keys = ["hud"];
@@ -53,9 +54,14 @@ with (new dev_option_int("Flicker", mnu_visuals))
     set = function(_val) { db_write(CONFIG_DATABASE, _val, keys[0]); };
 }
 
-// Gameplay
+#endregion
 
-// Controls
+#region Gameplay
+
+#endregion
+
+#region Controls
+
 with (new dev_option("Device Setup", mnu_controls))
 {
     confirm = function() { InputPartySetJoin(true); };
@@ -84,3 +90,5 @@ with (new dev_option_bool("Flight Assist", mnu_controls))
     get = function() { return db_read(CONFIG_DATABASE, CONFIG_DEFAULT_FLIGHT_STYLE, keys[0]); };
     set = function(_val) { db_write(CONFIG_DATABASE, _val, keys[0]); };
 }
+
+#endregion

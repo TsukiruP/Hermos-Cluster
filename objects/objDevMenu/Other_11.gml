@@ -1,6 +1,7 @@
 /// @description Character
 
-// Sonic
+#region Sonic
+
 with (new dev_option_int("Ground Skill", mnu_sonic))
 {
     keys = ["sonic", "ground_skill"];
@@ -11,7 +12,64 @@ with (new dev_option_int("Ground Skill", mnu_sonic))
     set = function (_val) { db_write(SAVE_DATABASE, _val, keys[0], keys[1]); };
 }
 
-// Amy
+with (new dev_option_int("Jump Skill", mnu_sonic))
+{
+    keys = ["sonic", "jump_skill"];
+    minimum = SONIC_AIR_SKILL.NONE;
+    maximum = SONIC_AIR_SKILL.DROP_DASH;
+    specifiers = ["None", "Insta-Shield", "Air Dash", "Drop Dash"];
+    get = function() { return db_read(SAVE_DATABASE, SONIC_DEFAULT_JUMP_SKILL, keys[0], keys[1]); };
+    set = function (_val) { db_write(SAVE_DATABASE, _val, keys[0], keys[1]); };
+}
+
+with (new dev_option_int("Aux Skill", mnu_sonic))
+{
+    keys = ["sonic", "aux_skill"];
+    minimum = SONIC_AIR_SKILL.NONE;
+    maximum = SONIC_AIR_SKILL.AIR_DASH;
+    specifiers = ["None", "Insta-Shield", "Air Dash", "Drop Dash"];
+    get = function() { return db_read(SAVE_DATABASE, SONIC_DEFAULT_AUX_SKILL, keys[0], keys[1]); };
+    set = function (_val) { db_write(SAVE_DATABASE, _val, keys[0], keys[1]); };
+}
+
+with (new dev_option_int("Slam Skill", mnu_sonic))
+{
+    keys = ["sonic", "slam_skill"];
+    minimum = SONIC_SLAM_SKILL.NONE
+    maximum = SONIC_SLAM_SKILL.STOMP;
+    specifiers = ["None", "Bound", "Stomp"];
+    get = function() { return db_read(SAVE_DATABASE, SONIC_DEFAULT_SLAM_SKILL, keys[0], keys[1]); };
+    set = function (_val) { db_write(SAVE_DATABASE, _val, keys[0], keys[1]); };
+}
+
+with (new dev_option_int("Homing Attack", mnu_sonic))
+{
+    keys = ["sonic", "homing_attack"];
+    minimum = SONIC_HOMING_ATTACK.NONE;
+    maximum = SONIC_HOMING_ATTACK.GENERATIONS;
+    specifiers = ["None", "Adventure", "Rush", "Unleashed", "Frontiers", "Generations"];
+    get = function() { return db_read(SAVE_DATABASE, SONIC_DEFAULT_HOMING_ATTACK, keys[0], keys[1]); };
+    set = function (_val) { db_write(SAVE_DATABASE, _val, keys[0], keys[1]); };
+}
+
+with (new dev_option_bool("Super Peel Out", mnu_sonic))
+{
+    keys = ["sonic", "peel_out"];
+    get = function() { return db_read(SAVE_DATABASE, SONIC_DEFAULT_PEEL_OUT, keys[0], keys[1]); };
+    set = function (_val) { db_write(SAVE_DATABASE, _val, keys[0], keys[1]); };
+}
+
+with (new dev_option_bool("Shield Actions", mnu_sonic))
+{
+    keys = ["sonic", "shield_actions"];
+    get = function() { return db_read(SAVE_DATABASE, SONIC_DEFAULT_SHIELD_ACTIONS, keys[0], keys[1]); };
+    set = function (_val) { db_write(SAVE_DATABASE, _val, keys[0], keys[1]); };
+}
+
+#endregion
+
+#region Amy
+
 with (new dev_option_int("Hammer Skill", mnu_amy))
 {
     keys = ["amy", "hammer_skill"];
@@ -52,3 +110,5 @@ with (new dev_option_int("Spin Dash Alt", mnu_amy))
     get = function() { return db_read(SAVE_DATABASE, AMY_DEFAULT_SPIN_ALT, keys[0], keys[1]); };
     set = function(_val) { db_write(SAVE_DATABASE, _val, keys[0], keys[1]); };
 }
+
+#endregion

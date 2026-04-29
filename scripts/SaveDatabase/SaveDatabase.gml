@@ -12,10 +12,8 @@ db_write(SAVE_DATABASE, room_get_name(rmTest), "stage");
 // Characters
 for (var i = 0; i < INPUT_MAX_PLAYERS; i++)
 {
-    db_write(SAVE_DATABASE, CHARACTER.NONE, "character", i);
+    db_write(SAVE_DATABASE, i == 0 ? CHARACTER.SONIC : CHARACTER.NONE, "character", i);
 }
-
-db_write(SAVE_DATABASE, CHARACTER.SONIC, "character", 0);
 
 // Sonic
 db_write(SAVE_DATABASE, SONIC_DEFAULT_GROUND_SKILL, "sonic", "ground_skill");
