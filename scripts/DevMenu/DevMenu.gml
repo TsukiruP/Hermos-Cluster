@@ -84,7 +84,6 @@ function dev_option_real(_label, _menu) : dev_option_value(_label, _menu) constr
         }
         
         set(value);
-        
     };
     toString =  function() { return string(get()); };
 }
