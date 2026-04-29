@@ -1,42 +1,6 @@
 // Constants
 #macro SAVE_DATABASE global.save_database
 
-#macro MILES_DEFAULT_GROUND_SKILL MILES_GROUND_SKILL.NONE
-#macro MILES_DEFAULT_FLIGHT_ASSIST true
-
-#macro AMY_DEFAULT_HAMMER_SKILL AMY_HAMMER_SKILL.HAMMER_ATTACK
-#macro AMY_DEFAULT_HAMMER_WHIRL true
-#macro AMY_DEFAULT_HAMMER_JUMP true
-#macro AMY_DEFAULT_SPIN false
-#macro AMY_DEFAULT_SPIN_ALT AMY_SPIN_ALT.LEAP
-
-enum MILES_GROUND_SKILL
-{
-    NONE,
-    TAIL_SWIPE,
-    TORNADO_ATTACK,
-    HAMMER_ATTACK
-}
-
-enum MILES_FLIGHT_STYLE
-{
-    CLASSIC,
-    ADVENTURE
-}
-
-enum AMY_HAMMER_SKILL
-{
-    HAMMER_ATTACK,
-    DOUBLE_HAMMER_ATTACK,
-    BIG_HAMMER_ATTACK
-}
-
-enum AMY_SPIN_ALT
-{
-    LEAP,
-    DASH
-}
-
 // Create
 global.save_database = db_create();
 
@@ -53,8 +17,19 @@ for (var i = 0; i < INPUT_MAX_PLAYERS; i++)
 
 db_write(SAVE_DATABASE, CHARACTER.SONIC, "character", 0);
 
+// Sonic
+db_write(SAVE_DATABASE, SONIC_DEFAULT_GROUND_SKILL, "sonic", "ground_skill");
+db_write(SAVE_DATABASE, SONIC_DEFAULT_JUMP_SKILL, "sonic", "jump_skill");
+db_write(SAVE_DATABASE, SONIC_DEFAULT_AUX_SKILL, "sonic", "aux_skill");
+db_write(SAVE_DATABASE, SONIC_DEFAULT_SLAM_SKILL, "sonic", "slam_skill");
+db_write(SAVE_DATABASE, SONIC_DEFAULT_HOMING_ATTACK, "sonic", "homing_attack");
+db_write(SAVE_DATABASE, SONIC_DEFAULT_PEEL_OUT, "sonic", "peel_out");
+db_write(SAVE_DATABASE, SONIC_DEFAULT_SHIELD_ACTIONS, "sonic", "shield_actions");
+
 // Miles
 db_write(SAVE_DATABASE, MILES_DEFAULT_GROUND_SKILL, "miles", "ground_skill");
+
+// Knuckles
 
 // Amy
 db_write(SAVE_DATABASE, AMY_DEFAULT_HAMMER_SKILL, "amy", "hammer_skill");
@@ -62,3 +37,5 @@ db_write(SAVE_DATABASE, AMY_DEFAULT_HAMMER_WHIRL, "amy", "hammer_whirl");
 db_write(SAVE_DATABASE, AMY_DEFAULT_HAMMER_JUMP, "amy", "hammer_jump");
 db_write(SAVE_DATABASE, AMY_DEFAULT_SPIN, "amy", "spin");
 db_write(SAVE_DATABASE, AMY_DEFAULT_SPIN_ALT, "amy", "spin_alt");
+
+// Cream

@@ -35,6 +35,7 @@ function dev_menu_goto_character(_index)
 function dev_option(_label, _menu) constructor
 {
     label = _label;
+    keys = [];
     confirm = function() {};
     array_push(_menu.options, self);
 }
@@ -127,12 +128,12 @@ function dev_option_array(_label, _menu) : dev_option_value(_label, _menu) const
 /// @param {Struct.dev_menu} menu Menu to push to.
 function dev_option_player(_player, _menu) : dev_option_int($"Player {_player}", _menu) constructor
 {
-    player = _player;
-    minimum = (player == 0 ? CHARACTER.SONIC : CHARACTER.NONE);
+    keys = ["character", _player];
+    minimum = (keys[1] == 0 ? CHARACTER.SONIC : CHARACTER.NONE);
     maximum = CHARACTER.CREAM;
     offset = CHARACTER.NONE;
     specifiers = ["None", "Sonic", "Miles", "Knuckles", "Amy", "Cream"];
     confirm = function() { dev_menu_goto_character(get()); };
-    get = function() { return db_read(SAVE_DATABASE, CHARACTER.NONE, "character", player); };
-    set = function(_val) { db_write(SAVE_DATABASE, _val, "character", player); };
+    get = function() { return db_read(SAVE_DATABASE, CHARACTER.NONE, keys[0], keys[1]); };
+    set = function(_val) { db_write(SAVE_DATABASE, _val, keys[0], keys[1]); };
 }

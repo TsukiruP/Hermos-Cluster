@@ -1,0 +1,13 @@
+{
+  "$GMScript":"v1",
+  "%Name":"PlayerSonicMacros",
+  "isCompatibility":false,
+  "isDnD":false,
+  "name":"PlayerSonicMacros",
+  "parent":{
+    "name":"Sonic",
+    "path":"folders/Stage/Player/Characters/Sonic.yy",
+  },
+  "resourceType":"GMScript",
+  "resourceVersion":"2.0",
+}
