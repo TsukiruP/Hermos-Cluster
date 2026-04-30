@@ -183,7 +183,12 @@ player_try_flight_assist = function()
                             {
                                 case objSonic:
                                 {
-                                    can_skill = (shield.index == SHIELD.FLAME or shield.index == SHIELD.AQUA);
+                                    var jump_skill_save = db_read(SAVE_DATABASE, SONIC_DEFAULT_JUMP_SKILL, "sonic", "jump_skill");
+                                    var shield_actions_save = db_read(SAVE_DATABASE, SONIC_DEFAULT_SHIELD_ACTIONS, "sonic", "shield_actions");
+                                    if ((jump_skill_save == SONIC_AIR_SKILL.NONE or jump_skill_save == SONIC_AIR_SKILL.INSTA_SHIELD) and shield_actions_save)
+                                    {
+                                        can_skill = (shield.index == SHIELD.FLAME or shield.index == SHIELD.AQUA);
+                                    }
                                     break;
                                 }
                                 case objKnuckles:
@@ -193,7 +198,8 @@ player_try_flight_assist = function()
                                 }
                                 case objAmy:
                                 {
-                                    can_skill = (shield.index == SHIELD.FLAME or shield.index == SHIELD.AQUA);
+                                    var shield_actions_save = db_read(SAVE_DATABASE, AMY_DEFAULT_SHIELD_ACTIONS, "amy", "shield_actions");
+                                    if (shield_actions_save) can_skill = (shield.index == SHIELD.FLAME or shield.index == SHIELD.AQUA);
                                     break;
                                 }
                             }
@@ -334,36 +340,43 @@ player_try_air_skill = function()
         {
             if (state == player_is_jumping or aerial_mastery_config)
             {
-                if (input_button.jump.pressed and player_try_flight_assist())
+                if ((input_button.jump.pressed and player_try_flight_assist()) xor input_button.aux.pressed)
                 {
-                    if (not (aerial_flags & AERIAL_FLAG_SHIELD_ACTION))
+                    var air_skill_save = db_read(SAVE_DATABASE, input_button.aux.pressed ? SONIC_DEFAULT_AUX_SKILL : SONIC_DEFAULT_JUMP_SKILL, "sonic", input_button.aux.pressed ? "aux_skill" : "jump_skill");
+                    switch (air_skill_save)
                     {
-                        return player_try_shield_action();
-                    }
-                }
-                
-                if (input_button.aux.pressed)
-                {
-                    if (not (aerial_flags & AERIAL_FLAG_AIR_DASH))
-                    {
-                        var uncurl = (not (anim_core.name == "roll" or anim_core.name == "jump"));
-                        
-                        // Set flags
-                        aerial_flags |= AERIAL_FLAG_AIR_DASH;
-                        
-                        // Dash
-                        x_speed += image_xscale * 2.25;
-                        y_speed = 0;
-                        
-                        // Perform
-                        player_perform(player_is_falling, false);
-                        
-                        // Animate
-                        animation_start("air_dash", uncurl);
-                        
-                        // Sound
-                        audio_play_sfx(sfxAirDash);
-                        return true;
+                        case SONIC_AIR_SKILL.AIR_DASH:
+                        {
+                            if (not (aerial_flags & AERIAL_FLAG_AIR_DASH))
+                            {
+                                var uncurl = (not (anim_core.name == "roll" or anim_core.name == "jump"));
+                                
+                                // Set flags
+                                aerial_flags |= AERIAL_FLAG_AIR_DASH;
+                                
+                                // Dash
+                                x_speed += image_xscale * 2.25;
+                                y_speed = 0;
+                                
+                                // Perform
+                                player_perform(player_is_falling, false);
+                                
+                                // Animate
+                                animation_start("air_dash", uncurl);
+                                
+                                // Sound
+                                audio_play_sfx(sfxAirDash);
+                                return true;
+                            }
+                            break;
+                        }
+                        default:
+                        {
+                            if (not (aerial_flags & AERIAL_FLAG_SHIELD_ACTION) and db_read(SAVE_DATABASE, SONIC_DEFAULT_SHIELD_ACTIONS, "sonic", "shield_actions"))
+                            {
+                                return player_try_shield_action();
+                            }
+                        }
                     }
                 }
             }
@@ -389,7 +402,7 @@ player_try_air_skill = function()
                 
                 if (input_button.aux.pressed)
                 {
-                    if (not (aerial_flags & AERIAL_FLAG_SHIELD_ACTION))
+                    if (not (aerial_flags & AERIAL_FLAG_SHIELD_ACTION) and db_read(SAVE_DATABASE, MILES_DEFAULT_SHIELD_ACTIONS, "miles", "shield_actions"))
                     {
                         return player_try_shield_action();
                     }
@@ -408,7 +421,7 @@ player_try_air_skill = function()
                 
                 if (input_button.aux.pressed)
                 {
-                    if (not (aerial_flags & AERIAL_FLAG_SHIELD_ACTION))
+                    if (not (aerial_flags & AERIAL_FLAG_SHIELD_ACTION) and db_read(SAVE_DATABASE, MILES_DEFAULT_SHIELD_ACTIONS, "knuckles", "shield_actions"))
                     {
                         return player_try_shield_action();
                     }
@@ -420,7 +433,7 @@ player_try_air_skill = function()
         {
             if (input_button.jump.pressed and player_try_flight_assist() and aerial_mastery_config)
             {
-                if (not (aerial_flags & AERIAL_FLAG_SHIELD_ACTION))
+                if (not (aerial_flags & AERIAL_FLAG_SHIELD_ACTION) and db_read(SAVE_DATABASE, MILES_DEFAULT_SHIELD_ACTIONS, "amy", "shield_actions"))
                 {
                     return player_try_shield_action();
                 }
@@ -474,7 +487,7 @@ player_try_air_skill = function()
                 
                 if (input_button.aux.pressed)
                 {
-                    if (not (aerial_flags & AERIAL_FLAG_SHIELD_ACTION))
+                    if (not (aerial_flags & AERIAL_FLAG_SHIELD_ACTION) and db_read(SAVE_DATABASE, MILES_DEFAULT_SHIELD_ACTIONS, "cream", "shield_actions"))
                     {
                         return player_try_shield_action();
                     }
