@@ -66,15 +66,13 @@ player_linecast = function (ind, xrad = x_wall_radius)
 /// @returns {Bool}
 player_raycast = function (ind, xoff, ylen)
 {
-	var x_int = x div 1;
-	var y_int = y div 1;
 	var sine = dsin(mask_direction);
 	var cosine = dcos(mask_direction);
 	
-	var x1 = x_int + cosine * xoff;
-	var y1 = y_int - sine * xoff;
-	var x2 = x_int + cosine * xoff + sine * ylen;
-	var y2 = y_int - sine * xoff + cosine * ylen;
+	var x1 = x div 1 + cosine * xoff;
+	var y1 = y div 1 - sine * xoff;
+	var x2 = x1 + sine * ylen;
+	var y2 = y1 + cosine * ylen;
 	
 	return collision_line(x1, y1, x2, y2, ind, true, false) != noone;
 };
