@@ -161,14 +161,10 @@ player_keep_in_bounds = function ()
 			x_speed = 0;
 		}
 		
-		if (y - y_radius > bottom and gravity_direction == 0)
+		limit = gravity_direction == 0 ? min(y, bottom + y_radius) : max(y, top - y_radius);
+		if (y != limit)
 		{
-			y = bottom + y_radius;
-			return false;
-		}
-		else if (y + y_radius < top and gravity_direction == 180)
-		{
-			y = top - y_radius;
+			y = limit;
 			return false;
 		}
 	}
@@ -181,14 +177,10 @@ player_keep_in_bounds = function ()
 			x_speed = 0;
 		}
 		
-		if (x - y_radius > right and gravity_direction == 90)
+		limit = gravity_direction == 90 ? min(x, right + y_radius) : max(x, left - y_radius);
+		if (x != limit)
 		{
-			x = right + y_radius;
-			return false;
-		}
-		else if (x + y_radius < left and gravity_direction == 270)
-		{
-			x = left - y_radius;
+			x = limit;
 			return false;
 		}
 	}
