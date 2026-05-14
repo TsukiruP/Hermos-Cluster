@@ -15,19 +15,20 @@ player_escape_wall = function (ind)
 	{
 		for (var ox = x_wall_radius - 1; ox > -1; --ox)
 		{
-			if (player_linecast(ind, ox)) continue;
-			
-			if (collision_point(x_int + cosine * (ox + 1), y_int - sine * (ox + 1), ind, true, false) != noone)
+			if (collision_line(x_int - cosine * ox, y_int + sine * ox, x_int + cosine * ox, y_int - sine * ox, ind, true, false) == noone)
 			{
-				x -= cosine * (x_wall_radius - ox);
-				y += sine * (x_wall_radius - ox);
-				return 1;
-			}
-			else if (collision_point(x_int - cosine * (ox + 1), y_int + sine * (ox + 1), ind, true, false) != noone)
-			{
-				x += cosine * (x_wall_radius - ox);
-				y -= sine * (x_wall_radius - ox);
-				return -1;
+				if (collision_point(x_int + cosine * (ox + 1), y_int - sine * (ox + 1), ind, true, false) != noone)
+				{
+					x -= cosine * (x_wall_radius - ox);
+					y += sine * (x_wall_radius - ox);
+					return 1;
+				}
+				else if (collision_point(x_int - cosine * (ox + 1), y_int + sine * (ox + 1), ind, true, false) != noone)
+				{
+					x += cosine * (x_wall_radius - ox);
+					y -= sine * (x_wall_radius - ox);
+					return -1;
+				}
 			}
 		}
 	}

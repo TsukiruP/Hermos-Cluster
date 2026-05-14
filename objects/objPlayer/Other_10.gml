@@ -29,7 +29,7 @@ player_move_on_ground = function ()
 		player_get_collisions();
 		
 		// Detect walls
-		var ind = player_linecast(hard_colliders, , true);
+		var ind = player_linecast(hard_colliders, true);
 		if (ind != noone and sign(x_speed) == player_escape_wall(ind))
 		{
 			x_speed = 0;
@@ -70,7 +70,7 @@ player_move_in_air = function ()
 		player_get_collisions();
 		
 		// Detect walls
-		var ind = player_linecast(hard_colliders, , true);
+		var ind = player_linecast(hard_colliders, true);
 		if (ind != noone and sign(x_speed) == player_escape_wall(ind))
 		{
 			x_speed = 0;

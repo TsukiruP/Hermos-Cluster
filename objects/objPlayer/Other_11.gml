@@ -48,17 +48,16 @@ player_boxcast = function (ind, ylen, get_id = false)
 /// @method player_linecast
 /// @description Checks if the given collider's mask intersects the 'arms' of the player's virtual mask.
 /// @param {Asset.GMObject|Id.Instance|Id.TileMapElement|Array} ind Object, instance, or tilemap to check, or an array containing any of these.
-/// @param {Real} [xrad] Distance to extend the player's mask horizontally both ways (optional, default is the player's wall radius).
 /// @param {Bool} [get_id] Whether to return the id of the collider found (optional, default is false).
 /// @returns {Bool|Id.Instance|Id.TileMapElement}
-player_linecast = function (ind, xrad = x_wall_radius, get_id = false)
+player_linecast = function (ind, get_id = false)
 {
 	var x_int = x div 1;
 	var y_int = y div 1;
 	
 	ind = mask_direction mod 180 == 0 ?
-		collision_line(x_int - xrad, y_int, x_int + xrad, y_int, ind, true, false) :
-		collision_line(x_int, y_int - xrad, x_int, y_int + xrad, ind, true, false);
+		collision_line(x_int - x_wall_radius, y_int, x_int + x_wall_radius, y_int, ind, true, false) :
+		collision_line(x_int, y_int - x_wall_radius, x_int, y_int + x_wall_radius, ind, true, false);
 	
 	return get_id ? ind : ind != noone;
 };
