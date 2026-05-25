@@ -122,9 +122,9 @@ player_get_collisions = function ()
 		collision_rectangle_list(x_int - y_radius - 2, y_int - x_wall_radius, x_int + y_radius + 2, y_int + x_wall_radius, objZoneObject, true, false, instances, false);
 	
 	// Execute reactions
-	for (var n = 0; n < total; ++n)
+	repeat (total)
 	{
-		var ind = instances[| n];
+		var ind = instances[| --total];
 		script_execute(ind.reaction, ind);
 		
 		// Register solid instances (exclude semisolids)
@@ -149,31 +149,31 @@ player_calculate_angle = function (ox, oy)
 	// Set up angle sensors, one at each end of a tile
 	if (sine == 0)
 	{
-		var sensor_y = array_create(2, oy);
-		var sensor_x = array_create(2, ox - ox mod 16);
+		oy = array_create(2, oy);
+		ox = array_create(2, ox - ox mod 16);
 		var right_sensor = mask_direction == 0; // 'Right' is absolute, not relative
-		sensor_x[right_sensor] += 15;
+		ox[right_sensor] += 15;
 		
 		// Clamp sensors to ground instance bounds, if applicable
 		if (ground_id != noone)
 		{
 			ind = ground_id;
-			sensor_x[not right_sensor] = max(sensor_x[not right_sensor], ind.bbox_left);
-			sensor_x[right_sensor] = min(sensor_x[right_sensor], ind.bbox_right);
+			ox[not right_sensor] = max(ox[not right_sensor], ind.bbox_left);
+			ox[right_sensor] = min(ox[right_sensor], ind.bbox_right);
 		}
 	}
 	else
 	{
-		var sensor_x = array_create(2, ox);
-		var sensor_y = array_create(2, oy - oy mod 16);
+		ox = array_create(2, ox);
+		oy = array_create(2, oy - oy mod 16);
 		var bottom_sensor = mask_direction == 270;
-		sensor_y[bottom_sensor] += 15;
+		oy[bottom_sensor] += 15;
 		
 		if (ground_id != noone)
 		{
 			ind = ground_id;
-			sensor_y[not bottom_sensor] = max(sensor_y[not bottom_sensor], ind.bbox_top);
-			sensor_y[bottom_sensor] = min(sensor_y[bottom_sensor], ind.bbox_bottom);
+			oy[not bottom_sensor] = max(oy[not bottom_sensor], ind.bbox_top);
+			oy[bottom_sensor] = min(oy[bottom_sensor], ind.bbox_bottom);
 		}
 	}
 	
@@ -182,19 +182,19 @@ player_calculate_angle = function (ox, oy)
 	{
 		repeat (16)
 		{
-			if (collision_point(sensor_x[n], sensor_y[n], ind, true, false) == noone)
+			if (collision_point(ox[n], oy[n], ind, true, false) == noone)
 			{
-				sensor_x[n] += sine;
-				sensor_y[n] += cosine;
+				ox[n] += sine;
+				oy[n] += cosine;
 			}
-			else if (collision_point(sensor_x[n] - sine, sensor_y[n] - cosine, ind, true, false) != noone)
+			else if (collision_point(ox[n] - sine, oy[n] - cosine, ind, true, false) != noone)
 			{
-				sensor_x[n] -= sine;
-				sensor_y[n] -= cosine;
+				ox[n] -= sine;
+				oy[n] -= cosine;
 			}
 			else break;
 		}
 	}
 	
-	return round(point_direction(sensor_x[0], sensor_y[0], sensor_x[1], sensor_y[1]));
+	return round(point_direction(ox[0], oy[0], ox[1], oy[1]));
 };

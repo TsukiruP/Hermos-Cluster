@@ -16,7 +16,7 @@ player_move_on_ground = function ()
 	wall_sign = 0;
 	
 	// Calculate movement steps
-	var total_steps = 1 + abs(x_speed) div 13;
+	var total_steps = 1 + abs(x_speed) div 15;
 	var step = x_speed / total_steps;
 	
 	var floor_reach = y_radius + min(2 + abs(x_speed) div 1, y_snap_distance);
@@ -58,7 +58,7 @@ player_move_in_air = function ()
 	wall_sign = 0;
 	
 	// Calculate movement steps
-	var total_steps = 1 + abs(x_speed) div 13 + abs(y_speed) div 13;
+	var total_steps = 1 + abs(x_speed) div 15 + abs(y_speed) div 15;
 	var x_step = x_speed / total_steps;
 	var y_step = y_speed / total_steps;
 	
