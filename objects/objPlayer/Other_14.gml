@@ -116,6 +116,7 @@ player_create_speed_break = function()
         visible = true;
         time = 0;
         animation_set(global.anim_speed_break);
+        
         for (var i = 0; i < SPEED_BREAK_COUNT; i++)
         {
             var old_rot, accel;
