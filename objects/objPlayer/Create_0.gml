@@ -53,7 +53,7 @@ tilemap_count = array_length(hard_colliders);
 // Validate semisolid tilemap
 if (tilemap_count & 1 == 0)
 {
-	semisolid_tilemap = array_last(hard_colliders);
+	semisolid_tilemap = array_pop(hard_colliders);
 	--tilemap_count;
 }
 else semisolid_tilemap = -1;
@@ -61,13 +61,13 @@ else semisolid_tilemap = -1;
 // Delist "CollisionPath1" layer tilemap
 if (tilemap_count == 3)
 {
-	array_delete(hard_colliders, 2, 1);
+	array_pop(hard_colliders);
 	--tilemap_count;
 }
 
 // Methods
 var n = 0;
-repeat (16) event_user(n++);
+repeat (4) event_user(n++);
 
 // Misc.
 instance_create_layer(x, y, layer, objCamera, { gravity_direction });

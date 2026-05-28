@@ -111,9 +111,9 @@ player_move_in_air = function ()
 				// Slide against it
 				sine = dsin(local_direction);
 				cosine = dcos(local_direction);
-				var g_speed = cosine * x_speed - sine * y_speed;
-				x_speed = cosine * g_speed;
-				y_speed = -sine * g_speed;
+				x_step = cosine * x_speed - sine * y_speed;
+				x_speed = cosine * x_step;
+				y_speed = -sine * x_step;
 				
 				// Revert mask rotation and abort
 				mask_direction = gravity_direction;
