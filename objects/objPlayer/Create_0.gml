@@ -8,7 +8,6 @@ state = player_is_ready;
 state_previous = state;
 state_changed = false;
 
-cliff_sign = 0;
 
 spin_dash_charge = 0;
 spin_dash_dust = new attachment();
@@ -60,6 +59,9 @@ gravity_direction = 0;
 local_direction = 0;
 mask_direction = 0;
 
+wall_sign = 0;
+cliff_sign = 0;
+
 collision_layer = 0;
 
 tilemaps = variable_clone(ctrlStage.tilemaps, 0);
@@ -68,7 +70,7 @@ tilemap_count = array_length(tilemaps);
 // Validate semisolid tilemap
 if (tilemap_count & 1 == 0)
 {
-    semisolid_tilemap = array_last(tilemaps);
+    semisolid_tilemap = array_pop(tilemaps);
     tilemap_count--;
 }
 else
@@ -79,7 +81,7 @@ else
 // Delist the "TilesLayer1" layer tilemap
 if (tilemap_count == 3)
 {
-    array_delete(tilemaps, 2, 1);
+    array_pop(tilemaps);
     tilemap_count--;
 }
 

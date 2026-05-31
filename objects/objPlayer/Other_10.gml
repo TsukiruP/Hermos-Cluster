@@ -2,6 +2,7 @@
 /// @description Updates the player's position on the ground and checks for collisions.
 player_move_on_ground = function()
 {
+    
     // Ride moving platforms
     with (ground_id)
     {
@@ -11,8 +12,10 @@ player_move_on_ground = function()
         if (dy != 0) other.y += dy;
     }
     
+    wall_sign = 0;
+    
     // Calculate movement steps
-    var total_steps = 1 + abs(x_speed) div 13;
+    var total_steps = 1 + abs(x_speed) div 15;
     var step = x_speed / total_steps;
     
     var floor_reach = y_radius + min(2 + abs(x_speed) div 1, y_snap_distance);
@@ -30,10 +33,11 @@ player_move_on_ground = function()
         player_get_collisions();
         
         // Detect walls
-        if (player_linecast(tilemaps) and sign(x_speed) == player_escape_wall())
+        var ind = player_linecast(tilemaps);
+        if (ind != noone)
         {
-            x_speed = 0;
-            floor_reach = y_radius + 2;
+            wall_sign = player_escape_wall(ind);
+            if (sign(x_speed) == wall_sign) x_speed = 0;
         }
         
         // Detect floor
@@ -62,8 +66,10 @@ player_move_on_ground = function()
 /// @description Updates the player's position in the air and checks for collisions.
 player_move_in_air = function()
 {
+    wall_sign = 0;
+    
     // Calculate movement steps
-    var total_steps = 1 + abs(x_speed) div 13 + abs(y_speed) div 13;
+    var total_steps = 1 + abs(x_speed) div 15 + abs(y_speed) div 15;
     var x_step = x_speed / total_steps;
     var y_step = y_speed / total_steps;
     
@@ -82,9 +88,15 @@ player_move_in_air = function()
         player_get_collisions();
         
         // Detect walls
-        if (player_linecast(tilemaps) and sign(x_speed) == player_escape_wall())
+        var ind = player_linecast(tilemaps, true);
+        if (ind != noone)
         {
-            x_speed = 0;
+            wall_sign = player_escape_wall(ind);
+            if (sign(x_speed) == wall_sign)
+            {
+                x_speed = 0;
+                x_step = 0;
+            }
         }
         
         // Detect floors / ceilings
@@ -119,9 +131,9 @@ player_move_in_air = function()
                 sine = dsin(local_direction);
                 cosine = dcos(local_direction);
                 
-                var g_speed = cosine * x_speed - sine * y_speed;
-                x_speed = cosine * g_speed;
-                y_speed = -sine * g_speed;
+                x_step = cosine * x_speed - sine * y_speed;
+                x_speed = cosine * x_step;
+                y_speed = -sine * x_step;
                 
                 // Revert mask rotation and abort
                 landed = false;

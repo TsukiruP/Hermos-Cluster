@@ -1,31 +1,32 @@
 /// @description Setters
-/// @description Moves the player's wall sensor out of collision with any walls.
-/// @returns {Real|Undefined} Sign of the wall from the player, or undefined on failure to reposition.
-player_escape_wall = function()
+/// @description Moves the 'arms' of the player's virtual mask out of the given wall.
+/// @param {Id.Instance|Id.TileMapElement} ind Instance or tilemap to escape.
+/// @returns {Real} Sign of the wall from the player, or 0 on failure to reposition.
+player_escape_wall = function(_ind)
 {
     var x_int = x div 1;
     var y_int = y div 1;
     var sine = dsin(mask_direction);
     var cosine = dcos(mask_direction);
-    var ind = tilemaps; //instance_place(x_int, y_int, tilemaps);
     
-    if (collision_point(x_int, y_int, ind, true, false) == noone)
+    if (collision_point(x_int, y_int, _ind, true, false) == noone)
     {
         for (var ox = x_wall_radius - 1; ox > -1; ox--)
         {
-            if (player_linecast(ind, ox)) continue;
-            
-            if (collision_point(x_int + cosine * (ox + 1), y_int - sine * (ox + 1), ind, true, false) != noone)
+            if (collision_line(x_int - cosine * ox, y_int + sine * ox, x_int + cosine * ox, y_int - sine * ox, _ind, true, false) == noone)
             {
-                x -= cosine * (x_wall_radius - ox);
-                y += sine * (x_wall_radius - ox);
-                return 1;
-            }
-            else if (collision_point(x_int - cosine * (ox + 1), y_int + sine * (ox + 1), ind, true, false) != noone)
-            {
-                x += cosine * (x_wall_radius - ox);
-                y -= sine * (x_wall_radius - ox);
-                return -1;
+                if (collision_point(x_int + cosine * (ox + 1), y_int - sine * (ox + 1), _ind, true, false) != noone)
+                {
+                    x -= cosine * (x_wall_radius - ox);
+                    y += sine * (x_wall_radius - ox);
+                    return 1;
+                }
+                else if (collision_point(x_int - cosine * (ox + 1), y_int + sine * (ox + 1), _ind, true, false) != noone)
+                {
+                    x += cosine * (x_wall_radius - ox);
+                    y -= sine * (x_wall_radius - ox);
+                    return -1;
+                }
             }
         }
     }
@@ -33,13 +34,13 @@ player_escape_wall = function()
     {
         for (var ox = 1; ox <= x_wall_radius; ox++)
         {
-            if (collision_point(x_int + cosine * ox, y_int - sine * ox, ind, true, false) == noone)
+            if (collision_point(x_int + cosine * ox, y_int - sine * ox, _ind, true, false) == noone)
             {
                 x += cosine * (x_wall_radius + ox);
                 y -= sine * (x_wall_radius + ox);
                 return -1;
             }
-            else if (collision_point(x_int - cosine * ox, y_int + sine * ox, ind, true, false) == noone)
+            else if (collision_point(x_int - cosine * ox, y_int + sine * ox, _ind, true, false) == noone)
             {
                 x -= cosine * (x_wall_radius + ox);
                 y += sine * (x_wall_radius + ox);
@@ -48,7 +49,7 @@ player_escape_wall = function()
         }
     }
     
-    return undefined;
+    return 0;
 };
 
 /// @description Aligns the player to the ground and updates their angle values, if applicable; detaches them otherwise.
@@ -126,7 +127,7 @@ player_detect_angle = function()
             oy -= sine * x_radius;
         }
         
-        direction = player_calc_tile_normal(ox, oy);
+        direction = player_calculate_angle(ox, oy);
     }
     else
     {
@@ -139,11 +140,11 @@ player_detect_angle = function()
 /// @description Updates the direction of the player's virtual mask on slopes.
 player_rotate_mask = function()
 {
-	var diff = angle_difference(direction, mask_direction);
-	if (abs(diff) > 45 and (landed or player_intersect(tilemaps, y_radius, x_radius)))
-	{
-		mask_direction = angle_wrap(mask_direction + 90 * sign(diff));
-	}
+    var diff = angle_difference(direction, mask_direction);
+    if (abs(diff) > 45 and (landed or player_intersect(tilemaps, y_radius, x_radius)))
+    {
+        mask_direction = angle_wrap(mask_direction + 90 * sign(diff));
+    }
 };
 
 /// @description Confines the player inside the camera boundary.
@@ -154,16 +155,16 @@ player_keep_in_bounds = function()
     var top = 0;
     var right = room_width;
     var bottom = room_height;
-	
-	with (objCamera)
-	{
-		left = bound_left;
-		top = bound_top;
-		right = bound_right;
-		bottom = bound_bottom;
-	}
-	
-	if (gravity_direction mod 180 == 0)
+
+    with (objCamera)
+    {
+        left = bound_left;
+        top = bound_top;
+        right = bound_right;
+        bottom = bound_bottom;
+    }
+
+    if (gravity_direction mod 180 == 0)
     {
         var limit = median(left + x_radius, x, right - x_radius);
         if (x != limit)
@@ -171,15 +172,11 @@ player_keep_in_bounds = function()
             x = limit;
             x_speed = 0;
         }
-        
-        if (y - y_radius > bottom and gravity_direction == 0)
+
+        limit = gravity_direction == 0 ? min(y, bottom + y_radius) : max(y, top - y_radius);
+        if (y != limit)
         {
-            y = bottom + y_radius;
-            return false;
-        }
-        else if (y + y_radius < top and gravity_direction == 180)
-        {
-            y = top - y_radius;
+            y = limit;
             return false;
         }
     }
@@ -191,21 +188,17 @@ player_keep_in_bounds = function()
             y = limit;
             x_speed = 0;
         }
-        
-        if (x - y_radius > right and gravity_direction == 90)
+
+        limit = gravity_direction == 90 ? min(x, right + y_radius) : max(x, left - y_radius);
+        if (x != limit)
         {
-            x = right + y_radius;
-            return false;
-        }
-        else if (x + y_radius < left and gravity_direction == 270)
-        {
-            x = left - y_radius;
+            x = limit;
             return false;
         }
     }
-	
-	return true;
-}
+
+    return true;
+};
 
 /// @description Switches the player's state to the given function.
 /// @param {Function} state State function to switch to.
