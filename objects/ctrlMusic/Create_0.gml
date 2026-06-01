@@ -5,7 +5,7 @@ swap = false;
 
 playlist = ds_priority_create();
 music = noone;
-jingle = [];
+jingle = [bgmMadGear];
 drown = noone;
 life = noone;
 
