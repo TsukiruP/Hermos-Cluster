@@ -1,6 +1,6 @@
 /// @description Animations
 /// @description Sets the player's current animation, radii, and hitboxes.
-player_render = function() {};
+player_render = function() {}
 
 /// @description Sets the player's current animation.
 /// @param {Undefined|Struct.animation|Array} anim Animation to set. Accepts an array as animation variants.
@@ -9,7 +9,7 @@ player_animate = function(_anim, _ang = gravity_direction)
 {
     image_angle = _ang;
     animation_set(_anim);
-};
+}
 
 /// @description Sets the player's current animation based on teeter conditions.
 /// @param {Undefined|Struct.animation|Array} anim Animation to set. Accepts an array as animation variants.
@@ -17,7 +17,7 @@ player_animate_teeter = function(_anim)
 {
     anim_core.variant = (cliff_sign != image_xscale);
     player_animate(_anim);
-};
+}
 
 /// @description Sets the player's current animation based on running conditions.
 /// @param {Undefined|Struct.animation|Array} anim Animation to set. Accepts an array as animation variants.
@@ -37,7 +37,7 @@ player_animate_run = function(_anim)
     anim_core.variant = variant;
     player_animate(_anim, direction);
     if (on_ground) anim_core.speed = clamp((abs(x_speed) / 3) + (abs(x_speed) / 4), 0.5, 8);
-};
+}
 
 /// @description Sets the player's current animation based on falling conditions.
 /// @param {Undefined|Struct.animation|Array} anim Animation to set. Accepts an array as animation variants.
@@ -45,7 +45,7 @@ player_animate_fall = function(_anim)
 {
     if (anim_core.variant == 0 and animation_is_finished()) anim_core.variant = 1;
     player_animate(_anim, rotate_towards(mask_direction, image_angle));
-};
+}
 
 /// @description Sets the player's current animation based on jumping conditions.
 /// @param {Undefined|Struct.animation|Array} anim Animation to set. Accepts an array as animation variants.
@@ -66,7 +66,7 @@ player_animate_jump = function(_anim)
     }
     
     player_animate(_anim);
-};
+}
 
 /// @description Sets the player's current animation based on spring conditions.
 /// @param {Undefined|Struct.animation|Array} anim Animation to set. Accepts an array as animation variants.
@@ -87,7 +87,7 @@ player_animate_spring = function(_anim)
     }
     
     player_animate(_anim);
-};
+}
 
 /// @description Records the player's current position and animation within the animation history.
 player_enqueue_animation_history = function()
@@ -104,7 +104,7 @@ player_enqueue_animation_history = function()
     }
     
     anim_history.index = ++anim_history.index mod ANIMATION_RECORD_COUNT;
-};
+}
 
 /// @description Creates a Speed Break effect.
 player_create_speed_break = function()
@@ -139,4 +139,4 @@ player_create_speed_break = function()
             accelerations[i][1] = -dsin(old_rot) * accel;
         }
     }
-};
+}

@@ -679,7 +679,7 @@ player_render = function()
             break;
         }
     }
-};
+}
 
 /// @description Creates a hammer trail effect.
 /// @param {Enum.HEART_PATTERN} pattern Heart pattern to use.
@@ -705,7 +705,7 @@ amy_create_hammer_trail = function(_pattern)
         pattern = _pattern;
         offset_index = 0;
     }
-};
+}
 
 /// @description Creates a trick trail effect.
 amy_create_trick_trail = function()
@@ -726,4 +726,4 @@ amy_create_trick_trail = function()
         active = 0;
         destroy = false;
     }
-};
+}

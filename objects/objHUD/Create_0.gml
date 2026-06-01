@@ -20,8 +20,8 @@ if (status_bar_config != CONFIG_STATUS_BAR.OFF)
         icon = ITEM.EGGMAN;
         active = true;
         visible = true;
-        update = function() {};
-    };
+        update = function() {}
+    }
     
     status_shield = new status();
     with (status_shield)
@@ -31,7 +31,7 @@ if (status_bar_config != CONFIG_STATUS_BAR.OFF)
             var shield_index = ctrlStage.stage_players[0].shield.index;
             icon = ITEM.BASIC + (shield_index > SHIELD.NONE ? shield_index - SHIELD.BASIC : 0);
             active = (shield_index != SHIELD.NONE);
-        };
+        }
     }
     
     status_invin = new status();
@@ -43,7 +43,7 @@ if (status_bar_config != CONFIG_STATUS_BAR.OFF)
             var time = max(ctrlStage.stage_players[0].invincibility_time, ctrlStage.stage_players[0].recovery_time);
             active = (time > 0);
             visible = (time < 120 ? time mod 4 < 2 : true);
-        };
+        }
     }
     
     status_speed = new status();
@@ -57,7 +57,7 @@ if (status_bar_config != CONFIG_STATUS_BAR.OFF)
             icon = (time < 0 ? ITEM.SLOW_DOWN : ITEM.SPEED_UP);
             active = (time != 0);
             visible = (abs_time < 120 ? abs_time mod 4 < 2 : true);
-        };
+        }
     }
     
     status_confusion = new status();
@@ -86,7 +86,7 @@ if (item_feed_config)
         x = CAMERA_WIDTH / 2;
         icon = _icon;
         time = 0;
-    };
+    }
     
     item_feed = [];
     item_feed_duration = 90;

@@ -23,7 +23,7 @@ function hitbox(_color, _left = 0, _top = 0, _right = 0, _bottom = 0) constructo
         top = _top;
         right = _right;
         bottom = _bottom;
-    };
+    }
 }
 
 /// @description Checks if the given player is intersecting the given hitbox.

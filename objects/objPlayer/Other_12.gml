@@ -50,7 +50,7 @@ player_escape_wall = function(_ind)
     }
     
     return 0;
-};
+}
 
 /// @description Aligns the player to the ground and updates their angle values, if applicable; detaches them otherwise.
 /// @param {Bool} attach Whether to stick to the ground.
@@ -94,7 +94,7 @@ player_ground = function(_attach)
     }
     
     player_detect_angle();
-};
+}
 
 /// @description Sets the player's angle values.
 player_detect_angle = function()
@@ -135,7 +135,7 @@ player_detect_angle = function()
     }
     
     local_direction = angle_wrap(direction - gravity_direction);
-};
+}
 
 /// @description Updates the direction of the player's virtual mask on slopes.
 player_rotate_mask = function()
@@ -145,7 +145,7 @@ player_rotate_mask = function()
     {
         mask_direction = angle_wrap(mask_direction + 90 * sign(diff));
     }
-};
+}
 
 /// @description Confines the player inside the camera boundary.
 /// @returns {Bool} Whether the player is inside the boundary or has fallen below it.
@@ -155,7 +155,7 @@ player_keep_in_bounds = function()
     var top = 0;
     var right = room_width;
     var bottom = room_height;
-
+    
     with (objCamera)
     {
         left = bound_left;
@@ -163,7 +163,7 @@ player_keep_in_bounds = function()
         right = bound_right;
         bottom = bound_bottom;
     }
-
+    
     if (gravity_direction mod 180 == 0)
     {
         var limit = median(left + x_radius, x, right - x_radius);
@@ -172,7 +172,7 @@ player_keep_in_bounds = function()
             x = limit;
             x_speed = 0;
         }
-
+        
         limit = gravity_direction == 0 ? min(y, bottom + y_radius) : max(y, top - y_radius);
         if (y != limit)
         {
@@ -188,7 +188,7 @@ player_keep_in_bounds = function()
             y = limit;
             x_speed = 0;
         }
-
+        
         limit = gravity_direction == 90 ? min(x, right + y_radius) : max(x, left - y_radius);
         if (x != limit)
         {
@@ -196,9 +196,9 @@ player_keep_in_bounds = function()
             return false;
         }
     }
-
+    
     return true;
-};
+}
 
 /// @description Switches the player's state to the given function.
 /// @param {Function} state State function to switch to.
@@ -214,7 +214,7 @@ player_perform = function(_state, _enter = true)
         state_previous(PHASE.EXIT);
         if (_enter) state(PHASE.ENTER);
     }
-};
+}
 
 /// @description Resizes the player's virtual mask to the given dimensions.
 /// @param {Real} xrad Horizontal radius to use.
@@ -237,7 +237,7 @@ player_resize = function(_xrad, _yrad)
         x += sine * (old_y_radius - y_radius);
         y += cosine * (old_y_radius - y_radius);
     }
-};
+}
 
 /// @description Resets the player's physics variables back to their default values, applying any modifiers afterward.
 player_refresh_physics = function()
@@ -278,7 +278,7 @@ player_refresh_physics = function()
     
     acceleration = base_acceleration;
     air_acceleration = acceleration * 2;
-};
+}
 
 /// @description Applies slope friction to the player's horizontal speed, if appropriate.
 /// @param {Real} force Friction value to use (optional, defaults to 3 / 32).
@@ -294,7 +294,7 @@ player_resist_slope = function(_force = 3 / 32)
     
     // Apply speed limit
     if (abs(x_speed) > speed_limit) x_speed = speed_limit * sign(x_speed);
-};
+}
 
 /// @description Sets the player's Boost Mode, applying any modifiers afterward.
 player_refresh_boost_mode = function()
@@ -351,7 +351,7 @@ player_refresh_boost_mode = function()
         if (global.ring_count > 10) acceleration += 4 / 256;
         air_acceleration = acceleration * 2;
     }
-};
+}
 
 /// @description Resets the player's status.
 player_refresh_status = function()
@@ -362,7 +362,7 @@ player_refresh_status = function()
     superspeed_time = 0;
     confusion_time = 0;
     shield.index = SHIELD.NONE;
-};
+}
 
 /// @description Resets the player's inputs.
 player_refresh_inputs = function()
@@ -377,7 +377,7 @@ player_refresh_inputs = function()
         _value.pressed = false;
         _value.released = false;
     });
-};
+}
 
 /// @description Resets the player's input records.
 player_refresh_cpu_records = function()
@@ -386,7 +386,7 @@ player_refresh_cpu_records = function()
     array_foreach(cpu_axis_y, function(_element, _index) { _element = 0; });
     array_foreach(cpu_input_jump, function(_element, _index) { _element = false; });
     array_foreach(cpu_input_jump_pressed, function(_element, _index) { _element = false; });
-};
+}
 
 /// @description Resets the CPU.
 player_refresh_cpu = function()
@@ -410,7 +410,7 @@ player_refresh_cpu = function()
     player_perform(player_is_falling, false);
     player_refresh_physics();
     player_refresh_boost_mode();
-};
+}
 
 /// @description Respawns the CPU.
 player_respawn_cpu = function()
@@ -422,4 +422,4 @@ player_respawn_cpu = function()
         cpu_respawn_time = 0;
         player_refresh_cpu();
     }
-};
+}

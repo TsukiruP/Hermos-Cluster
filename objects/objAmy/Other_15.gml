@@ -12,7 +12,7 @@ player_draw_before = function()
             }
         });
     }
-};
+}
 
 player_draw_after = function()
 {
@@ -32,4 +32,4 @@ player_draw_after = function()
             j = j << 1;
         }
     }
-};
+}

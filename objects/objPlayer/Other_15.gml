@@ -9,7 +9,7 @@ player_gain_score = function(_num)
     // Gain lives
     var count = global.score_count div 50000;
     if (count != previous_count) player_gain_lives(count - previous_count);
-};
+}
 
 /// @description Increases the player's ring count by the given amount.
 /// @param {Real} num Amount of rings to give.
@@ -24,7 +24,7 @@ player_gain_rings = function(_num)
         player_gain_lives(change - global.ring_life_threshold div 100);
         global.ring_life_threshold = change * 100 + RING_LIFE_BASE_THRESHOLD;
     }
-};
+}
 
 /// @description Spawns up to 32 dropped rings in circles of 16 at the player's position, and resets their ring count.
 player_drop_rings = function()
@@ -58,7 +58,7 @@ player_drop_rings = function()
     
     global.ring_count = 0;
     audio_play_sfx(sfxDropRings);
-};
+}
 
 /// @description Increases the player's life count by the given amount.
 /// @param {Real} num Amount of lives to give.
@@ -69,7 +69,7 @@ player_gain_lives = function(_num)
         global.life_count = min(global.life_count + _num, LIVES_CAP);
         audio_play_life();
     }
-};
+}
 
 /// @description Gives the player the given item.
 /// @param {Enum.ITEM} item Item to obtain.
@@ -182,10 +182,10 @@ player_obtain_item = function(_item)
             item_feed_time = item_feed_duration;
         }
     }
-};
+}
 
 /// @description Draws player effects behind the character sprite.
-player_draw_before = function() {};
+player_draw_before = function() {}
 
 /// @description Draws player effects in front of the character sprite.
-player_draw_after = function() {};
+player_draw_after = function() {}

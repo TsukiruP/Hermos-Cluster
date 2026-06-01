@@ -10,7 +10,7 @@ reaction = function(_pla)
         particle_create(x, y, global.anim_ring_sparkle);
 		instance_destroy();
     }
-};
+}
 
 // Movement and collision
 x_speed = 0;

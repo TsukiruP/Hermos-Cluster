@@ -11,4 +11,4 @@ rection = function(_pla)
         _pla.collision_layer = index;
         _pla.tilemaps[1] = ctrlStage.tilemaps[index + 1];
     }
-};
+}

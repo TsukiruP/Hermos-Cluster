@@ -11,4 +11,4 @@ menu_close = function(_destroy = true)
     ctrlGame.game_paused &= ~PAUSE_FLAG_MENU;
     InputVerbConsumeAll();
     if (_destroy) instance_destroy();
-};
+}

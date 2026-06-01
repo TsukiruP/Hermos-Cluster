@@ -4,7 +4,7 @@
 player_check_ground_skill = function()
 {
     return (on_ground and not (local_direction >= 90 and local_direction <= 270));
-};
+}
 
 /// @description Checks if the player performs a jump.
 /// @returns {Bool}
@@ -78,7 +78,7 @@ player_try_jump = function()
     }
     
     return false;
-};
+}
 
 /// @desctiption Checks if the player performs a Trick Action.
 /// @param [time] Time to check (optional, defaults to 0).
@@ -124,7 +124,7 @@ player_try_trick_action = function(_time = 0)
     }
     
     return false;
-};
+}
 
 /// @description Check is the player calls for a Flight Assist.
 /// @returns {Bool}
@@ -213,7 +213,7 @@ player_try_flight_assist = function()
     }
     
     return true;
-};
+}
 
 /// @description Checks if the player performs a Shield Action.
 /// @returns {Bool}
@@ -284,7 +284,7 @@ player_try_shield_action = function()
     }
     
     return false;
-};
+}
 
 /// @description Check if the player performs a ground skill.
 /// @returns {Bool}
@@ -323,7 +323,7 @@ player_try_ground_skill = function()
     }
     
     return false;
-};
+}
 
 /// @description Checks if the player performs an air skill.
 /// @returns {Bool}
@@ -498,7 +498,7 @@ player_try_air_skill = function()
     }
     
     return false;
-};
+}
 
 /// @description Resets air skills when grounded.
 player_refresh_air_skills = function()
@@ -512,7 +512,7 @@ player_refresh_air_skills = function()
             break;
         }
     }
-};
+}
 
 /// @description Evaluates the player's condition after taking a hit.
 /// @param {Id.Instance} inst Instance to check. Set to id to force a death, or noone to just hurt the player.
@@ -562,4 +562,4 @@ player_damage = function(_inst)
         if (not ring_loss) audio_play_sfx(_inst != noone and _inst.object_index == objSpikes ? sfxHurtSpikes : sfxHurt);
         return player_perform(player_is_hurt);
     }
-};
+}

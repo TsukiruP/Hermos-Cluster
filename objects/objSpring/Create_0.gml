@@ -69,4 +69,4 @@ reaction = function(_pla)
     {
         active &= ~bit;
     }
-};
+}

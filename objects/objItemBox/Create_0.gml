@@ -43,7 +43,7 @@ reaction = function(_pla)
         audio_play_sfx(sfxDestroy);
         particle_create(x, y + 15, global.anim_explosion_destroy, image_angle);
     }
-};
+}
 
 // Change debuffs to Eggman
 if (not db_read(CONFIG_DATABASE, CONFIG_DEFAULT_DEBUFFS, "debuffs") and (index == ITEM.SLOW_DOWN or index == ITEM.CONFUSION))

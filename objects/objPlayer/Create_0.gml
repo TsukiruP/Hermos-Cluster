@@ -8,7 +8,6 @@ state = player_is_ready;
 state_previous = state;
 state_changed = false;
 
-
 spin_dash_charge = 0;
 spin_dash_dust = new attachment();
 
@@ -160,7 +159,7 @@ animation_record = function() constructor
     image_angle = 0;
     anim = undefined;
     speed = 1;
-};
+}
 
 anim_history =
 {
@@ -181,7 +180,7 @@ afterimage = function() constructor
     image_alpha = 1;
     anim_core = new animation_core();
     time = 0;
-};
+}
 
 afterimage_trail =
 {

@@ -75,7 +75,7 @@ resize_view = function()
     var x_shift = camera_get_view_x(CAMERA_ID) - (new_width - view_width) / 2;
     var y_shift = camera_get_view_y(CAMERA_ID) - (new_height - view_height) / 2;
     camera_set_view_pos(CAMERA_ID, x_shift, y_shift);
-};
+}
 
 /// @description Camera view to room position.
 /// @param {Real} x
@@ -86,7 +86,7 @@ view_to_room_x = function(_x)
     _x *= zoom_amount;
     _x += zoom_offset + (x - CAMERA_WIDTH / 2) - 1;
     return _x;
-};
+}
 
 /// @description Camera view to room position.
 /// @param {Real} y
@@ -97,4 +97,4 @@ view_to_room_y = function(_y)
     _y *= zoom_amount;
     _y += zoom_offset + (y - CAMERA_HEIGHT / 2) - 1;
     return _y;
-};
+}

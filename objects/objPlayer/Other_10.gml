@@ -61,7 +61,7 @@ player_move_on_ground = function()
         // Abort if stopped or airborne
         if (x_speed == 0 or not on_ground) break;
     }
-};
+}
 
 /// @description Updates the player's position in the air and checks for collisions.
 player_move_in_air = function()
@@ -161,4 +161,4 @@ player_move_in_air = function()
             break;
         }
     }
-};
+}
