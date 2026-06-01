@@ -35,3 +35,7 @@ if (tilemaps[1] == -1) array_delete(tilemaps, 1, 2);
 
 // Create UI elements
 instance_create_layer(0, 0, "Master", objHUD, { image_speed: 0 });
+
+// Reset ring counters
+global.rings = 0;
+global.rings_for_life = 99;

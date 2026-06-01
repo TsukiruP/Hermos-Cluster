@@ -437,8 +437,7 @@ function player_is_spindashing(phase)
 			if (input_check_pressed(INPUT.ACTION))
 			{
 				spindash_charge = min(spindash_charge + 2, 8);
-				var rev_sfx = audio_play_sfx(sfxSpinRev);
-				audio_sound_pitch(rev_sfx, 1 + spindash_charge * 0.0625);
+				audio_sound_pitch(audio_play_sfx(sfxSpinRev), 1 + spindash_charge / 16);
 			}
 			else spindash_charge *= 0.96875;
 			break;

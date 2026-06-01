@@ -38,7 +38,7 @@ player_damage = function (ind)
 	if (global.rings > 0)
 	{
 		player_perform(player_is_hurt);
-		if (not on_ground) rolling = false;
+		rolling = false;
 	
 		x_speed = 2 * sign(x - ind.x);
 		if (x_speed == 0) x_speed = 2;

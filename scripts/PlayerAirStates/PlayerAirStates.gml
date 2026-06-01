@@ -146,7 +146,7 @@ function player_is_hurt(phase)
 	{
 		case PHASE.ENTER:
 		{
-			player_ground(false);
+			if (on_ground) player_ground(false);
 			
 			// Animate
 			player_animate("hurt");
