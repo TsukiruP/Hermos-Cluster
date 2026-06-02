@@ -8,8 +8,8 @@
   "name":"objHUD",
   "overriddenProperties":[],
   "parent":{
-    "name":"HUD",
-    "path":"folders/Zone/HUD.yy",
+    "name":"Display",
+    "path":"folders/Zone/Display.yy",
   },
   "parentObjectId":null,
   "persistent":false,

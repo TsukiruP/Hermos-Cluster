@@ -13,6 +13,7 @@ spindash_charge = 0;
 control_lock_time = 0;
 recovery_time = 0;
 superspeed_time = 0;
+invincibility_time = 0;
 
 camera_look_delay = 120;
 camera_look_time = camera_look_delay;
@@ -71,6 +72,7 @@ repeat (4) event_user(n++);
 
 // Misc.
 instance_create_layer(x, y, layer, objCamera, { gravity_direction });
+badnik_chain = 0;
 
 // Animations
 animations =

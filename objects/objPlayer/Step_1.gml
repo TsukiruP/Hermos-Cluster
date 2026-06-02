@@ -13,3 +13,10 @@ if (superspeed_time > 0 and --superspeed_time == 0)
 {
 	player_refresh_physics();
 }
+
+if (invincibility_time > 0 and --invincibility_time == 0)
+{
+	// Remove invincibility effect here (once it's added).
+	
+	if (badnik_chain > 0 and not rolling) badnik_chain = 0;
+}

@@ -1,5 +1,18 @@
 /// @description Misc.
 
+/// @method player_gain_score
+/// @description Increases the player's score count by the given amount.
+/// @param {Real} num Amount of points to give.
+player_gain_score = function (num)
+{
+	var previous_num = score div 50000;
+	score = min(score + num, 999999);
+	
+	// Gain lives
+	num = score div 50000;
+	if (num != previous_num) player_gain_lives(num - previous_num);
+};
+
 /// @method player_gain_rings
 /// @description Increases the player's ring count by the given amount.
 /// @param {Real} num Amount of rings to give.

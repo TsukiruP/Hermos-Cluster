@@ -50,6 +50,13 @@ with (sprite_particles)
 	ring_sparkle = part_type_create();
 	part_type_life(ring_sparkle, 24, 24);
 	part_type_sprite(ring_sparkle, sprRingSparkle, true, true, false);
+	
+	points = part_type_create();
+	part_type_life(points, 32, 32);
+	part_type_sprite(points, sprPoints, false, false, false);
+	part_type_direction(points, 90, 90, 0, 0);
+	part_type_gravity(points, 0.09375, 270);
+	part_type_speed(points, 3, 3, 0, 0);
 }
 
 // Start the game!
