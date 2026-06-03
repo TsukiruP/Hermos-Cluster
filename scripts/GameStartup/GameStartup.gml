@@ -128,6 +128,13 @@ global.ring_count = 0;
 global.life_count = 3;
 global.ring_life_threshold = RING_LIFE_BASE_THRESHOLD;
 
+// Audio
+volume_sound = 1;
+volume_music = 1;
+
+audio_loop_section(sfxPropellerFlight, 0, 33075 / 44100);
+audio_loop_section(sfxPropellerFlightTired, 0, 12711 / 44100);
+
 // Fonts
 global.font_title_card = font_add_sprite(sprFontTitleCard, ord(" "), true, -5);
 
@@ -146,34 +153,12 @@ global.font_hud_episode_ii = font_add_sprite_ext(sprFontHUDEpisodeII, "012345678
 global.font_hud_episode_ii_score = font_add_sprite(sprFontHUDEpisodeIIScore, ord("0"), false, 1);
 global.font_hud_episode_ii_time = font_add_sprite_ext(sprFontHUDEpisodeIITime, "0123456789'\"", false, 1);
 
-// Loop points
-//audio_loop_points(sfxPropellerFlight, 0, 33075 / 44100);
-//audio_loop_points(sfxPropellerFlightTired, 0, 12711 / 44100);
-//audio_loop_points(bgmExtraDungeon1A, 814140 / 44100, 6676039 / 44100);
-//audio_loop_points(bgmSunshineCoastline, 00450784 / 48000, 08694455 / 48000);
-
 // Misc.
 show_debug_overlay(true);
 surface_depth_disable(true);
 gc_target_frame_time(-100);
-InputPartySetParams(INPUT_VERB.CONFIRM, 1, INPUT_MAX_PLAYERS, true, INPUT_VERB.CANCEL, undefined);
 randomize();
-
-// Audio
-audio_channel_num(12);
-volume_sound = 1;
-volume_music = 1;
-
-// Particles
-sprite_particles = {};
-with (sprite_particles)
-{
-	system = part_system_create();
-	
-	brake_dust = part_type_create();
-	part_type_life(brake_dust, 16, 16);
-	part_type_sprite(brake_dust, sprBrakeDust, true, true, false);
-}
+InputPartySetParams(INPUT_VERB.CONFIRM, 1, INPUT_MAX_PLAYERS, true, INPUT_VERB.CANCEL, undefined);
 
 // Start the game!
 call_later(1, time_source_units_frames, room_goto_next);
