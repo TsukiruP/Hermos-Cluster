@@ -55,6 +55,10 @@ with (sprite_particles)
 	part_type_life(explosion, 30, 30);
 	part_type_sprite(explosion, sprExplosion, true, true, false);
 	
+	exhaust = part_type_create();
+	part_type_life(exhaust, 16, 16);
+	part_type_sprite(exhaust, sprExhaust, true, true, false);
+	
 	points = part_type_create();
 	part_type_life(points, 32, 32);
 	part_type_sprite(points, sprPoints, false, false, false);
