@@ -351,6 +351,7 @@
     {"id":{"name":"__InputVerbGroupsConfig","path":"scripts/__InputVerbGroupsConfig/__InputVerbGroupsConfig.yy",},},
     {"id":{"name":"__InputVerbGroupSystem","path":"scripts/__InputVerbGroupSystem/__InputVerbGroupSystem.yy",},},
     {"id":{"name":"Animation","path":"scripts/Animation/Animation.yy",},},
+    {"id":{"name":"AnimationData","path":"scripts/AnimationData/AnimationData.yy",},},
     {"id":{"name":"AudioPlayback","path":"scripts/AudioPlayback/AudioPlayback.yy",},},
     {"id":{"name":"Camera","path":"scripts/Camera/Camera.yy",},},
     {"id":{"name":"ConfigDatabase","path":"scripts/ConfigDatabase/ConfigDatabase.yy",},},
