@@ -50,6 +50,7 @@ player_damage = function (ind)
 	// Recoil / Die
 	if (global.rings > 0)
 	{
+		player_drop_rings();
 		player_perform(player_is_hurt);
 		
 		x_speed = 2 * sign(x - ind.x);
@@ -63,4 +64,40 @@ player_damage = function (ind)
 		}
 	}
 	else player_perform(player_is_dead);
+};
+
+/// @method player_drop_rings
+/// @description Spawns up to 32 dropped rings in circles of 16 at the player's position, and reduces their ring count by the former amount.
+player_drop_rings = function ()
+{
+	var total = min(global.rings, 32);
+	global.rings -= total;
+	audio_play_sfx(sfxRingLoss);
+	
+	var tilemaps = ctrlZone.tilemaps; // Initialized here to reduce the number of dot operator usages
+	var spd = 4;
+	var dir = 101.25;
+	
+	repeat (total)
+	{
+		var ind = instance_create_layer(x, y, layer, objRingDropped,
+		{
+			tilemaps,
+			gravity_direction,
+			x_speed: lengthdir_x(spd, dir),
+			y_speed: lengthdir_y(spd, dir)
+		});
+		
+		if (total & 1 != 0)
+		{
+			ind.x_speed *= -1;
+			dir += 22.5;
+		}
+		
+		if (--total == 16)
+		{
+			spd = 2;
+			dir = 101.25;
+		}
+	}
 };
