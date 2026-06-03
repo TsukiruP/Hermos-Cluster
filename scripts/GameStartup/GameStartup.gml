@@ -17,13 +17,14 @@ enum PHASE
 }
 
 // Misc.
-show_debug_overlay(true);
+display_set_sleep_margin(1);
 surface_depth_disable(true);
 gc_target_frame_time(-100);
+show_debug_overlay(true);
 randomize();
 
 // Audio
-audio_channel_num(12);
+audio_channel_num(10);
 volume_sound = 1;
 volume_music = 1;
 
