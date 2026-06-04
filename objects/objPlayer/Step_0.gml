@@ -340,7 +340,7 @@ with (spin_dash_dust)
         image_xscale = other.image_xscale;
         image_angle = other.mask_direction;
         anim_core.variant = (floor(other.spin_dash_charge) > 2);
-        animation_set(global.anim_spin_dash_dust);
+        animation_set(global.animations.spin_dash_dust);
     }
     else if (anim_core.anim != undefined)
     {
@@ -362,7 +362,7 @@ with (shield)
         if (invincible)
         {
             animation_start("invincibility");
-            animation_set(global.anim_shield_invincibility);
+            animation_set(global.animations.shield_invincibility);
             if (anim_core.time mod 8 == 0)
             {
                 var x_off = irandom_range(-16, 16);
@@ -377,13 +377,13 @@ with (shield)
                 case SHIELD.BASIC:
                 {
                     animation_start("basic");
-                    animation_set(global.anim_shield_basic);
+                    animation_set(global.animations.shield_basic);
                     break;
                 }
                 case SHIELD.MAGNETIC:
                 {
                     animation_start("magnetic");
-                    animation_set(global.anim_shield_magnetic_v0);
+                    animation_set(global.animations.shield_magnetic_v0);
                     break;
                 }
                 case SHIELD.AQUA:
@@ -406,21 +406,21 @@ with (shield)
                         }
                     }
                     
-                    animation_set(global.anim_shield_aqua);
+                    animation_set(global.animations.shield_aqua);
                     break;
                 }
                 case SHIELD.FLAME:
                 {
                     animation_start("flame");
                     if (anim_core.variant == 1 and animation_is_finished()) anim_core.variant = 0;
-                    animation_set(global.anim_shield_flame);
+                    animation_set(global.animations.shield_flame);
                     break;
                 }
                 case SHIELD.THUNDER:
                 {
                     animation_start("thunder");
                     if (animation_is_finished()) anim_core.variant = (anim_core.variant == 0 ? 1 : 0);
-                    animation_set(global.anim_shield_thunder);
+                    animation_set(global.animations.shield_thunder);
                     break;
                 }
             }
@@ -481,7 +481,7 @@ with (miasma)
         x = x_int - sine * 16;
         y = y_int - cosine * 16;
         image_angle = other.mask_direction;
-        animation_set(global.anim_miasma);
+        animation_set(global.animations.miasma);
     }
     else if (anim_core.anim != undefined)
     {
@@ -523,7 +523,7 @@ with (speed_break)
                     var x_scale = other.image_xscale;
                     var rot = other.direction;
                     anim_core.variant = 1;
-                    animation_set(global.anim_speed_break);
+                    animation_set(global.animations.speed_break);
                     for (var i = 0; i < SPEED_BREAK_COUNT; i++)
                     {
                         var rand_rot = irandom(359);

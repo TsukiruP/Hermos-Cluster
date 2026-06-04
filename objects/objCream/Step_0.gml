@@ -10,7 +10,7 @@ with (ears)
         x = other.x;
         y = other.y;
         image_xscale = other.image_xscale;
-        animation_set(global.anim_cream_ears);
+        animation_set(global.animations.cream_ears);
         
         if (other.on_ground)
         {

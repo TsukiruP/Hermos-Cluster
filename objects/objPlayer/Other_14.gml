@@ -115,7 +115,7 @@ player_create_speed_break = function()
         var rot = other.direction;
         visible = true;
         time = 0;
-        animation_set(global.anim_speed_break);
+        animation_set(global.animations.speed_break);
         
         for (var i = 0; i < SPEED_BREAK_COUNT; i++)
         {

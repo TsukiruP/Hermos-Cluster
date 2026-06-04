@@ -80,7 +80,7 @@ hammer_trail =
                 y = y_int - sine * x_offset + cosine * y_offset;
                 visible = true;
                 image_angle = _pla.gravity_direction;
-                animation_set(global.anim_amy_heart);
+                animation_set(global.animations.amy_heart);
             }
         }
     }
@@ -103,7 +103,7 @@ trick_trail =
             image_angle = _pla.gravity_direction;
             
             anim_core.force = true;
-            animation_set(global.anim_amy_heart);
+            animation_set(global.animations.amy_heart);
             
             if (_index == 1)
             {

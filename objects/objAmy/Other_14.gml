@@ -717,7 +717,7 @@ amy_create_trick_trail = function()
             with (_element)
             {
                 anim_core.force = true;
-                animation_set(global.anim_amy_heart)
+                animation_set(global.animations.amy_heart)
             }
         });
         

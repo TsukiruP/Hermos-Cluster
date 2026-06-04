@@ -10,7 +10,7 @@ with (tails)
         x = other.x;
         y = other.y;
         image_xscale = other.image_xscale;
-        animation_set(global.anim_miles_tails);
+        animation_set(global.animations.miles_tails);
         
         if (other.on_ground)
         {

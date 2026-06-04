@@ -2,7 +2,7 @@
 event_inherited();
 hitboxes[0].resize(-14, -16, 12, 8);
 anim_core = new animation_core();
-animation_set(global.anim_item_balloon);
+animation_set(global.animations.item_balloon);
 reaction = function(_pla)
 {
     // Abort if broken or player is a cpu

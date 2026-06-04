@@ -5,22 +5,22 @@ switch (anim_core.name)
 {
     case "horizontal":
     {
-        animation_set(global.anim_spring_horizontal);
+        animation_set(global.animations.spring_horizontal);
         break;
     }
     case "vertical":
     {
-        animation_set(global.anim_spring_vertical);
+        animation_set(global.animations.spring_vertical);
         break;
     }
     case "diagonal":
     {
-        animation_set(global.anim_spring_diagonal);
+        animation_set(global.animations.spring_diagonal);
         break;
     }
     case "diagonal_alt":
     {
-        animation_set(global.anim_spring_diagonal_alt);
+        animation_set(global.animations.spring_diagonal_alt);
         break;
     }
 }
