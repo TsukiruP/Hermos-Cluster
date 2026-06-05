@@ -44,6 +44,8 @@ direction = 0;
 gravity_direction = 0;
 local_direction = 0;
 mask_direction = 0;
+mask_sin = 0;
+mask_cos = 1;
 
 wall_sign = 0;
 cliff_sign = 0;

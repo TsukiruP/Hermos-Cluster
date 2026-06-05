@@ -12,7 +12,7 @@ player_intersect = function (ind, xrad = x_radius, yrad = y_radius)
 	var y_int = y div 1;
 	
 	// Extend right/bottom sides slightly for tilemaps (see: https://github.com/YoYoGames/GameMaker-Bugs/issues/14294)
-	return mask_direction mod 180 == 0 ?
+	return mask_sin == 0 ?
 		collision_rectangle(x_int - xrad, y_int - yrad, x_int + xrad + SUBPIXEL, y_int + yrad + SUBPIXEL, ind, true, false) != noone :
 		collision_rectangle(x_int - yrad, y_int - xrad, x_int + yrad + SUBPIXEL, y_int + xrad + SUBPIXEL, ind, true, false) != noone;
 };
@@ -27,13 +27,11 @@ player_boxcast = function (ind, ylen, get_id = false)
 {
 	var x_int = x div 1;
 	var y_int = y div 1;
-	var sine = dsin(mask_direction);
-	var cosine = dcos(mask_direction);
 	
-	var x1 = x_int - cosine * x_radius;
-	var y1 = y_int + sine * x_radius;
-	var x2 = x_int + cosine * x_radius + sine * ylen;
-	var y2 = y_int - sine * x_radius + cosine * ylen;
+	var x1 = x_int - mask_cos * x_radius;
+	var y1 = y_int + mask_sin * x_radius;
+	var x2 = x_int + mask_cos * x_radius + mask_sin * ylen;
+	var y2 = y_int - mask_sin * x_radius + mask_cos * ylen;
 	
 	// Extend right/bottom sides slightly for tilemaps
 	var left = min(x1, x2);
@@ -55,7 +53,7 @@ player_linecast = function (ind, get_id = false)
 	var x_int = x div 1;
 	var y_int = y div 1;
 	
-	ind = mask_direction mod 180 == 0 ?
+	ind = mask_sin == 0 ?
 		collision_line(x_int - x_wall_radius, y_int, x_int + x_wall_radius, y_int, ind, true, false) :
 		collision_line(x_int, y_int - x_wall_radius, x_int, y_int + x_wall_radius, ind, true, false);
 	
@@ -70,13 +68,10 @@ player_linecast = function (ind, get_id = false)
 /// @returns {Bool}
 player_raycast = function (ind, xoff, ylen)
 {
-	var sine = dsin(mask_direction);
-	var cosine = dcos(mask_direction);
-	
-	var x1 = x div 1 + cosine * xoff;
-	var y1 = y div 1 - sine * xoff;
-	var x2 = x1 + sine * ylen;
-	var y2 = y1 + cosine * ylen;
+	var x1 = x div 1 + mask_cos * xoff;
+	var y1 = y div 1 - mask_sin * xoff;
+	var x2 = x1 + mask_sin * ylen;
+	var y2 = y1 + mask_cos * ylen;
 	
 	return collision_line(x1, y1, x2, y2, ind, true, false) != noone;
 };
@@ -91,13 +86,11 @@ player_get_collisions = function ()
 	// Calculate the area of the upper half of the player's virtual mask
 	var x_int = x div 1;
 	var y_int = y div 1;
-	var sine = dsin(mask_direction);
-	var cosine = dcos(mask_direction);
 	
-	var x1 = x_int - cosine * x_wall_radius - sine * y_radius;
-	var y1 = y_int + sine * x_wall_radius - cosine * y_radius;
-	var x2 = x_int + cosine * x_wall_radius;
-	var y2 = y_int - sine * x_wall_radius;
+	var x1 = x_int - mask_cos * x_wall_radius - mask_sin * y_radius;
+	var y1 = y_int + mask_sin * x_wall_radius - mask_cos * y_radius;
+	var x2 = x_int + mask_cos * x_wall_radius;
+	var y2 = y_int - mask_sin * x_wall_radius;
 	
 	// Register semisolid tilemap
 	if (semisolid_tilemap != -1)
@@ -117,7 +110,7 @@ player_get_collisions = function ()
 	static instances = ds_list_create();
 	ds_list_clear(instances);
 	
-	var total = sine == 0 ?
+	var total = mask_sin == 0 ?
 		collision_rectangle_list(x_int - x_wall_radius, y_int - y_radius - 2, x_int + x_wall_radius, y_int + y_radius + 2, objZoneObject, true, false, instances, false) :
 		collision_rectangle_list(x_int - y_radius - 2, y_int - x_wall_radius, x_int + y_radius + 2, y_int + x_wall_radius, objZoneObject, true, false, instances, false);
 	
@@ -142,12 +135,10 @@ player_get_collisions = function ()
 /// @returns {Real}
 player_calculate_angle = function (ox, oy)
 {
-	var sine = dsin(mask_direction);
-	var cosine = dcos(mask_direction);
 	var ind = hard_colliders;
 	
 	// Set up angle sensors, one at each end of a tile
-	if (sine == 0)
+	if (mask_sin == 0)
 	{
 		oy = array_create(2, oy);
 		ox = array_create(2, ox - ox mod 16);
@@ -184,13 +175,13 @@ player_calculate_angle = function (ox, oy)
 		{
 			if (collision_point(ox[n], oy[n], ind, true, false) == noone)
 			{
-				ox[n] += sine;
-				oy[n] += cosine;
+				ox[n] += mask_sin;
+				oy[n] += mask_cos;
 			}
-			else if (collision_point(ox[n] - sine, oy[n] - cosine, ind, true, false) != noone)
+			else if (collision_point(ox[n] - mask_sin, oy[n] - mask_cos, ind, true, false) != noone)
 			{
-				ox[n] -= sine;
-				oy[n] -= cosine;
+				ox[n] -= mask_sin;
+				oy[n] -= mask_cos;
 			}
 			else break;
 		}
