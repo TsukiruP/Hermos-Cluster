@@ -367,7 +367,7 @@ with (shield)
             {
                 var x_off = irandom_range(-16, 16);
                 var y_off = irandom_range(-16, 16);
-                particle_create(x + x_off, y + y_off, global.anim_shield_invincibility_sparkle);
+                particle_create(x + x_off, y + y_off, global.animations.shield_invincibility_sparkle);
             }
         }
         else

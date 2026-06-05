@@ -7,7 +7,7 @@ reaction = function(_pla)
     {
         with (_pla) player_gain_rings(other.value);
         audio_play_sfx(super ? sfxRingSuper : sfxRing);
-        particle_create(x, y, global.anim_ring_sparkle);
+        particle_create(x, y, global.animations.ring_sparkle);
 		instance_destroy();
     }
 }

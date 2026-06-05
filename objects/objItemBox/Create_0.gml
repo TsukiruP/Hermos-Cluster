@@ -41,7 +41,7 @@ reaction = function(_pla)
         
         image_index = 1;
         audio_play_sfx(sfxDestroy);
-        particle_create(x, y + 15, global.anim_explosion_destroy, image_angle);
+        particle_create(x, y + 15, global.animations.explosion_destroy, image_angle);
     }
 }
 

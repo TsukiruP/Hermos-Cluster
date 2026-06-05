@@ -42,7 +42,7 @@ reaction = function(_pla)
         }
         
         audio_play_sfx(sfxDestroyBalloon);
-        particle_create(x, y + 15, global.anim_explosion_destroy, image_angle);
+        particle_create(x, y + 15, global.animations.explosion_destroy, image_angle);
         instance_destroy();
     }
 };

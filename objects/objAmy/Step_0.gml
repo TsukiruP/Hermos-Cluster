@@ -99,6 +99,6 @@ with (trick_trail)
         }
         
         time = ++time mod 15;
-        if (other.anim_core.anim != global.anim_amy_trick_front_v1) destroy = true;
+        if (other.anim_core.anim != global.animations.amy_trick_front_v1) destroy = true;
     }
 }

@@ -246,7 +246,7 @@ function player_is_running(_phase)
                     // Create brake dust
                     var ox = x + dsin(direction) * y_radius;
                     var oy = y + dcos(direction) * y_radius;
-                    particle_create(ox, oy, global.anim_brake_dust);
+                    particle_create(ox, oy, global.animations.brake_dust);
                 }
             }
             else

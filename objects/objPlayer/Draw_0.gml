@@ -6,8 +6,8 @@ var shield_behind = false;
 // Shield (behind)
 with (shield)
 {
-    if ((anim_core.anim == global.anim_shield_flame_v0 and image_index mod 2 != 0) or
-        anim_core.anim == global.anim_shield_thunder_v1)
+    if ((anim_core.anim == global.animations.shield_flame_v0 and image_index mod 2 != 0) or
+        anim_core.anim == global.animations.shield_thunder_v1)
     {
         shield_behind = true;
         draw_self_floored();
@@ -51,7 +51,7 @@ if (not shield_behind)
         {
             draw_self_floored();
         }
-        else if (anim_core.anim == global.anim_shield_aqua_wave_v0)
+        else if (anim_core.anim == global.animations.shield_aqua_wave_v0)
         {
             draw_self_as(sprShieldAquaShell, anim_core.time mod 24 < 12);
         }

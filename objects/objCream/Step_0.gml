@@ -4,7 +4,7 @@ if (ctrlGame.game_paused) exit;
 with (ears)
 {
     var rolling = false;
-    with (other) rolling = (anim_core.anim == global.anim_cream_roll_v0 or anim_core.anim == global.anim_cream_jump_v1);
+    with (other) rolling = (anim_core.anim == global.animations.cream_roll_v0 or anim_core.anim == global.animations.cream_jump_v1);
     if (rolling)
     {
         x = other.x;

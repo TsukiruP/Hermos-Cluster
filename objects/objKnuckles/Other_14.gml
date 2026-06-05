@@ -6,7 +6,7 @@ player_render = function()
     {
         case "idle":
         {
-            player_animate(global.anim_knuckles_idle);
+            player_animate(global.animations.knuckles_idle);
             player_resize(6, 14);
             if (image_index == 0)
             {
@@ -17,7 +17,7 @@ player_render = function()
         }
         case "teeter":
         {
-            player_animate_teeter(global.anim_knuckles_teeter);
+            player_animate_teeter(global.animations.knuckles_teeter);
             player_resize(6, 14);
             switch (anim_core.variant)
             {
@@ -44,7 +44,7 @@ player_render = function()
         }
         case "turn":
         {
-            player_animate(global.anim_knuckles_turn);
+            player_animate(global.animations.knuckles_turn);
             player_resize(6, 14);
             if (image_index == 0)
             {
@@ -55,7 +55,7 @@ player_render = function()
         }
         case "run":
         {
-            player_animate_run(global.anim_knuckles_run);
+            player_animate_run(global.animations.knuckles_run);
             player_resize(6, 14);
             if (image_index == 0)
             {
@@ -66,7 +66,7 @@ player_render = function()
         }
         case "brake":
         {
-            player_animate(global.anim_knuckles_brake);
+            player_animate(global.animations.knuckles_brake);
             player_resize(6, 14);
             switch (anim_core.variant)
             {
@@ -93,7 +93,7 @@ player_render = function()
         }
         case "look":
         {
-            player_animate(global.anim_knuckles_look);
+            player_animate(global.animations.knuckles_look);
             player_resize(6, 14);
             if (image_index == 0)
             {
@@ -104,7 +104,7 @@ player_render = function()
         }
         case "crouch":
         {
-            player_animate(global.anim_knuckles_crouch);
+            player_animate(global.animations.knuckles_crouch);
             player_resize(6, 14);
             if (image_index == 0)
             {
@@ -115,7 +115,7 @@ player_render = function()
         }
         case "roll":
         {
-            player_animate(global.anim_knuckles_roll);
+            player_animate(global.animations.knuckles_roll);
             player_resize(6, 9);
             if (image_index == 0)
             {
@@ -127,7 +127,7 @@ player_render = function()
         case "spin_dash":
         {
             if (anim_core.variant == 1 and animation_is_finished()) anim_core.variant = 0;
-            player_animate(global.anim_knuckles_spin_dash);
+            player_animate(global.animations.knuckles_spin_dash);
             player_resize(6, 9);
             if (image_index == 0)
             {
@@ -138,7 +138,7 @@ player_render = function()
         }
         case "fall":
         {
-            player_animate_fall(global.anim_knuckles_fall);
+            player_animate_fall(global.animations.knuckles_fall);
             player_resize(6, 14);
             if (image_index == 0)
             {
@@ -149,7 +149,7 @@ player_render = function()
         }
         case "jump":
         {
-            player_animate_jump(global.anim_knuckles_jump);
+            player_animate_jump(global.animations.knuckles_jump);
             switch (anim_core.variant)
             {
                 case 0:
@@ -187,7 +187,7 @@ player_render = function()
         }
         case "hurt":
         {
-            player_animate(global.anim_knuckles_hurt);
+            player_animate(global.animations.knuckles_hurt);
             player_resize(6, 14);
             switch (anim_core.variant)
             {
@@ -214,7 +214,7 @@ player_render = function()
         }
         case "dead":
         {
-            player_animate(global.anim_knuckles_dead);
+            player_animate(global.animations.knuckles_dead);
             player_resize(6, 14);
             if (image_index == 0)
             {
@@ -225,7 +225,7 @@ player_render = function()
         }
         case "spring":
         {
-            player_animate_spring(global.anim_knuckles_spring);
+            player_animate_spring(global.animations.knuckles_spring);
             player_resize(6, 14);
             if (image_index == 0)
             {
@@ -236,7 +236,7 @@ player_render = function()
         }
         case "spring_twirl":
         {
-            player_animate(global.anim_knuckles_spring_twirl);
+            player_animate(global.animations.knuckles_spring_twirl);
             player_resize(6, 14);
             if (image_index == 0)
             {
@@ -248,7 +248,7 @@ player_render = function()
         case "trick_up":
         {
             if (anim_core.variant == 1 and y_speed > 0) anim_core.variant = 2;
-            player_animate(global.anim_knuckles_trick_up);
+            player_animate(global.animations.knuckles_trick_up);
             player_resize(6, 14);
             switch (anim_core.variant)
             {
@@ -281,7 +281,7 @@ player_render = function()
         }
         case "trick_down":
         {
-            player_animate(global.anim_knuckles_trick_down);
+            player_animate(global.animations.knuckles_trick_down);
             player_resize(6, 9);
             switch (anim_core.variant)
             {
@@ -317,7 +317,7 @@ player_render = function()
         }
         case "trick_front":
         {
-            player_animate(global.anim_knuckles_trick_front);
+            player_animate(global.animations.knuckles_trick_front);
             player_resize(6, 14);
             switch (anim_core.variant)
             {
@@ -366,7 +366,7 @@ player_render = function()
         }
         case "trick_back":
         {
-            player_animate(global.anim_knuckles_trick_back);
+            player_animate(global.animations.knuckles_trick_back);
             player_resize(6, 14);
             switch (anim_core.variant)
             {
@@ -398,7 +398,7 @@ player_render = function()
         }
         case "flight_ride":
         {
-            player_animate(global.anim_knuckles_flight_ride);
+            player_animate(global.animations.knuckles_flight_ride);
             player_resize(6, 14);
             if (image_index == 0)
             {

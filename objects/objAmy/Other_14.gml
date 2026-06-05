@@ -9,7 +9,7 @@ player_render = function()
         {
             if (lovely_couple)
             {
-                player_animate(global.anim_amy_idle_alt);
+                player_animate(global.animations.amy_idle_alt);
                 player_resize(6, 14);
                 if (image_index == 0)
                 {
@@ -19,7 +19,7 @@ player_render = function()
             }
             else
             {
-                player_animate(global.anim_amy_idle);
+                player_animate(global.animations.amy_idle);
                 player_resize(6, 14);
                 if (image_index == 0)
                 {
@@ -31,7 +31,7 @@ player_render = function()
         }
         case "teeter":
         {
-            player_animate_teeter(global.anim_amy_teeter);
+            player_animate_teeter(global.animations.amy_teeter);
             player_resize(6, 14);
             switch (anim_core.variant)
             {
@@ -58,7 +58,7 @@ player_render = function()
         }
         case "turn":
         {
-            player_animate(global.anim_amy_turn);
+            player_animate(global.animations.amy_turn);
             player_resize(6, 14);
             if (image_index == 0)
             {
@@ -71,7 +71,7 @@ player_render = function()
         {
             if (lovely_couple)
             {
-                player_animate_run(global.anim_amy_run_alt);
+                player_animate_run(global.animations.amy_run_alt);
                 player_resize(6, 14);
                 if (image_index == 0)
                 {
@@ -81,7 +81,7 @@ player_render = function()
             }
             else
             {
-                player_animate_run(global.anim_amy_run);
+                player_animate_run(global.animations.amy_run);
                 player_resize(6, 14);
                 if (image_index == 0)
                 {
@@ -93,7 +93,7 @@ player_render = function()
         }
         case "brake":
         {
-            player_animate(global.anim_amy_brake);
+            player_animate(global.animations.amy_brake);
             player_resize(6, 14);
             if (image_index == 0)
             {
@@ -104,7 +104,7 @@ player_render = function()
         }
         case "look":
         {
-            player_animate(global.anim_amy_look);
+            player_animate(global.animations.amy_look);
             player_resize(6, 14);
             if (image_index == 0)
             {
@@ -115,7 +115,7 @@ player_render = function()
         }
         case "crouch":
         {
-            player_animate(global.anim_amy_crouch);
+            player_animate(global.animations.amy_crouch);
             player_resize(6, 14);
             if (image_index == 0)
             {
@@ -126,7 +126,7 @@ player_render = function()
         }
         case "roll":
         {
-            player_animate(global.anim_amy_roll);
+            player_animate(global.animations.amy_roll);
             player_resize(6, 9);
             if (image_index == 0)
             {
@@ -137,7 +137,7 @@ player_render = function()
         }
         case "spin_dash":
         {
-            player_animate(global.anim_amy_spin_dash);
+            player_animate(global.animations.amy_spin_dash);
             player_resize(6, 9);
             if (image_index == 0)
             {
@@ -148,7 +148,7 @@ player_render = function()
         }
         case "fall":
         {
-            player_animate_fall(global.anim_amy_fall);
+            player_animate_fall(global.animations.amy_fall);
             player_resize(6, 14);
             if (image_index == 0)
             {
@@ -159,7 +159,7 @@ player_render = function()
         }
         case "jump":
         {
-            player_animate_jump(global.anim_amy_jump);
+            player_animate_jump(global.animations.amy_jump);
             switch (anim_core.variant)
             {
                 case 0:
@@ -202,7 +202,7 @@ player_render = function()
         }
         case "hurt":
         {
-            player_animate(global.anim_amy_hurt);
+            player_animate(global.animations.amy_hurt);
             player_resize(6, 14);
             switch (anim_core.variant)
             {
@@ -229,7 +229,7 @@ player_render = function()
         }
         case "dead":
         {
-            player_animate(global.anim_amy_dead);
+            player_animate(global.animations.amy_dead);
             player_resize(6, 14);
             if (image_index == 0)
             {
@@ -240,7 +240,7 @@ player_render = function()
         }
         case "spring":
         {
-            player_animate_spring(global.anim_amy_spring);
+            player_animate_spring(global.animations.amy_spring);
             player_resize(6, 14);
             if (image_index == 0)
             {
@@ -251,7 +251,7 @@ player_render = function()
         }
         case "spring_twirl":
         {
-            player_animate(global.anim_amy_spring_twirl);
+            player_animate(global.animations.amy_spring_twirl);
             player_resize(6, 14);
             if (image_index == 0)
             {
@@ -263,7 +263,7 @@ player_render = function()
         case "trick_up":
         {
             if (anim_core.variant == 1 and y_speed > 0) anim_core.variant = 2;
-            player_animate(global.anim_amy_trick_up);
+            player_animate(global.animations.amy_trick_up);
             player_resize(6, 14);
             switch (anim_core.variant)
             {
@@ -296,7 +296,7 @@ player_render = function()
         }
         case "trick_down":
         {
-            player_animate(global.anim_amy_trick_down);
+            player_animate(global.animations.amy_trick_down);
             player_resize(6, 9);
             switch (anim_core.variant)
             {
@@ -332,7 +332,7 @@ player_render = function()
         }
         case "trick_front":
         {
-            player_animate(global.anim_amy_trick_front);
+            player_animate(global.animations.amy_trick_front);
             player_resize(6, 14);
             switch (anim_core.variant)
             {
@@ -359,7 +359,7 @@ player_render = function()
         }
         case "trick_back":
         {
-            player_animate(global.anim_amy_trick_back);
+            player_animate(global.animations.amy_trick_back);
             player_resize(6, 14);
             switch (anim_core.variant)
             {
@@ -386,7 +386,7 @@ player_render = function()
         }
         case "flight_ride":
         {
-            player_animate(global.anim_amy_flight_ride);
+            player_animate(global.animations.amy_flight_ride);
             player_resize(6, 14);
             if (image_index == 0)
             {
@@ -397,7 +397,7 @@ player_render = function()
         }
         case "hammer_attack":
         {
-            player_animate(global.anim_amy_hammer_attack);
+            player_animate(global.animations.amy_hammer_attack);
             player_resize(6, 14);
             switch (anim_core.variant)
             {
@@ -495,7 +495,7 @@ player_render = function()
         }
         case "big_hammer_attack":
         {
-            player_animate(global.anim_amy_big_hammer_attack);
+            player_animate(global.animations.amy_big_hammer_attack);
             player_resize(6, 14);
             if (image_index == 0)
             {
@@ -559,7 +559,7 @@ player_render = function()
         }
         case "air_hammer_attack":
         {
-            player_animate(global.anim_amy_air_hammer_attack);
+            player_animate(global.animations.amy_air_hammer_attack);
             player_resize(6, 14);
             if (image_index == 0)
             {
@@ -575,7 +575,7 @@ player_render = function()
         }
         case "hammer_whirl":
         {
-            player_animate(global.anim_amy_hammer_whirl);
+            player_animate(global.animations.amy_hammer_whirl);
             player_resize(6, 14);
             if (image_index == 0)
             {
@@ -591,7 +591,7 @@ player_render = function()
         }
         case "hammer_jump":
         {
-            player_animate(global.anim_amy_hammer_jump);
+            player_animate(global.animations.amy_hammer_jump);
             player_resize(6, 14);
             if (image_index == 0)
             {
@@ -622,7 +622,7 @@ player_render = function()
         }
         case "leap":
         {
-            player_animate(global.anim_amy_leap);
+            player_animate(global.animations.amy_leap);
             player_resize(6, 14);
             if (image_index == 0)
             {
@@ -634,7 +634,7 @@ player_render = function()
         case "head_slide":
         {
             if (anim_core.variant == 0 and animation_is_finished()) anim_core.variant = 1;
-            player_animate(global.anim_amy_head_slide);
+            player_animate(global.animations.amy_head_slide);
             player_resize(6, 9);
             switch (anim_core.variant)
             {

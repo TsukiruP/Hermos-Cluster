@@ -4,7 +4,7 @@ if (ctrlGame.game_paused) exit;
 with (tails)
 {
     var rolling = false;
-    with (other) rolling = (anim_core.anim == global.anim_miles_roll_v0 or anim_core.anim == global.anim_miles_jump_v1);
+    with (other) rolling = (anim_core.anim == global.animations.miles_roll_v0 or anim_core.anim == global.animations.miles_jump_v1);
     if (rolling)
     {
         x = other.x;
