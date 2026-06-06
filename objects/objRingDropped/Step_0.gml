@@ -5,12 +5,9 @@ if (not instance_in_view(, CAMERA_PADDING * 0.5))
 	exit;
 }
 
-var sine = dsin(gravity_direction);
-var cosine = dcos(gravity_direction);
-
 // Resolve movement and collision on separate axes
-var dx = cosine * x_speed;
-var dy = -sine * x_speed;
+var dx = gravity_cos * x_speed;
+var dy = -gravity_sin * x_speed;
 x += dx;
 y += dy;
 
@@ -25,8 +22,8 @@ if (ind != noone and not place_meeting(xprevious, yprevious, ind))
 	x_speed *= -0.25;
 }
 
-dx = sine * y_speed;
-dy = cosine * y_speed;
+dx = gravity_sin * y_speed;
+dy = gravity_cos * y_speed;
 x += dx;
 y += dy;
 

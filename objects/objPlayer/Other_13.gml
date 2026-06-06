@@ -82,8 +82,7 @@ player_drop_rings = function ()
 	{
 		var ind = instance_create_layer(x, y, layer, objRingDropped,
 		{
-			tilemaps,
-			gravity_direction,
+			tilemaps, gravity_direction,
 			x_speed: lengthdir_x(spd, dir),
 			y_speed: lengthdir_y(spd, dir)
 		});
