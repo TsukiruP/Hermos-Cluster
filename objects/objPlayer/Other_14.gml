@@ -3,7 +3,7 @@
 player_render = function() {}
 
 /// @description Sets the player's current animation.
-/// @param {Undefined|Struct.animation|Array} anim Animation to set. Accepts an array as animation variants.
+/// @param {Struct.animation|Array|Undefined} anim Animation to set. Accepts an array as animation variants.
 /// @param {Real} [ang] Angle to set (optional, defaults to gravity_direction).
 player_animate = function(_anim, _ang = gravity_direction)
 {
@@ -12,7 +12,7 @@ player_animate = function(_anim, _ang = gravity_direction)
 }
 
 /// @description Sets the player's current animation based on teeter conditions.
-/// @param {Undefined|Struct.animation|Array} anim Animation to set. Accepts an array as animation variants.
+/// @param {Struct.animation|Array|Undefined} anim Animation to set. Accepts an array as animation variants.
 player_animate_teeter = function(_anim)
 {
     anim_core.variant = (cliff_sign != image_xscale);
@@ -20,7 +20,7 @@ player_animate_teeter = function(_anim)
 }
 
 /// @description Sets the player's current animation based on running conditions.
-/// @param {Undefined|Struct.animation|Array} anim Animation to set. Accepts an array as animation variants.
+/// @param {Struct.animation|Array|Undefined} anim Animation to set. Accepts an array as animation variants.
 player_animate_run = function(_anim)
 {
     var variant = (on_ground ? 5 : anim_core.variant);
@@ -40,7 +40,7 @@ player_animate_run = function(_anim)
 }
 
 /// @description Sets the player's current animation based on falling conditions.
-/// @param {Undefined|Struct.animation|Array} anim Animation to set. Accepts an array as animation variants.
+/// @param {Struct.animation|Array|Undefined} anim Animation to set. Accepts an array as animation variants.
 player_animate_fall = function(_anim)
 {
     if (anim_core.variant == 0 and animation_is_finished()) anim_core.variant = 1;
@@ -48,7 +48,7 @@ player_animate_fall = function(_anim)
 }
 
 /// @description Sets the player's current animation based on jumping conditions.
-/// @param {Undefined|Struct.animation|Array} anim Animation to set. Accepts an array as animation variants.
+/// @param {Struct.animation|Array|Undefined} anim Animation to set. Accepts an array as animation variants.
 player_animate_jump = function(_anim)
 {
     switch (anim_core.variant)
@@ -69,7 +69,7 @@ player_animate_jump = function(_anim)
 }
 
 /// @description Sets the player's current animation based on spring conditions.
-/// @param {Undefined|Struct.animation|Array} anim Animation to set. Accepts an array as animation variants.
+/// @param {Struct.animation|Array|Undefined} anim Animation to set. Accepts an array as animation variants.
 player_animate_spring = function(_anim)
 {
     switch (anim_core.variant)

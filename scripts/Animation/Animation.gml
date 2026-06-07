@@ -43,7 +43,7 @@ function animation_start(_name, _variant = -1, _alternatives = [])
 }
 
 /// @description Sets the animation core to the given animation.
-/// @param {Undefined|Struct.animation|Array} anim Animation to set. Accepts an array as animation variants.
+/// @param {Struct.animation|Array|Undefined} anim Animation to set. Accepts an array as animation variants.
 function animation_set(_anim)
 {
     // Extract from a given array
