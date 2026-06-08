@@ -5,8 +5,8 @@
   "isDnD":false,
   "name":"AnimationData",
   "parent":{
-    "name":"Global",
-    "path":"folders/Global.yy",
+    "name":"Data",
+    "path":"folders/Global/Data.yy",
   },
   "resourceType":"GMScript",
   "resourceVersion":"2.0",

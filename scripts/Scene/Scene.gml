@@ -17,27 +17,6 @@ function stage(_music = undefined, _zone = "", _act = 0) : scene(TRANSITION.TITL
     act = _act;
 }
 
-/// @param {Asset.GMRoom} [room] Room to check (optional, defaults to the current room).
-/// @returns {Struct.scene}
-function room_get_scene(_room = room)
-{
-    switch (_room)
-    {
-        case rmTest:
-        {
-            return global.stg_test;
-        }
-        case rmNewTest:
-        {
-            return global.stg_new_test;
-        }
-        default:
-        {
-            return global.scn_default;
-        }
-    }
-}
-
 /// @description Creates a new transition.
 /// @param {Asset.GMRoom} room Room to go to.
 /// @param {Enum.TRANSITION} [override] Transition to override with (optional, defaults to undefined).
@@ -45,7 +24,7 @@ function room_get_scene(_room = room)
 function transition_create(_room, _override = undefined)
 {
     var transition;
-    var room_scene = room_get_scene(_room);
+    var room_scene = global.scenes[$ room_get_name(_room)] ?? global.scenes.rmDefault;
     var room_transition = (_override == undefined ? room_scene.transition : _override);
     
     transition = instance_create_layer(0, 0, "Master", objTransition);

@@ -5,8 +5,8 @@
   "isDnD":false,
   "name":"SceneData",
   "parent":{
-    "name":"Global",
-    "path":"folders/Global.yy",
+    "name":"Data",
+    "path":"folders/Global/Data.yy",
   },
   "resourceType":"GMScript",
   "resourceVersion":"2.0",

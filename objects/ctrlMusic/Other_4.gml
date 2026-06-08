@@ -1,3 +1,3 @@
-/// @description Start BGM
-var room_music = room_get_scene(room).music;
-if (room_music != undefined) audio_enqueue_bgm(room_music, PRIORITY_MUSIC);
+/// @description Start Music
+var room_scene = global.scenes[$ room_get_name(room)] ?? global.scenes.rmDefault;
+if (room_scene.music != undefined) audio_enqueue_bgm(room_scene.music, PRIORITY_MUSIC);
