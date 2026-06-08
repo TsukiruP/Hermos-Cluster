@@ -88,6 +88,7 @@ animations =
 	spindash: animSonicSpindash,
 	teeter: animSonicTeeter,
 	brake: animSonicBrake,
+	rise: animSonicRise,
 	hurt: animSonicHurt,
 	push: animSonicPush,
 	dead: animSonicDead

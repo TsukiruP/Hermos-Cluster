@@ -53,7 +53,13 @@ function player_is_falling(phase)
 			// Fall
 			if (y_speed < gravity_cap) y_speed = min(y_speed + gravity_force, gravity_cap);
 			
-			// Straighten
+			// Animate
+			if (animation == "rise" and y_speed >= 0)
+			{
+				var velocity = abs(x_speed) div 1;
+				player_animate(velocity < 6 ? "walk" : "run");
+				timeline_speed = 1 / max(8 - velocity, 1);
+			}
 			if (image_angle != mask_direction)
 			{
 				var diff = angle_difference(mask_direction, image_angle);
