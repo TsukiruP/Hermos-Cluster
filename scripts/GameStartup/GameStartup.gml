@@ -16,6 +16,11 @@ enum PHASE
 	ENTER, STEP, EXIT
 }
 
+enum ICON
+{
+	RING, SNEAKER, INVINCIBILITY, EGGMAN, SUPER, LIGHTNING, FIRE, BUBBLE, LIFE
+}
+
 // Misc.
 display_set_sleep_margin(1);
 surface_depth_disable(true);
