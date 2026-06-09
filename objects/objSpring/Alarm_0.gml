@@ -1,21 +1,12 @@
 /// @description Animate
-switch (image_index)
+if (image_index == 0)
 {
-	case 0:
-	{
-		image_index = 1;
-		alarm[0] = 2;
-		break;
-	}
-	case 1:
-	{
-		image_index = 2;
-		alarm[0] = 7;
-		break;
-	}
-	case 2:
-	{
-		image_index = 1;
-		break;
-	}
+	image_index = 1;
+	alarm[0] = 2;
 }
+else if (image_index == 1)
+{
+	image_index = 2;
+	alarm[0] = 7;
+}
+else image_index = 1;
