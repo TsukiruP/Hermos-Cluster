@@ -6,8 +6,8 @@ state = player_is_ready;
 state_changed = false;
 
 rolling = false;
-
 spindash_charge = 0;
+peelout_time = 0;
 
 // Timers
 control_lock_time = 0;

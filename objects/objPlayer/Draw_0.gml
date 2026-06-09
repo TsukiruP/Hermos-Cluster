@@ -6,7 +6,7 @@ var y_int = y div 1;
 if (sprite_index != -1) draw_sprite_ext(sprite_index, image_index, x_int, y_int, image_xscale, 1, image_angle, c_white, image_alpha);
 
 // Dash smoke
-if (state == player_is_spindashing)
+if (state == player_is_spindashing or state == player_is_peelouting)
 {
 	draw_sprite_ext(sprDashSmoke, ctrlWindow.image_index div 2, x_int, y_int, image_xscale, 1, mask_direction, c_white, 1);
 }

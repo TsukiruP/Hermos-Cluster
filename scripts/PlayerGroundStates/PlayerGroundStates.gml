@@ -221,8 +221,8 @@ function player_is_looking(phase)
 		}
 		case PHASE.STEP:
 		{
-			// Jump
-			if (input_check_pressed(INPUT.ACTION)) return player_perform(player_is_jumping);
+			// Peelout
+			if (input_check_pressed(INPUT.ACTION)) return player_perform(player_is_peelouting);
 			
 			// Move
 			player_move_on_ground();
@@ -444,6 +444,65 @@ function player_is_spindashing(phase)
 				audio_sound_pitch(audio_play_sfx(sfxSpinRev), 1 + spindash_charge / 16);
 			}
 			else spindash_charge *= 0.96875;
+			break;
+		}
+		case PHASE.EXIT:
+		{
+			break;
+		}
+	}
+}
+
+function player_is_peelouting(phase)
+{
+	switch (phase)
+	{
+		case PHASE.ENTER:
+		{
+			peelout_time = 0;
+			audio_play_sfx(sfxPeeloutRev);
+			player_animate("walk");
+			timeline_speed = 0.5;
+			break;
+		}
+		case PHASE.STEP:
+		{
+			// Move
+			player_move_on_ground();
+			if (state_changed) exit;
+			
+			// Fall
+			if (not on_ground or (local_direction >= 90 and local_direction <= 270))
+			{
+				return player_perform(player_is_falling);
+			}
+			
+			// Slide down steep slopes
+			if (mask_direction != gravity_direction)
+			{
+				control_lock_time = slide_duration;
+				return player_perform(player_is_running);
+			}
+			
+			// Release
+			if (not input_check(INPUT.UP))
+			{
+				audio_stop_sound(sfxPeeloutRev);
+				if (peelout_time >= 15)
+				{
+					x_speed = image_xscale * (peelout_time == 30 ? 12 : 6);
+					objCamera.alarm[0] = 16;
+					audio_play_sfx(sfxPeelout);
+					return player_perform(player_is_running);
+				}
+				return player_perform(player_is_standing);
+			}
+			
+			// Charge and animate
+			if (peelout_time < 30 and ++peelout_time mod 15 == 0)
+			{
+				player_animate(peelout_time == 15 ? "run" : "sprint");
+			}
 			break;
 		}
 		case PHASE.EXIT:
