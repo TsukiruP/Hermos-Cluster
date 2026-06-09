@@ -27,7 +27,7 @@ function transition_create(_room, _override = undefined)
     var room_scene = global.scenes[$ room_get_name(_room)] ?? global.scenes.rmDefault;
     var room_transition = (_override == undefined ? room_scene.transition : _override);
     
-    transition = instance_create_layer(0, 0, "Master", objTransition);
+    transition = instance_create_depth(0, 0, instance_exists(objDevPause) ? objDevPause.depth - 1 : 0, objTransition);
     with (transition)
     {
         index = room_transition;
