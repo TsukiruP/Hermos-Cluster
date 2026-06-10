@@ -76,6 +76,7 @@ repeat (4) event_user(n++);
 // Misc.
 instance_create_layer(x, y, layer, objCamera, { gravity_direction });
 badnik_chain = 0;
+shield = noone;
 
 // Animations
 animations =

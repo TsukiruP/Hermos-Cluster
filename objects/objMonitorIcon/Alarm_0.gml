@@ -27,6 +27,12 @@ with (owner) do switch (other.image_index)
 		player_damage(self);
 		break;
 	}
+	case ICON.SHIELD:
+	{
+		shield = instance_create_depth(x, y, depth - 1, objShield, { owner: id });
+		audio_play_sfx(sfxShield);
+		break;
+	}
 	case ICON.LIFE:
 	{
 		player_gain_lives(1);

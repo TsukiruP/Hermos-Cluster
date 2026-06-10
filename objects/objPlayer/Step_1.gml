@@ -17,4 +17,5 @@ if (superspeed_time > 0 and --superspeed_time == 0)
 if (invincibility_time > 0 and --invincibility_time == 0)
 {
 	// Remove invincibility effect here (once it's added).
+	with (shield) visible = true;
 }

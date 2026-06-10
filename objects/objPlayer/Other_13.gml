@@ -47,23 +47,30 @@ player_damage = function (ind)
 	// Abort if invulnerable
 	if (recovery_time > 0 or state == player_is_hurt or invincibility_time > 0) exit;
 	
-	// Recoil / Die
-	if (global.rings > 0)
+	if (shield != noone)
 	{
-		player_drop_rings();
-		player_perform(player_is_hurt);
-		
-		x_speed = 2 * sign(x - ind.x);
-		if (x_speed == 0) x_speed = 2;
-		y_speed = -4;
-		
-		if (rolling)
-		{
-			rolling = false;
-			badnik_chain = 0;
-		}
+		audio_play_sfx(sfxDeath);
+		instance_destroy(shield);
+		shield = noone;
 	}
-	else player_perform(player_is_dead);
+	else if (global.rings == 0)
+	{
+		return player_perform(player_is_dead);
+	}
+	else player_drop_rings();
+	
+	// Recoil
+	player_perform(player_is_hurt);
+	
+	x_speed = 2 * sign(x - ind.x);
+	if (x_speed == 0) x_speed = 2;
+	y_speed = -4;
+	
+	if (rolling)
+	{
+		rolling = false;
+		badnik_chain = 0;
+	}
 };
 
 /// @method player_drop_rings
