@@ -114,8 +114,8 @@ player_detect_angle = function ()
 	if (edge & (edge - 1) == 0) // Check for only one point (power of 2 calculation)
 	{
 		// Calculate offset point
-		var ox = x div 1 + mask_sin * y_radius;
-		var oy = y div 1 + mask_cos * y_radius;
+		var ox = x + mask_sin * y_radius;
+		var oy = y + mask_cos * y_radius;
 		
 		if (edge == 1)
 		{

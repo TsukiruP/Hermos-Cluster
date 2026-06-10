@@ -11,16 +11,12 @@ reaction = function (ind)
 	// Knock down monitor / Rebound
 	if (y_speed < 0)
 	{
-		if (player_boxcast(ind, -y_radius))
+		if (player_boxcast(ind, -y_radius)) then with (ind)
 		{
-			y_speed = 0;
-			with (ind)
-			{
-				tilemap = ctrlZone.tilemaps[0];
-				vspeed = -2;
-				gravity = 0.21875;
-				alarm[0] = 1;
-			}
+			tilemap = ctrlZone.tilemaps[0];
+			vspeed = -2;
+			gravity = 0.21875;
+			alarm[0] = 1;
 		}
 	}
 	else if (rolling and player_intersect(ind, x_wall_radius))

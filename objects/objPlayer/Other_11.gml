@@ -140,7 +140,7 @@ player_calculate_angle = function (ox, oy)
 	// Set up angle sensors, one at each end of a tile
 	if (mask_sin == 0)
 	{
-		oy = array_create(2, oy);
+		oy = array_create(2, oy div 1);
 		ox = array_create(2, ox - ox mod 16);
 		var right_sensor = mask_direction == 0; // 'Right' is absolute, not relative
 		ox[right_sensor] += 15;
@@ -155,7 +155,7 @@ player_calculate_angle = function (ox, oy)
 	}
 	else
 	{
-		ox = array_create(2, ox);
+		ox = array_create(2, ox div 1);
 		oy = array_create(2, oy - oy mod 16);
 		var bottom_sensor = mask_direction == 270;
 		oy[bottom_sensor] += 15;

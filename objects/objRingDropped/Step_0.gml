@@ -1,5 +1,5 @@
 /// @description Move / Animate
-if (not instance_in_view(, CAMERA_PADDING * 0.5))
+if (not instance_in_view())
 {
 	instance_destroy();
 	exit;
@@ -7,9 +7,9 @@ if (not instance_in_view(, CAMERA_PADDING * 0.5))
 
 // Resolve movement and collision on separate axes
 var dx = gravity_cos * x_speed;
-var dy = -gravity_sin * x_speed;
+var dy = gravity_sin * x_speed;
 x += dx;
-y += dy;
+y -= dy;
 
 var ind = instance_place(x, y, tilemaps);
 if (ind != noone and not place_meeting(xprevious, yprevious, ind))
@@ -17,7 +17,7 @@ if (ind != noone and not place_meeting(xprevious, yprevious, ind))
 	while (place_meeting(x, y, ind))
 	{
 		x -= sign(dx);
-		y -= sign(dy);
+		y += sign(dy);
 	}
 	x_speed *= -0.25;
 }
@@ -37,8 +37,6 @@ if (ind != noone and not place_meeting(xprevious, yprevious, ind))
 	}
 	y_speed *= -0.75;
 }
-
-// Apply gravity
 y_speed += 0.09375;
 
 image_speed -= 0.002;

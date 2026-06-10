@@ -75,6 +75,8 @@ player_drop_rings = function ()
 	audio_play_sfx(sfxRingLoss);
 	
 	var tilemaps = ctrlZone.tilemaps; // Initialized here to reduce the number of dot operator usages
+	var gravity_sin = dsin(gravity_direction);
+	var gravity_cos = dcos(gravity_direction);
 	var spd = 4;
 	var dir = 101.25;
 	
@@ -83,6 +85,7 @@ player_drop_rings = function ()
 		var ind = instance_create_layer(x, y, layer, objRingDropped,
 		{
 			tilemaps, gravity_direction,
+			gravity_sin, gravity_cos,
 			x_speed: lengthdir_x(spd, dir),
 			y_speed: lengthdir_y(spd, dir)
 		});
