@@ -26,10 +26,9 @@ if (banner_offset > -fold_width)
 	
 	// Animate folds
 	var fold_height = sprite_get_height(sprTitleCardFold);
-	var yrad = fold_height * 0.5;
-	for (var oy = -yrad; oy < CAMERA_HEIGHT; oy += fold_height)
+	for (var oy = image_index mod 32 < 16 ? -fold_height * 0.5 : 0; oy < CAMERA_HEIGHT; oy += fold_height)
 	{
-		draw_sprite(sprTitleCardFold, 0, banner_offset, oy + yrad * (image_index mod 32 < 16));
+		draw_sprite(sprTitleCardFold, 0, banner_offset, oy);
 	}
 }
 
