@@ -14,8 +14,8 @@
   "exportDir":"",
   "name":"sfxRingLoss",
   "parent":{
-    "name":"Ring",
-    "path":"folders/Zone/Objects/Ring.yy",
+    "name":"Assets",
+    "path":"folders/Zone/Objects/Rings/Assets.yy",
   },
   "preload":false,
   "resourceType":"GMSound",

@@ -14,8 +14,8 @@
   "exportDir":"",
   "name":"sfxSpring",
   "parent":{
-    "name":"Springs",
-    "path":"folders/Zone/Objects/Springs.yy",
+    "name":"Assets",
+    "path":"folders/Zone/Objects/Springs/Assets.yy",
   },
   "preload":false,
   "resourceType":"GMSound",

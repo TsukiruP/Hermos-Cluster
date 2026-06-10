@@ -35,7 +35,7 @@
   "origin":0,
   "parent":{
     "name":"Sprites",
-    "path":"folders/Zone/Display/Sprites.yy",
+    "path":"folders/Zone/UI/Sprites.yy",
   },
   "preMultiplyAlpha":false,
   "resourceType":"GMSprite",

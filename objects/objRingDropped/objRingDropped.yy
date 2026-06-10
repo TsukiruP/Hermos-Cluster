@@ -10,8 +10,8 @@
   "name":"objRingDropped",
   "overriddenProperties":[],
   "parent":{
-    "name":"Ring",
-    "path":"folders/Zone/Objects/Ring.yy",
+    "name":"Rings",
+    "path":"folders/Zone/Objects/Rings.yy",
   },
   "parentObjectId":{
     "name":"objRing",
