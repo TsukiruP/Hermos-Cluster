@@ -18,7 +18,7 @@ switch (state)
 		
 		// Shift red banner to the right
 		// It's 112 pixels wide not accounting for the fold width, and we want it + the yellow band to stop simultaneously
-		if (band_offset <= 112 + fold_width)
+		if (band_offset < 112 + fold_width)
 		{
 			banner_offset = min(banner_offset + enter_speed, 112);
 			if (banner_offset == 112) state = 1;
