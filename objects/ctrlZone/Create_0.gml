@@ -5,7 +5,7 @@ image_speed = 0;
 stage_time = 0;
 time_limit = 36000;
 time_over = false;
-time_enabled = true;
+time_enabled = false;
 
 // Location
 switch (room)
@@ -34,6 +34,7 @@ if (tilemaps[1] == -1) array_delete(tilemaps, 1, 2);
 // Zone controller must be at the top of the Instance Creation Order to access this array without error.
 
 // Create UI elements
+instance_create_layer(0, 0, "Master", objTitleCard, { name, act });
 instance_create_layer(0, 0, "Master", objHUD, { image_speed: 0 });
 
 // Reset ring counters

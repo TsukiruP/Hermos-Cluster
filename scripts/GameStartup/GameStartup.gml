@@ -42,6 +42,7 @@ rings_for_life = 99;
 // Fonts
 font_hud = font_add_sprite(sprFontHUD, ord("0"), false, 1);
 font_lives = font_add_sprite(sprFontLives, ord("0"), false, 0);
+font_title = font_add_sprite(sprFontTitle, ord("A"), true, 0);
 
 // Particles
 sprite_particles = {};
