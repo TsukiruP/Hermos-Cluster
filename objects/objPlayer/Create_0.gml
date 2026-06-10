@@ -66,6 +66,7 @@ if (tilemap_count == 3)
 {
 	array_pop(hard_colliders);
 	--tilemap_count;
+	collision_path = 0;
 }
 
 // Methods
