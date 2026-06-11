@@ -107,7 +107,6 @@
     {"$GMFolder":"","%Name":"Pause","folderPath":"folders/Stage/Pause.yy","name":"Pause","resourceType":"GMFolder","resourceVersion":"2.0",},
     {"$GMFolder":"","%Name":"Sprites","folderPath":"folders/Stage/Pause/Sprites.yy","name":"Sprites","resourceType":"GMFolder","resourceVersion":"2.0",},
     {"$GMFolder":"","%Name":"Player","folderPath":"folders/Stage/Player.yy","name":"Player","resourceType":"GMFolder","resourceVersion":"2.0",},
-    {"$GMFolder":"","%Name":"Animations","folderPath":"folders/Stage/Player/Animations.yy","name":"Animations","resourceType":"GMFolder","resourceVersion":"2.0",},
     {"$GMFolder":"","%Name":"Camera","folderPath":"folders/Stage/Player/Camera.yy","name":"Camera","resourceType":"GMFolder","resourceVersion":"2.0",},
     {"$GMFolder":"","%Name":"Characters","folderPath":"folders/Stage/Player/Characters.yy","name":"Characters","resourceType":"GMFolder","resourceVersion":"2.0",},
     {"$GMFolder":"","%Name":"Amy","folderPath":"folders/Stage/Player/Characters/Amy.yy","name":"Amy","resourceType":"GMFolder","resourceVersion":"2.0",},
