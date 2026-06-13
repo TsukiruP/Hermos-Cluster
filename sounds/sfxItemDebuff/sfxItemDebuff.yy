@@ -14,8 +14,8 @@
   "exportDir":"",
   "name":"sfxItemDebuff",
   "parent":{
-    "name":"SFX",
-    "path":"folders/Stage/Interactables/Items/SFX.yy",
+    "name":"Sounds",
+    "path":"folders/Stage/Interactables/Items/Sounds.yy",
   },
   "preload":false,
   "resourceType":"GMSound",

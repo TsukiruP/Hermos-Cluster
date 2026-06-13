@@ -14,8 +14,8 @@
   "exportDir":"",
   "name":"bgmExtraDungeon1A",
   "parent":{
-    "name":"BGM",
-    "path":"folders/Global/Audio/BGM.yy",
+    "name":"Music",
+    "path":"folders/Global/Audio/Music.yy",
   },
   "preload":false,
   "resourceType":"GMSound",

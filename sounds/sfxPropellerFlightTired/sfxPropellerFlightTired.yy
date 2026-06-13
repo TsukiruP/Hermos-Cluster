@@ -14,8 +14,8 @@
   "exportDir":"",
   "name":"sfxPropellerFlightTired",
   "parent":{
-    "name":"SFX",
-    "path":"folders/Stage/Player/Characters/Miles/SFX.yy",
+    "name":"Sounds",
+    "path":"folders/Stage/Player/Characters/Miles/Sounds.yy",
   },
   "preload":false,
   "resourceType":"GMSound",

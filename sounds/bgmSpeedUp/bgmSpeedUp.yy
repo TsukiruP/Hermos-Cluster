@@ -15,7 +15,7 @@
   "name":"bgmSpeedUp",
   "parent":{
     "name":"Jingles",
-    "path":"folders/Global/Audio/BGM/Jingles.yy",
+    "path":"folders/Global/Audio/Music/Jingles.yy",
   },
   "preload":false,
   "resourceType":"GMSound",

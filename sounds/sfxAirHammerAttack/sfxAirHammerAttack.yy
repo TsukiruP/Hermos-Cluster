@@ -14,8 +14,8 @@
   "exportDir":"",
   "name":"sfxAirHammerAttack",
   "parent":{
-    "name":"SFX",
-    "path":"folders/Stage/Player/Characters/Amy/SFX.yy",
+    "name":"Sounds",
+    "path":"folders/Stage/Player/Characters/Amy/Sounds.yy",
   },
   "preload":false,
   "resourceType":"GMSound",

@@ -14,8 +14,8 @@
   "exportDir":"",
   "name":"sfxRoll",
   "parent":{
-    "name":"SFX",
-    "path":"folders/Stage/Player/SFX.yy",
+    "name":"Sounds",
+    "path":"folders/Stage/Player/Sounds.yy",
   },
   "preload":false,
   "resourceType":"GMSound",

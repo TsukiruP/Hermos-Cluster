@@ -14,8 +14,8 @@
   "exportDir":"",
   "name":"sfxRing",
   "parent":{
-    "name":"SFX",
-    "path":"folders/Stage/Interactables/Rings/SFX.yy",
+    "name":"Sounds",
+    "path":"folders/Stage/Interactables/Rings/Sounds.yy",
   },
   "preload":false,
   "resourceType":"GMSound",

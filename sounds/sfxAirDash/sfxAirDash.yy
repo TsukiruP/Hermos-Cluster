@@ -14,8 +14,8 @@
   "exportDir":"",
   "name":"sfxAirDash",
   "parent":{
-    "name":"SFX",
-    "path":"folders/Stage/Player/Characters/Sonic/SFX.yy",
+    "name":"Sounds",
+    "path":"folders/Stage/Player/Characters/Sonic/Sounds.yy",
   },
   "preload":false,
   "resourceType":"GMSound",
