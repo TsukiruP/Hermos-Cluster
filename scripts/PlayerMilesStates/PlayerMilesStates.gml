@@ -168,10 +168,10 @@ function player_is_propeller_flying(_phase)
                             y = other.y + cosine * 32;
                             image_xscale = other.image_xscale;
                             
-                            if (collision_layer != other.collision_layer)
+                            if (collision_path != other.collision_path)
                             {
-                                collision_layer = other.collision_layer;
-                                tilemaps[1] = ctrlStage.tilemaps[collision_layer + 1];
+                                collision_path = other.collision_path;
+                                tilemaps[1] = ctrlStage.tilemaps[collision_path + 1];
                             }
                         }
                         else

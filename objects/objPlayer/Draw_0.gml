@@ -81,8 +81,7 @@ with (speed_break)
 }
 
 // Virtual mask
-var sine = dsin(mask_direction);
-if (sine == 0)
+if (mask_sin == 0)
 {
 	draw_rectangle_color(x_int - x_radius, y_int - y_radius, x_int + x_radius, y_int + y_radius, c_lime, c_lime, c_lime, c_lime, true);
 	draw_line_color(x_int - x_wall_radius, y_int, x_int + x_wall_radius, y_int, c_white, c_white);
@@ -93,7 +92,7 @@ else
 	draw_line_color(x_int, y_int - x_wall_radius, x_int, y_int + x_wall_radius, c_white, c_white);
 }
 
-draw_line_color(x_int, y_int, x_int + sine * y_radius, y_int + dcos(mask_direction) * y_radius, c_white, c_white);
+draw_line_color(x_int, y_int, x_int + mask_sin * y_radius, y_int + mask_cos * y_radius, c_white, c_white);
 
 // Hitboxes
 draw_hitboxes();

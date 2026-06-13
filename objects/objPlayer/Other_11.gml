@@ -9,7 +9,8 @@ player_intersect = function(_ind, _xrad = x_radius, _yrad = y_radius)
     var x_int = x div 1;
     var y_int = y div 1;
     
-    return mask_direction mod 180 == 0 ?
+    // Extend right/bottom sides slightly for tilemaps (see: https://github.com/YoYoGames/GameMaker-Bugs/issues/14294)
+    return mask_sin == 0 ?
         collision_rectangle(x_int - _xrad, y_int - _yrad, x_int + _xrad + SUBPIXEL, y_int + _yrad + SUBPIXEL, _ind, true, false) != noone :
         collision_rectangle(x_int - _yrad, y_int - _xrad, x_int + _yrad + SUBPIXEL, y_int + _xrad + SUBPIXEL, _ind, true, false) != noone;
 }
@@ -19,17 +20,15 @@ player_intersect = function(_ind, _xrad = x_radius, _yrad = y_radius)
 /// @param {Real} ylen Distance to extend the player's mask vertically.
 /// @param {Bool} [get_id] Whether to return the id of the collider found (optional, default is false).
 /// @returns {Bool|Id.Instance|Id.TileMapElement}
-player_boxcast = function(_ind, _ylen, _get_id)
+player_boxcast = function(_ind, _ylen, _get_id = false)
 {
     var x_int = x div 1;
     var y_int = y div 1;
-    var sine = dsin(mask_direction);
-    var cosine = dcos(mask_direction);
     
-    var x1 = x_int - cosine * x_radius;
-    var y1 = y_int + sine * x_radius;
-    var x2 = x_int + cosine * x_radius + sine * _ylen;
-    var y2 = y_int - sine * x_radius + cosine * _ylen;
+    var x1 = x_int - mask_cos * x_radius;
+    var y1 = y_int + mask_sin * x_radius;
+    var x2 = x_int + mask_cos * x_radius + mask_sin * _ylen;
+    var y2 = y_int - mask_sin * x_radius + mask_cos * _ylen;
     
     // Extend right/bottom sides slightly for tilemaps
     var left = min(x1, x2);
@@ -50,7 +49,7 @@ player_linecast = function(_ind, _get_id = false)
     var x_int = x div 1;
     var y_int = y div 1;
     
-    var ind = (mask_direction mod 180 == 0 ?
+    var ind = (mask_sin == 0 ?
         collision_line(x_int - x_wall_radius, y_int, x_int + x_wall_radius, y_int, _ind, true, false) :
         collision_line(x_int, y_int - x_wall_radius, x_int, y_int + x_wall_radius, _ind, true, false));
     
@@ -64,13 +63,10 @@ player_linecast = function(_ind, _get_id = false)
 /// @returns {Bool}
 player_raycast = function(_ind, _xoff, _ylen)
 {
-    var sine = dsin(mask_direction);
-    var cosine = dcos(mask_direction);
-    
-    var x1 = x div 1 + cosine * _xoff;
-    var y1 = y div 1 - sine * _xoff;
-    var x2 = x1 + sine * _ylen;
-    var y2 = y1 + cosine * _ylen;
+    var x1 = x div 1 + mask_cos * _xoff;
+    var y1 = y div 1 - mask_sin * _xoff;
+    var x2 = x1 + mask_sin * _ylen;
+    var y2 = y1 + mask_cos * _ylen;
     
     return collision_line(x1, y1, x2, y2, _ind, true, false) != noone;
 }
@@ -87,13 +83,11 @@ player_get_collisions = function()
     // Calculate the area of the upper half of the player's virtual mask
     var x_int = x div 1;
     var y_int = y div 1;
-    var sine = dsin(mask_direction);
-    var cosine = dcos(mask_direction);
     
-    var x1 = x_int - cosine * x_wall_radius - sine * y_radius;
-    var y1 = y_int + sine * x_wall_radius - cosine * y_radius;
-    var x2 = x_int + cosine * x_wall_radius;
-    var y2 = y_int - sine * x_wall_radius;
+    var x1 = x_int - mask_cos * x_wall_radius - mask_sin * y_radius;
+    var y1 = y_int + mask_sin * x_wall_radius - mask_cos * y_radius;
+    var x2 = x_int + mask_cos * x_wall_radius;
+    var y2 = y_int - mask_sin * x_wall_radius;
     
     // Register semisolid tilemap
     if (semisolid_tilemap != -1)
@@ -116,21 +110,19 @@ player_get_collisions = function()
 /// @returns {Real}
 player_calculate_angle = function(_x, _y)
 {
-    var sine = dsin(mask_direction);
-    var cosine = dcos(mask_direction);
     var ind = tilemaps;
     
     // Set up angle sensors, one at each end of a tile
-    if (sine == 0)
+    if (mask_sin == 0)
     {
-        var oy = array_create(2, _y);
+        var oy = array_create(2, _y div 1);
         var ox = array_create(2, _x - _x mod 16);
         var right_sensor = mask_direction == 0; // 'Right' is absolute, not relative
         ox[right_sensor] += 15;
     }
     else
     {
-        var ox = array_create(2, _x);
+        var ox = array_create(2, _x div 1);
         var oy = array_create(2, _y - _y mod 16);
         var bottom_sensor = mask_direction == 270;
         oy[bottom_sensor] += 15;
@@ -143,13 +135,13 @@ player_calculate_angle = function(_x, _y)
         {
             if (collision_point(ox[n], oy[n], ind, true, false) == noone)
             {
-                ox[n] += sine;
-                oy[n] += cosine;
+                ox[n] += mask_sin;
+                oy[n] += mask_cos;
             }
-            else if (collision_point(ox[n] - sine, oy[n] - cosine, ind, true, false) != noone)
+            else if (collision_point(ox[n] - mask_sin, oy[n] - mask_cos, ind, true, false) != noone)
             {
-                ox[n] -= sine;
-                oy[n] -= cosine;
+                ox[n] -= mask_sin;
+                oy[n] -= mask_cos;
             }
             else break;
         }

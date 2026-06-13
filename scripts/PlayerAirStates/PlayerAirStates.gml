@@ -191,7 +191,7 @@ function player_is_hurt(_phase)
             boost_mode = false;
             
             // Detach from ground
-            player_ground(false);
+            if (on_ground) player_ground(false);
             break;
         }
         case PHASE.STEP:

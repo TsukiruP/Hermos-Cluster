@@ -57,11 +57,11 @@ direction = 0;
 gravity_direction = 0;
 local_direction = 0;
 mask_direction = 0;
+mask_sin = 0;
+mask_cos = 1;
 
 wall_sign = 0;
 cliff_sign = 0;
-
-collision_layer = 0;
 
 tilemaps = variable_clone(ctrlStage.tilemaps, 0);
 tilemap_count = array_length(tilemaps);
@@ -80,6 +80,7 @@ else
 // Delist the "TilesLayer1" layer tilemap
 if (tilemap_count == 3)
 {
+    collision_path = 0;
     array_pop(tilemaps);
     tilemap_count--;
 }

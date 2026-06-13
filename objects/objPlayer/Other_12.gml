@@ -6,25 +6,23 @@ player_escape_wall = function(_ind)
 {
     var x_int = x div 1;
     var y_int = y div 1;
-    var sine = dsin(mask_direction);
-    var cosine = dcos(mask_direction);
     
     if (collision_point(x_int, y_int, _ind, true, false) == noone)
     {
         for (var ox = x_wall_radius - 1; ox > -1; ox--)
         {
-            if (collision_line(x_int - cosine * ox, y_int + sine * ox, x_int + cosine * ox, y_int - sine * ox, _ind, true, false) == noone)
+            if (collision_line(x_int - mask_cos * ox, y_int + mask_sin * ox, x_int + mask_cos * ox, y_int - mask_sin * ox, _ind, true, false) == noone)
             {
-                if (collision_point(x_int + cosine * (ox + 1), y_int - sine * (ox + 1), _ind, true, false) != noone)
+                if (collision_point(x_int + mask_cos * (ox + 1), y_int - mask_sin * (ox + 1), _ind, true, false) != noone)
                 {
-                    x -= cosine * (x_wall_radius - ox);
-                    y += sine * (x_wall_radius - ox);
+                    x -= mask_cos * (x_wall_radius - ox);
+                    y += mask_sin * (x_wall_radius - ox);
                     return 1;
                 }
-                else if (collision_point(x_int - cosine * (ox + 1), y_int + sine * (ox + 1), _ind, true, false) != noone)
+                else if (collision_point(x_int - mask_cos * (ox + 1), y_int + mask_sin * (ox + 1), _ind, true, false) != noone)
                 {
-                    x += cosine * (x_wall_radius - ox);
-                    y -= sine * (x_wall_radius - ox);
+                    x += mask_cos * (x_wall_radius - ox);
+                    y -= mask_sin * (x_wall_radius - ox);
                     return -1;
                 }
             }
@@ -34,16 +32,16 @@ player_escape_wall = function(_ind)
     {
         for (var ox = 1; ox <= x_wall_radius; ox++)
         {
-            if (collision_point(x_int + cosine * ox, y_int - sine * ox, _ind, true, false) == noone)
+            if (collision_point(x_int + mask_cos * ox, y_int - mask_sin * ox, _ind, true, false) == noone)
             {
-                x += cosine * (x_wall_radius + ox);
-                y -= sine * (x_wall_radius + ox);
+                x += mask_cos * (x_wall_radius + ox);
+                y -= mask_sin * (x_wall_radius + ox);
                 return -1;
             }
-            else if (collision_point(x_int - cosine * ox, y_int + sine * ox, _ind, true, false) == noone)
+            else if (collision_point(x_int - mask_cos * ox, y_int + mask_sin * ox, _ind, true, false) == noone)
             {
-                x -= cosine * (x_wall_radius + ox);
-                y += sine * (x_wall_radius + ox);
+                x -= mask_cos * (x_wall_radius + ox);
+                y += mask_sin * (x_wall_radius + ox);
                 return 1;
             }
         }
@@ -59,20 +57,22 @@ player_ground = function(_attach)
     if (not _attach)
     {
         on_ground = false;
-        mask_direction = gravity_direction;
+        if (mask_direction != gravity_direction)
+        {
+        	mask_direction = gravity_direction;
+        	mask_sin = dsin(mask_direction);
+        	mask_cos = dcos(mask_direction);
+        }
         exit;
     }
     
     // Reposition
-    var sine = dsin(mask_direction);
-    var cosine = dcos(mask_direction);
-    
     repeat (y_radius + 1)
     {
         if (player_boxcast(tilemaps, y_radius))
         {
-            x -= sine;
-            y -= cosine;
+            x -= mask_sin;
+            y -= mask_cos;
         }
         else
         {
@@ -84,8 +84,8 @@ player_ground = function(_attach)
     {
         if (not player_boxcast(tilemaps, y_radius + 1))
         {
-            x += sine;
-            y += cosine;
+            x += mask_sin;
+            y += mask_cos;
         }
         else
         {
@@ -111,20 +111,18 @@ player_detect_angle = function()
     if (edge & (edge - 1) == 0) // Check for only one point (power of 2 calculation)
     {
         // Calculate contact point
-        var sine = dsin(mask_direction);
-        var cosine = dcos(mask_direction);
-        var ox = x div 1 + sine * y_radius;
-        var oy = y div 1 + cosine * y_radius;
+        var ox = x div 1 + mask_sin * y_radius;
+        var oy = y div 1 + mask_cos * y_radius;
         
         if (edge == 1)
         {
-            ox -= cosine * x_radius;
-            oy += sine * x_radius;
+            ox -= mask_cos * x_radius;
+            oy += mask_sin * x_radius;
         }
         else if (edge == 2)
         {
-            ox += cosine * x_radius;
-            oy -= sine * x_radius;
+            ox += mask_cos * x_radius;
+            oy -= mask_sin * x_radius;
         }
         
         direction = player_calculate_angle(ox, oy);
@@ -144,6 +142,8 @@ player_rotate_mask = function()
     if (abs(diff) > 45 and (landed or player_intersect(tilemaps, y_radius, x_radius)))
     {
         mask_direction = angle_wrap(mask_direction + 90 * sign(diff));
+        mask_sin = dsin(mask_direction);
+        mask_cos = dcos(mask_direction);
     }
 }
 
@@ -232,10 +232,8 @@ player_resize = function(_xrad, _yrad)
     
     if (on_ground)
     {
-        var sine = dsin(mask_direction);
-        var cosine = dcos(mask_direction);
-        x += sine * (old_y_radius - y_radius);
-        y += cosine * (old_y_radius - y_radius);
+        x += mask_sin * (old_y_radius - y_radius);
+        y += mask_cos * (old_y_radius - y_radius);
     }
 }
 
@@ -402,8 +400,8 @@ player_refresh_cpu = function()
     boost_mode = leader.boost_mode;
     x_speed = leader.x_speed;
     y_speed = leader.y_speed;
-    collision_layer = leader.collision_layer;
-    tilemaps[1] = ctrlStage.tilemaps[collision_layer + 1];
+    collision_path = leader.collision_path;
+    tilemaps[1] = ctrlStage.tilemaps[collision_path + 1];
     cpu_state = CPU_STATE.FOLLOW;
     player_ground(false);
     animation_start("fall");

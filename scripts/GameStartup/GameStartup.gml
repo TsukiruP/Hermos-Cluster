@@ -154,9 +154,10 @@ global.font_hud_episode_ii_score = font_add_sprite(sprFontHUDEpisodeIIScore, ord
 global.font_hud_episode_ii_time = font_add_sprite_ext(sprFontHUDEpisodeIITime, "0123456789'\"", false, 1);
 
 // Misc.
-show_debug_overlay(true);
+display_set_sleep_margin(1);
 surface_depth_disable(true);
 gc_target_frame_time(-100);
+show_debug_overlay(true);
 randomize();
 InputPartySetParams(INPUT_VERB.CONFIRM, 1, INPUT_MAX_PLAYERS, true, INPUT_VERB.CANCEL, undefined);
 

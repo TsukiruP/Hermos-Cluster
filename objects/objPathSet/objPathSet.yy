@@ -1,11 +1,11 @@
 {
   "$GMObject":"",
-  "%Name":"objLayerSet",
+  "%Name":"objPathSet",
   "eventList":[
     {"$GMEvent":"v1","%Name":"","collisionObjectId":null,"eventNum":0,"eventType":0,"isDnD":false,"name":"","resourceType":"GMEvent","resourceVersion":"2.0",},
   ],
   "managed":true,
-  "name":"objLayerSet",
+  "name":"objPathSet",
   "overriddenProperties":[],
   "parent":{
     "name":"Triggers",
@@ -28,13 +28,18 @@
   "physicsShape":1,
   "physicsShapePoints":[],
   "physicsStartAwake":true,
-  "properties":[],
+  "properties":[
+    {"$GMObjectProperty":"v2","%Name":"index","filters":[],"listItems":[
+        "0",
+        "1",
+      ],"multiselect":false,"name":"index","rangeEnabled":true,"rangeMax":1.0,"rangeMin":0.0,"resourceType":"GMObjectProperty","resourceVersion":"2.0","value":"0","varType":6,},
+  ],
   "resourceType":"GMObject",
   "resourceVersion":"2.0",
   "solid":false,
   "spriteId":{
-    "name":"sprLayerSet",
-    "path":"sprites/sprLayerSet/sprLayerSet.yy",
+    "name":"sprPathSet",
+    "path":"sprites/sprPathSet/sprPathSet.yy",
   },
   "spriteMaskId":null,
   "visible":true,

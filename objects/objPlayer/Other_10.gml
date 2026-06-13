@@ -45,8 +45,10 @@ player_move_on_ground = function()
         {
             on_ground = true;
             direction = gravity_direction;
-            mask_direction = gravity_direction;
             local_direction = 0;
+            mask_direction = gravity_direction;
+            mask_sin = dsin(mask_direction);
+            mask_cos = dcos(mask_direction);
         }
         else if (player_boxcast(tilemaps, floor_reach))
         {
@@ -73,13 +75,10 @@ player_move_in_air = function()
     var x_step = x_speed / total_steps;
     var y_step = y_speed / total_steps;
     
-    var sine = dsin(mask_direction);
-    var cosine = dcos(mask_direction);
-    
     repeat (total_steps)
     {
-        x += cosine * x_step + sine * y_step;
-        y += -sine * x_step + cosine * y_step;
+        x += mask_cos * x_step + mask_sin * y_step;
+        y += -mask_sin * x_step + mask_cos * y_step;
         
         // Die if out of bounds
         if (not player_keep_in_bounds()) player_damage(id);
@@ -107,8 +106,8 @@ player_move_in_air = function()
                 landed = true;
                 on_ground = true;
                 direction = gravity_direction;
-                mask_direction = gravity_direction;
                 local_direction = 0;
+                mask_direction = gravity_direction;
             }
             else if (player_boxcast(tilemaps, y_radius))
             {
@@ -119,17 +118,21 @@ player_move_in_air = function()
         }
         else if (player_boxcast(tilemaps, -y_radius))
         {
-            // Flip mask and land on the ceiling
-            landed = true;
+            // Flip mask
             mask_direction = (mask_direction + 180) mod 360;
+            mask_sin *= -1;
+            mask_cos *= -1;
+            
+            // Land on the ceiling
+            landed = true;
             player_ground(true);
             
             // Abort if rising slowly or the ceiling is too shallow
             if (y_speed > -4 or (local_direction >= 135 and local_direction <= 225))
             {
                 // Slide against it
-                sine = dsin(local_direction);
-                cosine = dcos(local_direction);
+                var sine = dsin(local_direction);
+                var cosine = dcos(local_direction);
                 
                 x_step = cosine * x_speed - sine * y_speed;
                 x_speed = cosine * x_step;
@@ -138,6 +141,8 @@ player_move_in_air = function()
                 // Revert mask rotation and abort
                 landed = false;
                 mask_direction = gravity_direction;
+                mask_sin *= -1;
+                mask_cos *= -1;
                 break;
             }
         }
