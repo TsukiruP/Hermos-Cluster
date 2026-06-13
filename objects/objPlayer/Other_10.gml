@@ -33,7 +33,7 @@ player_move_on_ground = function()
         player_get_collisions();
         
         // Detect walls
-        var ind = player_linecast(tilemaps);
+        var ind = player_linecast(tilemaps, true);
         if (ind != noone)
         {
             wall_sign = player_escape_wall(ind);
