@@ -22,6 +22,18 @@ with (owner) do switch (other.image_index)
 		player_refresh_physics();
 		break;
 	}
+	case ICON.INVINCIBILITY:
+	{
+		invincibility_time = 1200;
+		audio_enqueue_bgm(bgmInvincibility, 1);
+		
+		if (invincibility_effect == noone)
+		{
+			invincibility_effect = instance_create_depth(x, y, depth - 1, objInvincibility, { owner: id });
+			with (shield) visible = false;
+		}
+		break;
+	}
 	case ICON.EGGMAN:
 	{
 		player_damage(self);
@@ -29,7 +41,7 @@ with (owner) do switch (other.image_index)
 	}
 	case ICON.SHIELD:
 	{
-		shield = instance_create_depth(x, y, depth - 1, objShield, { owner: id });
+		shield = instance_create_depth(x, y, depth - 1, objShield, { visible: invincibility_time == 0, owner: id });
 		audio_play_sfx(sfxShield);
 		break;
 	}

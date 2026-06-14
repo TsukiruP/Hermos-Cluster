@@ -16,6 +16,8 @@ if (superspeed_time > 0 and --superspeed_time == 0)
 
 if (invincibility_time > 0 and --invincibility_time == 0)
 {
-	// Remove invincibility effect here (once it's added).
+	audio_dequeue_bgm(bgmInvincibility);
+	instance_destroy(invincibility_effect);
+	invincibility_effect = noone;
 	with (shield) visible = true;
 }

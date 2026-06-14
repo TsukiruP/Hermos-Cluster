@@ -54,6 +54,7 @@
     {"name":"inst_39EFD10B","path":"rooms/rmTest/rmTest.yy",},
     {"name":"inst_1B152694","path":"rooms/rmTest/rmTest.yy",},
     {"name":"inst_35855B6","path":"rooms/rmTest/rmTest.yy",},
+    {"name":"inst_71A9626","path":"rooms/rmTest/rmTest.yy",},
   ],
   "isDnd":false,
   "layers":[
@@ -92,7 +93,7 @@
           ],"resourceType":"GMRInstance","resourceVersion":"2.0","rotation":0.0,"scaleX":1.0,"scaleY":1.0,"x":96.0,"y":128.0,},
         {"$GMRInstance":"v4","%Name":"inst_37D60118","colour":4294967295,"frozen":false,"hasCreationCode":false,"ignore":false,"imageIndex":0,"imageSpeed":1.0,"inheritCode":false,"inheritedItemId":null,"inheritItemSettings":false,"isDnd":false,"name":"inst_37D60118","objectId":{"name":"objMonitor","path":"objects/objMonitor/objMonitor.yy",},"properties":[
             {"$GMOverriddenProperty":"v1","%Name":"","name":"","objectId":{"name":"objMonitor","path":"objects/objMonitor/objMonitor.yy",},"propertyId":{"name":"icon","path":"objects/objMonitor/objMonitor.yy",},"resourceType":"GMOverriddenProperty","resourceVersion":"2.0","value":"ICON.SHIELD",},
-          ],"resourceType":"GMRInstance","resourceVersion":"2.0","rotation":0.0,"scaleX":1.0,"scaleY":1.0,"x":1248.0,"y":176.0,},
+          ],"resourceType":"GMRInstance","resourceVersion":"2.0","rotation":0.0,"scaleX":1.0,"scaleY":1.0,"x":1520.0,"y":352.0,},
         {"$GMRInstance":"v4","%Name":"inst_4E543A65","colour":4294967295,"frozen":false,"hasCreationCode":false,"ignore":false,"imageIndex":0,"imageSpeed":1.0,"inheritCode":false,"inheritedItemId":null,"inheritItemSettings":false,"isDnd":false,"name":"inst_4E543A65","objectId":{"name":"objSpikes","path":"objects/objSpikes/objSpikes.yy",},"properties":[],"resourceType":"GMRInstance","resourceVersion":"2.0","rotation":90.0,"scaleX":1.0,"scaleY":1.0,"x":1680.0,"y":448.0,},
         {"$GMRInstance":"v4","%Name":"inst_474DDD05","colour":4294967295,"frozen":false,"hasCreationCode":false,"ignore":false,"imageIndex":0,"imageSpeed":1.0,"inheritCode":false,"inheritedItemId":null,"inheritItemSettings":false,"isDnd":false,"name":"inst_474DDD05","objectId":{"name":"objPathSwap","path":"objects/objPathSwap/objPathSwap.yy",},"properties":[],"resourceType":"GMRInstance","resourceVersion":"2.0","rotation":0.0,"scaleX":-1.0,"scaleY":1.0,"x":1248.0,"y":272.0,},
         {"$GMRInstance":"v4","%Name":"inst_6FCDBB06","colour":4294967295,"frozen":false,"hasCreationCode":false,"ignore":false,"imageIndex":0,"imageSpeed":1.0,"inheritCode":false,"inheritedItemId":null,"inheritItemSettings":false,"isDnd":false,"name":"inst_6FCDBB06","objectId":{"name":"objPathSwap","path":"objects/objPathSwap/objPathSwap.yy",},"properties":[],"resourceType":"GMRInstance","resourceVersion":"2.0","rotation":0.0,"scaleX":-1.0,"scaleY":10.0,"x":1376.0,"y":304.0,},
@@ -118,6 +119,9 @@
         {"$GMRInstance":"v4","%Name":"inst_35855B6","colour":4294967295,"frozen":false,"hasCreationCode":false,"ignore":false,"imageIndex":0,"imageSpeed":1.0,"inheritCode":false,"inheritedItemId":null,"inheritItemSettings":false,"isDnd":false,"name":"inst_35855B6","objectId":{"name":"objSpringDiagonal","path":"objects/objSpringDiagonal/objSpringDiagonal.yy",},"properties":[
             {"$GMOverriddenProperty":"v1","%Name":"","name":"","objectId":{"name":"objSpringDiagonal","path":"objects/objSpringDiagonal/objSpringDiagonal.yy",},"propertyId":{"name":"force","path":"objects/objSpringDiagonal/objSpringDiagonal.yy",},"resourceType":"GMOverriddenProperty","resourceVersion":"2.0","value":"16",},
           ],"resourceType":"GMRInstance","resourceVersion":"2.0","rotation":0.0,"scaleX":1.0,"scaleY":1.0,"x":1680.0,"y":320.0,},
+        {"$GMRInstance":"v4","%Name":"inst_71A9626","colour":4294967295,"frozen":false,"hasCreationCode":false,"ignore":false,"imageIndex":0,"imageSpeed":1.0,"inheritCode":false,"inheritedItemId":null,"inheritItemSettings":false,"isDnd":false,"name":"inst_71A9626","objectId":{"name":"objMonitor","path":"objects/objMonitor/objMonitor.yy",},"properties":[
+            {"$GMOverriddenProperty":"v1","%Name":"","name":"","objectId":{"name":"objMonitor","path":"objects/objMonitor/objMonitor.yy",},"propertyId":{"name":"icon","path":"objects/objMonitor/objMonitor.yy",},"resourceType":"GMOverriddenProperty","resourceVersion":"2.0","value":"ICON.INVINCIBILITY",},
+          ],"resourceType":"GMRInstance","resourceVersion":"2.0","rotation":0.0,"scaleX":1.0,"scaleY":1.0,"x":1248.0,"y":176.0,},
       ],"layers":[],"name":"ZoneObjects","properties":[],"resourceType":"GMRInstanceLayer","resourceVersion":"2.0","userdefinedDepth":false,"visible":true,},
     {"$GMRLayer":"","%Name":"Collision","depth":200,"effectEnabled":true,"effectType":null,"gridX":32,"gridY":32,"hierarchyFrozen":false,"inheritLayerDepth":false,"inheritLayerSettings":false,"inheritSubLayers":true,"inheritVisibility":true,"layers":[
         {"$GMRTileLayer":"","%Name":"CollisionMain","depth":300,"effectEnabled":true,"effectType":null,"gridX":32,"gridY":32,"hierarchyFrozen":false,"inheritLayerDepth":false,"inheritLayerSettings":false,"inheritSubLayers":true,"inheritVisibility":true,"layers":[],"name":"CollisionMain","properties":[],"resourceType":"GMRTileLayer","resourceVersion":"2.0","tiles":{"SerialiseHeight":30,"SerialiseWidth":106,"TileCompressedData":[
