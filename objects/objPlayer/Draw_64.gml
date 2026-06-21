@@ -9,5 +9,6 @@ text += $"Path: {collision_path}";
 
 draw_set_font(-1);
 draw_set_halign(fa_right);
-draw_text_transformed_color(CAMERA_WIDTH - 10, 10, text, 0.5, 0.5, 0, c_fuchsia, c_fuchsia, c_fuchsia, c_fuchsia, 1);
+draw_set_color(c_white);
+draw_text_transformed(CAMERA_WIDTH - 10, 10, text, 0.5, 0.5, 0);
 draw_set_halign(fa_left);

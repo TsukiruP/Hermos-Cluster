@@ -102,6 +102,17 @@ player_render = function()
             }
             break;
         }
+        case "push":
+        {
+            player_animate(global.animations.amy_push);
+            player_resize(6, 14);
+            if (image_index == 0)
+            {
+                hitboxes[0].resize(-6, -12, 6, 16);
+                hitboxes[1].resize();
+            }
+            break;
+        }
         case "look":
         {
             player_animate(global.animations.amy_look);

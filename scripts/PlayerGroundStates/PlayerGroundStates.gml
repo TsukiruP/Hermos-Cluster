@@ -131,8 +131,6 @@ function player_is_running(_phase)
     {
         case PHASE.ENTER:
         {
-            // Animate
-            animation_start("run");
             break;
         }
         case PHASE.STEP:
@@ -249,9 +247,15 @@ function player_is_running(_phase)
                     particle_create(ox, oy, global.animations.brake_dust);
                 }
             }
-            else
+            else if (not (anim_core.name == "push" and image_xscale == input_axis_x)) 
             {
                 animation_start("run");
+            }
+            
+            // Push
+            if (wall_sign != 0 and wall_sign == input_axis_x)
+            {
+                animation_start("push");
             }
             
             // Skill

@@ -80,6 +80,17 @@ player_render = function()
             }
             break;
         }
+        case "push":
+        {
+            player_animate(global.animations.sonic_push);
+            player_resize(6, 14);
+            if (image_index == 0)
+            {
+                hitboxes[0].resize(-6, -13, 6, 16);
+                hitboxes[1].resize();
+            }
+            break;
+        }
         case "look":
         {
             player_animate(global.animations.sonic_look);
