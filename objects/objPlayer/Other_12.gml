@@ -206,12 +206,13 @@ player_keep_in_bounds = function ()
 /// @method player_perform
 /// @description Switches the player's state to the given function.
 /// @param {Function} action State function to switch to.
-player_perform = function (action)
+/// @param {Bool} [enter] Whether to execute the new state's "enter" phase (optional, default is true).
+player_perform = function (action, enter = true)
 {
 	state(PHASE.EXIT);
 	state = action;
 	state_changed = true;
-	state(PHASE.ENTER);
+	if (enter) state(PHASE.ENTER);
 };
 
 /// @method player_refresh_physics

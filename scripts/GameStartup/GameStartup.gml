@@ -72,6 +72,10 @@ with (sprite_particles)
 	part_type_direction(points, 90, 90, 0, 0);
 	part_type_gravity(points, 0.09375, 270);
 	part_type_speed(points, 3, 3, 0, 0);
+	
+	burst = part_type_create();
+	part_type_life(burst, 10, 10);
+	part_type_sprite(burst, sprBurst, true, true, false);
 }
 
 // Start the game!

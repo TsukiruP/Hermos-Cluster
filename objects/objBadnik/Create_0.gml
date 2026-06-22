@@ -12,7 +12,13 @@ reaction = function (ind)
 	}
 	
 	// Rebound
-	if (y_speed > 0 and not player_boxcast(ind, -y_radius))
+	if (state == player_is_homing)
+	{
+		player_perform(player_is_jumping, false);
+		x_speed = 0;
+		y_speed = -jump_release;
+	}
+	else if (y_speed > 0 and not player_boxcast(ind, -y_radius))
 	{
 		y_speed *= -1;
 	}

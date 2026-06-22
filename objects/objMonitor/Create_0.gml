@@ -16,7 +16,13 @@ reaction = function (ind)
 	}
 	else if (player_intersect(ind, x_wall_radius))
 	{
-		y_speed *= -1;
+		if (state == player_is_homing)
+		{
+			player_perform(player_is_jumping, false);
+			x_speed = 0;
+			y_speed = -jump_release;
+		}
+		else y_speed *= -1;
 		audio_play_sfx(sfxDestroy);
 		
 		with (ind)
