@@ -34,7 +34,8 @@ if (abs(oy) > y_speed_cap) oy = y_speed_cap * sign(oy);
 // Move the view
 if (ox != 0 or oy != 0)
 {
-	ox = clamp(vx + ox, bound_left, bound_right - CAMERA_WIDTH);
+	var ratio = CAMERA_WIDTH / surface_get_width(application_surface);
+	ox = clamp(vx + round(ox / ratio) * ratio, bound_left, bound_right - CAMERA_WIDTH);
 	oy = clamp(vy + oy, bound_top, bound_bottom - CAMERA_HEIGHT);
 	camera_set_view_pos(CAMERA_ID, ox, oy);
 }
