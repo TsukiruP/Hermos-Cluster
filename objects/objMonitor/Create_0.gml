@@ -20,7 +20,7 @@ reaction = function (ind)
 		{
 			player_perform(player_is_jumping, false);
 			x_speed = 0;
-			y_speed = -jump_release;
+			y_speed = -jump_height div 1;
 		}
 		else y_speed *= -1;
 		audio_play_sfx(sfxDestroy);

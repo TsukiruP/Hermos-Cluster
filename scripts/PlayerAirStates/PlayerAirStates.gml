@@ -48,7 +48,7 @@ function player_is_falling(phase)
 			if (not rolling and input_check_pressed(INPUT.ACTION))
 			{
 				rolling = true;
-				jump_action = true;
+				jump_action = 1;
 				
 				player_animate("roll");
 				timeline_speed = 1 / max(5 - abs(x_speed) div 1, 1);
@@ -93,7 +93,7 @@ function player_is_jumping(phase)
 		case PHASE.ENTER:
 		{
 			rolling = true;
-			jump_action = true;
+			jump_action = 3;
 			audio_play_sfx(sfxJump);
 			
 			// Leap
@@ -137,7 +137,7 @@ function player_is_jumping(phase)
 			if (on_ground) return player_perform(x_speed != 0 ? player_is_running : player_is_standing);
 			
 			// Homing attack / Air dash
-			if (jump_action)
+			if (jump_action & 1 != 0)
 			{
 				var target_found = instance_exists(objReticle);
 				var ind = collision_rectangle(x, y, x + 96 * image_xscale, y + 64, target_found ? objReticle : [objBadnik, objMonitor], false, false);
@@ -161,14 +161,14 @@ function player_is_jumping(phase)
 					particle_spawn("burst", x, y);
 					if (target_found) return player_perform(player_is_homing);
 				
-					jump_action = false;
+					jump_action = 0;
 					x_speed = 8 * image_xscale;
 					y_speed = 0;
 				}
 			}
 			
 			// Reduce height
-			if (y_speed < -jump_release and not input_check(INPUT.ACTION))
+			if (jump_action & 2 != 0 and y_speed < -jump_release and not input_check(INPUT.ACTION))
 			{
 				y_speed = -jump_release;
 			}
@@ -196,6 +196,7 @@ function player_is_homing(phase)
 	{
 		case PHASE.ENTER:
 		{
+			jump_action = 1;
 			break;
 		}
 		case PHASE.STEP:

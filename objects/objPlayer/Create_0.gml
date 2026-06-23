@@ -6,7 +6,7 @@ state = player_is_ready;
 state_changed = false;
 
 rolling = false;
-jump_action = false;
+jump_action = 0;
 spindash_charge = 0;
 peelout_time = 0;
 
