@@ -26,7 +26,7 @@ with (owner) switch (other.image_index)
 	{
 		if (invincibility_effect == noone)
 		{
-			invincibility_effect = instance_create_depth(x, y, depth - 1, objInvincibility, { owner: id });
+			invincibility_effect = instance_create_layer(x, y, layer, objInvincibility, { owner: id });
 			with (shield) visible = false;
 		}
 		invincibility_effect.alarm[0] = 1200;
