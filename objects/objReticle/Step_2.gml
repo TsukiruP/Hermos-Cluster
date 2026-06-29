@@ -16,4 +16,4 @@ if (circle_scale > limit) circle_scale = lerp(circle_scale, limit, 0.75);
 if (arrow_scale > limit) arrow_scale = lerp(arrow_scale, limit, 0.75);
 
 // Rotate
-image_angle += 5;
+direction += 5;
