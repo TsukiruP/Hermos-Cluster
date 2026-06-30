@@ -1,0 +1,26 @@
+{
+  "$GMSound":"v2",
+  "%Name":"bgmGameOver",
+  "audioGroupId":{
+    "name":"audiogroup_default",
+    "path":"audiogroups/audiogroup_default",
+  },
+  "bitDepth":1,
+  "channelFormat":0,
+  "compression":3,
+  "compressionQuality":4,
+  "conversionMode":0,
+  "duration":8.376621,
+  "exportDir":"",
+  "name":"bgmGameOver",
+  "parent":{
+    "name":"Assets",
+    "path":"folders/Zone/UI/Game Over/Assets.yy",
+  },
+  "preload":false,
+  "resourceType":"GMSound",
+  "resourceVersion":"2.0",
+  "sampleRate":44100,
+  "soundFile":"bgmGameOver.ogg",
+  "volume":1.0,
+}
