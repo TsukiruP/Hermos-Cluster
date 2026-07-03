@@ -1,5 +1,5 @@
 /// @description Scale
-if (++scale != 4)
+if (++scale != max_scale)
 {
 	if (scale == 1) window_set_fullscreen(false);
 	window_set_size(CAMERA_WIDTH * scale, CAMERA_HEIGHT * scale);
