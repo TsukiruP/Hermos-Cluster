@@ -21,10 +21,13 @@ enum ICON
 	RING, SNEAKER, INVINCIBILITY, EGGMAN, SUPER, SHIELD, LIGHTNING, FIRE, BUBBLE, LIFE
 }
 
-// Misc.
+// Graphics
+display_set_gui_size(CAMERA_WIDTH, CAMERA_HEIGHT);
 display_set_sleep_margin(1);
 surface_depth_disable(true);
 gpu_set_zwriteenable(false);
+
+// Misc.
 gc_target_frame_time(-100);
 show_debug_overlay(true);
 randomize();

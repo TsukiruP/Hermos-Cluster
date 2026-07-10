@@ -6,7 +6,7 @@ Joevan Salmon-Johnson (AKA VectorSatyr, formerly AeroGP) - Sonic Studio Engine, 
 Ultra Ring Team - Harmony Framework.
 * https://github.com/UltraRing/Harmony-Framework
 
-> This project uses a heavily modified version of the Sonic Studio Engine template, featuring various changes from VectorSatyr's other templates, and angle detection for custom terrain shapes from the Harmony Framework v0.91.
+> This project uses a heavy modification of the Sonic Studio Engine template, featuring various changes from VectorSatyr's other templates, and angle detection for custom terrain shapes from the Harmony Framework v0.91.
 
 --- Sonic For GMS License ---
 BSD 2-Clause License
@@ -63,7 +63,7 @@ Aleksander Norberg (AKA AleksNB, A.NB) - Starlight 8 Engine.
 Jonathan Peterson (AKA PixelatedPope) - Helpful GML Scripts.
 * https://github.com/PixelatedPope/HelpfulGMLScripts
 
-> Used its scripts for subpixel camera positioning & sprite rendering to fix certain graphical issues.
+> Used its code for subpixel camera positioning and sprite rendering to fix certain graphical issues.
 
 =============================================================================================================================
 
@@ -84,6 +84,6 @@ Okamikurainya - Splash Hill Zone "Genesis-Style" background.
 =============================================================================================================================
 
 Additional thanks and credit goes to everyone else who contributed to the aforementioned projects in any way.
-All sprites, sounds and music belong to SEGA, Sonic Team, and their respective owners.
+All sprites, sounds, and music belong to SEGA, Sonic Team, and their respective owners.
 This project is made in the GameMaker game engine by YoYo Games.
 All rights to Sonic the Hedgehog belong to SEGA and Sonic Team.
