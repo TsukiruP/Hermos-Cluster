@@ -1,0 +1,89 @@
+Joevan Salmon-Johnson (AKA VectorSatyr, formerly AeroGP) - Sonic Studio Engine, "Basic Sonic Engine", Sonic For GMS.
+* https://forums.sonicretro.org/index.php?threads/new-game-maker-studio-sonic-engine.31723/
+* https://forums.sonicretro.org/index.php?threads/question-about-game-maker-sonic-engines-accuracy.34845/page-2#post-841401
+* https://codeberg.org/vectorsatyr/sonic-for-gms
+
+Ultra Ring Team - Harmony Framework.
+* https://github.com/UltraRing/Harmony-Framework
+
+> This project uses a heavily modified version of the Sonic Studio Engine template, featuring various changes from VectorSatyr's other templates, and angle detection for custom terrain shapes from the Harmony Framework v0.91.
+
+--- Sonic For GMS License ---
+BSD 2-Clause License
+
+Copyright (c) 2019, Joevan Salmon-Johnson
+All rights reserved.
+
+Redistribution and use in source and binary forms, with or without
+modification, are permitted provided that the following conditions are met:
+
+1. Redistributions of source code must retain the above copyright notice, this
+   list of conditions and the following disclaimer.
+
+2. Redistributions in binary form must reproduce the above copyright notice,
+   this list of conditions and the following disclaimer in the documentation
+   and/or other materials provided with the distribution.
+
+THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS"
+AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE
+IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE
+DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE
+FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL
+DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR
+SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER
+CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY,
+OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE
+OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+
+--- Harmony Framework License ---
+MIT License
+
+Copyright (c) 2025 Ultra Ring
+
+Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the “Software”), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED “AS IS”, WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+
+=============================================================================================================================
+
+TrianglyRU, Michael Gallinago - Orbinaut Framework.
+* https://github.com/TrianglyRU/OrbinautFramework
+
+Brandon Beauregard (AKA TruePowerofTeamwork, Tpot-SSL) - Sonic MAX Engine.
+* https://sonicfangameshq.com/forums/showcase/sonic-max.25/
+
+> Used as references for certain object behaviors within the classic Sonic games, and other optimizations.
+
+Aleksander Norberg (AKA AleksNB, A.NB) - Starlight 8 Engine.
+
+> Basis for Sonic's homing attack and air dash abilities.
+
+Jonathan Peterson (AKA PixelatedPope) - Helpful GML Scripts.
+* https://github.com/PixelatedPope/HelpfulGMLScripts
+
+> Used its scripts for subpixel camera positioning & sprite rendering to fix certain graphical issues.
+
+=============================================================================================================================
+
+Ian Monsen (AKA 1234567890moomoo) - Mad Gear Zone Act 1 background music remix.
+* https://youtu.be/TCY7k_7pD0Y?si=bg4lX6nbZElMxjop
+
+> Used in the testing room; pitched down by 6.7 semitones, and slowed down to 98%.
+
+Eukaryot - Sonic 3 A.I.R. (Angel Island Revisited)
+* https://sonic3air.org/
+* https://github.com/Eukaryot/sonic3air
+
+> Used its remasters of the "invincibility" and "game over" music tracks.
+
+Okamikurainya - Splash Hill Zone "Genesis-Style" background.
+* https://www.spriters-resource.com/custom_edited/sonicthehedgehogcustoms/asset/88196/
+
+=============================================================================================================================
+
+Additional thanks and credit goes to everyone else who contributed to the aforementioned projects in any way.
+All sprites, sounds and music belong to SEGA, Sonic Team, and their respective owners.
+This project is made in the GameMaker game engine by YoYo Games.
+All rights to Sonic the Hedgehog belong to SEGA and Sonic Team.

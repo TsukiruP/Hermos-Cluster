@@ -1,0 +1,11 @@
+{
+  "$GMNotes":"v1",
+  "%Name":"Credits",
+  "name":"Credits",
+  "parent":{
+    "name":"Hermos",
+    "path":"Hermos.yyp",
+  },
+  "resourceType":"GMNotes",
+  "resourceVersion":"2.0",
+}
