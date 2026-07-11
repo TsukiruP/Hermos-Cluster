@@ -26,7 +26,7 @@
   "origin":4,
   "parent":{
     "name":"Bubbles",
-    "path":"folders/Zone/Objects/Destructibles/Bubbles.yy",
+    "path":"folders/Zone/Objects/Destructibles/Badniks/Bubbles.yy",
   },
   "preMultiplyAlpha":false,
   "resourceType":"GMSprite",

@@ -9,8 +9,8 @@
   "name":"objProjectile",
   "overriddenProperties":[],
   "parent":{
-    "name":"Destructibles",
-    "path":"folders/Zone/Objects/Destructibles.yy",
+    "name":"Badniks",
+    "path":"folders/Zone/Objects/Destructibles/Badniks.yy",
   },
   "parentObjectId":{
     "name":"objZoneObject",

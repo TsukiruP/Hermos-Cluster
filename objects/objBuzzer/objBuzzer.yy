@@ -10,7 +10,7 @@
   "overriddenProperties":[],
   "parent":{
     "name":"Buzzer",
-    "path":"folders/Zone/Objects/Destructibles/Buzzer.yy",
+    "path":"folders/Zone/Objects/Destructibles/Badniks/Buzzer.yy",
   },
   "parentObjectId":{
     "name":"objBadnik",
