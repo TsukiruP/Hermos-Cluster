@@ -57,6 +57,13 @@ player_ground = function(_attach)
     if (not _attach)
     {
         on_ground = false;
+        
+        if (direction != gravity_direction)
+        {
+        	direction = gravity_direction;
+        	local_direction = 0;
+        }
+        
         if (mask_direction != gravity_direction)
         {
         	mask_direction = gravity_direction;
@@ -202,7 +209,7 @@ player_keep_in_bounds = function()
 
 /// @description Switches the player's state to the given function.
 /// @param {Function} state State function to switch to.
-/// @param {Bool} [enter] Whether to perform the enter phase (optional, defaults to true).
+/// @param {Bool} [enter] Whether to execute the new state's "enter" phase (optional, default is true).
 player_perform = function(_state, _enter = true)
 {
     var reset = (argument_count > 1);

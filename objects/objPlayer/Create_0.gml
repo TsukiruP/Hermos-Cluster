@@ -67,22 +67,13 @@ tilemaps = variable_clone(ctrlStage.tilemaps, 0);
 tilemap_count = array_length(tilemaps);
 
 // Validate semisolid tilemap
-if (tilemap_count & 1 == 0)
-{
-    semisolid_tilemap = array_pop(tilemaps);
-    tilemap_count--;
-}
-else
-{
-	semisolid_tilemap = -1;
-}
+semisolid_tilemap = (tilemap_count & 1 == 0 ? tilemaps[--tilemap_count] : -1);
 
 // Delist the "TilesLayer1" layer tilemap
 if (tilemap_count == 3)
 {
-    collision_path = 0;
-    array_pop(tilemaps);
     tilemap_count--;
+    collision_path = 0;
 }
 
 // Boost Mode
