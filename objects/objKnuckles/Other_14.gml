@@ -427,6 +427,41 @@ player_render = function()
                 hitboxes[0].resize(-16, -8, 6, 6);
                 hitboxes[1].resize(-2, -12, 15, 9);
             }
+            break;
+        }
+        case "glide_turn":
+        {
+            player_animate(global.animations.knuckles_glide_turn);
+            player_resize(6, 6);
+            switch (anim_core.variant)
+            {
+                case 0:
+                {
+                    hitboxes[0].resize(-16, -8, 6, 6);
+                    hitboxes[1].resize(-2, -12, 12, 9);
+                    break;
+                }
+                case 1:
+                {
+                    hitboxes[0].resize(-12, -8, 10, 6);
+                    hitboxes[1].resize(-2, -12, 16, 9);
+                    break;
+                }
+                case 2:
+                {
+                    hitboxes[0].resize(-8, -8, 14, 6);
+                    hitboxes[1].resize(-16, -12, 2, 9);
+                    break;
+                }
+                    
+                case 3:
+                {
+                    hitboxes[0].resize(-4, -8, 18, 6);
+                    hitboxes[1].resize(-12, -12, 2, 9);
+                    break;
+                }
+            }
+            break;
         }
     }
 }

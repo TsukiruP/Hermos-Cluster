@@ -552,6 +552,7 @@
     {"id":{"name":"PlayerCreamStates","path":"scripts/PlayerCreamStates/PlayerCreamStates.yy",},},
     {"id":{"name":"PlayerGroundStates","path":"scripts/PlayerGroundStates/PlayerGroundStates.yy",},},
     {"id":{"name":"PlayerKnucklesMacros","path":"scripts/PlayerKnucklesMacros/PlayerKnucklesMacros.yy",},},
+    {"id":{"name":"PlayerKnucklesStates","path":"scripts/PlayerKnucklesStates/PlayerKnucklesStates.yy",},},
     {"id":{"name":"PlayerMacros","path":"scripts/PlayerMacros/PlayerMacros.yy",},},
     {"id":{"name":"PlayerMilesMacros","path":"scripts/PlayerMilesMacros/PlayerMilesMacros.yy",},},
     {"id":{"name":"PlayerMilesStates","path":"scripts/PlayerMilesStates/PlayerMilesStates.yy",},},

@@ -416,7 +416,8 @@ player_try_air_skill = function()
             {
                 if (input_button.jump.pressed and player_try_flight_assist())
                 {
-                    return false;
+                    player_perform(player_is_gliding);
+                    return true;
                 }
                 
                 if (input_button.aux.pressed)

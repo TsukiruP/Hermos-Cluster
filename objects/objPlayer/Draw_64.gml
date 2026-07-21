@@ -5,7 +5,7 @@ text += $"Direction: {string_format(direction, 3, 0)} | {string_format(local_dir
 text += $"Mask Direction: {mask_direction}\n";
 text += $"Control Lock: {control_lock_time}\n";
 text += $"Ground Instance: {real(ground_id)}\n";
-text += $"Path: {collision_path}";
+text += $"Glide Direction: {glide_direction}";
 
 draw_set_font(-1);
 draw_set_halign(fa_right);

@@ -1,0 +1,13 @@
+{
+  "$GMScript":"v1",
+  "%Name":"PlayerKnucklesStates",
+  "isCompatibility":false,
+  "isDnD":false,
+  "name":"PlayerKnucklesStates",
+  "parent":{
+    "name":"Knuckles",
+    "path":"folders/Stage/Player/Characters/Knuckles.yy",
+  },
+  "resourceType":"GMScript",
+  "resourceVersion":"2.0",
+}
