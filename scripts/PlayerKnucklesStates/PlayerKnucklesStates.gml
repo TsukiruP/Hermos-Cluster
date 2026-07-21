@@ -44,7 +44,15 @@ function player_is_gliding(_phase)
             if (on_ground)
             {
                 if (x_speed != 0) image_xscale = sign(x_speed);
-                return player_perform(player_is_running);
+                
+                if (local_direction >= 45 and local_direction <= 315)
+                {
+                    image_xscale = (glide_direction >= 90 ? -1 : 1);
+                    return player_perform(player_is_running);   
+                }
+                
+                x_speed = 0;
+                return player_perform(player_is_standing);
             }
             
             // Fall
