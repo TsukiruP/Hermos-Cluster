@@ -29,11 +29,3 @@ if (tilemaps[1] == -1) array_delete(tilemaps, 1, 2);
 
 // Create UI elements
 instance_create_layer(0, 0, "Display", objHUD);
-
-// Create debug control
-/*with (ctrlDebug)
-{
-    dbg_set_section(stage_section);
-    stage_time_control = dbg_watch(ref_create(other, "stage_time"));
-    time_enabled_control = dbg_checkbox(ref_create(other, "time_enabled"));
-}*/
