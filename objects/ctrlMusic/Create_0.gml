@@ -44,4 +44,4 @@ var set_music_loop = function(_ind, _start = 0, _end = 0)
 
 // Define music loop points here; looped music w/o loop points should be inserted into the `looped_music` array.
 set_music_loop(bgmExtraDungeon1A, 814140 / 44100, 6676039 / 44100);
-set_music_loop(bgmSunshineCoastline, 00450784 / 48000, 08694455 / 48000);
+//set_music_loop(bgmSunshineCoastline, 00450784 / 48000, 08694455 / 48000);

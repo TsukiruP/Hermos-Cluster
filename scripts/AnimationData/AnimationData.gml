@@ -291,6 +291,15 @@ with (global.animations)
     knuckles_flight_ride_v0 = new animation(sprKnucklesFlightRide, 5);
     knuckles_flight_ride = [knuckles_flight_ride_v0];
     
+    knuckles_glide_v0 = new animation(sprKnucklesGlide, 3);
+    knuckles_glide = [knuckles_glide_v0];
+    
+    knuckles_glide_turn_v0 = new animation(sprKnucklesGlideTurn0, 1);
+    knuckles_glide_turn_v1 = new animation(sprKnucklesGlideTurn1, 1);
+    knuckles_glide_turn_v2 = new animation(sprKnucklesGlideTurn2, 1);
+    knuckles_glide_turn_v3 = new animation(sprKnucklesGlideTurn3, 1);
+    knuckles_glide_turn = [knuckles_glide_turn_v0, knuckles_glide_turn_v1, knuckles_glide_turn_v2, knuckles_glide_turn_v3];
+    
     #endregion
     
     #region Amy

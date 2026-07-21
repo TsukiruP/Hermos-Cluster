@@ -418,5 +418,15 @@ player_render = function()
             }
             break;
         }
+        case "glide":
+        {
+            player_animate(global.animations.knuckles_glide);
+            player_resize(6, 6);
+            if (image_index == 0)
+            {
+                hitboxes[0].resize(-16, -8, 6, 6);
+                hitboxes[1].resize(-2, -12, 15, 9);
+            }
+        }
     }
 }
