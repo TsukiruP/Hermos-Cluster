@@ -467,6 +467,11 @@ player_render = function()
         {
             player_animate(global.animations.knuckles_glide_slide);
             player_resize(6, 6);
+            if (image_index == 0)
+            {
+                hitboxes[0].resize(-21, -6, 5, 7);
+                hitboxes[1].resize(-2, -10, 11, 10);
+            }
             break;
         }
     }

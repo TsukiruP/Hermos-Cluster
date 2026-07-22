@@ -12,8 +12,8 @@ function player_is_gliding(_phase)
             glide_sign = image_xscale;
             glide_direction = (image_xscale == -1 ? 180 : 0);
             
-            // Detach from ground
-            player_ground(false);
+            // Animate
+            animation_start("glide");
             break;
         }
         case PHASE.STEP:
@@ -43,16 +43,14 @@ function player_is_gliding(_phase)
             // Land
             if (on_ground)
             {
-                if (x_speed != 0) image_xscale = sign(x_speed);
-                
                 if (local_direction >= 45 and local_direction <= 315)
                 {
                     image_xscale = (glide_direction >= 90 ? -1 : 1);
                     return player_perform(player_is_running);   
                 }
                 
-                x_speed = 0;
-                return player_perform(player_is_standing);
+                if (x_speed != 0) image_xscale = sign(x_speed);
+                return player_perform(player_is_glide_sliding);
             }
             
             // Fall
@@ -75,6 +73,50 @@ function player_is_gliding(_phase)
             {
                 image_xscale = 1;
                 animation_start("glide_turn", glide_direction div 45);
+            }
+            break;
+        }
+        case PHASE.EXIT:
+        {
+            break;
+        }
+    }
+}
+
+function player_is_glide_sliding(_phase)
+{
+    switch (_phase)
+    {
+        case PHASE.ENTER:
+        {
+            // Animate
+            animation_start("glide_slide");
+            break;
+        }
+        case PHASE.STEP:
+        {
+            // Slide
+            if (input_button.jump.check) x_speed -= min(abs(x_speed), 0.09375) * sign(x_speed);
+            
+            // Move
+            player_move_on_ground();
+            if (state_changed) exit;
+            
+            // Stand
+            if (not input_button.jump.check or x_speed == 0)
+            {
+                x_speed = 0;
+                control_lock_time = 15;
+                return player_perform(player_is_standing);
+            }
+            
+            // Animate
+            if (x_speed != 0 and anim_core.time mod 4 == 0)
+            {
+                // Create brake dust
+                var ox = x + dsin(direction) * y_radius;
+                var oy = y + dcos(direction) * y_radius;
+                particle_create(ox, oy, global.animations.brake_dust);
             }
             break;
         }
