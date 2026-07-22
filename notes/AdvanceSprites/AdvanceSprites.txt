@@ -192,6 +192,8 @@
 | Hammer Sprung | 590-0, 590-1 |
 | Glide | 514-0 |
 | Glide Turn | 515-0, 515-1, 515-2, 515-3 |
+| Glide Slide | 517-0 |
+| Glide Fall | 516-0, 516-1 |
 | Wall Cling | 571-0 |
 | Climb | 572-0, 572-1, 572-2 |
 | Dash Climb | 543-0 |
@@ -287,4 +289,4 @@
 | Flight Cancel | 190-0 |
 | Hammer Attack | 205-0 |
 
-* Cream's eyelids were recolored in SA3, so use SA3 sprites.
+* Prioritize SA3 Cream due to her recolored eyelids.
