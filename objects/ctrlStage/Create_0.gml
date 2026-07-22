@@ -22,7 +22,7 @@ tilemaps =
     layer_tilemap_get_id("TilesLayer0"),
     layer_tilemap_get_id("TilesLayer1"),
     layer_tilemap_get_id("TilesSemisolid")
-]
+];
 
 if (tilemaps[3] == -1) array_pop(tilemaps);
 if (tilemaps[1] == -1) array_delete(tilemaps, 1, 2); 
