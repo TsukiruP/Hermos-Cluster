@@ -478,6 +478,32 @@ player_render = function()
         {
             player_animate(global.animations.knuckles_glide_fall);
             player_resize(6, 14);
+            switch (anim_core.variant)
+            {
+                case 0:
+                {
+                    if (image_index == 0)
+                    {
+                        hitboxes[0].resize(-6, -16, 6, 14);
+                        hitboxes[1].resize();
+                    }
+                    break;
+                }
+                case 1:
+                {
+                    if (image_index == 0)
+                    {
+                        hitboxes[0].resize(-6, -16, 6, 14);
+                        hitboxes[1].resize();
+                    }
+                    else if (image_index == 1)
+                    {
+                        hitboxes[0].resize(-6, -6, 6, 16);
+                        hitboxes[1].resize();
+                    }
+                    break;
+                }
+            }
             break;
         }
     }
