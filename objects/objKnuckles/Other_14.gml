@@ -463,5 +463,11 @@ player_render = function()
             }
             break;
         }
+        case "glide_slide":
+        {
+            player_animate(global.animations.knuckles_glide_slide);
+            player_resize(6, 6);
+            break;
+        }
     }
 }

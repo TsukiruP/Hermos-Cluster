@@ -300,6 +300,9 @@ with (global.animations)
     knuckles_glide_turn_v3 = new animation(sprKnucklesGlideTurn3, 1);
     knuckles_glide_turn = [knuckles_glide_turn_v0, knuckles_glide_turn_v1, knuckles_glide_turn_v2, knuckles_glide_turn_v3];
     
+    knuckles_glide_slide_v0 = new animation(sprKnucklesGlideSlide, 3);
+    knuckles_glide_slide = [knuckles_glide_slide_v0];
+    
     #endregion
     
     #region Amy
