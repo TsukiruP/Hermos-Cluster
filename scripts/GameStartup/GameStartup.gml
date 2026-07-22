@@ -163,7 +163,7 @@ InputPartySetParams(INPUT_VERB.CONFIRM, 1, INPUT_MAX_PLAYERS, true, INPUT_VERB.C
 
 // Misc.
 gc_target_frame_time(-100);
-show_debug_overlay(true);
+//show_debug_overlay(true);
 randomize();
 
 // Start the game!
