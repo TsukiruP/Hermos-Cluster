@@ -149,6 +149,7 @@ function player_is_head_sliding(_phase)
                     case 1:
                     {
                         x_speed -= min(abs(x_speed), 24 / 256) * sign(x_speed);
+                        
                         if (x_speed == 0)
                         {
                             head_slide_state = 2;
