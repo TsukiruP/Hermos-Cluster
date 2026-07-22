@@ -474,5 +474,11 @@ player_render = function()
             }
             break;
         }
+        case "glide_fall":
+        {
+            player_animate(global.animations.knuckles_glide_fall);
+            player_resize(6, 14);
+            break;
+        }
     }
 }

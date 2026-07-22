@@ -303,6 +303,10 @@ with (global.animations)
     knuckles_glide_slide_v0 = new animation(sprKnucklesGlideSlide, 3);
     knuckles_glide_slide = [knuckles_glide_slide_v0];
     
+    knuckles_glide_fall_v0 = new animation(sprKnucklesGlideFall0, [2, 2, 2, 2, 3, 3, 3], 4);
+    knuckles_glide_fall_v1 = new animation(sprKnucklesGlideFall1, [1, 1, 1, 2, 1, 1], -1);
+    knuckles_glide_fall = [knuckles_glide_fall_v0, knuckles_glide_fall_v1];
+    
     #endregion
     
     #region Amy

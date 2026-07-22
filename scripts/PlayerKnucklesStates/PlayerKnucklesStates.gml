@@ -19,7 +19,12 @@ function player_is_gliding(_phase)
         case PHASE.STEP:
         {
             // Drop
-            if (not input_button.jump.check) return player_perform(player_is_falling, false);
+            if (not input_button.jump.check)
+            {
+                if (x_speed != 0) image_xscale = sign(x_speed);
+                x_speed /= 4;
+                return player_perform(player_is_glide_falling);
+            }
             
             // Accelerate
             if (glide_speed < 3)
@@ -30,6 +35,8 @@ function player_is_gliding(_phase)
             {
                 glide_speed += 3 / 256;
             }
+            
+            // TODO: Subtract 9 / 256 when underwaterand above 3.0.
             
             // Turn
             if (input_axis_x != 0) glide_sign = input_axis_x;
@@ -102,6 +109,9 @@ function player_is_glide_sliding(_phase)
             player_move_on_ground();
             if (state_changed) exit;
             
+            // Fall
+            if (not on_ground) return player_perform(player_is_glide_falling);
+            
             // Stand
             if (not input_button.jump.check or x_speed == 0)
             {
@@ -117,6 +127,82 @@ function player_is_glide_sliding(_phase)
                 var ox = x + dsin(direction) * y_radius;
                 var oy = y + dcos(direction) * y_radius;
                 particle_create(ox, oy, global.animations.brake_dust);
+            }
+            break;
+        }
+        case PHASE.EXIT:
+        {
+            break;
+        }
+    }
+}
+
+function player_is_glide_falling(_phase)
+{
+    switch (_phase)
+    {
+        case PHASE.ENTER:
+        {
+            // Detach from ground
+            if (on_ground) player_ground(false);
+            
+            // Animate
+            animation_start("glide_fall");
+            break;
+        }
+        case PHASE.STEP:
+        {
+            if (on_ground)
+            {
+                // Move
+                player_move_on_ground();
+                if (state_changed) exit;
+                
+                // Fall
+                if (not on_ground) return player_perform(player_is_glide_falling);
+                
+                // Stand
+                if (animation_is_finished()) return player_perform(player_is_standing);
+            }
+            else
+            {
+                // Accelerate
+                if (input_axis_x != 0)
+                {
+                    image_xscale = input_axis_x;
+                    if (abs(x_speed) < speed_cap or sign(x_speed) != input_axis_x)
+                    {
+                        x_speed += air_acceleration * input_axis_x;
+                        if (abs(x_speed) > speed_cap and sign(x_speed) == input_axis_x)
+                        {
+                            x_speed = speed_cap * input_axis_x;
+                        }
+                    }
+                }
+                
+                // Apply speed limit
+                if (abs(x_speed) > speed_limit) x_speed = speed_limit * sign(x_speed);
+                
+                // Move
+                player_move_in_air();
+                if (state_changed) exit;
+                
+                // Land
+                if (on_ground)
+                {
+                    x_speed = 0;
+                    if (local_direction >= 45 and local_direction <= 315) return player_perform(x_speed != 0 ? player_is_running : player_is_standing);
+                    
+                    anim_core.variant++;
+                    control_lock_alarm = 15;
+                    return player_perform(player_is_glide_falling, false);
+                }
+                
+                // Apply air resistance
+                if (y_speed < 0 and y_speed > -4) x_speed -= x_speed / 32;
+                
+                // Fall
+                if (y_speed < gravity_cap) y_speed = min(y_speed + gravity_force, gravity_cap);
             }
             break;
         }
