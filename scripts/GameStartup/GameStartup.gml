@@ -153,16 +153,18 @@ global.font_hud_episode_ii = font_add_sprite_ext(sprFontHUDEpisodeII, "012345678
 global.font_hud_episode_ii_score = font_add_sprite(sprFontHUDEpisodeIIScore, ord("0"), false, 1);
 global.font_hud_episode_ii_time = font_add_sprite_ext(sprFontHUDEpisodeIITime, "0123456789'\"", false, 1);
 
-// Misc.
+// Graphics
 display_set_gui_size(CAMERA_WIDTH, CAMERA_HEIGHT);
 display_set_sleep_margin(1);
 surface_depth_disable(true);
+
+// Input
+InputPartySetParams(INPUT_VERB.CONFIRM, 1, INPUT_MAX_PLAYERS, true, INPUT_VERB.CANCEL, undefined);
 
 // Misc.
 gc_target_frame_time(-100);
 show_debug_overlay(true);
 randomize();
-InputPartySetParams(INPUT_VERB.CONFIRM, 1, INPUT_MAX_PLAYERS, true, INPUT_VERB.CANCEL, undefined);
 
 // Start the game!
 call_later(1, time_source_units_frames, room_goto_next);
