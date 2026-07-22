@@ -180,7 +180,7 @@ function player_is_running(_phase)
             	else
             	{
             		// Friction
-            		x_speed -= min(abs(x_speed), acceleration) * sign(x_speed);
+            		x_speed -= min(abs(x_speed), base_acceleration) * sign(x_speed);
             	}
             }
             
