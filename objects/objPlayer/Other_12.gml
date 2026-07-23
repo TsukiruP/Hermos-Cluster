@@ -289,13 +289,12 @@ player_refresh_physics = function()
 /// @param {Real} force Friction value to use (optional, defaults to 3 / 32).
 player_resist_slope = function(_force = 3 / 32)
 {
-    // Abort if...
-    //if (x_speed == 0) exit; // Not moving
-    if (local_direction >= 135 and local_direction <= 225) exit; // Moving along a ceiling
+    // Abort if moving along a ceiling
+    if (local_direction >= 135 and local_direction <= 225) exit;
     
-    // Apply (Sonic Advance method)
+    // Apply (Sonic Advance + Sonic 3 method)
     var slope_factor = dsin(local_direction) * _force;
-    if (abs(slope_factor) >= 0.05078125) x_speed -= slope_factor;
+    if (abs(slope_factor) >= 0.0380859375)x_speed -= slope_factor;
     
     // Apply speed limit
     if (abs(x_speed) > speed_limit) x_speed = speed_limit * sign(x_speed);

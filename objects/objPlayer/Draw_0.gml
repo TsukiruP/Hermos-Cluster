@@ -95,4 +95,4 @@ else
 draw_line_color(x_int, y_int, x_int + mask_sin * y_radius, y_int + mask_cos * y_radius, c_white, c_white);
 
 // Hitboxes
-draw_hitboxes();
+draw_hitboxes(mask_direction);
