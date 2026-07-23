@@ -112,6 +112,13 @@ function player_is_glide_sliding(_phase)
             // Fall
             if (not on_ground) return player_perform(player_is_glide_falling);
             
+            // Slide down steep slopes
+            if (mask_direction != gravity_direction)
+            {
+                control_lock_time = SLIDE_DURATION;
+                return player_perform(player_is_running);
+            }
+            
             // Stand
             if (not input_button.jump.check or x_speed == 0)
             {
