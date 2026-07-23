@@ -294,8 +294,7 @@ player_resist_slope = function(_force = 3 / 32)
     if (local_direction >= 135 and local_direction <= 225) exit; // Moving along a ceiling
     
     // Apply (Sonic Advance method)
-    var slope_factor = dsin(local_direction) * _force;
-    x_speed -= slope_factor;
+    x_speed -= dsin(local_direction) * _force;
     
     // Apply speed limit
     if (abs(x_speed) > speed_limit) x_speed = speed_limit * sign(x_speed);
