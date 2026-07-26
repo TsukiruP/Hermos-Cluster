@@ -194,8 +194,8 @@
 | Glide Turn | 515-0, 515-1, 515-2, 515-3 |
 | Glide Slide | 517-0 |
 | Glide Fall | 516-0, 516-1 |
-| Wall Cling | 571-0 |
-| Climb | 572-0, 572-1, 572-2 |
+| Wall Grab | 571-0 |
+| Wall Climb | 572-0, 572-1, 572-2, 572-3, 572-4 |
 | Dash Climb | 543-0 |
 | Hammer Attack | 531-0 |
 | Chao Attack | 587-0, 588-0, 589-0 |
