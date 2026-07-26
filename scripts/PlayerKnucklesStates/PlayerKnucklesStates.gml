@@ -151,10 +151,10 @@ function player_is_glide_falling(_phase)
         case PHASE.ENTER:
         {
             // Detach from ground
-            if (on_ground) player_ground(false);
+            player_ground(false);
             
             // Animate
-            animation_start("glide_fall");
+            animation_start("glide_fall", -1, ["glide_slide"]);
             break;
         }
         case PHASE.STEP:
@@ -198,10 +198,13 @@ function player_is_glide_falling(_phase)
                 if (on_ground)
                 {
                     x_speed = 0;
-                    if (local_direction >= 45 and local_direction <= 315) return player_perform(x_speed != 0 ? player_is_running : player_is_standing);
+                    if (local_direction >= 45 and local_direction <= 315)
+                    {
+                        return player_perform(x_speed != 0 ? player_is_running : player_is_standing);
+                    }
                     
-                    anim_core.variant++;
                     control_lock_alarm = 15;
+                    animation_start("glide_fall", 1);
                     return player_perform(player_is_glide_falling, false);
                 }
                 
