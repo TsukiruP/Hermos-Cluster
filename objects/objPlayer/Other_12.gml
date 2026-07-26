@@ -234,7 +234,7 @@ player_resize = function(_xrad, _yrad)
     var old_x_radius = x_radius;
     var old_y_radius = y_radius;
     x_radius = _xrad;
-    x_wall_radius = x_radius + 2;
+    x_wall_radius = x_radius + 3;
     y_radius = _yrad;
     
     if (on_ground)

@@ -506,5 +506,79 @@ player_render = function()
             }
             break;
         }
+        case "wall_grab":
+        {
+            player_animate(global.animations.knuckles_wall_grab);
+            player_resize(6, 14);
+            if (image_index == 0)
+            {
+                hitboxes[0].resize(-10, -14, 2, 10);
+                hitboxes[1].resize();
+            }
+            else if (image_index == 1)
+            {
+                hitboxes[0].resize(-10, -10, 6, 15);
+                hitboxes[1].resize();
+            }
+            else if (image_index == 2)
+            {
+                hitboxes[0].resize(-9, -9, -9, -9);
+                hitboxes[1].resize();
+            }
+            break;
+        }
+        case "wall_climb":
+        {
+            player_animate(global.animations.knuckles_wall_climb);
+            player_resize(6, 14);
+            switch (anim_core.variant)
+            {
+                case 0:
+                case 1:
+                case 2:
+                {
+                    if (image_index == 0)
+                    {
+                        hitboxes[0].resize(-10, -10, 6, 15);
+                        hitboxes[1].resize();
+                    }
+                    break;
+                }
+                case 3:
+                {
+                    if (image_index == 0)
+                    {
+                        hitboxes[0].resize(-7, -8, 9, 15);
+                        hitboxes[1].resize();
+                    }
+                    else if (image_index == 1)
+                    {
+                        hitboxes[0].resize(-1, -16, 15, 10);
+                        hitboxes[1].resize();
+                    }
+                    else if (image_index == 2)
+                    {
+                        hitboxes[0].resize(-17, -20, -7, 6);
+                        hitboxes[1].resize();
+                    }
+                    else if (image_index == 4)
+                    {
+                        hitboxes[0].resize(-7, -20, -19, 0);
+                        hitboxes[1].resize();
+                    }
+                    break;
+                }
+                case 4:
+                {
+                    if (image_index == 0)
+                    {
+                        hitboxes[0].resize(-6, -6, 6, 16);
+                        hitboxes[1].resize();
+                    }
+                    break;
+                }
+            }
+            break;
+        }
     }
 }

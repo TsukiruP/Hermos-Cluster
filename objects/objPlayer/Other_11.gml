@@ -117,19 +117,19 @@ player_calculate_angle = function(_x, _y)
     {
         var oy = array_create(2, _y div 1);
         var ox = array_create(2, _x - _x mod 16);
-        var right_sensor = mask_direction == 0; // 'Right' is absolute, not relative
+        var right_sensor = (mask_direction == 0); // 'Right' is absolute, not relative
         ox[right_sensor] += 15;
     }
     else
     {
         var ox = array_create(2, _x div 1);
         var oy = array_create(2, _y - _y mod 16);
-        var bottom_sensor = mask_direction == 270;
+        var bottom_sensor = (mask_direction == 270);
         oy[bottom_sensor] += 15;
     }
     
     // Extend / regress angle sensors
-    for (var n = 0; n < 2; ++n)
+    for (var n = 0; n < 2; n++)
     {
         repeat (16)
         {
@@ -143,7 +143,10 @@ player_calculate_angle = function(_x, _y)
                 ox[n] -= mask_sin;
                 oy[n] -= mask_cos;
             }
-            else break;
+            else
+            {
+                break;
+            }
         }
     }
     

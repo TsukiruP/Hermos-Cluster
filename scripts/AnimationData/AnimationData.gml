@@ -307,6 +307,16 @@ with (global.animations)
     knuckles_glide_fall_v1 = new animation(sprKnucklesGlideFall1, [1, 1, 1, 2, 1, 1], -1);
     knuckles_glide_fall = [knuckles_glide_fall_v0, knuckles_glide_fall_v1];
     
+    knuckles_wall_grab_v0 = new animation(sprKnucklesWallGrab, 2, -1);
+    knuckles_wall_grab = [knuckles_wall_grab_v0];
+    
+    knuckles_wall_climb_v0 = new animation(sprKnucklesWallClimb0, 4);
+    knuckles_wall_climb_v1 = new animation(sprKnucklesWallClimb1, 4);
+    knuckles_wall_climb_v2 = new animation(sprKnucklesWallClimb2, 1, -1);
+    knuckles_wall_climb_v3 = new animation(sprKnucklesWallClimb3, 4, -1);
+    knuckles_wall_climb_v4 = new animation(sprKnucklesWallClimb4, 4, -1);
+    knuckles_wall_climb = [knuckles_wall_climb_v0, knuckles_wall_climb_v1, knuckles_wall_climb_v2, knuckles_wall_climb_v3, knuckles_wall_climb_v4];
+    
     #endregion
     
     #region Amy

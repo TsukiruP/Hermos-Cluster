@@ -60,15 +60,78 @@ function player_is_gliding(_phase)
                 return player_perform(player_is_glide_sliding);
             }
             
+            // Wall grab
+            if (wall_sign != 0)
+            {
+                var x_int = x div 1;
+                var y_int = y div 1;
+                var glide_xscale = (glide_direction >= 90 ? -1 : 1);
+                var result = 0;
+                var result_alt = 0;
+                
+                // Wall sensors
+                if (mask_sin == 0)
+                {
+                    var oy = array_create(2, y_int);
+                    var ox = array_create(2, x_int + ((x_radius + 2) * image_xscale * mask_cos));
+                    oy[0] -= y_radius;
+                    oy[1] += y_radius;
+                }
+                else
+                {
+                    var ox = array_create(2, x_int);
+                    var oy = array_create(2, y_int + ((x_radius + 2) * image_xscale * -mask_sin));
+                    ox[0] -= y_radius;
+                    ox[1] += y_radius;
+                }
+                
+                // Extend / regress wall sensors
+                for (var n = 0; n < 2; n++)
+                {
+                    repeat (16)
+                    {
+                        if (collision_point(ox[n], oy[n], tilemaps, true, false) == noone)
+                        {
+                            ox[n] += image_xscale * mask_cos;
+                            oy[n] += image_xscale * -mask_sin;
+                        }
+                        else if (collision_point(ox[n], oy[n], tilemaps, true, false) != noone)
+                        {
+                            ox[n] -= image_xscale * mask_cos;
+                            oy[n] -= image_xscale * -mask_sin;
+                        }
+                        else
+                        {
+                            break;
+                        }
+                    }
+                }
+                
+                if (mask_sin == 0)
+                {
+                    result = (mask_direction == 0 ? max(ox[0], ox[1]) : min(ox[0], ox[1]));
+                    result_alt = (mask_direction == 0 ? min(ox[0], ox[1]) : max(ox[0], ox[1]));
+                }
+                else
+                {
+                    result = (mask_direction == 270 ? max(oy[0], oy[1]) : min(oy[0], oy[1]));
+                    result_alt = (mask_direction == 270 ? min(oy[0], oy[1]) : max(oy[0], oy[1]));
+                }
+                
+                if (result != result_alt)
+                {
+                    return player_perform(player_is_glide_falling);
+                }
+                else if (result != 0)
+                {
+                    
+                }
+                
+                return player_perform(player_is_wall_climbing);
+            }
+            
             // Fall
-            if (y_speed < 0.5)
-            {
-                y_speed += 0.09375;
-            }
-            else
-            {
-                y_speed -= 0.09375;
-            }
+            y_speed += (y_speed < 0.5 ? 0.09375 : -0.09375);
             
             // Animate
             if (glide_direction mod 180 == 0)
@@ -214,6 +277,33 @@ function player_is_glide_falling(_phase)
                 // Fall
                 if (y_speed < gravity_cap) y_speed = min(y_speed + gravity_force, gravity_cap);
             }
+            break;
+        }
+        case PHASE.EXIT:
+        {
+            break;
+        }
+    }
+}
+
+function player_is_wall_climbing(_phase)
+{
+    switch (_phase)
+    {
+        case PHASE.ENTER:
+        {
+            // Animate
+            animation_start("wall_grab");
+            break;
+        }
+        case PHASE.STEP:
+        {
+            // Move
+            player_move_in_air();
+            if (state_changed) exit;
+            
+            // Land
+            if (on_ground) return player_perform(x_speed != 0 ? player_is_running : player_is_standing);
             break;
         }
         case PHASE.EXIT:
