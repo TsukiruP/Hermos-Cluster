@@ -20,6 +20,7 @@ if (input_enabled and (player_index == 0 or cpu_gamepad_time > 0))
     
     if (confusion_time > 0) input_axis_x *= -1;
     if (cpu_gamepad_time > 0) cpu_gamepad_time--;
+    if (input_button.select.pressed) gravity_direction = (gravity_direction + 90) mod 360;
 }
 
 // CPU

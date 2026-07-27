@@ -66,39 +66,40 @@ function player_is_gliding(_phase)
                 var x_int = x div 1;
                 var y_int = y div 1;
                 var glide_xscale = (glide_direction >= 90 ? -1 : 1);
-                var result = 0;
-                var result_alt = 0;
+                
+                var dx = array_create(2, 0);
+                var dy = array_create(2, 0);
                 
                 // Wall sensors
                 if (mask_sin == 0)
                 {
                     var oy = array_create(2, y_int);
-                    var ox = array_create(2, x_int + ((x_radius + 2) * image_xscale * mask_cos));
+                    var ox = array_create(2, x_int + mask_cos * (glide_xscale * (x_radius + 2)));
                     oy[0] -= y_radius;
                     oy[1] += y_radius;
                 }
                 else
                 {
                     var ox = array_create(2, x_int);
-                    var oy = array_create(2, y_int + ((x_radius + 2) * image_xscale * -mask_sin));
+                    var oy = array_create(2, y_int - mask_sin * (glide_xscale * (x_radius + 2)));
                     ox[0] -= y_radius;
                     ox[1] += y_radius;
                 }
                 
-                // Extend / regress wall sensors
+                // Extend / regress sensors
                 for (var n = 0; n < 2; n++)
                 {
                     repeat (16)
                     {
-                        if (collision_point(ox[n], oy[n], tilemaps, true, false) == noone)
+                        if (collision_point(ox[n] + dx[n], oy[n] + dy[n], tilemaps, true, false) == noone)
                         {
-                            ox[n] += image_xscale * mask_cos;
-                            oy[n] += image_xscale * -mask_sin;
+                            dx[n] += mask_cos * glide_xscale;
+                            dy[n] -= mask_sin * glide_xscale;
                         }
-                        else if (collision_point(ox[n], oy[n], tilemaps, true, false) != noone)
+                        else if (collision_point(ox[n] + dx[n], oy[n] + dy[n], tilemaps, true, false) != noone)
                         {
-                            ox[n] -= image_xscale * mask_cos;
-                            oy[n] -= image_xscale * -mask_sin;
+                            dx[n] -= mask_cos * glide_xscale;
+                            dy[n] += mask_sin * glide_xscale;
                         }
                         else
                         {
@@ -107,24 +108,25 @@ function player_is_gliding(_phase)
                     }
                 }
                 
-                if (mask_sin == 0)
-                {
-                    result = (mask_direction == 0 ? max(ox[0], ox[1]) : min(ox[0], ox[1]));
-                    result_alt = (mask_direction == 0 ? min(ox[0], ox[1]) : max(ox[0], ox[1]));
-                }
-                else
-                {
-                    result = (mask_direction == 270 ? max(oy[0], oy[1]) : min(oy[0], oy[1]));
-                    result_alt = (mask_direction == 270 ? min(oy[0], oy[1]) : max(oy[0], oy[1]));
-                }
-                
-                if (result != result_alt)
+                // Fall against uneven walls
+                if (mask_sin == 0 ? dx[0] != dx[1] : dy[0] != dy[1])
                 {
                     return player_perform(player_is_glide_falling);
                 }
-                else if (result != 0)
+                else
                 {
-                    
+                    if (mask_sin == 0)
+                    {
+                        var result = (glide_xscale == -1 or mask_cos == -1 ? min(dx[0], dx[1]) : max(dx[0], dx[1]));
+                        if (player_raycast(tilemaps, glide_xscale * (x_radius + 1), y_radius + 1)) return player_perform(player_is_glide_falling);
+                        x += result;
+                    }
+                    else
+                    {
+                        var result = (glide_xscale == -1 or mask_sin == -1 ? max(dy[0], dy[1]) : min(dy[0], dy[1]));
+                        if (player_raycast(tilemaps, glide_xscale * (x_radius + 1), y_radius + 1)) return player_perform(player_is_glide_falling);
+                        y += result;
+                    }
                 }
                 
                 return player_perform(player_is_wall_climbing);
@@ -292,18 +294,100 @@ function player_is_wall_climbing(_phase)
     {
         case PHASE.ENTER:
         {
+            // Climb
+            x_speed = 0;
+            y_speed = 0;
+            
             // Animate
             animation_start("wall_grab");
             break;
         }
         case PHASE.STEP:
         {
+            if (input_axis_y == -1)
+            {
+                var x_int = x div 1;
+                var y_int = y div 1;
+                
+                var dx = 0;
+                var dy = 0;
+                
+                // Climb sensors
+                if (mask_sin == 0)
+                {
+                    var ox = x_int + mask_cos * (image_xscale * (x_radius + 2));
+                    var oy = y_int - mask_cos * y_radius;
+                }
+                else
+                {
+                    var ox = x_int - mask_sin * y_radius;
+                    var oy = y_int - mask_sin * (image_xscale * (x_radius + 2));
+                }
+                
+                // Extend / regress sensors
+                repeat (16)
+                {
+                    if (collision_point(ox + dx, oy + dy, tilemaps, true, false) == noone)
+                    {
+                        dx += mask_cos * image_xscale;
+                        dy -= mask_sin * image_xscale;
+                    }
+                    else if (collision_point(ox + dx, oy + dy, tilemaps, true, false) != noone)
+                    {
+                        dx -= mask_cos * image_xscale;
+                        dy += mask_sin * image_xscale;
+                    }
+                }
+                
+                var result = (mask_sin == 0 ? abs(dx) : abs(dy));
+                
+                if (result > 2)
+                {
+                    return player_perform(player_is_wall_rising);
+                }
+                else if (result > 0)
+                {
+                    return player_perform(player_is_glide_falling);
+                }
+                else if (result < 0)
+                {
+                    if (player_knuckles_try_wall_jump()) exit;
+                }
+                else
+                {
+                    
+                }
+            }
+            
             // Move
             player_move_in_air();
             if (state_changed) exit;
             
             // Land
             if (on_ground) return player_perform(x_speed != 0 ? player_is_running : player_is_standing);
+            break;
+        }
+        case PHASE.EXIT:
+        {
+            break;
+        }
+    }
+}
+
+function player_is_wall_rising(_phase)
+{
+    switch (_phase)
+    {
+        case PHASE.ENTER:
+        {
+            // Animate
+            break;
+        }
+        case PHASE.STEP:
+        {
+            // Move
+            player_move_on_ground();
+            if (state_changed) exit;
             break;
         }
         case PHASE.EXIT:

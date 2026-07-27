@@ -76,7 +76,7 @@ function player_is_tricking(_phase)
             
             // Animate
             anim_core.variant++;
-            if (object_index == objAmy and trick_index == TRICK.FRONT) amy_create_trick_trail();
+            if (object_index == objAmy and trick_index == TRICK.FRONT) player_amy_create_trick_trail();
             break;
         }
         case PHASE.STEP:
@@ -151,7 +151,7 @@ function player_is_trick_bounding(_phase)
         {
             // Animate
             anim_core.variant++;
-            if (object_index == objAmy) amy_create_hammer_trail(HEART_PATTERN.HAMMER_WHIRL);
+            if (object_index == objAmy) player_amy_create_hammer_trail(HEART_PATTERN.HAMMER_WHIRL);
             break;
         }
         case PHASE.STEP:

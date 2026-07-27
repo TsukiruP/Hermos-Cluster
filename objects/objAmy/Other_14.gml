@@ -694,7 +694,7 @@ player_render = function()
 
 /// @description Creates a hammer trail effect.
 /// @param {Enum.HEART_PATTERN} pattern Heart pattern to use.
-amy_create_hammer_trail = function(_pattern)
+player_amy_create_hammer_trail = function(_pattern)
 {
     with (hammer_trail)
     {
@@ -719,7 +719,7 @@ amy_create_hammer_trail = function(_pattern)
 }
 
 /// @description Creates a trick trail effect.
-amy_create_trick_trail = function()
+player_amy_create_trick_trail = function()
 {
     with (trick_trail)
     {
