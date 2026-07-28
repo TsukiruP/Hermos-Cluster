@@ -36,7 +36,7 @@ function animation_start(_name, _variant = -1, _alternatives = [])
         if (name == _name and _variant == -1) exit;
         if (array_contains(_alternatives, name)) exit;
         
-        force = (name == _name);
+        force = (name != _name);
         name = _name;
         variant = (_variant == -1 ? 0 : _variant);
     }
