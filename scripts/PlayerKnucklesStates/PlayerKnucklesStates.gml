@@ -74,14 +74,14 @@ function player_is_gliding(_phase)
                 if (mask_sin == 0)
                 {
                     var oy = array_create(2, y_int);
-                    var ox = array_create(2, x_int + mask_cos * (glide_xscale * (x_radius + 2)));
+                    var ox = array_create(2, x_int + mask_cos * glide_xscale * (x_radius + 2));
                     oy[0] -= y_radius;
                     oy[1] += y_radius;
                 }
                 else
                 {
                     var ox = array_create(2, x_int);
-                    var oy = array_create(2, y_int - mask_sin * (glide_xscale * (x_radius + 2)));
+                    var oy = array_create(2, y_int - mask_sin * glide_xscale * (x_radius + 2));
                     ox[0] -= y_radius;
                     ox[1] += y_radius;
                 }
@@ -315,13 +315,13 @@ function player_is_wall_climbing(_phase)
                 // Climb sensors
                 if (mask_sin == 0)
                 {
-                    var ox = x_int + mask_cos * (image_xscale * (x_radius + 2));
+                    var ox = x_int + mask_cos * image_xscale * (x_radius + 2);
                     var oy = y_int - mask_cos * y_radius;
                 }
                 else
                 {
                     var ox = x_int - mask_sin * y_radius;
-                    var oy = y_int - mask_sin * (image_xscale * (x_radius + 2));
+                    var oy = y_int - mask_sin * image_xscale * (x_radius + 2);
                 }
                 
                 // Extend / regress sensors
@@ -337,9 +337,21 @@ function player_is_wall_climbing(_phase)
                         dx -= mask_cos * image_xscale;
                         dy += mask_sin * image_xscale;
                     }
+                    
+                    show_debug_message($"{dx}");
                 }
                 
-                var result = (mask_sin == 0 ? abs(dx) : abs(dy));
+                var result = (mask_sin == 0 ? dx : dy) - 2;
+                
+                // Correct result to always be positive.
+                //if (mask_sin == 0)
+                //{
+                    //if (mask_cos == 0 ? image_xscale == -1 : image_xscale == 1) result *= -1;
+                //}
+                //else
+                //{
+                    //if (mask_sin == 270 ? image_xscale == -1 : image_xscale == 1) result *= -1;
+                //}
                 
                 if (result > 2)
                 {
@@ -355,8 +367,17 @@ function player_is_wall_climbing(_phase)
                 }
                 else
                 {
+                    if (not player_boxcast(tilemaps, -9))
+                    {
+                        y_speed = -0.75;
+                    }
                     
+                    animation_start("wall_climb", 0);
                 }
+            }
+            else
+            {
+                y_speed = 0;
             }
             
             // Move
@@ -381,6 +402,7 @@ function player_is_wall_rising(_phase)
         case PHASE.ENTER:
         {
             // Animate
+            animation_start("wall_climb", 3);
             break;
         }
         case PHASE.STEP:

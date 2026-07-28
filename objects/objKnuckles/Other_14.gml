@@ -558,12 +558,12 @@ player_render = function()
                     }
                     else if (image_index == 2)
                     {
-                        hitboxes[0].resize(-17, -20, -7, 6);
+                        hitboxes[0].resize(7, -20, 17, 6);
                         hitboxes[1].resize();
                     }
                     else if (image_index == 4)
                     {
-                        hitboxes[0].resize(-7, -20, -19, 0);
+                        hitboxes[0].resize(7, -20, 19, 0);
                         hitboxes[1].resize();
                     }
                     break;

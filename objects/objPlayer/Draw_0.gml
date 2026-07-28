@@ -96,3 +96,5 @@ draw_line_color(x_int, y_int, x_int + mask_sin * y_radius, y_int + mask_cos * y_
 
 // Hitboxes
 draw_hitboxes(mask_direction);
+draw_set_color(c_purple);
+draw_point(x_int + x_radius + 2 + 2, y_int - y_radius);
