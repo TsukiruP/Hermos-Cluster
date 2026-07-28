@@ -405,7 +405,7 @@ function player_is_wall_rising(_phase)
     {
         case PHASE.ENTER:
         {
-            // Rise
+            // Lift
             if (mask_sin == 0)
             {
                 y -= mask_cos * y_radius;
