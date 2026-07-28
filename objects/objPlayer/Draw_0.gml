@@ -79,7 +79,7 @@ with (speed_break)
         }
     }
 }
-/*
+
 // Virtual mask
 if (mask_sin == 0)
 {

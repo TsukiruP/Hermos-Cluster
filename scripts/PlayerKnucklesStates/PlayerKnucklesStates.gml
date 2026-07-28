@@ -304,6 +304,9 @@ function player_is_wall_climbing(_phase)
         }
         case PHASE.STEP:
         {
+            // Jump
+            if (player_knuckles_try_wall_jump()) exit;
+            
             // Idle
             animation_start("wall_climb", 2);
             
@@ -345,17 +348,20 @@ function player_is_wall_climbing(_phase)
                     show_debug_message($"{dx}");
                 }
                 
-                var result = (mask_sin == 0 ? dx : dy) - 2;
+                var result = (mask_sin == 0 ? dx : dy);
                 
-                // Correct result to always be positive.
-                //if (mask_sin == 0)
-                //{
-                    //if (mask_cos == 0 ? image_xscale == -1 : image_xscale == 1) result *= -1;
-                //}
-                //else
-                //{
-                    //if (mask_sin == 270 ? image_xscale == -1 : image_xscale == 1) result *= -1;
-                //}
+                // Correct result to always be positive
+                if (mask_sin == 0)
+                {
+                    if (mask_cos == 1 ? image_xscale == -1 : image_xscale == 1) result *= -1;
+                }
+                else
+                {
+                    if (mask_sin == -1 ? image_xscale == -1 : image_xscale == 1) result *= -1;
+                }
+                
+                // Offset result because I'm lazy
+                result -= 2;
                 
                 if (result > 2)
                 {
@@ -381,7 +387,67 @@ function player_is_wall_climbing(_phase)
             }
             else
             {
-                y_speed = 0;
+                var x_int = x div 1;
+                var y_int = y div 1;
+                
+                var dx = 0;
+                var dy = 0;
+                
+                // Climb sensors
+                if (mask_sin == 0)
+                {
+                    var ox = x_int + mask_cos * image_xscale * (x_radius + 2);
+                    var oy = y_int + mask_cos * y_radius;
+                }
+                else
+                {
+                    var ox = x_int + mask_sin * y_radius;
+                    var oy = y_int - mask_sin * image_xscale * (x_radius + 2);
+                }
+                
+                // Extend / regress sensors
+                repeat (16)
+                {
+                    if (collision_point(ox + dx, oy + dy, tilemaps, true, false) == noone)
+                    {
+                        dx += mask_cos * image_xscale;
+                        dy -= mask_sin * image_xscale;
+                    }
+                    else if (collision_point(ox + dx - mask_cos, oy + dy + mask_sin, tilemaps, true, false) != noone)
+                    {
+                        dx -= mask_cos * image_xscale;
+                        dy += mask_sin * image_xscale;
+                    }
+                }
+                
+                var result = (mask_sin == 0 ? dx : dy);
+                
+                // Correct result to always be positive
+                if (mask_sin == 0)
+                {
+                    if (mask_cos == 1 ? image_xscale == -1 : image_xscale == 1) result *= -1;
+                }
+                else
+                {
+                    if (mask_sin == -1 ? image_xscale == -1 : image_xscale == 1) result *= -1;
+                }
+                
+                // Offset result because I'm lazy
+                result -= 2;
+                
+                // Fall off
+                if (result > 0) return player_perform(player_is_glide_falling);
+                
+                // Climb down
+                if (input_axis_y == 1)
+                {
+                    y_speed = 0.75;
+                    animation_start("wall_climb", 1);
+                }
+                else
+                {
+                    y_speed = 0;
+                }
             }
             
             // Move
@@ -389,7 +455,10 @@ function player_is_wall_climbing(_phase)
             if (state_changed) exit;
             
             // Land
-            if (on_ground) return player_perform(x_speed != 0 ? player_is_running : player_is_standing);
+            if (on_ground) return player_perform(player_is_glide_falling);
+            
+            // Animate
+            if (anim_core.name == "wall_grab" and animation_is_finished()) animation_start("wall_climb");
             break;
         }
         case PHASE.EXIT:
@@ -406,9 +475,16 @@ function player_is_wall_rising(_phase)
         case PHASE.ENTER:
         {
             // Lift
+            x_speed = 0;
+            y_speed = 0;
+            
             if (mask_sin == 0)
             {
                 y -= mask_cos * y_radius;
+            }
+            else
+            {
+                
             }
             
             // Animate
@@ -417,9 +493,41 @@ function player_is_wall_rising(_phase)
         }
         case PHASE.STEP:
         {
-            // Move
-            player_move_on_ground();
-            if (state_changed) exit;
+            switch (anim_core.variant)
+            {
+                case 3:
+                {
+                    // Move
+                    player_move_in_air();
+                    if (state_changed) exit;
+                    
+                    // Animate
+                    if (animation_is_finished())
+                    {
+                  
+                        if (mask_sin == 0)
+                        {
+                            x += mask_cos * image_xscale * 16;
+                        }
+                        
+                        anim_core.variant++;
+                    }
+                    break;
+                }
+                case 4:
+                {
+                    // Move
+                    player_move_on_ground();
+                    if (state_changed) exit;
+                    
+                    // Fall
+                    if (not on_ground) player_perform(player_is_glide_falling);
+                    
+                    // Stand
+                    if (animation_is_finished()) return player_perform(player_is_standing);
+                    break;
+                }
+            }
             break;
         }
         case PHASE.EXIT:
