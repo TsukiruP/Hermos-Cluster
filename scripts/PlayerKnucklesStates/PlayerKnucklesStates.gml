@@ -96,7 +96,7 @@ function player_is_gliding(_phase)
                             dx[n] += mask_cos * glide_xscale;
                             dy[n] -= mask_sin * glide_xscale;
                         }
-                        else if (collision_point(ox[n] + dx[n], oy[n] + dy[n], tilemaps, true, false) != noone)
+                        else if (collision_point(ox[n] + dx[n] - mask_cos, oy[n] + dy[n] + mask_sin, tilemaps, true, false) != noone)
                         {
                             dx[n] -= mask_cos * glide_xscale;
                             dy[n] += mask_sin * glide_xscale;
@@ -304,6 +304,10 @@ function player_is_wall_climbing(_phase)
         }
         case PHASE.STEP:
         {
+            // Idle
+            animation_start("wall_climb", 2);
+            
+            // Climb
             if (input_axis_y == -1)
             {
                 var x_int = x div 1;
@@ -332,7 +336,7 @@ function player_is_wall_climbing(_phase)
                         dx += mask_cos * image_xscale;
                         dy -= mask_sin * image_xscale;
                     }
-                    else if (collision_point(ox + dx, oy + dy, tilemaps, true, false) != noone)
+                    else if (collision_point(ox + dx - mask_cos, oy + dy + mask_sin, tilemaps, true, false) != noone)
                     {
                         dx -= mask_cos * image_xscale;
                         dy += mask_sin * image_xscale;
@@ -401,6 +405,12 @@ function player_is_wall_rising(_phase)
     {
         case PHASE.ENTER:
         {
+            // Rise
+            if (mask_sin == 0)
+            {
+                y -= mask_cos * y_radius;
+            }
+            
             // Animate
             animation_start("wall_climb", 3);
             break;
