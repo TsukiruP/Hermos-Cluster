@@ -14,4 +14,10 @@ with (new dev_option("Goto Test", mnu_home))
     confirm = function() { transition_create(rmNewTest); };
 }
 
+with (new dev_option("Goto Knucles Test", mnu_home))
+{
+    confirm = function() { transition_create(rmKnucklesTest); };
+}
+
+
 menu_index = mnu_home;

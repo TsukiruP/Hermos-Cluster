@@ -272,6 +272,7 @@
     {"id":{"name":"objSwapCooldown","path":"objects/objSwapCooldown/objSwapCooldown.yy",},},
     {"id":{"name":"objTransition","path":"objects/objTransition/objTransition.yy",},},
     {"id":{"name":"rmDevMenu","path":"rooms/rmDevMenu/rmDevMenu.yy",},},
+    {"id":{"name":"rmKnucklesTest","path":"rooms/rmKnucklesTest/rmKnucklesTest.yy",},},
     {"id":{"name":"rmNewTest","path":"rooms/rmNewTest/rmNewTest.yy",},},
     {"id":{"name":"rmStartup","path":"rooms/rmStartup/rmStartup.yy",},},
     {"id":{"name":"rmTemplate","path":"rooms/rmTemplate/rmTemplate.yy",},},
@@ -942,6 +943,7 @@
     {"roomId":{"name":"rmTest","path":"rooms/rmTest/rmTest.yy",},},
     {"roomId":{"name":"rmTemplate","path":"rooms/rmTemplate/rmTemplate.yy",},},
     {"roomId":{"name":"rmNewTest","path":"rooms/rmNewTest/rmNewTest.yy",},},
+    {"roomId":{"name":"rmKnucklesTest","path":"rooms/rmKnucklesTest/rmKnucklesTest.yy",},},
   ],
   "templateType":"game",
   "TextureGroups":[

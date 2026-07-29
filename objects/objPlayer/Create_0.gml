@@ -65,16 +65,13 @@ cliff_sign = 0;
 
 tilemaps = variable_clone(ctrlStage.tilemaps, 0);
 tilemap_count = array_length(tilemaps);
+collision_path = 0;
 
 // Validate semisolid tilemap
 semisolid_tilemap = (tilemap_count & 1 == 0 ? tilemaps[--tilemap_count] : -1);
 
 // Delist the "TilesLayer1" layer tilemap
-if (tilemap_count == 3)
-{
-    tilemap_count--;
-    collision_path = 0;
-}
+if (tilemap_count == 3) tilemap_count--;
 
 // Boost Mode
 boost_mode = false;
