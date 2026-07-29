@@ -530,13 +530,13 @@ player_render = function()
         case "wall_climb":
         {
             player_animate(global.animations.knuckles_wall_climb);
-            player_resize(6, 10);
             switch (anim_core.variant)
             {
                 case 0:
                 case 1:
                 case 2:
                 {
+                    player_resize(6, 10);
                     if (image_index == 0)
                     {
                         hitboxes[0].resize(-10, -10, 6, 15);
@@ -546,6 +546,7 @@ player_render = function()
                 }
                 case 3:
                 {
+                    player_resize(6, 10);
                     if (image_index == 0)
                     {
                         hitboxes[0].resize(-7, -8, 9, 15);
@@ -570,6 +571,7 @@ player_render = function()
                 }
                 case 4:
                 {
+                    player_resize(6, 14);
                     if (image_index == 0)
                     {
                         hitboxes[0].resize(-6, -6, 6, 16);

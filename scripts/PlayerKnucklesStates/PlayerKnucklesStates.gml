@@ -96,7 +96,7 @@ function player_is_gliding(_phase)
                             dx[n] += mask_cos * glide_xscale;
                             dy[n] -= mask_sin * glide_xscale;
                         }
-                        else if (collision_point(ox[n] + dx[n] - mask_cos, oy[n] + dy[n] + mask_sin, tilemaps, true, false) != noone)
+                        else if (collision_point(ox[n] + dx[n], oy[n] + dy[n], tilemaps, true, false) != noone)
                         {
                             dx[n] -= mask_cos * glide_xscale;
                             dy[n] += mask_sin * glide_xscale;
@@ -339,13 +339,11 @@ function player_is_wall_climbing(_phase)
                         dx += mask_cos * image_xscale;
                         dy -= mask_sin * image_xscale;
                     }
-                    else if (collision_point(ox + dx - mask_cos, oy + dy + mask_sin, tilemaps, true, false) != noone)
+                    else if (collision_point(ox + dx, oy + dy, tilemaps, true, false) != noone)
                     {
                         dx -= mask_cos * image_xscale;
                         dy += mask_sin * image_xscale;
                     }
-                    
-                    show_debug_message($"{dx}");
                 }
                 
                 var result = (mask_sin == 0 ? dx : dy);
@@ -365,7 +363,7 @@ function player_is_wall_climbing(_phase)
                 
                 if (result > 2)
                 {
-                    return player_perform(player_is_wall_rising);
+                    return player_perform(player_is_wall_lifting);
                 }
                 else if (result > 0)
                 {
@@ -413,7 +411,7 @@ function player_is_wall_climbing(_phase)
                         dx += mask_cos * image_xscale;
                         dy -= mask_sin * image_xscale;
                     }
-                    else if (collision_point(ox + dx - mask_cos, oy + dy + mask_sin, tilemaps, true, false) != noone)
+                    else if (collision_point(ox + dx, oy + dy, tilemaps, true, false) != noone)
                     {
                         dx -= mask_cos * image_xscale;
                         dy += mask_sin * image_xscale;
@@ -468,7 +466,7 @@ function player_is_wall_climbing(_phase)
     }
 }
 
-function player_is_wall_rising(_phase)
+function player_is_wall_lifting(_phase)
 {
     switch (_phase)
     {
@@ -484,7 +482,7 @@ function player_is_wall_rising(_phase)
             }
             else
             {
-                
+                x -= mask_sin * y_radius;
             }
             
             // Animate
@@ -493,39 +491,37 @@ function player_is_wall_rising(_phase)
         }
         case PHASE.STEP:
         {
-            switch (anim_core.variant)
+            // Move
+            player_move_in_air();
+            if (state_changed) exit;
+            
+            // Animate
+            if (animation_is_finished())
             {
-                case 3:
+                switch (anim_core.variant)
                 {
-                    // Move
-                    player_move_in_air();
-                    if (state_changed) exit;
-                    
-                    // Animate
-                    if (animation_is_finished())
+                    case 3:
                     {
-                  
                         if (mask_sin == 0)
                         {
                             x += mask_cos * image_xscale * 16;
+                            y -= mask_cos * y_radius;
+                        }
+                        else
+                        {
+                            y -= mask_sin * image_xscale * 16;
+                            x -= mask_sin * y_radius;
                         }
                         
                         anim_core.variant++;
+                        break;
                     }
-                    break;
-                }
-                case 4:
-                {
-                    // Move
-                    player_move_on_ground();
-                    if (state_changed) exit;
-                    
-                    // Fall
-                    if (not on_ground) player_perform(player_is_glide_falling);
-                    
-                    // Stand
-                    if (animation_is_finished()) return player_perform(player_is_standing);
-                    break;
+                    case 4:
+                    {
+                        // Stand
+                        if (animation_is_finished()) return player_perform(player_is_standing);
+                        break;
+                    }
                 }
             }
             break;
