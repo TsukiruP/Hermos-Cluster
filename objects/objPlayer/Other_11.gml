@@ -90,7 +90,7 @@ player_get_collisions = function()
     var y2 = y_int - mask_sin * x_wall_radius;
     
     // Register semisolid tilemap
-    if (semisolid_tilemap != -1)
+    if (semisolid_tilemap != -1 and state != player_is_wall_lifting)
     {
         var left = min(x1, x2);
         var top = min(y1, y2);
