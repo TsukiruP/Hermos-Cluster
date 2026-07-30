@@ -65,6 +65,7 @@ function player_is_gliding(_phase)
             {
                 var x_int = x div 1;
                 var y_int = y div 1;
+                var wall_radius = x_wall_radius + 1;
                 var glide_xscale = (glide_direction >= 90 ? -1 : 1);
                 
                 var dx = array_create(2, 0);
@@ -74,14 +75,14 @@ function player_is_gliding(_phase)
                 if (mask_sin == 0)
                 {
                     var oy = array_create(2, y_int);
-                    var ox = array_create(2, x_int + mask_cos * glide_xscale * (x_radius + 2));
+                    var ox = array_create(2, x_int + mask_cos * glide_xscale * wall_radius);
                     oy[0] -= y_radius;
                     oy[1] += y_radius;
                 }
                 else
                 {
                     var ox = array_create(2, x_int);
-                    var oy = array_create(2, y_int - mask_sin * glide_xscale * (x_radius + 2));
+                    var oy = array_create(2, y_int - mask_sin * glide_xscale * wall_radius);
                     ox[0] -= y_radius;
                     ox[1] += y_radius;
                 }
@@ -313,63 +314,17 @@ function player_is_wall_climbing(_phase)
             // Climb
             if (input_axis_y == -1)
             {
-                var x_int = x div 1;
-                var y_int = y div 1;
+                var wall_dist = player_calculate_wall_distance(-y_radius);
                 
-                var dx = 0;
-                var dy = 0;
-                
-                // Climb sensors
-                if (mask_sin == 0)
-                {
-                    var ox = x_int + mask_cos * image_xscale * (x_radius + 2);
-                    var oy = y_int - mask_cos * y_radius;
-                }
-                else
-                {
-                    var ox = x_int - mask_sin * y_radius;
-                    var oy = y_int - mask_sin * image_xscale * (x_radius + 2);
-                }
-                
-                // Extend / regress sensors
-                repeat (16)
-                {
-                    if (collision_point(ox + dx, oy + dy, tilemaps, true, false) == noone)
-                    {
-                        dx += mask_cos * image_xscale;
-                        dy -= mask_sin * image_xscale;
-                    }
-                    else if (collision_point(ox + dx, oy + dy, tilemaps, true, false) != noone)
-                    {
-                        dx -= mask_cos * image_xscale;
-                        dy += mask_sin * image_xscale;
-                    }
-                }
-                
-                var result = (mask_sin == 0 ? dx : dy);
-                
-                // Correct result to always be positive
-                if (mask_sin == 0)
-                {
-                    if (mask_cos == 1 ? image_xscale == -1 : image_xscale == 1) result *= -1;
-                }
-                else
-                {
-                    if (mask_sin == -1 ? image_xscale == -1 : image_xscale == 1) result *= -1;
-                }
-                
-                // Offset result because I'm lazy
-                result -= 2;
-                
-                if (result > 2)
+                if (wall_dist > 2)
                 {
                     return player_perform(player_is_wall_lifting);
                 }
-                else if (result > 0)
+                else if (wall_dist > 0)
                 {
                     return player_perform(player_is_glide_falling);
                 }
-                else if (result < 0)
+                else if (wall_dist < 0)
                 {
                     if (player_knuckles_try_wall_jump()) exit;
                 }
@@ -385,56 +340,10 @@ function player_is_wall_climbing(_phase)
             }
             else
             {
-                var x_int = x div 1;
-                var y_int = y div 1;
-                
-                var dx = 0;
-                var dy = 0;
-                
-                // Climb sensors
-                if (mask_sin == 0)
-                {
-                    var ox = x_int + mask_cos * image_xscale * (x_radius + 2);
-                    var oy = y_int + mask_cos * y_radius;
-                }
-                else
-                {
-                    var ox = x_int + mask_sin * y_radius;
-                    var oy = y_int - mask_sin * image_xscale * (x_radius + 2);
-                }
-                
-                // Extend / regress sensors
-                repeat (16)
-                {
-                    if (collision_point(ox + dx, oy + dy, tilemaps, true, false) == noone)
-                    {
-                        dx += mask_cos * image_xscale;
-                        dy -= mask_sin * image_xscale;
-                    }
-                    else if (collision_point(ox + dx, oy + dy, tilemaps, true, false) != noone)
-                    {
-                        dx -= mask_cos * image_xscale;
-                        dy += mask_sin * image_xscale;
-                    }
-                }
-                
-                var result = (mask_sin == 0 ? dx : dy);
-                
-                // Correct result to always be positive
-                if (mask_sin == 0)
-                {
-                    if (mask_cos == 1 ? image_xscale == -1 : image_xscale == 1) result *= -1;
-                }
-                else
-                {
-                    if (mask_sin == -1 ? image_xscale == -1 : image_xscale == 1) result *= -1;
-                }
-                
-                // Offset result because I'm lazy
-                result -= 2;
+                var wall_dist = player_calculate_wall_distance(y_radius);
                 
                 // Fall off
-                if (result > 0) return player_perform(player_is_glide_falling);
+                if (wall_dist > 0) return player_perform(player_is_glide_falling);
                 
                 // Climb down
                 if (input_axis_y == 1)

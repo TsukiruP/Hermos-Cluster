@@ -152,3 +152,59 @@ player_calculate_angle = function(_x, _y)
     
     return round(point_direction(ox[0], oy[0], ox[1], oy[1]));
 }
+
+/// @description Calculates the horizontal distance from the wall found within a 16x16 area relative to the player's mask direction.
+/// @param {Real} yoff Distance to offset the sensor vertically.
+/// @returns {Real}
+player_calculate_wall_distance = function(_yoff)
+{
+    var ind = tilemaps;
+    
+    var x_int = x div 1;
+    var y_int = y div 1;
+    var wall_radius = x_wall_radius + 1;
+    
+    var dx = 0;
+    var dy = 0;
+    
+    // Climb sensors
+    if (mask_sin == 0)
+    {
+        var ox = x_int + mask_cos * image_xscale * wall_radius;
+        var oy = y_int + mask_cos * _yoff;
+    }
+    else
+    {
+        var ox = x_int + mask_sin * _yoff;
+        var oy = y_int - mask_sin * image_xscale * wall_radius;
+    }
+    
+    // Extend / regress sensors
+    repeat (16)
+    {
+        if (collision_point(ox + dx, oy + dy, ind, true, false) == noone)
+        {
+            dx += mask_cos * image_xscale;
+            dy -= mask_sin * image_xscale;
+        }
+        else if (collision_point(ox + dx, oy + dy, ind, true, false) != noone)
+        {
+            dx -= mask_cos * image_xscale;
+            dy += mask_sin * image_xscale;
+        }
+    }
+    
+    var result = (mask_sin == 0 ? dx : dy);
+    
+     // Correct result to always be positive
+    if (mask_sin == 0)
+    {
+        if (mask_cos == 1 ? image_xscale == -1 : image_xscale == 1) result *= -1;
+    }
+    else
+    {
+        if (mask_sin == -1 ? image_xscale == -1 : image_xscale == 1) result *= -1;
+    }
+    
+    return result;
+}
