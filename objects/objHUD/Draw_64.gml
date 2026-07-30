@@ -299,7 +299,7 @@ if (LIVES_ENABLED)
 // Status Bar
 if (status_bar_config != CONFIG_STATUS_BAR.OFF)
 {
-    var status_bar_xstart = CAMERA_WIDTH + ITEM_WIDTH * status_bar_count;
+    var status_bar_xstart = CAMERA_WIDTH + status_bar_count * ITEM_WIDTH;
     var status_bar_xend = CAMERA_WIDTH - 16;
     var status_bar_x = interpolate(status_bar_xstart, status_bar_xend, active_time / active_duration, EASE_SMOOTHSTEP);
     var status_bar_y = hud_y + (LIVES_ENABLED ? 36 : 8);
