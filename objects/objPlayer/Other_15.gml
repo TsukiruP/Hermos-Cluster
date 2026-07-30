@@ -67,7 +67,7 @@ player_gain_lives = function(_num)
     if (LIVES_ENABLED)
     {
         global.life_count = min(global.life_count + _num, LIVES_CAP);
-        audio_play_sfx(bgmLife);
+        audio_play_life();
     }
 }
 

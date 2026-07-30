@@ -18,7 +18,7 @@ function audio_play_sfx(_ind, _loop = false)
 	return audio_play_sound(_ind, PRIORITY_SOUND, _loop, global.volume_sound);
 }
 
-/// @description Plays the given music track as a jingle. Background music is muted until the jingle has finished playing.
+/// @description Plays the given music track as a jingle. Background music is muted until it has stopped playing.
 /// @param {Asset.GMSound} ind Music track to play.
 function audio_play_jingle(_ind)
 {
@@ -31,12 +31,24 @@ function audio_play_jingle(_ind)
 	}
 }
 
+/// @description Plays the drowning track. Background music and jingles are muted until it has stopped playing.
 function audio_play_drown()
 {
     with (ctrlMusic)
     {
         drown = audio_play_sound(bgmMadGear, PRIORITY_DROWN, false, global.volume_music * (mute & MUTE_FLAG_DROWN == 0));
-        mute_music(MUTE_FLAG_JINGLE | MUTE_FLAG_MUSIC);
+        mute_music(MUTE_FLAG_MUSIC | MUTE_FLAG_JINGLE);
+    }
+}
+
+/// @description Plays the life track. All other tracks are muted until it has stopped playing.
+function audio_play_life()
+{
+    with (ctrlMusic)
+    {
+        audio_stop_sound(bgmLife);
+        life = audio_play_sound(bgmLife, PRIORITY_LIFE, false, global.volume_music);
+        mute_music(MUTE_FLAG_MUSIC | MUTE_FLAG_JINGLE  | MUTE_FLAG_DROWN);
     }
 }
 
