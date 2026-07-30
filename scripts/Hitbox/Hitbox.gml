@@ -29,7 +29,7 @@ function hitbox(_color, _left = 0, _top = 0, _right = 0, _bottom = 0) constructo
 /// @description Checks if the given player is intersecting the given hitbox.
 /// @param {Real} hbind Hitbox to check.
 /// @param {Id.Instance} pla Player instance to check.
-/// @param {Real} plahbind Player hitbox to check (optional, defaults to virtual mask).
+/// @param {Real} plahbind Player hitbox to check (optional, default is virtual mask).
 /// @returns {Real}
 function collision_player(_hbind, _pla, _plahbind = -1)
 {

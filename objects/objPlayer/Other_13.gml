@@ -81,7 +81,7 @@ player_try_jump = function()
 }
 
 /// @desctiption Checks if the player performs a Trick Action.
-/// @param [time] Time to check (optional, defaults to 0).
+/// @param [time] Time to check (optional, default is 0).
 /// @returns {Bool}
 player_try_trick_action = function(_time = 0)
 {

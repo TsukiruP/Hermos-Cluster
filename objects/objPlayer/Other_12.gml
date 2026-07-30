@@ -286,7 +286,7 @@ player_refresh_physics = function()
 }
 
 /// @description Applies slope friction to the player's horizontal speed, if appropriate.
-/// @param {Real} force Friction value to use (optional, defaults to 3 / 32).
+/// @param {Real} force Friction value to use (optional, default is 3 / 32).
 player_resist_slope = function(_force = 3 / 32)
 {
     // Abort if moving along a ceiling

@@ -26,7 +26,7 @@ function animation_core() constructor
 
 /// @description Starts the given animation.
 /// @param {Real} name Name of the animation to start.
-/// @param {Real} [variant] Variant to set (optional, defaults to 0 if the animations don't match).
+/// @param {Real} [variant] Variant to set (optional, default is 0 if the animations don't match).
 /// @param {Array} [alternatives] Alternative animations to consider.
 function animation_start(_name, _variant = -1, _alternatives = [])
 {
@@ -117,7 +117,7 @@ function animation_update()
 }
 
 /// @description Checks if the animation core is starting.
-/// @param {Real} [index] Animation index to check (optional, defaults to 0).
+/// @param {Real} [index] Animation index to check (optional, default is 0).
 /// @returns {Bool}
 function animation_is_starting(_index)
 {

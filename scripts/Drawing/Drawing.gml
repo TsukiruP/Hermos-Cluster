@@ -7,10 +7,10 @@
 /// @param {Real} y y-coordinate of the top left corner of the tiled area.
 /// @param {Real} w Width of the tiled area.
 /// @param {Real} h Height of the tiled area.
-/// @param {Real} [hsep] Horizontal separation between each tile (optional, defaults to 0).
-/// @param {Real} [vsep] Vertical separation between each tile (optional, defaults to 0).
-/// @param {Real} [xoff] Distance in pixels to offset the sprite horizontally (optional, defaults to 0).
-/// @param {Real} [yoff] Distance in pixels to offset the sprite vertically (optional, defaults to 0).
+/// @param {Real} [hsep] Horizontal separation between each tile (optional, default is 0).
+/// @param {Real} [vsep] Vertical separation between each tile (optional, default is 0).
+/// @param {Real} [xoff] Distance in pixels to offset the sprite horizontally (optional, default is 0).
+/// @param {Real} [yoff] Distance in pixels to offset the sprite vertically (optional, default is 0).
 function draw_sprite_tiled_area(_sprite, _subimg, _xorig, _yorig, _x, _y, _w, _h, _hsep = 0, _vsep = 0, _xoff = 0, _yoff = 0)
 {
     var sw = sprite_get_width(_sprite);
@@ -48,13 +48,13 @@ function draw_sprite_tiled_area(_sprite, _subimg, _xorig, _yorig, _x, _y, _w, _h
 /// @param {Real} subimg Sub-image (frame) to draw.
 /// @param {Real} x x-coordinate of where to draw the sprite.
 /// @param {Real} y y-coordinate of where to draw the sprite.
-/// @param {Real} [hrep] Number of horizontal repetition, use 0 for infinite (optional, defaults to 0).
-/// @param {Real} [vrep] Number of vertical repetition, use 0 for infinite (optional, defaults to 0).
-/// @param {Real} [xscale] Horizontal scaling of the sprite, as a multiplier (optional, defaults to 1).
-/// @param {Real} [yscale] Vertical scaling of the sprite, as a multiplier (optional, defaults to 1).
-/// @param {Real} [rot] Rotation of the sprite (optional, defaults to 0).
-/// @param {Real} [color] Color with which to blend the sprite (optional, defaults to c_white).
-/// @param {Real} [alpha] Alpha of the sprite (optional, defaults to 1).
+/// @param {Real} [hrep] Number of horizontal repetition, use 0 for infinite (optional, default is 0).
+/// @param {Real} [vrep] Number of vertical repetition, use 0 for infinite (optional, default is 0).
+/// @param {Real} [xscale] Horizontal scaling of the sprite, as a multiplier (optional, default is 1).
+/// @param {Real} [yscale] Vertical scaling of the sprite, as a multiplier (optional, default is 1).
+/// @param {Real} [rot] Rotation of the sprite (optional, default is 0).
+/// @param {Real} [color] Color with which to blend the sprite (optional, default is c_white).
+/// @param {Real} [alpha] Alpha of the sprite (optional, default is 1).
 function draw_sprite_tiled_extra(_sprite, _subimg, _x, _y, _hrep = 0, _vrep = 0, _xscale = 1, _yscale = 1, _rot = 0, _color = c_white, _alpha = 1)
 {
     var texture = sprite_get_texture(_sprite, _subimg);
@@ -186,7 +186,7 @@ function draw_reset()
 
 /// @description Draws the instance using a different sprite. Ported from GM8.2.
 /// @param {Asset.GMSprite} sprite Sprite to draw.
-/// @param {Real} [subimg] Sub-image (frame) of the sprite to draw (optional, defaults to image_index).
+/// @param {Real} [subimg] Sub-image (frame) of the sprite to draw (optional, default is image_index).
 function draw_self_as(_sprite, _subimg = image_index)
 {
     if (sprite_exists(_sprite))

@@ -5,7 +5,7 @@ cursor = 0;
 with (ctrlGame) game_paused |= PAUSE_FLAG_MENU;
 
 /// @description Closes the pause menu.
-/// @param {Bool} [destroy] Destroy the menu (optional, defaults to true).
+/// @param {Bool} [destroy] Destroy the menu (optional, default is true).
 menu_close = function(_destroy = true)
 {
     ctrlGame.game_paused &= ~PAUSE_FLAG_MENU;

@@ -1,6 +1,6 @@
 /// @description Sets the camera's look time.
 /// @param {Real} time Time to set.
-/// @param {Bool} [force] Set time even if not the camera's focus (optional, defaults to false).
+/// @param {Bool} [force] Set time even if not the camera's focus (optional, default is false).
 function camera_set_look_time(_time, _force = false)
 {
     with (objCamera)
@@ -11,7 +11,7 @@ function camera_set_look_time(_time, _force = false)
 
 /// @description Sets the camera's horizontal lag time.
 /// @param {Real} time Time to set.
-/// @param {Bool} [force] Set time even if not the camera's focus (optional, defaults to false).
+/// @param {Bool} [force] Set time even if not the camera's focus (optional, default is false).
 function camera_set_x_lag_time(_time, _force = false)
 {
     with (objCamera)
@@ -22,7 +22,7 @@ function camera_set_x_lag_time(_time, _force = false)
 
 /// @description Sets the camera's vertical lag time.
 /// @param {Real} time Time to set.
-/// @param {Bool} [force] Set time even if not the camera's focus (optional, defaults to false).
+/// @param {Bool} [force] Set time even if not the camera's focus (optional, default is false).
 function camera_set_y_lag_time(_time, _force = false)
 {
     with (objCamera)
@@ -33,7 +33,7 @@ function camera_set_y_lag_time(_time, _force = false)
 
 /// @description Zooms the camera over the given duration.
 /// @param {Real} zoom Amount to zoom.
-/// @param {Real} [duration] Duration to zoom (optional, defaults to 0).
+/// @param {Real} [duration] Duration to zoom (optional, default is 0).
 function camera_set_zoom (_zoom, _duration = 0)
 {
     with (objCamera)
