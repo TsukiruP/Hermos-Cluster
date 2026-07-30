@@ -317,6 +317,9 @@ with (global.animations)
     knuckles_wall_climb_v4 = new animation(sprKnucklesWallClimb4, 4, -1);
     knuckles_wall_climb = [knuckles_wall_climb_v0, knuckles_wall_climb_v1, knuckles_wall_climb_v2, knuckles_wall_climb_v3, knuckles_wall_climb_v4];
     
+    knuckles_dash_climb_v0 = new animation(sprKnucklesDashClimb, 2);
+    knuckles_dash_climb = [knuckles_dash_climb_v0];
+    
     #endregion
     
     #region Amy

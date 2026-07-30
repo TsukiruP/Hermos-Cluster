@@ -747,6 +747,7 @@
     {"id":{"name":"sprKnucklesBrake","path":"sprites/sprKnucklesBrake/sprKnucklesBrake.yy",},},
     {"id":{"name":"sprKnucklesBrakeFast","path":"sprites/sprKnucklesBrakeFast/sprKnucklesBrakeFast.yy",},},
     {"id":{"name":"sprKnucklesCrouch","path":"sprites/sprKnucklesCrouch/sprKnucklesCrouch.yy",},},
+    {"id":{"name":"sprKnucklesDashClimb","path":"sprites/sprKnucklesDashClimb/sprKnucklesDashClimb.yy",},},
     {"id":{"name":"sprKnucklesDead","path":"sprites/sprKnucklesDead/sprKnucklesDead.yy",},},
     {"id":{"name":"sprKnucklesFlightRide","path":"sprites/sprKnucklesFlightRide/sprKnucklesFlightRide.yy",},},
     {"id":{"name":"sprKnucklesGlide","path":"sprites/sprKnucklesGlide/sprKnucklesGlide.yy",},},
