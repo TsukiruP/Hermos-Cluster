@@ -427,6 +427,7 @@ function player_is_wall_lifting(_phase)
                             x -= mask_sin * y_radius;
                         }
                         
+                        on_ground = true;
                         anim_core.variant++;
                         break;
                     }
@@ -476,8 +477,11 @@ function player_is_dash_climbing(_phase)
             if (input_axis_x != image_xscale)
             {
                 x_speed = image_xscale * (6 + spin_dash_charge * (3 / 8));
+                on_ground = true;
                 direction = angle_wrap(mask_direction + image_xscale * 90);
                 mask_direction = direction;
+                mask_sin = dsin(mask_direction);
+                mask_cos = dcos(mask_direction);
                 local_direction = angle_wrap(image_xscale * 90);
                 camera_set_y_lag_time(16);
                 audio_stop_sound(sfxSpinRev);
