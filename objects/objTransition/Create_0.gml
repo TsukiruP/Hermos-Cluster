@@ -11,7 +11,7 @@ skip_load = false;
 
 // Target
 target = room;
-target_scene = global.scn_default;
+target_scene = global.scenes.rmDefault;
 
 // Fade
 fade_alpha = 0;
