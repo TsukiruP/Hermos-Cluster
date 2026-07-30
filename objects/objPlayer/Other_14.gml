@@ -4,7 +4,7 @@ player_render = function() {}
 
 /// @description Sets the player's current animation.
 /// @param {Struct.animation|Array|Undefined} anim Animation to set. Accepts an array as animation variants.
-/// @param {Real} [ang] Angle to set (optional, defaults to gravity_direction).
+/// @param {Real} [ang] Angle to set (optional, default is gravity_direction).
 player_animate = function(_anim, _ang = gravity_direction)
 {
     image_angle = _ang;

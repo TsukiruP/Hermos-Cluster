@@ -1,7 +1,7 @@
 /// @description Sets the loop section of the given sound asset.
 /// @param {Asset.GMSound} ind Sound asset to loop.
-/// @param {Real} [start] Start point of the loop section in seconds (optional, defaults to 0).
-/// @param {Real} [end] End point of the loop section in seconds (optional, defaults to 0).
+/// @param {Real} [start] Start point of the loop section in seconds (optional, default is 0).
+/// @param {Real} [end] End point of the loop section in seconds (optional, default is 0).
 function audio_loop_section(_ind, _start = 0, _end = 0)
 {
     audio_sound_loop_start(_ind, _start);
@@ -10,7 +10,7 @@ function audio_loop_section(_ind, _start = 0, _end = 0)
 
 /// @description Plays a single instance of the given sound effect.
 /// @param {Asset.GMSound} ind Sound effect to play.
-/// @param {Bool} [loop] Sets the sound to loop or not (optional, defaults to false)
+/// @param {Bool} [loop] Sets the sound to loop or not (optional, default is false)
 /// @returns {Id.Sound}
 function audio_play_sfx(_ind, _loop = false)
 {

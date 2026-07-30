@@ -1,6 +1,6 @@
 /// @description Creates a new scene.
 /// @param {Enum.TRANSITION} transition Transition of the scene.
-/// @param {Asset.GMSound} [music] Music of the scene (optional, defaults to undefined).
+/// @param {Asset.GMSound} [music] Music of the scene (optional, default is undefined).
 function scene(_transition, _music = undefined) constructor
 {
     transition = _transition;
@@ -8,9 +8,9 @@ function scene(_transition, _music = undefined) constructor
 }
 
 /// @description Creates a new stage scene.
-/// @param {Asset.GMSound} [music] Music of the stage (optional, defaults to undefined).
-/// @param {String} [zone] Zone of the stage (optional, defaults to "").
-/// @param {Real} [act] Act of the stage (optional, defaults to 0).
+/// @param {Asset.GMSound} [music] Music of the stage (optional, default is undefined).
+/// @param {String} [zone] Zone of the stage (optional, default is "").
+/// @param {Real} [act] Act of the stage (optional, default is 0).
 function stage(_music = undefined, _zone = "", _act = 0) : scene(TRANSITION.TITLE_CARD, _music) constructor
 {
     zone = _zone;
@@ -19,7 +19,7 @@ function stage(_music = undefined, _zone = "", _act = 0) : scene(TRANSITION.TITL
 
 /// @description Creates a new transition.
 /// @param {Asset.GMRoom} room Room to go to.
-/// @param {Enum.TRANSITION} [override] Transition to override with (optional, defaults to undefined).
+/// @param {Enum.TRANSITION} [override] Transition to override with (optional, default is undefined).
 /// @returns {Id.Instance}
 function transition_create(_room, _override = undefined)
 {

@@ -35,7 +35,7 @@ function clamp_inverse(_val, _min, _max)
 
 /// @description Converts the given hexadecimal value to decimal, assuming the value is signed.
 /// @param {Real} val Value to convert.
-/// @param {Real} [bits] Number of bits (optional, defaults to 8).
+/// @param {Real} [bits] Number of bits (optional, default is 8).
 /// @returns {Real}
 function hex_to_dec(_val, _bits = 8)
 {
