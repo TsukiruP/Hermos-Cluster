@@ -582,5 +582,16 @@ player_render = function()
             }
             break;
         }
+        case "dash_climb":
+        {
+            player_animate(global.animations.knuckles_dash_climb);
+            player_resize(6, 10);
+            if (image_index == 0)
+            {
+                hitboxes[0].resize(-10, -14, 7, 14);
+                hitboxes[1].resize();
+            }
+            break;
+        }
     }
 }
