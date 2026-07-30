@@ -1,4 +1,5 @@
 /// @description Initialize
+/*
 image_speed = 0;
 
 // Global
@@ -47,5 +48,5 @@ debug_watch_player = function(_pla)
     
     /*var ref_to_anim_core = ref_create(_pla, "anim_core");
     dbg_section("Animation");
-    dbg_watch(ref_create(ref_to_anim_core, "index"));*/
+    dbg_watch(ref_create(ref_to_anim_core, "index"));*
 };
