@@ -193,25 +193,31 @@ function player_is_glide_sliding(_phase)
             }
             
             // Animate
-            if (x_speed != 0 and anim_core.time mod 4 == 0)
+            if (x_speed != 0)
             {
-                // Create brake dust
-                var ox = x + dsin(direction) * y_radius;
-                var oy = y + dcos(direction) * y_radius;
-                particle_create(ox, oy, global.animations.brake_dust);
+                if (anim_core.time mod 4 == 0)
+                {
+                    // Create brake dust
+                    var ox = x + dsin(direction) * y_radius;
+                    var oy = y + dcos(direction) * y_radius;
+                    particle_create(ox, oy, global.animations.brake_dust);
+                }
+                
+                if (not audio_is_playing(sfxSlide))
+                {
+                    if (slide_soundid != noone and audio_is_playing(slide_soundid)) audio_stop_sound(slide_soundid);
+                    slide_soundid = audio_play_sfx(sfxSlide, true);
+                }
             }
-            
-            // Sound
-            if (abs(x_speed) > 0.5 and not audio_is_playing(sfxSlide))
+            else
             {
-                if (slide_soundid != noone and audio_is_playing(slide_soundid)) audio_stop_sound(slide_soundid);
-                slide_soundid = audio_play_sfx(sfxSlide, true);
+                audio_stop_sound(slide_soundid);
             }
             break;
         }
         case PHASE.EXIT:
         {
-            if (slide_soundid != noone) audio_sound_loop(slide_soundid, false);
+            audio_stop_sound(slide_soundid);
             slide_soundid = noone;
             break;
         }

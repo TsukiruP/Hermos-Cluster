@@ -134,6 +134,7 @@ volume_music = 1;
 
 audio_loop_section(sfxPropellerFlight, 0, 33075 / 44100);
 audio_loop_section(sfxPropellerFlightTired, 0, 12711 / 44100);
+audio_loop_section(sfxSlide, 25249 / 44100, 95562 / 44100);
 
 // Fonts
 global.font_title_card = font_add_sprite(sprFontTitleCard, ord(" "), true, -5);
