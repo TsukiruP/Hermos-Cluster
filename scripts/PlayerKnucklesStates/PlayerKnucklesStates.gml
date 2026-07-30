@@ -200,10 +200,19 @@ function player_is_glide_sliding(_phase)
                 var oy = y + dcos(direction) * y_radius;
                 particle_create(ox, oy, global.animations.brake_dust);
             }
+            
+            // Sound
+            if (abs(x_speed) > 0.5 and not audio_is_playing(sfxSlide))
+            {
+                if (slide_soundid != noone and audio_is_playing(slide_soundid)) audio_stop_sound(slide_soundid);
+                slide_soundid = audio_play_sfx(sfxSlide, true);
+            }
             break;
         }
         case PHASE.EXIT:
         {
+            if (slide_soundid != noone) audio_sound_loop(slide_soundid, false);
+            slide_soundid = noone;
             break;
         }
     }
@@ -270,6 +279,7 @@ function player_is_glide_falling(_phase)
                     
                     control_lock_alarm = 15;
                     animation_start("glide_fall", 1);
+                    audio_play_sfx(sfxLand);
                     return player_perform(player_is_glide_falling, false);
                 }
                 
@@ -300,6 +310,9 @@ function player_is_wall_climbing(_phase)
             
             // Animate
             animation_start("wall_grab");
+            
+            // Sound
+            audio_play_sfx(sfxGrab);
             break;
         }
         case PHASE.STEP:

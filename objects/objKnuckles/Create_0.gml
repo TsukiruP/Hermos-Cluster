@@ -7,3 +7,4 @@ trick_speed = [[0, -6], [0, 1], [6, 0], [-5, 0]];
 glide_speed = 0;
 glide_sign = 1;
 glide_direction = 0;
+slide_soundid = noone;
