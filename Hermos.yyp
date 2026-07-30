@@ -566,6 +566,7 @@
     {"id":{"name":"Scene","path":"scripts/Scene/Scene.yy",},},
     {"id":{"name":"SceneData","path":"scripts/SceneData/SceneData.yy",},},
     {"id":{"name":"Utilities","path":"scripts/Utilities/Utilities.yy",},},
+    {"id":{"name":"bgmCollectionRoom","path":"sounds/bgmCollectionRoom/bgmCollectionRoom.yy",},},
     {"id":{"name":"bgmExtraDungeon1A","path":"sounds/bgmExtraDungeon1A/bgmExtraDungeon1A.yy",},},
     {"id":{"name":"bgmGameOver","path":"sounds/bgmGameOver/bgmGameOver.yy",},},
     {"id":{"name":"bgmInvincibility","path":"sounds/bgmInvincibility/bgmInvincibility.yy",},},
