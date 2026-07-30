@@ -338,7 +338,7 @@ function player_is_wall_climbing(_phase)
                     animation_start("wall_climb", 0);
                 }
             }
-            else
+            else if (input_axis_y == 1)
             {
                 var wall_dist = player_calculate_wall_distance(y_radius);
                 
@@ -346,15 +346,18 @@ function player_is_wall_climbing(_phase)
                 if (wall_dist > 0) return player_perform(player_is_glide_falling);
                 
                 // Climb down
-                if (input_axis_y == 1)
-                {
-                    y_speed = 0.75;
-                    animation_start("wall_climb", 1);
-                }
-                else
-                {
-                    y_speed = 0;
-                }
+                y_speed = 0.75;
+                animation_start("wall_climb", 1);
+            }
+            else
+            {
+                var wall_dist = player_calculate_wall_distance();
+                
+                // Fall off
+                if (wall_dist > 0) return player_perform(player_is_glide_falling);
+                
+                // Stop
+                y_speed = 0;
             }
             
             // Move

@@ -154,9 +154,9 @@ player_calculate_angle = function(_x, _y)
 }
 
 /// @description Calculates the horizontal distance from the wall found within a 16x16 area relative to the player's mask direction.
-/// @param {Real} yoff Distance to offset the sensor vertically.
+/// @param {Real} yoff Distance to offset the sensor vertically (optional, default is 0).
 /// @returns {Real}
-player_calculate_wall_distance = function(_yoff)
+player_calculate_wall_distance = function(_yoff = 0)
 {
     var ind = tilemaps;
     
