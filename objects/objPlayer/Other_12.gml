@@ -325,7 +325,7 @@ player_refresh_boost_mode = function()
             if (boost_speed >= boost_thresholds[boost_index])
             {
                 boost_mode = true;
-                player_speed_break();
+                player_create_speed_break();
                 camera_set_x_lag_time(16);
                 audio_play_sfx(sndSpeedBreak);
             }
