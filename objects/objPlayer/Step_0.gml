@@ -169,8 +169,7 @@ if (player_index != 0 and cpu_gamepad_time == 0)
                     if (x_dist + 16 + x_offset < 0)
                     {
                         input_axis_x = -1;
-                        // TODO: The checks for xscale should also check if the player is pushing
-                        if (image_xscale == -1 and x_speed != 0)
+                        if (image_xscale == -1 and x_speed != 0 and anim_core.name != "push")
                         {
                             if (sine == 0) x -= sign(cosine);
                             else y -= -sine;
@@ -179,8 +178,7 @@ if (player_index != 0 and cpu_gamepad_time == 0)
                     else if (x_dist - 16 - x_offset > 0)
                     {
                         input_axis_x = 1;
-                        // TODO: The checks for xscale should also check if the player is pushing
-                        if (image_xscale == 1 and x_speed != 0)
+                        if (image_xscale == 1 and x_speed != 0 and anim_core.name != "push")
                         {
                             if (sine == 0) x += sign(cosine);
                             else y += -sine;
@@ -190,16 +188,27 @@ if (player_index != 0 and cpu_gamepad_time == 0)
                     // Jump
                     var y_dist = (sine == 0 ? cosine * dy : sine * dx);
                     var jump_auto = 0;
-                    // TODO: Check for pushing first
-                    if (y_dist + 32 > 0)
+                    
+                    if (anim_core.name == "push")
                     {
-                        jump_auto = 2;
-                        cpu_state_time = 64;
+                        cpu_state_time++;
+                        
+                        // Jump
+                        if (image_xscale == leader.image_xscale and leader.anim_core.name == "push") cpu_state_time = 0;
+                        jump_auto = (cpu_state_time < 30 ? 1 : 0);
                     }
                     else
                     {
-                        if (cpu_state_time > 0) cpu_state_time--;
-                        jump_auto = (cpu_state_time > 0 ? 1 : 0);
+                        if (y_dist + 32 > 0)
+                        {
+                            jump_auto = 2;
+                            cpu_state_time = 64;
+                        }
+                        else
+                        {
+                            if (cpu_state_time > 0) cpu_state_time--;
+                            jump_auto = (cpu_state_time > 0 ? 1 : 0);
+                        }
                     }
                     
                     if (leader.state != player_is_dead)
